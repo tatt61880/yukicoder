@@ -1,0 +1,11 @@
+func main()
+	var _: [][]char :: cui@input().split(" ")
+	var p: float :: _[0].toFloat(&)
+	var q: float :: _[1].toFloat(&)
+	
+	; P_0 = p * q
+	; P_1 = (1.0 - p) * q
+	; P_2 = p * (1 - q) * q
+	var ans: bool :: 1.0 - p < p * (1.0 - q)
+	do cui@print(ans ?("YES\n", "NO\n"))
+end func

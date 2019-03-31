@@ -1,0 +1,10 @@
+func main()
+	var _: [][]char :: cui@input().split(" ")
+	var A: int :: _[0].toInt(&)
+	var B: int :: _[1].toInt(&)
+	var ans: int :: 3
+	for i(23, 25)
+		do ans :- A <= i & i <= B ?(1, 0)
+	end for
+	do cui@print("\{ans}\n")
+end func

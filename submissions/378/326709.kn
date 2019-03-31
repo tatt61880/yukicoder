@@ -1,0 +1,11 @@
+func main()
+	var N: int :: cui@input().toInt(&)
+	var sum: int :: 0
+	var ans: int :: 2 * N
+	while(N > 0)
+		do sum :+ N
+		do N :/ 2
+	end while
+	do ans :- sum
+	do cui@print("\{ans}\n")
+end func

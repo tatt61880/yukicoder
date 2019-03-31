@@ -1,0 +1,17 @@
+func main()
+	var N: int :: cui@input().toInt(&)
+	var ans: int :: -1
+	for(1, N)
+		var _: [][]char :: cui@input().split(" ")
+		var x: int :: _[0].toInt(&)
+		var y: int :: _[1].toInt(&)
+		if(ans = -1)
+			do ans :: y - x
+		end if
+		if(ans <= 0 | ans <> y - x)
+			do cui@print("-1\n")
+			ret
+		end if
+	end for
+	do cui@print("\{ans}\n")
+end func

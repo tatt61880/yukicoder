@@ -1,0 +1,13 @@
+func main()
+	var N: int :: cui@input().toInt(&)
+	var d: dict<[]char, int> :: #dict<[]char, int>
+	var max: int
+	for i(0, N - 1)
+		var s: []char :: cui@input()
+		var n: int :: d.get(s, &)
+		do d.add(s, n + 1)
+		do max :: [max, n + 1].max()
+	end for
+	var ans: bool :: max <= (N + 1) / 2
+	do cui@print(ans ?("YES\n", "NO\n"))
+end func

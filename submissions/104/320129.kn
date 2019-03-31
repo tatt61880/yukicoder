@@ -1,0 +1,9 @@
+func main()
+	var S: []char :: cui@input()
+	var ans: int :: 1
+	for i(0, ^S - 1)
+		do ans :* 2
+		do ans :+ S[i] = 'L' ?(0, 1)
+	end for
+	do cui@print("\{ans}\n")
+end func

@@ -1,0 +1,22 @@
+func main()
+	var _: [][]char :: cui@input().split(" ")
+	var A: int :: _[0].toInt(&)
+	var B: int :: _[1].toInt(&)
+	for n(A, B)
+		if(f(n))
+			do cui@print("\{n}\n")
+		end if
+	end for
+	func f(n: int): bool
+		if(n % 3 = 0)
+			ret true
+		end if
+		while(n <> 0)
+			if(n % 10 = 3)
+				ret true
+			end if
+			do n :/ 10
+		end while
+		ret false
+	end func
+end func

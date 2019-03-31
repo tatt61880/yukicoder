@@ -1,0 +1,22 @@
+func main()
+	var N: int :: cui@input().toInt(&)
+	var _: [][]char :: cui@input().split(" ")
+	var W: []int :: #[N]int
+	for i(0, N - 1)
+		do W[i] :: _[i].toInt(&)
+	end for
+	var dp: []bool :: #[10001]bool
+	do dp[0] :: true
+	var sum: int
+	for i(0, N - 1)
+		do sum :+ W[i]
+		for j(10000, 0, -1)
+			if(dp[j])
+				do dp[j + W[i]] :: true
+			end if
+		end for
+	end for
+	
+	var ans: bool :: sum % 2 = 0 & dp[sum / 2]
+	do cui@print((ans ?("", "im")) ~ "possible\n")
+end func

@@ -1,0 +1,11 @@
+func main()
+	var N: int :: cui@input().toInt(&)
+	var _: [][]char :: cui@input().split(" ")
+	var ans: int
+	for i(0, N - 1)
+		var x: int :: _[i].toInt(&)
+		do ans :+ x % 2 = 0 ?(1, -1)
+	end for
+	do ans :: ans.abs()
+	do cui@print("\{ans}\n")
+end func

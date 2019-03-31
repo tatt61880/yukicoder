@@ -1,0 +1,14 @@
+func main()
+	var S: []char :: cui@input()
+	var ans: int
+	var num: int
+	for i(0, ^S - 1)
+		if(S[i] = '…')
+			do num :+ 1
+			do ans :: [ans, num].max()
+		else
+			do num :: 0
+		end if
+	end for
+	do cui@print("\{ans}\n")
+end func

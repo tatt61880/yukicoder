@@ -1,0 +1,14 @@
+func main()
+	var N: int :: cui@input().toInt(&)
+	var _: [][]char :: cui@input().split(" ")
+	var a: []int :: #[N]int
+	for i(0, N - 1)
+		do a[i] :: _[i].toInt(&)
+	end for
+	if(a.min() = a.max())
+		do cui@print(a[0] = (N - 1) * 2 ?("\{N} 0\n", "0 \{N}\n"))
+	else
+		var k: int :: (a.max() + 2 - 2 * N) / 2
+		do cui@print("\{N - k} \{k}\n")
+	end if
+end func

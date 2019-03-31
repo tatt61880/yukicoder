@@ -1,0 +1,17 @@
+func main()
+	var N: int :: cui@input().toInt(&)
+	var num: []int :: #[1000]int
+	for(1, N)
+		var S: []char :: cui@input()
+		do num[^S - 2] :+ 1
+	end for
+	var max: int :: 0
+	var ans: int :: 0
+	for i(0, 999)
+		if(num[i] >= max)
+			do max :: num[i]
+			do ans :: i
+		end if
+	end for
+	do cui@print("\{ans}\n")
+end func

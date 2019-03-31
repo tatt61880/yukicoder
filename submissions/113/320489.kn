@@ -1,0 +1,19 @@
+func main()
+	var S: []char :: cui@input()
+	var x: int
+	var y: int
+	for i(0, ^S - 1)
+		switch(S[i])
+		case 'N'
+			do y :+ 1
+		case 'E'
+			do x :+ 1
+		case 'W'
+			do x :- 1
+		case 'S'
+			do y :- 1
+		end switch
+	end for
+	var ans: float :: lib@dist(x $ float, y $ float, 0.0, 0.0)
+	do cui@print("\{ans}\n")
+end func

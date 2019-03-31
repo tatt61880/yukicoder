@@ -1,0 +1,33 @@
+func main()
+	var _: [][]char :: cui@input().split(" ")
+	var num: []int :: #[14]int
+	for i(0, 4)
+		var a: int :: _[i].toInt(&)
+		do num[a] :+ 1
+	end for
+	var three: int
+	var two: int
+	for i(1, 13)
+		switch(num[i])
+		case 2
+			do two :+ 1
+		case 3
+			do three :+ 1
+		end switch
+	end for
+	var ans: []char
+	if(three = 1)
+		if(two = 1)
+			do ans :: "FULL HOUSE"
+		else
+			do ans :: "THREE CARD"
+		end if
+	elif(two = 2)
+		do ans :: "TWO PAIR"
+	elif(two = 1)
+		do ans :: "ONE PAIR"
+	else
+		do ans :: "NO HAND"
+	end if
+	do cui@print("\{ans}\n")
+end func

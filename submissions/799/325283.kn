@@ -1,0 +1,14 @@
+func main()
+	var _: [][]char :: cui@input().split(" ")
+	var A: int :: _[0].toInt(&)
+	var B: int :: _[1].toInt(&)
+	var C: int :: _[2].toInt(&)
+	var D: int :: _[3].toInt(&)
+	var ans: int
+	for x(A, B)
+		for y(C, D)
+			do ans :+ x = y ?(0, 1)
+		end for
+	end for
+	do cui@print("\{ans}\n")
+end func

@@ -1,0 +1,14 @@
+func main()
+	var _: [][]char :: cui@input().split(" ")
+	var W: int :: _[0].toInt(&)
+	var H: int :: _[1].toInt(&)
+	var C: []char :: _[2]
+	do C :~ [C[0] = 'B' ?('W', 'B')]
+	for h(1, H)
+		for w(1, W)
+			do cui@print([C[(h + w) % 2]])
+		end for
+		do cui@print("\n")
+	end for
+	var ans: int
+end func

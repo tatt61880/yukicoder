@@ -1,0 +1,13 @@
+func main()
+	var N: int :: cui@input().toInt(&)
+	var _a: [][]char :: cui@input().split(" ")
+	var _b: [][]char :: cui@input().split(" ")
+	var sum: []int :: #[101]int
+	for i(0, N - 1)
+		var a: int :: _a[i].toInt(&)
+		var b: int :: _b[i].toInt(&)
+		do sum[b] :+ a
+	end for
+	var ans: bool :: sum.max() <= sum[0]
+	do cui@print(ans ?("YES\n", "NO\n"))
+end func

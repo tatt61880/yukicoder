@@ -1,0 +1,8 @@
+func main()
+	var N: int :: cui@input().toInt(&)
+	var ans: int :: 0
+	for n(1, N)
+		do ans :+ math@prime(n) ?(n, 0)
+	end for
+	do cui@print("\{ans}\n")
+end func

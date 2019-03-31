@@ -1,0 +1,15 @@
+func main()
+	var X: int :: cui@input().toInt(&)
+	var Y: int :: cui@input().toInt(&)
+	var L: int :: cui@input().toInt(&)
+	
+	var ans: int
+	if(Y < 0)
+		do ans :+ 2
+	elif(X <> 0)
+		do ans :+ 1
+	end if
+	do ans :+ (X.abs() + L - 1) / L
+	do ans :+ (Y.abs() + L - 1) / L
+	do cui@print("\{ans}\n")
+end func

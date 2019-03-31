@@ -1,0 +1,29 @@
+func main()
+	var _: [][]char
+	do _ :: cui@input().split(" ")
+	var Sa: []char :: _[0]
+	var Pa: []char :: _[1]
+	do _ :: cui@input().split(" ")
+	var Sb: []char :: _[0]
+	var Pb: []char :: _[1]
+	
+	var ans: []char :: "-1"
+	var res: int :: f(Pa, Pb)
+	if(res > 0)
+		do ans :: Sa
+	elif(res < 0)
+		do ans :: Sb
+	end if
+	do cui@print("\{ans}\n")
+	
+	func f(Sa: []char, Sb: []char): int
+		if(^Sa <> ^Sb)
+			ret ^ Sa - ^Sb
+		end if
+		for i(0, ^Sa - 1)
+			if(Sa[i] $ int <> Sb[i] $ int)
+				ret Sa[i] $ int - Sb[i] $ int
+			end if
+		end for
+	end func
+end func

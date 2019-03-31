@@ -1,0 +1,7 @@
+func main()
+	var _: [][]char :: cui@input().split(" ")
+	var S: []char :: _[0]
+	do S[_[1].toInt(&)] :: ' '
+	do S[_[2].toInt(&)] :: ' '
+	do cui@print(S.split(" ").join("") ~ "\n")
+end func

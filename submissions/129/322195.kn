@@ -1,0 +1,24 @@
+func main()
+	var N: int :: cui@input().toInt(&)
+	var M: int :: cui@input().toInt(&)
+	var num: int :: (N / 1000) % M
+	var primeNums: []int :: #[10000]int
+	for n(M, M - num + 1, -1)
+		var primes: []int :: math@primeFactors(n)
+		for i(0, ^primes - 1)
+			do primeNums[primes[i]] :+ 1
+		end for
+	end for
+	for n(1, num)
+		var primes: []int :: math@primeFactors(n)
+		for i(0, ^primes - 1)
+			do primeNums[primes[i]] :- 1
+		end for
+	end for
+	var ans: int :: 1
+	for p(2, 9999)
+		do ans :* p ^ primeNums[p]
+		do ans :% 10 ^ 9
+	end for
+	do cui@print("\{ans}\n")
+end func

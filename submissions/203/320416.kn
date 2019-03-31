@@ -1,0 +1,8 @@
+func main()
+	var _: [][]char :: (cui@input() ~ cui@input()).split("x")
+	var ans: int
+	for i(0, ^_ - 1)
+		do ans :: [ans, ^_[i]].max()
+	end for
+	do cui@print("\{ans}\n")
+end func

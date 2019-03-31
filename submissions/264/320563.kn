@@ -1,0 +1,13 @@
+func main()
+	var _: [][]char :: cui@input().split(" ")
+	var N: int :: _[0].toInt(&)
+	var K: int :: _[1].toInt(&)
+	switch(N - K)
+	case 1, -2
+		do cui@print("Lost")
+	case 2, -1
+		do cui@print("Won")
+	case 0
+		do cui@print("Drew")
+	end switch
+end func

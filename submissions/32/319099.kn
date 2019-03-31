@@ -1,0 +1,13 @@
+func main()
+	var L: int :: cui@input().toInt(&)
+	var M: int :: cui@input().toInt(&)
+	var N: int :: cui@input().toInt(&)
+	var sum: int :: L * 100 + M * 25 + N
+	var n: int :: sum % 25
+	do sum :- n
+	var m: int :: sum % 100
+	do sum :- m
+	var l: int :: sum % 1000
+	var ans: int :: n + m / 25 + l / 100
+	do cui@print("\{ans}\n")
+end func

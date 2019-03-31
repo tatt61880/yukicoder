@@ -1,0 +1,15 @@
+func main()
+	var _: [][]char :: cui@input().split(" ")
+	var A: int :: _[0].toInt(&)
+	var B: int :: _[1].toInt(&)
+	var C: int :: _[2].toInt(&)
+	; A * 60 * X >= B * X + 3600 * C
+	; (A * 60 - B) * X >= 3600 * C
+	var ans: int
+	if(A * 60 - B < 0)
+		do ans :: -1
+	else
+		do ans :: (3600 * C + A * 60 - B - 1) / (A * 60 - B)
+	end if
+	do cui@print("\{ans}\n")
+end func

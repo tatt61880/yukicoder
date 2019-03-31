@@ -1,0 +1,5 @@
+func main()
+	var D: int :: cui@input().toInt(&)
+	var ans: float :: 1.08 * D $ float
+	do cui@print("\{ans.toStrFmt(".2f")}\n")
+end func

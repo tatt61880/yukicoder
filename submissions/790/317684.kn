@@ -1,0 +1,15 @@
+func main()
+	var N: int :: cui@input().toInt(&)
+	do cui@print("\{C(N)}\n")
+
+	func C(n: int): int
+		if (n < 2)
+			ret 1
+		end if
+		var res: int
+		for i(0, n - 1)
+			do res :+ C(i) * C(n - 1 - i)
+		end for
+		ret res
+	end func
+end func

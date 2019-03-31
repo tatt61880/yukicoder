@@ -1,0 +1,21 @@
+func main()
+	var N: int :: cui@input().toInt(&)
+	var sum: int :: 0
+	var max: int :: 0
+	var mod2: int
+	for n(1, N)
+		var _: [][]char :: cui@input().split(" ")
+		var a: int :: _[0].toInt(&)
+		var b: int :: _[1].toInt(&)
+		if(n = 1)
+			do mod2 :: a % 2
+		elif(a % 2 <> mod2)
+			do cui@print("-1\n")
+			ret
+		end if
+		do max :: [a + 4 * b, max].max()
+		do sum :+ a + 4 * b
+	end for
+	var ans: int :: (max * N - sum) / 2
+	do cui@print("\{ans}\n")
+end func

@@ -1,0 +1,20 @@
+func main()
+	var N: int :: cui@input().toInt(&)
+	var nums: []bool :: [true].repeat(10)
+	for(0, N - 1)
+		var _: [][]char :: cui@input().split(" ")
+		var R: bool :: _[4] = "YES"
+		var tmp: []bool :: [!R].repeat(10)
+		for i(0, 3)
+			do tmp[_[i].toInt(&)] :: R
+		end for
+		for i(0, 9)
+			do nums[i] :: nums[i] & tmp[i]
+		end for
+	end for
+	for i(0, 9)
+		if(nums[i])
+			do cui@print("\{i}\n")
+		end if
+	end for
+end func

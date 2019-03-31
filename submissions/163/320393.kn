@@ -1,0 +1,12 @@
+func main()
+	var S: []char :: cui@input()
+	for i(0, ^S - 1)
+		switch(S[i])
+		case 'A' to 'Z'
+			do cui@print([S[i]].lower())
+		case 'a' to 'z'
+			do cui@print([S[i]].upper())
+		end switch
+	end for
+	do cui@print("\n")
+end func

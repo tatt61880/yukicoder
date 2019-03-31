@@ -1,0 +1,22 @@
+func main()
+	var D: int :: cui@input().toInt(&)
+	var a: []int :: #[D + 1]int
+	var _: [][]char :: cui@input().split(" ")
+	for i(0, D)
+		do a[i] :: _[i].toInt(&)
+	end for
+	for i(D, 3, -1)
+		do a[i - 2] :+ a[i]
+	end for
+	var d: int
+	for i(0, 2)
+		if(a[i] <> 0)
+			do d :: i
+		end if
+	end for
+	do cui@print("\{d}\n")
+	for i(0, d)
+		do cui@print("\{a[i]}")
+		do cui@print(i = d ?("\n", " "))
+	end for
+end func

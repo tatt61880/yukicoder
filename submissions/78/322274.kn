@@ -1,0 +1,30 @@
+func main()
+	var _: [][]char :: cui@input().split(" ")
+	var N: int :: _[0].toInt(&)
+	var K: int :: _[1].toInt(&)
+	var S: []char :: cui@input()
+	var numBonusByPack: int
+	for i(0, N - 1)
+		do numBonusByPack :+ S[i] $ int - '0' $ int
+	end for
+	var pack: int :: K / N
+	var ans: int
+	if(pack > 10)
+		if(numBonusByPack >= N)
+			do K :: 10 * N
+		else
+			do ans :: (pack - 10) * (N - numBonusByPack)
+			do K :- (pack - 10) * N
+		end if
+	end if
+	var bonus: int
+	for i(0, K - 1)
+		if(bonus > 0)
+			do bonus :- 1
+		else
+			do ans :+ 1
+		end if
+		do bonus :+ S[i % N] $ int - '0' $ int
+	end for
+	do cui@print("\{ans}\n")
+end func

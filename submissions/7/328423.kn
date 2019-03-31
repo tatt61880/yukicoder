@@ -1,0 +1,28 @@
+func main()
+	var N: int :: cui@input().toInt(&)
+	var primesList: list<int> :: #list<int>
+	do primesList.add(2)
+	for i(3, N, 2)
+		if(math@prime(i))
+			do primesList.add(i)
+		end if
+	end for
+	var primes: []int :: primesList.toArray()
+	
+	var dp: []bool :: #[N + 1]bool
+	do dp[0] :: true
+	do dp[1] :: true
+	for n(2, N)
+		for id(0, ^primes - 1)
+			if(primes[id] > n)
+				break id
+			end if
+			if(!dp[n - primes[id]])
+				do dp[n] :: true
+				break id
+			end if
+		end for
+	end for
+	var ans: bool :: dp[N]
+	do cui@print(ans ?("Win\n", "Lose\n"))
+end func

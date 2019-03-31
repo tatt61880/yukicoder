@@ -1,0 +1,15 @@
+func main()
+	var S: []char :: cui@input()
+	var c: int :: -1
+	var w: int :: 0
+	for i(0, ^S - 1)
+		switch(S[i])
+		case 'c'
+			do c :+ 1
+		case 'w'
+			do w :+ 1
+		end switch
+	end for
+	var ans: int :: [c, w].min()
+	do cui@print("\{ans}\n")
+end func

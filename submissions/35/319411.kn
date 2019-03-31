@@ -1,0 +1,13 @@
+func main()
+	var N: int :: cui@input().toInt(&)
+	var a: int
+	var b: int
+	for(1, N)
+		var _: [][]char :: cui@input().split(" ")
+		var t: int :: _[0].toInt(&) * 12 / 1000
+		var s: int :: ^_[1]
+		do a :+ [t, s].min()
+		do b :+ [s - t, 0].max()
+	end for
+	do cui@print("\{a} \{b}")
+end func

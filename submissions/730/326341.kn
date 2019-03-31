@@ -1,0 +1,9 @@
+func main()
+	var S: []char :: cui@input()
+	var a: []int :: #[26]int
+	for i(0, ^S - 1)
+		do a[S[i] $ int - 'A' $ int] :+ 1
+	end for
+	var ans: bool :: a.max() < 2
+	do cui@print(ans ?("YES\n", "NO\n"))
+end func

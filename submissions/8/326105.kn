@@ -1,0 +1,10 @@
+func main()
+	var P: int :: cui@input().toInt(&)
+	var ans: int :: 0
+	for(1, P)
+		var _: [][]char :: cui@input().split(" ")
+		var N: int :: _[0].toInt(&)
+		var K: int :: _[1].toInt(&)
+		do cui@print((N - 1) % (K + 1) = 0 ?("Lose\n", "Win\n"))
+	end for
+end func

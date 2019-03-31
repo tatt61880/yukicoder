@@ -1,0 +1,5 @@
+func main()
+	var N: int :: cui@input().toInt(&)
+	var ans: int :: lib@log(2.0, N $ float - 0.5) $ int + 1
+	do cui@print("\{ans}\n")
+end func

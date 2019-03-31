@@ -1,0 +1,18 @@
+func main()
+	var N: int :: cui@input().toInt(&)
+	var _: [][]char :: cui@input().split(" ")
+	var arr: []int :: #[7]int
+	for i(0, N - 1)
+		var L: int :: _[i].toInt(&)
+		do arr[L] :+ 1
+	end for
+	var ans: int
+	var max: int
+	for i(6, 1, -1)
+		if(arr[i] > max)
+			do max :: arr[i]
+			do ans :: i
+		end if
+	end for
+	do cui@print("\{ans}\n")
+end func

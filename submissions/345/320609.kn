@@ -1,0 +1,19 @@
+func main()
+	var S: []char :: cui@input()
+	var c: int :: -1
+	var cw: int :: -1
+	var ans: int :: ^S + 1
+	for i(0, ^S - 1)
+		switch(S[i])
+		case 'c'
+			do c :: i
+		case 'w'
+			if(cw <> -1)
+				do ans :: [ans, (i - cw + 1)].min()
+			end if
+			do cw :: c
+		end switch
+	end for
+	do ans :: ans = ^S + 1 ?(-1, ans)
+	do cui@print("\{ans}\n")
+end func

@@ -3,7 +3,8 @@ const userId: int :: 5112
 const yukicoderBase: []char :: "https://yukicoder.me/"
 const dirHtml: []char :: "./html/"
 const dirSubmissions: []char :: "./submissions/"
-var dictExtensions: dict<[]char, []char>
+var dictSubmitLang: dict<int, []char>
+var dictLangExtension: dict<[]char, []char>
 
 func main()
 	if(!@makeDir(@dirHtml))
@@ -19,11 +20,12 @@ func main()
     <td><a href="/problems/no/129">No.129 お年玉(2)</a></td>
     <td>Kuin(beta)</td>
 	}
-	var regexUrl: regex@Regex :: regex@makeRegex("\"/submissions/(\\d+)\"[\\d\\D]*?/problems/no/(\\d+)")
+	var regexUrl: regex@Regex :: regex@makeRegex("\"/submissions/(\\d+)\"[\\d\\D]*?/problems/no/(\\d+).*?<td>(.*?)</td>")
 	assert regexUrl <>& null
 
 	var id: int :: 0
 	var dictProblemSubmit: dict<int, int> :: #dict<int, int>
+	do @dictSubmitLang :: #dict<int, []char>
 	while loop(true)
 		do id :+ 1
 		var url: []char :: "\{@yukicoderBase}users/\{@userId}/submissions?page=\{id}&status=AC&date_asc=enabled"
@@ -39,19 +41,28 @@ func main()
 		for i(0, ^result - 1)
 			var subumitId: int :: result[i][1].toInt(&)
 			var problemId: int :: result[i][2].toInt(&)
+			var language: []char :: result[i][3]
+			do language :: language.replace("&#43;", "+")
 			do dictProblemSubmit.add(problemId, subumitId)
+			do @dictSubmitLang.add(subumitId, language)
 		end for
 		var writer: file@Writer :: file@makeWriter(filepath, false)
 		do writer.writeStr(data)
 		do writer.fin()
-
-		break loop
 	end while
 
 	if(!@makeDir(@dirSubmissions))
 		ret
 	end if
+
+	if(!@initExtensions())
+		do lib@exitCode(1)
+		do cui@print("拡張子データの初期化に失敗しました。\n")
+		ret
+	end if
+
 	do dictProblemSubmit.forEach(callback, null)
+
 	func callback(problemId: int, subumitId: int, _: kuin@Class): bool
 		var url: []char :: "\{@yukicoderBase}submissions/\{subumitId}/source"
 		var data: []char :: @fetchData(url)
@@ -61,7 +72,12 @@ func main()
 			if(!@makeDir("\{@dirSubmissions}\{problemId}"))
 				ret false
 			end if
-			var filepath: []char :: "\{@dirSubmissions}\{problemId}/\{subumitId}"
+			var language: []char :: @dictSubmitLang.get(subumitId, &)
+			var extension: []char :: @dictLangExtension.get(language, &)
+			if(extension =& null)
+				do @addExtension(language, &extension)
+			end if
+			var filepath: []char :: "\{@dirSubmissions}\{problemId}/\{subumitId}.\{extension}"
 			var writer: file@Writer :: file@makeWriter(filepath, false)
 			do writer.writeStr(data)
 			do writer.fin()
@@ -110,4 +126,39 @@ func makeDir(dirPath: []char): bool
 			ret false
 		end if
 	end if
+end func
+
+var arrLanguages: [][]char
+var arrExtensions: [][]char
+
+func initExtensions(): bool
+	var extensionFilepath: []char :: "\{file@exeDir()}extensions.csv"
+	var reader: file@Reader :: file@makeReader(extensionFilepath)
+	if(reader =& null)
+		do lib@exitCode(1)
+		do cui@print("\{extensionFilepath} can't be opened.\n")
+		ret false
+	end if
+	do reader.delimiter(",\n")
+	do @arrLanguages :: #[0][]char
+	do @arrExtensions :: #[0][]char
+	while(!reader.term())
+		var language: []char :: reader.readStr()
+		var extension: []char :: reader.readStr()
+		do @arrLanguages :~ [language]
+		do @arrExtensions :~ [extension]
+	end while
+	do @dictLangExtension :: #dict<[]char, []char>
+	ret true
+end func
+
+func addExtension(language: []char, extension: &[]char)
+	do extension :: "unknown"
+	for i(^@arrLanguages - 1, 0, -1)
+		if(language.findStr(@arrLanguages[i], -1) <> -1)
+			do extension :: @arrExtensions[i]
+			break i
+		end if
+	end for
+	do @dictLangExtension.add(language, extension)
 end func

@@ -1,0 +1,14 @@
+func main()
+	var N: int :: cui@input().toInt(&)
+	var ans: []char :: ""
+	while a(true)
+		do ans :~ "\{N % 7}"
+		do N :/ 7
+		if(N = 0)
+			break a
+		end if
+	end while
+	do ans.reverse()
+	do ans :~ "\n"
+	do cui@print(ans)
+end func

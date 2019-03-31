@@ -1,0 +1,5 @@
+func main()
+	var N: []char :: cui@input()
+	var ans: int :: ^N = 1 | N[0] <> '1' | ^N.split("3").join("") <> 1 ?(-1, ^N - 1)
+	do cui@print("\{ans}")
+end func

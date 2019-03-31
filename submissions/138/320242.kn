@@ -1,0 +1,9 @@
+func main()
+	var _: [][]char
+	do _ :: cui@input().split(".")
+	var abc0: int :: _[0].toInt(&) * 10201 + _[1].toInt(&) * 101 + _[2].toInt(&)
+	do _ :: cui@input().split(".")
+	var abc1: int :: _[0].toInt(&) * 10201 + _[1].toInt(&) * 101 + _[2].toInt(&)
+	var ans: bool :: abc0 >= abc1
+	do cui@print(ans ?("YES\n", "NO\n"))
+end func

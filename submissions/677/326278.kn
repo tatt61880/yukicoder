@@ -1,0 +1,13 @@
+func main()
+	var N: int :: cui@input().toInt(&)
+	var ans: []int :: #[0]int
+	for i(0, N)
+		for j(0, N)
+			do ans :~ [2 ^ i * 5 ^ j]
+		end for
+	end for
+	do ans.sort()
+	for i(0, ^ans - 1)
+		do cui@print("\{ans[i]}\n")
+	end for
+end func

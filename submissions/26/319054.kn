@@ -1,0 +1,15 @@
+func main()
+	var arr: []bool :: #[4]bool
+	var N: int :: cui@input().toInt(&)
+	do arr[N] :: true
+	var M: int :: cui@input().toInt(&)
+	for(1, M)
+		var _: [][]char :: cui@input().split(" ")
+		do arr[_[0].toInt(&)] :$ arr[_[1].toInt(&)]
+	end for
+	for i(1, 3)
+		if(arr[i])
+			do cui@print("\{i}\n")
+		end if
+	end for
+end func

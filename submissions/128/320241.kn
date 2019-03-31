@@ -1,0 +1,6 @@
+func main()
+	var N: int :: cui@input().toInt(&)
+	var M: int :: cui@input().toInt(&)
+	var ans: int :: (N / 1000) / M * 1000
+	do cui@print("\{ans}\n")
+end func

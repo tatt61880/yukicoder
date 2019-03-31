@@ -1,0 +1,9 @@
+func main()
+	var W: int :: cui@input().toInt(&)
+	var D: int :: cui@input().toInt(&)
+	for d(D, 2, -1)
+		do W :- W / d ^ 2
+	end for
+	var ans: int :: W
+	do cui@print("\{ans}\n")
+end func

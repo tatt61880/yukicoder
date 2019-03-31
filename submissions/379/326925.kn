@@ -1,0 +1,9 @@
+func main()
+	var _: [][]char :: cui@input().split(" ")
+	var N: int :: _[0].toInt(&)
+	var G: int :: _[1].toInt(&)
+	var V: int :: _[2].toInt(&)
+	do N :/ 5
+	var ans: float :: (G * N) $ float / V $ float
+	do cui@print("\{ans.toStrFmt(".15f")}\n")
+end func

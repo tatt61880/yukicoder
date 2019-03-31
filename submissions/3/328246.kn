@@ -1,0 +1,31 @@
+func main()
+	var N: int :: cui@input().toInt(&)
+	var dp: []int :: [-1].repeat(N + 1)
+	do dp[1] :: 1
+	var qu: queue<int> :: #queue<int>
+	do qu.add(1)
+	while(^qu <> 0)
+		var n: int :: qu.get()
+		var b: int :: bitNum(n)
+		var nextStep: int :: dp[n] + 1
+		if(n + b <= N & dp[n + b] = -1)
+			do dp[n + b] :: nextStep
+			do qu.add(n + b)
+		end if
+		if(n - b > 0 & dp[n - b] = -1)
+			do dp[n - b] :: nextStep
+			do qu.add(n - b)
+		end if
+	end while
+	var ans: int :: dp[N]
+	do cui@print("\{ans}\n")
+	
+	func bitNum(n: int): int
+		var res: int
+		while(n <> 0)
+			do res :+ n % 2
+			do n :/ 2
+		end while
+		ret res
+	end func
+end func

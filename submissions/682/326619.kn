@@ -1,0 +1,12 @@
+func main()
+	var _: [][]char :: cui@input().split(" ")
+	var A: int :: _[0].toInt(&)
+	var B: int :: _[1].toInt(&)
+	var ans: int
+	for i(A, B)
+		if((A + B + i) % 3 = 0)
+			do ans :+ 1
+		end if
+	end for
+	do cui@print("\{ans}\n")
+end func

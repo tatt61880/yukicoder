@@ -1,0 +1,7 @@
+func main()
+	var _: [][]char :: cui@input().split(" ")
+	var D: int :: _[0].toInt(&)
+	var P: int :: _[1].toInt(&)
+	var ans: int :: D * (100 + P) / 100
+	do cui@print("\{ans}\n")
+end func

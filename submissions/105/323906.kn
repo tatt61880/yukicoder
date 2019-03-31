@@ -1,0 +1,27 @@
+func main()
+	var N: int :: cui@input().toInt(&)
+	for(1, N)
+		do cui@input()
+		var ans: float :: lib@toRad(50.0)
+		var x: []float :: #[6]float
+		var y: []float :: #[6]float
+		var cx: float :: 0.0
+		var cy: float :: 0.0
+		for i(0, 5)
+			var _: [][]char :: cui@input().split(" ")
+			do x[i] :: _[0].toFloat(&)
+			do y[i] :: _[1].toFloat(&)
+			do cx :+ x[i]
+			do cy :+ x[i]
+		end for
+		do cx :/ 6.0
+		do cy :/ 6.0
+		for i(0, 5)
+			var rot: float :: (lib@invRot(cx, cy, x[i], y[i]) + 10.0 ^ -9.0) % (2.0 * lib@pi)
+			if(rot >= 0.0 & rot < ans)
+				do ans :: rot
+			end if
+		end for
+		do cui@print("\{lib@toDegree(ans).toStrFmt(".15f")}\n")
+	end for
+end func

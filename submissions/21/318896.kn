@@ -1,0 +1,10 @@
+func main()
+	var N: int :: cui@input().toInt(&)
+	var K: int :: cui@input().toInt(&)
+	var n: []int :: #[N]int
+	for i(0, N - 1)
+		do n[i] :: cui@input().toInt(&)
+	end for
+	do n.sort()
+	do cui@print("\{n[N - 1] - n[0]}\n")
+end func

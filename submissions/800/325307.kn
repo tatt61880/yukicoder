@@ -1,0 +1,25 @@
+func main()
+	var _: [][]char :: cui@input().split(" ")
+	var N: int :: _[0].toInt(&)
+	var D: int :: _[1].toInt(&)
+	var xy: []int :: #[2 * 2000 ^ 2 + 1]int
+	var zwD: []int :: #[2 * 2000 ^ 2 + 1]int
+	for x(1, N)
+		for y(1, N)
+			do xy[x ^ 2 + y ^ 2] :+ 1
+		end for
+	end for
+	for z(1, N)
+		for w(1, N)
+			var v: int :: w ^ 2 - z ^ 2 + D
+			if(v > 0)
+				do zwD[v] :+ 1
+			end if
+		end for
+	end for
+	var ans: int
+	for i(1, 2 * N ^ 2)
+		do ans :+ xy[i] * zwD[i]
+	end for
+	do cui@print("\{ans}\n")
+end func

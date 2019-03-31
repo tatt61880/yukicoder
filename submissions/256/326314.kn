@@ -1,0 +1,6 @@
+func main()
+	var s: []char :: cui@input()
+	do s.sort()
+	do s.reverse()
+	do cui@print("\{s}\n")
+end func

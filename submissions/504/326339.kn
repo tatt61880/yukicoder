@@ -1,0 +1,13 @@
+func main()
+	var N: int :: cui@input().toInt(&)
+	var a0: int :: cui@input().toInt(&)
+	var ans: int :: 1
+	do cui@print("1\n")
+	for i(1, N - 1)
+		var a: int :: cui@input().toInt(&)
+		if(a > a0)
+			do ans :+ 1
+		end if
+		do cui@print("\{ans}\n")
+	end for
+end func

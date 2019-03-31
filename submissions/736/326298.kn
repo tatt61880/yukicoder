@@ -1,0 +1,17 @@
+func main()
+	var N: int :: cui@input().toInt(&)
+	var a: []int :: #[N]int
+	var _: [][]char :: cui@input().split(" ")
+	for i(0, N - 1)
+		do a[i] :: _[i].toInt(&)
+	end for
+	var gcd: int :: a[0]
+	for i(1, N - 1)
+		do gcd :: math@gcd(gcd, a[i])
+	end for
+	do cui@print("\{a[0] / gcd}")
+	for i(1, N - 1)
+		do cui@print(":\{a[i] / gcd}")
+	end for
+	do cui@print("\n")
+end func

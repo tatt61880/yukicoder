@@ -1,0 +1,9 @@
+func main()
+	var _: [][]char :: cui@input().split(" ")
+	var H: int :: _[0].toInt(&)
+	var W: int :: _[1].toInt(&)
+	var N: int :: _[2].toInt(&)
+	var K: int :: _[3].toInt(&)
+	var ans: bool :: H * W % N = K % N
+	do cui@print(ans ?("YES\n", "NO\n"))
+end func

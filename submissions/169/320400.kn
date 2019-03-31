@@ -1,0 +1,6 @@
+func main()
+	var K: int :: cui@input().toInt(&)
+	var S: int :: cui@input().toInt(&)
+	var ans: int :: S * 100 / (100 - K)
+	do cui@print("\{ans}\n")
+end func

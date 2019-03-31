@@ -1,0 +1,14 @@
+func main()
+	var N: int :: cui@input().toInt(&)
+	for n(1, N)
+		if(n % 15 = 0)
+			do cui@print("FizzBuzz\n")
+		elif(n % 5 = 0)
+			do cui@print("Buzz\n")
+		elif(n % 3 = 0)
+			do cui@print("Fizz\n")
+		else
+			do cui@print("\{n}\n")
+		end if
+	end for
+end func

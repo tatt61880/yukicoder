@@ -1,0 +1,27 @@
+func main()
+	var _: [][]char :: cui@input().split(" ")
+	var a: int :: _[0].toInt(&)
+	var b: int :: _[1].toInt(&)
+	var c: int :: _[2].toInt(&)
+	if(a = b | b = c | c = a)
+		do cui@print("0\n")
+		ret
+	end if
+	if([a, b, c].max() = b | [a, b, c].min() = b)
+		do cui@print("INF\n")
+		ret
+	end if
+	var ans: int :: 0
+	for p(1, [a, b, c].max())
+		var aa: int :: a % p
+		var bb: int :: b % p
+		var cc: int :: c % p
+		if(aa = bb | bb = cc | cc = aa)
+			skip p
+		end if
+		if([aa, bb, cc].max() = bb | [aa, bb, cc].min() = bb)
+			do ans :+ 1
+		end if
+	end for
+	do cui@print("\{ans}\n")
+end func

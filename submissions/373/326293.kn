@@ -1,0 +1,13 @@
+func main()
+	var _: [][]char :: cui@input().split(" ")
+	var A: int :: _[0].toInt(&)
+	var B: int :: _[1].toInt(&)
+	var C: int :: _[2].toInt(&)
+	var D: int :: _[3].toInt(&)
+	var ans: int :: A
+	do ans :* B
+	do ans :% D
+	do ans :* C
+	do ans :% D
+	do cui@print("\{ans}\n")
+end func

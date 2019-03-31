@@ -64,20 +64,31 @@ func main()
 	do dictProblemSubmit.forEach(callback, null)
 
 	func callback(problemId: int, subumitId: int, _: kuin@Class): bool
+		var language: []char :: @dictSubmitLang.get(subumitId, &)
+		var extension: []char :: @dictLangExtension.get(language, &)
+		if(extension =& null)
+			do @addExtension(language, &extension)
+		end if
+		var filepath: []char :: "\{@dirSubmissions}\{problemId}/\{subumitId}.\{extension}"
+		if(file@exist(filepath))
+			ret true
+		end if
 		var url: []char :: "\{@yukicoderBase}submissions/\{subumitId}/source"
 		var data: []char :: @fetchData(url)
 		if (data =& null)
-			do cui@print("ERROR: Failed to find source code. [\{url}]\n")
+			do cui@print("Error: Failed to find source code. [\{url}]\n")
 		else
-			if(!@makeDir("\{@dirSubmissions}\{problemId}"))
+			var dirPath: []char :: "\{@dirSubmissions}\{problemId}/"
+			if(file@exist(dirPath))
+				if(!file@delDir(dirPath))
+					do cui@print("Error: Failed to remove dir. [\{dirPath}]\n")
+					ret false
+				end if
+				do lib@sleep(500)
+			end if
+			if(!@makeDir(dirPath))
 				ret false
 			end if
-			var language: []char :: @dictSubmitLang.get(subumitId, &)
-			var extension: []char :: @dictLangExtension.get(language, &)
-			if(extension =& null)
-				do @addExtension(language, &extension)
-			end if
-			var filepath: []char :: "\{@dirSubmissions}\{problemId}/\{subumitId}.\{extension}"
 			var writer: file@Writer :: file@makeWriter(filepath, false)
 			do writer.writeStr(data)
 			do writer.fin()

@@ -69,7 +69,7 @@ func main()
 		if(extension =& null)
 			do @addExtension(language, &extension)
 		end if
-		var filepath: []char :: "\{@dirSubmissions}\{problemId}/\{subumitId}.\{extension}"
+		var filepath: []char :: "\{@dirSubmissions}\{problemId}/main.\{extension}"
 		if(file@exist(filepath))
 			ret true
 		end if

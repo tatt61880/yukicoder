@@ -1,0 +1,113 @@
+; userIdのみ要変更です。
+const userId: int :: 5112
+const yukicoderBase: []char :: "https://yukicoder.me/"
+const dirHtml: []char :: "./html/"
+const dirSubmissions: []char :: "./submissions/"
+var dictExtensions: dict<[]char, []char>
+
+func main()
+	if(!@makeDir(@dirHtml))
+		ret
+	end if
+
+	{
+    <td><a href="/submissions/322195">322195</a></td>
+    <td class="time">2019-03-12 00:09:26</td>
+    <td><a href="?submitter=5112" title="このユーザーの提出の表示"><i class="fa fa-search"></i></a></td>
+    <td class="table_username">
+        <a href="/users/5112"><img  alt="tatt61880"  class="icon" src="https://avatars0.githubusercontent.com/u/2398152?v=4">tatt61880</a></td>
+    <td><a href="/problems/no/129">No.129 お年玉(2)</a></td>
+    <td>Kuin(beta)</td>
+	}
+	var regexUrl: regex@Regex :: regex@makeRegex("\"/submissions/(\\d+)\"[\\d\\D]*?/problems/no/(\\d+)")
+	assert regexUrl <>& null
+
+	var id: int :: 0
+	var dictProblemSubmit: dict<int, int> :: #dict<int, int>
+	while loop(true)
+		do id :+ 1
+		var url: []char :: "\{@yukicoderBase}users/\{@userId}/submissions?page=\{id}&status=AC&date_asc=enabled"
+		var filepath: []char :: "\{@dirHtml}\{id}.html"
+		var data: []char :: @fetchData(url)
+		if (data =& null)
+			break loop
+		end if
+		var result: [][][]char :: regexUrl.findAll(&, data)
+		if(result =& null)
+			break loop
+		end if
+		for i(0, ^result - 1)
+			var subumitId: int :: result[i][1].toInt(&)
+			var problemId: int :: result[i][2].toInt(&)
+			do dictProblemSubmit.add(problemId, subumitId)
+		end for
+		var writer: file@Writer :: file@makeWriter(filepath, false)
+		do writer.writeStr(data)
+		do writer.fin()
+
+		break loop
+	end while
+
+	if(!@makeDir(@dirSubmissions))
+		ret
+	end if
+	do dictProblemSubmit.forEach(callback, null)
+	func callback(problemId: int, subumitId: int, _: kuin@Class): bool
+		var url: []char :: "\{@yukicoderBase}submissions/\{subumitId}/source"
+		var data: []char :: @fetchData(url)
+		if (data =& null)
+			do cui@print("ERROR: Failed to find source code. [\{url}]\n")
+		else
+			if(!@makeDir("\{@dirSubmissions}\{problemId}"))
+				ret false
+			end if
+			var filepath: []char :: "\{@dirSubmissions}\{problemId}/\{subumitId}"
+			var writer: file@Writer :: file@makeWriter(filepath, false)
+			do writer.writeStr(data)
+			do writer.fin()
+			ret true
+		end if
+		ret false
+	end func
+end func
+
+func fetchData(url: []char): []char
+	if(url =& null)
+		do cui@print("urlがnullです。\n")
+		ret null
+	end if
+	var http: net@Http :: net@makeHttp(url, false, "Kuin")
+	do cui@print("Fetching data: \{url}\n")
+	do lib@sleep(1000)
+
+	if(http =& null)
+		do cui@print("接続に失敗しました。[\{url}]\n")
+		ret null
+	else
+		var data: []char
+		for i(1, 300)
+			do lib@sleep(10)
+			do data :: http.get()
+			if(data <>& null)
+				ret data
+			end if
+		end for
+		do http.fin()
+	end if
+	do cui@print("データの取得に失敗しました。[\{url}]\n")
+	ret null
+end func
+
+func makeDir(dirPath: []char): bool
+	if(file@exist(dirPath))
+		ret true
+	else
+		if(file@makeDir(dirPath))
+			ret true
+		else
+			do lib@exitCode(1)
+			do cui@print("\{dirPath}を作成できません。\n")
+			ret false
+		end if
+	end if
+end func

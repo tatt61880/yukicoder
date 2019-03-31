@@ -1,0 +1,13 @@
+func main()
+	var N: int :: cui@input().toInt(&)
+	var ans: int :: 0
+	const mod: int :: 1000000007
+	for(1, N)
+		var _: [][]char :: cui@input().split(" ")
+		var C: int :: _[0].toInt(&)
+		var D: int :: _[1].toInt(&)
+		do ans :+ ((C + 1) / 2) % mod * (D % mod)
+		do ans :% mod
+	end for
+	do cui@print("\{ans}\n")
+end func

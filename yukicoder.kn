@@ -70,13 +70,15 @@ func main()
 			do @addExtension(language, &extension)
 		end if
 		var filepath: []char :: "\{@dirSubmissions}\{problemId}/main.\{extension}"
+		var filepathUrl: []char :: "\{@dirSubmissions}\{problemId}/url.txt"
 		if(file@exist(filepath))
 			ret true
 		end if
-		var url: []char :: "\{@yukicoderBase}submissions/\{subumitId}/source"
-		var data: []char :: @fetchData(url)
+		var url: []char :: "\{@yukicoderBase}submissions/\{subumitId}/"
+		var urlSource: []char :: "\{@yukicoderBase}submissions/\{subumitId}/source"
+		var data: []char :: @fetchData(urlSource)
 		if (data =& null)
-			do cui@print("Error: Failed to find source code. [\{url}]\n")
+			do cui@print("Error: Failed to find source code. [\{urlSource}]\n")
 		else
 			var dirPath: []char :: "\{@dirSubmissions}\{problemId}/"
 			if(file@exist(dirPath))
@@ -92,6 +94,10 @@ func main()
 			var writer: file@Writer :: file@makeWriter(filepath, false)
 			do writer.writeStr(data)
 			do writer.fin()
+			
+			var writerUrl: file@Writer :: file@makeWriter(filepathUrl, false)
+			do writerUrl.writeStr(url)
+			do writerUrl.fin()
 			ret true
 		end if
 		ret false

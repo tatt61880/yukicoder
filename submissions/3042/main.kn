@@ -1,0 +1,9 @@
+func main()
+var a:[][]char::[""]
+do cui@input()
+for(1,50)
+do a:~[cui@input()]
+end for
+do a.sort()
+do cui@print(a.join("\n").trim())
+end func

@@ -1,0 +1,9 @@
+func main()
+	var _: [][]char :: cui@input().split(" ")
+	var A: int :: _[0].toInt(&)
+	var B: int :: _[1].toInt(&)
+	var C: int :: _[2].toInt(&)
+	var D: int :: _[3].toInt(&)
+	var ans: int :: [A, B / C, D / (C + 1)].min()
+	do cui@print("\{ans}\n")
+end func

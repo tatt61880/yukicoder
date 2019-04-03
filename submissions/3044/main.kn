@@ -1,0 +1,24 @@
+func main()
+	var _: [][]char :: cui@input().split(" ")
+	var N: int :: _[0].toInt(&)
+	var M: int :: _[1].toInt(&)
+	do _ :: cui@input().split(" ")
+	var sum: int
+	var count: int
+	for i(0, N - 1)
+		var a: int :: _[i].toInt(&)
+		if(a % 2 = 0)
+			if(count >= M)
+				do cui@print("\{sum}\n")
+			end if
+			do count :: 0
+			do sum :: 0
+		else
+			do count :+ 1
+			do sum :+ a
+		end if
+	end for
+	if(count >= M)
+		do cui@print("\{sum}\n")
+	end if
+end func

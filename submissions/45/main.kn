@@ -1,0 +1,13 @@
+func main()
+	var N: int :: cui@input().toInt(&)
+	var _: [][]char :: cui@input().split(" ")
+	var a: int :: 0
+	var b: int :: _[0].toInt(&)
+	for i(1, N - 1)
+		var t: int :: a
+		do a :: [a, b].max()
+		do b :: t + _[i].toInt(&)
+	end for
+	var ans: int :: [a, b].max()
+	do cui@print("\{ans}\n")
+end func

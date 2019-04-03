@@ -1,0 +1,19 @@
+func main()
+	var N: int :: cui@input().toInt(&)
+	var S: []char :: cui@input()
+	var ans: int
+	for i(0, N - 3)
+		if(S[i] <> 'U')
+			skip i
+		end if
+		for j(i + 1, N - 2)
+			if(S[j] <> 'M')
+				skip j
+			end if
+			if(2 * j - i < N & S[2 * j - i] = 'G')
+				do ans :+ 1
+			end if
+		end for
+	end for
+	do cui@print("\{ans}\n")
+end func

@@ -1,0 +1,35 @@
+func main()
+	var _: [][]char :: cui@input().split(" ")
+	var R: int :: _[0].toInt(&)
+	var G: int :: _[1].toInt(&)
+	var B: int :: _[2].toInt(&)
+	var ans: int :: [R, G, B].min()
+	do R :- ans
+	do G :- ans
+	do B :- ans
+	var sum: int :: R + G + B
+	var n1: int :: [R, G, B].max()
+	var n2: int :: sum - n1
+	var ok: int :: 0
+	var ng: int :: n1
+	while(ng - ok > 1)
+		var md: int :: (ok + ng) / 2
+		var f: bool
+		if(md >= n2)
+			var mdd: int :: md
+			do mdd :- n2
+			do f :: (n1 - 3 * n2 >= 5 * mdd)
+		else
+			var n22: int :: n2 - md
+			var n11: int :: n1 - md
+			do f :: (n11 / 2 + n22 / 2 >= md)
+		end if
+		if(f)
+			do ok :: md
+		else
+			do ng :: md
+		end if
+	end while
+	do ans :+ ok
+	do cui@print("\{ans}\n")
+end func

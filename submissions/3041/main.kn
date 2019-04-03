@@ -1,0 +1,3 @@
+func main()
+	do cui@print("Yes\n")
+end func

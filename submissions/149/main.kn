@@ -1,0 +1,25 @@
+func main()
+	var _: [][]char
+	do _ :: cui@input().split(" ")
+	var Aw: int :: _[0].toInt(&)
+	var Ab: int :: _[1].toInt(&)
+	do _ :: cui@input().split(" ")
+	var Bw: int :: _[0].toInt(&)
+	var Bb: int :: _[1].toInt(&)
+	do _ :: cui@input().split(" ")
+	var C: int :: _[0].toInt(&)
+	var D: int :: _[1].toInt(&)
+	if(C <= Ab)
+		do Ab :- C
+		do Bb :+ C
+	else
+		var Cw: int :: C - Ab
+		var Cb: int :: Ab
+		do Aw :- Cw
+		do Ab :- Cb
+		do Bw :+ Cw
+		do Bb :+ Cb
+	end if
+	var ans: int :: Aw + [D, Bw].min()
+	do cui@print("\{ans}\n")
+end func

@@ -1,0 +1,18 @@
+func main()
+	var N: int :: cui@input().toInt(&)
+	var A: []int :: #[N]int
+	for i(0, N - 1)
+		var _: [][]char :: cui@input().split(" ")
+		for j(0, N - 1)
+			do A[j] :+ _[j] = "nyanpass" ?(1, 0)
+		end for
+	end for
+	var ans: int :: -2
+	for i(0, N - 1)
+		if(A[i] = N - 1)
+			do ans :: ans = -2 ?(i + 1, -1)
+		end if
+	end for
+	do ans :: ans.clampMin(-1)
+	do cui@print("\{ans}\n")
+end func

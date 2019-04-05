@@ -1,10 +1,12 @@
 func main()
 	var N: int :: cui@input().toInt(&)
-	var _: [][]char :: cui@input().split(" ")
+	var ss: [][]char :: cui@input().split(" ")
+	
 	var A: []int :: #[N]int
 	for i(0, N - 1)
-		do A[i] :: _[i].toInt(&)
+		do A[i] :: ss[i].toInt(&)
 	end for
+	
 	var ans: int
 	for i(0, N - 3)
 		do ans :+ (A[i] <> A[i + 2] & (A[i + 1] - A[i]) * (A[i + 1] - A[i + 2]) > 0) ?(1, 0)

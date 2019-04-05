@@ -3,6 +3,7 @@ const userId: int :: 5112
 const yukicoderBase: []char :: "https://yukicoder.me/"
 const dirHtml: []char :: "./html/"
 const dirSubmissions: []char :: "./submissions/"
+var dictSubmitTitle: dict<int, []char>
 var dictSubmitLang: dict<int, []char>
 var dictLangExtension: dict<[]char, []char>
 
@@ -20,11 +21,12 @@ func main()
     <td><a href="/problems/no/129">No.129 お年玉(2)</a></td>
     <td>Kuin(beta)</td>
 	}
-	var regexUrl: regex@Regex :: regex@makeRegex("\"/submissions/(\\d+)\"[\\d\\D]*?/problems/no/(\\d+).*?<td>(.*?)</td>")
+	var regexUrl: regex@Regex :: regex@makeRegex("\"/submissions/(\\d+)\"[\\d\\D]*?/problems/no/(\\d+)\">([^<]*)[\\d\\D]*?<td>(.*?)</td>")
 	assert regexUrl <>& null
 
 	var id: int :: 0
 	var dictProblemSubmit: dict<int, int> :: #dict<int, int>
+	do @dictSubmitTitle :: #dict<int, []char>
 	do @dictSubmitLang :: #dict<int, []char>
 	while loop(true)
 		do id :+ 1
@@ -41,9 +43,11 @@ func main()
 		for i(0, ^result - 1)
 			var subumitId: int :: result[i][1].toInt(&)
 			var problemId: int :: result[i][2].toInt(&)
-			var language: []char :: result[i][3]
+			var title: []char :: result[i][3]
+			var language: []char :: result[i][4]
 			do language :: language.replace("&#43;", "+")
 			do dictProblemSubmit.add(problemId, subumitId)
+			do @dictSubmitTitle.add(subumitId, title)
 			do @dictSubmitLang.add(subumitId, language)
 		end for
 		var writer: file@Writer :: file@makeWriter(filepath, false)
@@ -64,6 +68,7 @@ func main()
 	do dictProblemSubmit.forEach(callback, null)
 
 	func callback(problemId: int, subumitId: int, _: kuin@Class): bool
+		var title: []char :: @dictSubmitTitle.get(subumitId, &)
 		var language: []char :: @dictSubmitLang.get(subumitId, &)
 		var extension: []char :: @dictLangExtension.get(language, &)
 		if(extension =& null)
@@ -71,6 +76,7 @@ func main()
 		end if
 		var filepath: []char :: "\{@dirSubmissions}\{problemId}/main.\{extension}"
 		var filepathUrl: []char :: "\{@dirSubmissions}\{problemId}/url.txt"
+		var filepathTitle: []char :: "\{@dirSubmissions}\{problemId}/title.txt"
 		if(file@exist(filepath))
 			ret true
 		end if
@@ -98,6 +104,10 @@ func main()
 			var writerUrl: file@Writer :: file@makeWriter(filepathUrl, false)
 			do writerUrl.writeStr(url)
 			do writerUrl.fin()
+
+			var writerTitle: file@Writer :: file@makeWriter(filepathTitle, false)
+			do writerTitle.writeStr(title)
+			do writerTitle.fin()
 			ret true
 		end if
 		ret false

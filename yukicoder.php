@@ -3,7 +3,6 @@ require_once __DIR__.'/vendor/autoload.php';
 
 $REQUEST_URI = $_SERVER["REQUEST_URI"];
 $problem_id = preg_replace('/.*\/(\d+)[^\/]*/', '\1', $REQUEST_URI);
-$title = "yukicoder #$problem_id";
 
 $problem_url = "https://yukicoder.me/problems/no/$problem_id";
 
@@ -15,6 +14,7 @@ $markdown = str_replace('\\', '\\\\', $markdown);
 $title_filepath = "./submissions/$problem_id/title.txt";
 if (!file_exists($title_filepath)) exit ("404 問題タイトル not found!");
 $problem_title =  htmlspecialchars(file_get_contents($title_filepath));
+$page_title = "yukicoder解説 $problem_title";
 
 $url_filepath = "./submissions/$problem_id/url.txt";
 if (!file_exists($url_filepath)) exit ("404 提出コードURL not found!");
@@ -29,12 +29,12 @@ $kuin_src =  htmlspecialchars(file_get_contents($kuin_filepath));
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<title>$title</title>
-<link rel="stylesheet" href="http://tatt.ch/style.css">
+<title>$page_title</title>
+<link rel="stylesheet" href="http://tatt.ch/style.css?20190407">
 <!--
-<script src="./MathJax/MathJax.js?config=TeX-AMS_HTML" type="text/javascript" charset="UTF-8" defer="defer"></script>
+<script src="./MathJax/MathJax.js?config=TeX-AMS_HTML" defer="defer"></script>
 -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML" type="text/javascript" charset="UTF-8" defer="defer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML" defer="defer"></script>
 <script>
 MathJax.Hub.Config({
     tex2jax: {
@@ -67,6 +67,7 @@ MathJax.Hub.Config({
 問題URL: <a href="$problem_url">$problem_url</a>
 
 <hr>
+<h2>解説</h2>
 <!-- ====================================================================== -->
 EOD;
 
@@ -77,9 +78,10 @@ echo $parser->parse($markdown);
 
   print <<< EOD
 <!-- ====================================================================== -->
+<hr>
 <div>
-  <span style="background-color:#f0f8ff; padding:0 10px 0 10px"><a href="$submissions_url">$submissions_url</a></span>
-  <pre class="prettyprint lang-kuin linenums" style="border-radius:0; margin: 0px -10px 0px -10px;">$kuin_src</pre>
+  提出コード: <a href="$submissions_url">$submissions_url</a>
+  <pre class="prettyprint lang-kuin linenums" style="border-radius:0; margin: 0 -10px -5px;">$kuin_src</pre>
 </div>
 </div>
 </body>

@@ -77,10 +77,15 @@ func main()
 		var filepath: []char :: "\{@dirSubmissions}\{problemId}/main.\{extension}"
 		var filepathUrl: []char :: "\{@dirSubmissions}\{problemId}/url.txt"
 		var filepathTitle: []char :: "\{@dirSubmissions}\{problemId}/title.txt"
-		if(file@exist(filepath))
-			ret true
-		end if
 		var url: []char :: "\{@yukicoderBase}submissions/\{subumitId}/"
+		if(file@exist(filepathUrl))
+			var readerUrl: file@Reader :: file@makeReader(filepathUrl)
+			var currentUrl: []char :: readerUrl.readLine()
+			do readerUrl.fin()
+			if(url = currentUrl)
+				ret true
+			end if
+		end if
 		var urlSource: []char :: "\{@yukicoderBase}submissions/\{subumitId}/source"
 		var data: []char :: @fetchData(urlSource)
 		if (data =& null)

@@ -1,12 +1,14 @@
 func main()
 	var L: int :: cui@input().toInt(&)
 	var N: int :: cui@input().toInt(&)
-	var _: [][]char :: cui@input().split(" ")
+	var ss: [][]char :: cui@input().split(" ")
 	var W: []int :: #[N]int
 	for i(0, N - 1)
-		do W[i] :: _[i].toInt(&)
+		do W[i] :: ss[i].toInt(&)
 	end for
+	
 	do W.sort()
+	
 	var sum: int
 	for i(0, N - 1)
 		do sum :+ W[i]

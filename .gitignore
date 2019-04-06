@@ -1,4 +1,5 @@
 /data/
 /html/
+/vendor/
 
-data.json
+composer.lock

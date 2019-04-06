@@ -32,20 +32,7 @@ $kuin_src =  htmlspecialchars(file_get_contents($kuin_filepath));
 <meta charset="UTF-8">
 <title>$page_title</title>
 <link rel="stylesheet" href="http://tatt.ch/style.css?20190407">
-<!--
-<script src="./MathJax/MathJax.js?config=TeX-AMS_HTML" defer="defer"></script>
--->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML" defer="defer"></script>
-<script>
-MathJax.Hub.Config({
-    tex2jax: {
-      inlineMath: [['$','$'], ["\\\\(","\\\\)"]],
-      skipTags: ["script","style","textarea"]
-    },
-    extensions: ["Safe.js"],
-    "HTML-CSS": { scale: 95 }
-});
-</script>
 <link rel="stylesheet" href="http://tatt.ch/kuin/prettify/prettify.css" type="text/css">
 <script src="http://tatt.ch/kuin/prettify/prettify.js"></script>
 <script src="http://tatt.ch/kuin/prettify/lang-kuin.js"></script>

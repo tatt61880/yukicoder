@@ -14,13 +14,14 @@ $markdown = str_replace('\\', '\\\\', $markdown);
 $title_filepath = "./submissions/$problem_id/title.txt";
 if (!file_exists($title_filepath)) exit ("404 問題タイトル not found!");
 $problem_title =  htmlspecialchars(file_get_contents($title_filepath));
-$page_title = "yukicoder解説 $problem_title";
+$page_title = "解説【yukicoder ${problem_title}】";
 
 $url_filepath = "./submissions/$problem_id/url.txt";
 if (!file_exists($url_filepath)) exit ("404 提出コードURL not found!");
 $submissions_url =  htmlspecialchars(file_get_contents($url_filepath));
 
 $kuin_filepath = "./submissions/$problem_id/main.kn";
+if (!file_exists($kuin_filepath)) exit ("404 main.kn not found!");
 $kuin_src =  htmlspecialchars(file_get_contents($kuin_filepath));
 
 #------------------------------------------------------------------------------
@@ -79,6 +80,7 @@ echo $parser->parse($markdown);
   print <<< EOD
 <!-- ====================================================================== -->
 <hr>
+<h2>Kuinで記述したソースコード</h2>
 <div>
   提出コード: <a href="$submissions_url">$submissions_url</a>
   <pre class="prettyprint lang-kuin linenums" style="border-radius:0; margin: 0 -10px -5px;">$kuin_src</pre>

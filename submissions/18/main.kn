@@ -1,11 +1,11 @@
 func main()
 	var S: []char :: cui@input()
-	for i(0, ^S - 1)
-		var n: int :: S[i] $ int - 'A' $ int - (i + 1)
-		do n :% 26
-		do n :+ n < 0 ?(26, 0)
-		do S[i] :: 'A'.offset(n)
+	for n(1, ^S)
+		var oldId: int :: S[n - 1] $ int - 'A' $ int
+		var newId: int :: (oldId + 25 * n) % 26
+		do S[n - 1] :: 'A'.offset(newId)
 	end for
+	
 	var ans: []char :: S
 	do cui@print("\{ans}\n")
 end func

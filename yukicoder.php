@@ -74,6 +74,20 @@ echo $parser->parse($markdown);
   提出コード: <a href="$submissions_url">$submissions_url</a>
   <pre class="prettyprint lang-kuin linenums" style="border-radius:0; margin: 0 -10px -5px;">$kuin_src</pre>
 </div>
+<hr>
+<h2>この解説を書いた人</h2>
+<table style="border:none;">
+  <tr style="border:none;">
+    <td style="border:none;">
+    <img src="./images/tatt61880.png" alt="(Tattアイコン)" />
+    </td>
+    <td style="border:none;">
+    たっと(Tatt)<br>
+    Twitter: <a target="_blank" href="https://twitter.com/tatt61880">@tatt61880</a><br>
+    yukicoder: <a target="_blank" href="https://yukicoder.me/users/5112">tatt61880</a>
+    </td>
+  </tr>
+</table>
 </div>
 </body>
 </html>

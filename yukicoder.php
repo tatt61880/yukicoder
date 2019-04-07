@@ -8,8 +8,10 @@ $problem_url = "https://yukicoder.me/problems/no/$problem_id";
 
 $markdown_filepath = "./md/$problem_id.md";
 if (!file_exists($markdown_filepath)) exit ("404 解説 not found!");
-$markdown =  htmlspecialchars(file_get_contents($markdown_filepath));
-$markdown = str_replace('\\', '\\\\', $markdown);
+#$markdown =  htmlspecialchars(file_get_contents($markdown_filepath));
+$markdown =  file_get_contents($markdown_filepath);
+$markdown = str_replace('\\(', '\\\\(', $markdown);
+$markdown = str_replace('\\)', '\\\\)', $markdown);
 
 $title_filepath = "./submissions/$problem_id/title.txt";
 if (!file_exists($title_filepath)) exit ("404 問題タイトル not found!");

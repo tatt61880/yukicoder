@@ -1,14 +1,19 @@
 func main()
-	var arr: []bool :: #[4]bool
 	var N: int :: cui@input().toInt(&)
-	do arr[N] :: true
 	var M: int :: cui@input().toInt(&)
+	
+	var cup: []bool :: #[4]bool
+	do cup[N] :: true
+	
 	for(1, M)
-		var _: [][]char :: cui@input().split(" ")
-		do arr[_[0].toInt(&)] :$ arr[_[1].toInt(&)]
+		var ss: [][]char :: cui@input().split(" ")
+		var P: int :: ss[0].toInt(&)
+		var Q: int :: ss[1].toInt(&)
+		do cup[P] :$ cup[Q]
 	end for
+	
 	for i(1, 3)
-		if(arr[i])
+		if(cup[i])
 			do cui@print("\{i}\n")
 		end if
 	end for

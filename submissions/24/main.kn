@@ -2,11 +2,11 @@ func main()
 	var N: int :: cui@input().toInt(&)
 	var nums: []bool :: [true].repeat(10)
 	for(0, N - 1)
-		var _: [][]char :: cui@input().split(" ")
-		var R: bool :: _[4] = "YES"
+		var ss: [][]char :: cui@input().split(" ")
+		var R: bool :: ss[4] = "YES"
 		var tmp: []bool :: [!R].repeat(10)
 		for i(0, 3)
-			do tmp[_[i].toInt(&)] :: R
+			do tmp[ss[i].toInt(&)] :: R
 		end for
 		for i(0, 9)
 			do nums[i] :: nums[i] & tmp[i]

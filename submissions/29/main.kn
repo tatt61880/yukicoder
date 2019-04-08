@@ -2,17 +2,17 @@ func main()
 	var items: []int :: #[11]int
 	var N: int :: cui@input().toInt(&)
 	for(1, N)
-		var _: [][]char :: cui@input().split(" ")
+		var ss: [][]char :: cui@input().split(" ")
 		for i(0, 2)
-			do items[_[i].toInt(&)] :+ 1
+			do items[ss[i].toInt(&)] :+ 1
 		end for
 	end for
 	
 	var remains: int
 	var ans: int
 	for i(1, 10)
-		do remains :+ items[i] % 2
 		do ans :+ items[i] / 2
+		do remains :+ items[i] % 2
 	end for
 	do ans :+ remains / 4
 	do cui@print("\{ans}\n")

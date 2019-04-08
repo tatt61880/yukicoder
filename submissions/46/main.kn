@@ -1,7 +1,8 @@
 func main()
-	var _: [][]char :: cui@input().split(" ")
-	var a: int :: _[0].toInt(&)
-	var b: int :: _[1].toInt(&)
+	var ss: [][]char :: cui@input().split(" ")
+	var a: int :: ss[0].toInt(&)
+	var b: int :: ss[1].toInt(&)
+	
 	var ans: int :: (b + a - 1) / a
-	do cui@print("\{ans}")
+	do cui@print("\{ans}\n")
 end func

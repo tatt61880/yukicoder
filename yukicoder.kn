@@ -45,7 +45,10 @@ func main()
 			var problemId: int :: result[i][2].toInt(&)
 			var title: []char :: result[i][3]
 			var language: []char :: result[i][4]
-			do language :: language.replace("&#43;", "+")
+
+			do title :: @unsanitized(title)
+			do language :: @unsanitized(language)
+
 			do dictProblemSubmit.add(problemId, subumitId)
 			do @dictSubmitTitle.add(subumitId, title)
 			do @dictSubmitLang.add(subumitId, language)
@@ -193,4 +196,29 @@ func addExtension(language: []char, extension: &[]char)
 		end if
 	end for
 	do @dictLangExtension.add(language, extension)
+end func
+
+func unsanitized(str: []char): []char
+	var res: []char :: ""
+	var i: int :: 0
+	while(i < ^str)
+		if(i < ^str - 1 & str[i] = '&')
+			if(str[i + 1] = '#')
+				do i :+ 2
+				var v: int :: 0
+				while(i < ^str & str[i] <> ';')
+					do v :* 10
+					do v :+ str[i] $ int - '0' $ int
+					do i :+ 1
+				end while
+				do res :~ [v $ char]
+			else
+				do res :~ ['&']
+			end if
+		else
+			do res :~ [str[i]]
+		end if
+		do i :+ 1
+	end while
+	ret res
 end func

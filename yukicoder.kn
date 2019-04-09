@@ -97,6 +97,7 @@ func main()
 			end if
 		end if
 		var urlSource: []char :: "\{@yukicoderBase}submissions/\{subumitId}/source"
+		do cui@print("No.\{problemId}: ")
 		var data: []char :: @fetchData(urlSource)
 		if (data =& null)
 			do cui@print("Error: Failed to find source code. [\{urlSource}]\n")

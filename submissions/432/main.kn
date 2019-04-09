@@ -1,0 +1,25 @@
+func main()
+	var T: int :: cui@input().toInt(&)
+	for(1, T)
+		do solve(cui@input())
+	end for
+	
+	func solve(S: []char)
+		var old: []int :: #[^S]int
+		for i(0, ^S - 1)
+			do old[i] :: S[i] $ int - '0' $ int
+		end for
+		
+		for n(^S - 1, 1, -1)
+			var new: []int :: #[n]int
+			for i(0, n - 1)
+				var v: int :: old[i] + old[i + 1]
+				do new[i] :: v / 10 + v % 10
+			end for
+			do old :: new
+		end for
+		
+		var ans: int :: old[0]
+		do cui@print("\{ans}\n")
+	end func
+end func

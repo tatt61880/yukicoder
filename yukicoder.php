@@ -70,9 +70,9 @@ echo $parser->parse($markdown);
   print <<< EOD
 <!-- ====================================================================== -->
 <hr>
-<h2>Kuinで記述したソースコード</h2>
+<h2>提出したソースコード (言語: Kuin)</h2>
 <div>
-  提出コード: <a href="$submissions_url">$submissions_url</a>
+  提出URL: <a href="$submissions_url">$submissions_url</a>
   <pre class="prettyprint lang-kuin linenums" style="border-radius:0; margin: 0 -10px -5px;">$kuin_src</pre>
 </div>
 <hr>

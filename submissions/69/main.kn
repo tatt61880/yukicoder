@@ -1,7 +1,9 @@
 func main()
 	var A: []char :: cui@input()
 	var B: []char :: cui@input()
+	
 	do A.sort()
 	do B.sort()
-	do cui@print("\{A = B ?("YES", "NO")}\n")
+	var ans: bool :: A = B
+	do cui@print(ans ?("YES\n", "NO\n"))
 end func

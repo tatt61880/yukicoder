@@ -2,14 +2,14 @@ func main()
 	var N: int :: cui@input().toInt(&)
 	var ans: int
 	for(1, N)
-		var _: [][]char :: cui@input().split(" ")
-		var _0: [][]char :: _[0].split(":")
-		var _1: [][]char :: _[1].split(":")
-		var H: int :: _0[0].toInt(&)
-		var M: int :: _0[1].toInt(&)
-		var h: int :: _1[0].toInt(&) + 24
-		var m: int :: _1[1].toInt(&)
-		do ans :+ (h * 60 + m - H * 60 - M) % 1440
+		var ss: [][]char :: cui@input().split(" ")
+		var HM: [][]char :: ss[0].split(":")
+		var hm: [][]char :: ss[1].split(":")
+		var H: int :: HM[0].toInt(&)
+		var M: int :: HM[1].toInt(&)
+		var h: int :: hm[0].toInt(&)
+		var m: int :: hm[1].toInt(&)
+		do ans :+ (h * 60 + m - H * 60 - M + 1440) % 1440
 	end for
 	do cui@print("\{ans}\n")
 end func

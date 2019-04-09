@@ -1,12 +1,13 @@
 func main()
-	var _: [][]char :: cui@input().split(" ")
+	var ss: [][]char :: cui@input().split(" ")
 	var num: []int :: #[14]int
 	for i(0, 4)
-		var a: int :: _[i].toInt(&)
-		do num[a] :+ 1
+		var A: int :: ss[i].toInt(&)
+		do num[A] :+ 1
 	end for
-	var three: int
+	
 	var two: int
+	var three: int
 	for i(1, 13)
 		switch(num[i])
 		case 2
@@ -15,6 +16,7 @@ func main()
 			do three :+ 1
 		end switch
 	end for
+	
 	var ans: []char
 	if(three = 1)
 		if(two = 1)

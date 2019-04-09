@@ -1,0 +1,5 @@
+func main()
+	var N: int :: cui@input().toInt(&)
+	var ans: bool :: N % 4 = 0 & N % 100 <> 0 | N % 400 = 0
+	do cui@print(ans ?("Yes\n", "No\n"))
+end func

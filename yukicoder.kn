@@ -32,6 +32,13 @@ func main()
 		do id :+ 1
 		var url: []char :: "\{@yukicoderBase}users/\{@userId}/submissions?page=\{id}&status=AC&date_asc=enabled"
 		var filepath: []char :: "\{@dirHtml}\{id}.html"
+		if (file@exist(filepath))
+			var filepathNext: []char :: "\{@dirHtml}\{id + 1}.html"
+			if (file@exist(filepathNext))
+				; データが更新されていないと思われるページは取得しません。
+				skip loop
+			end if
+		end if
 		var data: []char :: @fetchData(url)
 		if (data =& null)
 			break loop

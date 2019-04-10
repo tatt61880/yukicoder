@@ -1,14 +1,17 @@
 func main()
-	var _: [][]char :: cui@input().split(" ")
-	var W: int :: _[0].toInt(&)
-	var H: int :: _[1].toInt(&)
-	var C: []char :: _[2]
-	do C :~ [C[0] = 'B' ?('W', 'B')]
+	var ss: [][]char :: cui@input().split(" ")
+	var W: int :: ss[0].toInt(&)
+	var H: int :: ss[1].toInt(&)
+	var C: char :: ss[2][0]
+	var cc: []char :: #[2]char
+	do cc[0] :: C
+	do cc[1] :: C = 'B' ?('W', 'B')
+	
 	for h(1, H)
+		var line: []char :: #[W]char
 		for w(1, W)
-			do cui@print([C[(h + w) % 2]])
+			do line[w - 1] :: cc[(h + w) % 2]
 		end for
-		do cui@print("\n")
+		do cui@print("\{line}\n")
 	end for
-	var ans: int
 end func

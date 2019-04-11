@@ -9,7 +9,10 @@ func main()
 	
 	var ans: int
 	for i(0, N - 3)
-		do ans :+ (A[i] <> A[i + 2] & (A[i + 1] - A[i]) * (A[i + 1] - A[i + 2]) > 0) ?(1, 0)
+		var a: int :: A[i]
+		var b: int :: A[i + 1]
+		var c: int :: A[i + 2]
+		do ans :+ (a <> c & (b - a) * (b - c) > 0) ?(1, 0)
 	end for
 	do cui@print("\{ans}\n")
 end func

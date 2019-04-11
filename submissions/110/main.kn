@@ -1,0 +1,46 @@
+func main()
+	var ss: [][]char
+	
+	var Nw: int :: cui@input().toInt(&)
+	var W: []int :: #[Nw]int
+	do ss :: cui@input().split(" ")
+	for i(0, Nw - 1)
+		do W[i] :: ss[i].toInt(&)
+	end for
+	
+	var Nb: int :: cui@input().toInt(&)
+	var B: []int :: #[Nb]int
+	do ss :: cui@input().split(" ")
+	for i(0, Nb - 1)
+		do B[i] :: ss[i].toInt(&)
+	end for
+	
+	do W.sortDesc()
+	do B.sortDesc()
+	var wb: [][]int :: [W, B]
+	var ans: int
+	for i(0, 1)
+		var id: int :: i
+		var idxWb: []int :: [0, 0]
+		do idxWb[id] :: 1
+		var lastSize: int :: wb[id][0]
+		do id :: 1 - id
+		var num: int :: 1
+		while loop1(true)
+			while loop2(true)
+				if(idxWb[id] = ^wb[id])
+					break loop1
+				end if
+				if(wb[id][idxWb[id]] < lastSize)
+					do lastSize :: wb[id][idxWb[id]]
+					do num :+ 1
+					break loop2
+				end if
+				do idxWb[id] :+ 1
+			end while
+			do id :: 1 - id
+		end while
+		do ans :: [ans, num].max()
+	end for
+	do cui@print("\{ans}\n")
+end func

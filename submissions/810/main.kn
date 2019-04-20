@@ -1,0 +1,13 @@
+func main()
+	var ss: [][]char :: cui@input().split(" ")
+	var L: int :: ss[0].toInt(&)
+	var R: int :: ss[1].toInt(&)
+	var M: int :: ss[2].toInt(&)
+	var ans: int
+	if(R - L + 1 >= M)
+		do ans :: M
+	else
+		do ans :: R - L + 1
+	end if
+	do cui@print("\{ans}\n")
+end func

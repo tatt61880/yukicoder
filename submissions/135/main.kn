@@ -11,7 +11,11 @@ func main()
 	for i(1, N - 1)
 		var v: int :: a[i] - a[i - 1]
 		if(v <> 0)
-			do ans :: ans = 0 ?(v, [ans, v].min())
+			if(ans = 0)
+				do ans :: v
+			else
+				do ans :: [ans, v].min()
+			end if
 		end if
 	end for
 	do cui@print("\{ans}\n")

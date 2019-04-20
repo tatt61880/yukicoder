@@ -1,12 +1,18 @@
 func main()
-	var _: [][]char :: cui@input().split(" ")
-	var K: int :: _[0].toInt(&)
-	var N: int :: _[1].toInt(&)
-	var F: int :: _[2].toInt(&)
-	do _ :: cui@input().split(" ")
+	var ss: [][]char
+	do ss :: cui@input().split(" ")
+	var K: int :: ss[0].toInt(&)
+	var N: int :: ss[1].toInt(&)
+	var F: int :: ss[2].toInt(&)
+	var A: []int :: #[F]int
+	do ss :: cui@input().split(" ")
+	for i(0, F - 1)
+		do A[i] :: ss[i].toInt(&)
+	end for
+	
 	var ans: int :: K * N
 	for i(0, F - 1)
-		do ans :- _[i].toInt(&)
+		do ans :- A[i]
 	end for
 	do ans :: [ans, -1].max()
 	do cui@print("\{ans}\n")

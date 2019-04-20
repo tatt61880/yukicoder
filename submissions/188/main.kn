@@ -1,3 +1,14 @@
 func main()
-	do cui@print("30\n")
+	var unixTimeStart: int :: lib@dateToInt(2015, 1, 1, 0, 0, 0)
+	var unixTimeEnd: int :: lib@dateToInt(2015, 12, 31, 0, 0, 0)
+	var ans: int
+	for unixTime(unixTimeStart, unixTimeEnd, 86400)
+		var m: int
+		var d: int
+		do lib@intToDate(unixTime, &, &m, &d, &, &, &)
+		if(m = d % 10 + d / 10)
+			do ans :+ 1
+		end if
+	end for
+	do cui@print("\{ans}\n")
 end func

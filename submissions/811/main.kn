@@ -1,0 +1,64 @@
+func main()
+	var ss: [][]char :: cui@input().split(" ")
+	var N: int :: ss[0].toInt(&)
+	var K: int :: ss[1].toInt(&)
+	var primes: []int :: math@primeFactors(N)
+	var min: int :: 1
+	for i(0, K - 1)
+		do min :* primes[i]
+	end for
+	
+	var maxDivisorNum: int :: getDivisorNum(math@primeFactors(min))
+	var ans: int :: min
+	for n(min, N - 1)
+		var primes2: []int :: math@primeFactors(n)
+		var divisorNum: int :: getDivisorNum(primes2)
+		if(divisorNum > maxDivisorNum)
+			if(commonDevisorNum(primes, primes2) >= K)
+				do maxDivisorNum :: divisorNum
+				do ans :: n
+			end if
+		end if
+	end for
+	do cui@print("\{ans}\n")
+	
+	func commonDevisorNum(primes1: []int, primes2: []int): int
+		var i1: int :: 0
+		var i2: int :: 0
+		var res: int :: 0
+		while(true)
+			if(i1 >= ^primes1)
+				ret res
+			end if
+			if(i2 >= ^primes2)
+				ret res
+			end if
+			if(primes1[i1] = primes2[i2])
+				do res :+ 1
+				do i1 :+ 1
+				do i2 :+ 1
+			elif(primes1[i1] < primes2[i2])
+				do i1 :+ 1
+			else
+				do i2 :+ 1
+			end if
+		end while
+	end func
+	
+	func getDivisorNum(primes: []int): int
+		var res: int :: 1
+		var lastNum: int :: 0
+		var num: int :: 1
+		for i(0, ^primes - 1)
+			if(primes[i] = lastNum)
+				do num :+ 1
+			else
+				do res :* num
+				do num :: 2
+			end if
+			do lastNum :: primes[i]
+		end for
+		do res :* num
+		ret res
+	end func
+end func

@@ -1,20 +1,20 @@
 func main()
 	var N: int :: cui@input().toInt(&)
 	var dic: dict<int, int> :: #dict<int, int>
-	var _: [][]char :: cui@input().split(" ")
+	var ss: [][]char :: cui@input().split(" ")
 	var ans: int :: 0
 	for i(0, N - 1)
-		var a: int :: _[i].toInt(&)
+		var Ai: int :: ss[i].toInt(&)
 		var cnt: int :: 1
-		if(dic.exist(a))
-			do cnt :: dic.get(a, &) + 1
+		if(dic.exist(Ai))
+			do cnt :: dic.get(Ai, &) + 1
 		end if
 		if(cnt = 1)
 			do ans :+ 1
 		elif(cnt = 2)
 			do ans :- 1
 		end if
-		do dic.add(a, cnt)
+		do dic.add(Ai, cnt)
 	end for
 	do cui@print("\{ans}\n")
 end func

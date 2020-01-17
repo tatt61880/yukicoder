@@ -1,0 +1,8 @@
+func main()
+	var ss: [][]char :: cui@input().split(" ")
+	var A: int :: ss[0].toInt(&)
+	var B: int :: ss[1].toInt(&)
+	var C: int :: ss[2].toInt(&)
+	var ans: int :: [(A - B).abs(), (B - C).abs(), (C - A).abs()].min()
+	do cui@print("\{ans}\n")
+end func

@@ -1,0 +1,47 @@
+func main()
+	var ss: [][]char :: cui@input().split(" ")
+	var H: int :: ss[0].toInt(&)
+	var W: int :: ss[1].toInt(&)
+	var m: [][]char :: #[H, W]char
+	var mp: [][]int :: #[H, W]int
+	for h(0, H - 1)
+		do m[h] :: cui@input()
+	end for
+	
+	var dx: []int :: [0, 1]
+	var dy: []int :: [1, 0]
+	do mp[0][0] :: 0
+	for h(0, H - 1)
+		for w(0, W - 1)
+			var x0: int :: w
+			var y0: int :: h
+			var v0: int :: mp[y0][x0]
+			;do cui@print("\{x0} \{y0}\n")
+			for i(0, 1)
+				var x: int :: x0 + dx[i]
+				var y: int :: y0 + dy[i]
+				if(x = W | y = H)
+					skip i
+				end if
+				var v: int :: v0 + 1 + ((m[y][x] = 'k') ?(x + y, 0))
+				if(mp[y][x] = 0)
+					do mp[y][x] :: v
+				elif(v < mp[y][x])
+					do mp[y][x] :: v
+				end if
+				;do cui@print("(\{x0}, \{y0})→(\{x}, \{y}) \{v}→\{mp[y][x]}\n")
+			end for
+		end for
+	end for
+	{
+		for h(0, H - 1)
+			for w(0, W - 1)
+				do cui@print("\{mp[h][w]}\t")
+			end for
+			do cui@print("\n")
+		end for
+	}
+	
+	var ans: int :: mp[H - 1][W - 1]
+	do cui@print("\{ans}\n")
+end func

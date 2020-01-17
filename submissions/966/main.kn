@@ -1,0 +1,60 @@
+func main()
+	var T: int :: cui@input().toInt(&)
+	for t(1, T)
+		var ss: [][]char :: cui@input().split(" ")
+		var AA: int :: ss[0].toInt(&)
+		var BB: int :: ss[1].toInt(&)
+		var CC: int :: ss[2].toInt(&)
+		
+		; Bが最大のとき
+		var ans1: int :: 10 ^ 10
+		block
+			var A: int :: AA
+			var B: int :: BB
+			var C: int :: CC
+			var cnt: int :: 0
+			if(A >= B)
+				do cnt :+ A - (B - 1)
+				do A :: B - 1
+			end if
+			if(C >= B)
+				do cnt :+ C - (B - 1)
+				do C :: B - 1
+			end if
+			if(A = C)
+				do cnt :+ 1
+				do A :- 1
+			end if
+			if(A > 0 & C > 0)
+				do ans1 :: cnt
+			end if
+		end block
+		
+		; Bが最小のとき
+		var ans2: int :: 10 ^ 10
+		block
+			var A: int :: AA
+			var B: int :: BB
+			var C: int :: CC
+			var cnt: int :: 0
+			if(A = C)
+				do cnt :+ 1
+				do A :- 1
+			end if
+			var target: int :: lib@min(A, C)
+			if(B >= target)
+				do cnt :+ B - (target - 1)
+				do B :: target - 1
+			end if
+			if(B > 0)
+				do ans2 :: cnt
+			end if
+		end block
+		
+		var ans: int :: lib@min(ans1, ans2)
+		if(ans = 10 ^ 10)
+			do ans :: -1
+		end if
+		do cui@print("\{ans}\n")
+	end for
+end func

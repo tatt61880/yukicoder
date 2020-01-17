@@ -1,0 +1,7 @@
+func main()
+	var N: int :: cui@input().toInt(&)
+	for i(1, N)
+		do cui@print("\{i % 10}".repeat(N))
+	end for
+	do cui@print("\n")
+end func

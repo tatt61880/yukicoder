@@ -1,0 +1,29 @@
+func main()
+	var ss: [][]char :: cui@input().split(" ")
+	var A: int :: ss[0].toInt(&)
+	var B: int :: ss[1].toInt(&)
+	
+	if(A = B)
+		do cui@print("1\n")
+	elif(A > B)
+		do cui@print("0\n")
+	elif(A < B)
+		var cnt: int :: 0
+		while(B <> 0)
+			if(B % 2 = 1)
+				if(A % 2 = 0)
+					do cnt :+ 1
+				end if
+			else
+				if(A % 2 = 1)
+					do cui@print("0\n")
+					ret
+				end if
+			end if
+			do A :/ 2
+			do B :/ 2
+		end while
+		var ans: int :: 2 ^ (cnt - 1)
+		do cui@print("\{ans}\n")
+	end if
+end func

@@ -1,0 +1,16 @@
+func main()
+	var N: int :: cui@input().toInt(&)
+	var B: [][]char :: #[N][]char
+	var dic: dict<[]char, int> :: #dict<[]char, int>
+	for i(0, N - 1)
+		var ss: [][]char :: cui@input().split(" ")
+		do B[i] :: ss[1]
+		do dic.add(ss[0], 0)
+	end for
+	for i(0, N - 1)
+		if(!dic.exist(B[i]))
+			do cui@print(B[i] ~ "\n")
+			do dic.add(B[i], 0)
+		end if
+	end for
+end func

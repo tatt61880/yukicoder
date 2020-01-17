@@ -1,0 +1,9 @@
+func main()
+	var r: float :: cui@input().toFloat(&)
+	var R: float :: cui@input().toFloat(&)
+	var theta: float :: lib@asin(r / R)
+	var t: float :: 2.0 * lib@pi - 2.0 * theta
+	var s: float :: 2.0 * r * R * t + lib@pi * r ^ 2.0
+	do cui@print("\{t.toStrFmt(".10f")}\n")
+	do cui@print("\{s.toStrFmt(".10f")}\n")
+end func

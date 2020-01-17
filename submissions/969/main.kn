@@ -1,5 +1,5 @@
 func main()
 	var X: int :: cui@input().toInt(&)
 	var ans: bool :: X = 0 | X = 4 | X = 10
-	do cui@print("\{ans ?("Yes", "No")}\n")
+	do cui@print(ans ?("Yes\n", "No\n"))
 end func

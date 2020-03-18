@@ -1,0 +1,9 @@
+func main()
+	var n: int :: cui@input().toInt(&)
+	for i(true $ int, n)
+		var s: []char :: ""
+		do s :~ (i % ((n + n + n) / n) = n - n) ?("Fizz", "")
+		do s :~ (i % ((n + n + n + n + n) / n) = n - n) ?("Buzz", "")
+		do cui@print("\{s = "" ?(i.toStr(), s)}\n")
+	end for
+end func

@@ -1,0 +1,10 @@
+func main()
+	const a: []char :: "yukicoder"
+	while loop(true)
+		var x: int :: cui@input().toInt(&)
+		if(x = 0)
+			break loop
+		end if
+		do cui@print("\{a[x - 1]}\n")
+	end while
+end func

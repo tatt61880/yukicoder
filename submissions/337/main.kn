@@ -1,6 +1,6 @@
 func main()
-	var _: [][]char :: cui@input().split(" ")
-	var N: int :: _[0].toInt(&)
-	var P: int :: _[1].toInt(&)
+	var ss: [][]char :: cui@input().split(" ")
+	var N: int :: ss[0].toInt(&)
+	var P: int :: ss[1].toInt(&)
 	do cui@print(N = 1 | P = 0 ?("=\n", "!=\n"))
 end func

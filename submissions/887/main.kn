@@ -1,0 +1,15 @@
+func main()
+	var n: int :: cui@input().toInt(&)
+	var ans: int :: 0
+	var max: int :: n
+	while(n <> 1)
+		do ans :+ 1
+		if(n % 2 = 0)
+			do n :/ 2
+		else
+			do n :: n * 3 + 1
+		end if
+		do max :: [max, n].max()
+	end while
+	do cui@print("\{ans}\n\{max}\n")
+end func

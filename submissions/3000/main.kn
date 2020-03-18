@@ -1,61 +1,14 @@
 func main()
-	var in: [][]char :: ["pfnovu", "axqwuf", "mbgrihcdejkolsty"]
-	var ou: [][]char :: ["orange", "cipher", "bqsuftlmdxynzvwj"]
-	var decordingTable: dict<char, char> :: #dict<char, char>
-	
-	var used: []bool :: #[26]bool
-	for i(0, ^in - 1)
-		for j(0, ^in[i] - 1)
-			if(decordingTable.exist(in[i][j]))
-				if(decordingTable.get(in[i][j], &) <> ou[i][j])
-					do cui@print("Unexpected!\n")
-					assert false
-				end if
-			else
-				do decordingTable.add(in[i][j], ou[i][j])
-				do used[ou[i][j] $ int - 'a' $ int] :: true
+	const a: []char :: "pfnovuaxqwufmbgrihcdejkolstyz"
+	const b: []char :: "orangecipherbqsuftlmdxynzvwjk"
+	var s: []char :: cui@input()
+	for i(0, ^s - 1)
+		for j(0, ^a - 1)
+			if(s[i] = a[j])
+				do s[i] :: b[j]
+				skip i
 			end if
 		end for
 	end for
-	
-	var cnt: int
-	for i(0, 25)
-		do cnt :+ used[i] ?(0, 1)
-	end for
-	
-	if(cnt > 1)
-		do cui@print("I can't solve this!\n")
-		assert false
-	end if
-	
-	if(cnt = 1)
-		for i(0, 25)
-			if(!used[i])
-				for j(0, 25)
-					if(!decordingTable.exist('a'.offset(j)))
-						do decordingTable.add('a'.offset(j), 'a'.offset(i))
-					end if
-				end for
-			end if
-		end for
-	end if
-	
-	if(dbg)
-		do cui@print("|入力|")
-		for i(0, 25)
-			do cui@print("\{'a'.offset(i)}|")
-		end for
-		do cui@print("\n")
-		do cui@print("|出力|")
-		for i(0, 25)
-			do cui@print("\{decordingTable.get('a'.offset(i), &)}|")
-		end for
-		do cui@print("\n")
-	end if
-	
-	var S: []char :: cui@input()
-	for i(0, ^S - 1)
-		do cui@print("\{decordingTable.get(S[i], &)}")
-	end for
-	do cui@print("\n")
+	do cui@print("\{s}\n")
 end func

@@ -1,9 +1,9 @@
 func main()
-	var _: [][]char :: cui@input().split(" ")
-	var N: int :: _[0].toInt(&)
-	var H: int :: _[1].toInt(&)
-	var M: int :: _[2].toInt(&)
-	var T: int :: _[3].toInt(&)
+	var ss: [][]char :: cui@input().split(" ")
+	var N: int :: ss[0].toInt(&)
+	var H: int :: ss[1].toInt(&)
+	var M: int :: ss[2].toInt(&)
+	var T: int :: ss[3].toInt(&)
 	do M :+ T * (N - 1)
 	do H :+ M / 60
 	do M :% 60

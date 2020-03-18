@@ -1,0 +1,14 @@
+func main()
+	var N: int :: cui@input().toInt(&)
+	for n(1, N)
+		var _: [][]char :: cui@input().split(" ")
+		var G: int :: _[0].toInt(&)
+		var D: int :: _[1].toInt(&)
+		if(6 * (G - 30000 * D) >= 3000000)
+			do cui@print("YES\n")
+			do cui@print(("\{n}\n").repeat(6))
+			ret
+		end if
+	end for
+	do cui@print("NO\n")
+end func

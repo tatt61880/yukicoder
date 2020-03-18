@@ -1,7 +1,7 @@
 func main()
-	var _: [][]char :: cui@input().split(" ")
-	var N: int :: _[0].toInt(&)
-	var K: int :: _[1].toInt(&)
+	var ss: [][]char :: cui@input().split(" ")
+	var N: int :: ss[0].toInt(&)
+	var K: int :: ss[1].toInt(&)
 	var S: []char :: cui@input()
 	var i: int :: K - 1
 	var nestLevel: int :: 0

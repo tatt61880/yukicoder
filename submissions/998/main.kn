@@ -1,0 +1,15 @@
+func main()
+	var ss: [][]char :: cui@input().split(" ")
+	var a: []int :: #[4]int
+	for i(0, 3)
+		do a[i] :: ss[i].toInt(&)
+	end for
+	do a.sort()
+	var ans: bool :: true
+	for i(0, 2)
+		if(a[i] <> a[i + 1] - 1)
+			do ans :: false
+		end if
+	end for
+	do cui@print(ans ?("Yes\n", "No\n"))
+end func

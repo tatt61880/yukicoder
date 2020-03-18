@@ -1,0 +1,8 @@
+func main()
+	var ss: [][]char :: cui@input().split(" ")
+	var a1: int :: ss[0].toInt(&)
+	var a2: int :: ss[2].toInt(&)
+	var a3: int :: ss[4].toInt(&)
+	var ans: bool :: (a1 + a2 + a3) % 2 = 0
+	do cui@print("\{ans ?(":-)", ":-(")}\n")
+end func

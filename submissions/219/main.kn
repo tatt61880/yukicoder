@@ -1,0 +1,27 @@
+func main()
+	var N: int :: cui@input().toInt(&)
+	for(1, N)
+		var ss: [][]char :: cui@input().split(" ")
+		var A: int :: ss[0].toInt(&)
+		var B: int :: ss[1].toInt(&)
+		do solve(A, B)
+	end for
+	
+	func solve(A: int, B: int)
+		var v: float :: B $ float * lib@log(10.0, A $ float)
+		var Z: int :: v $ int
+		do v :- Z $ float
+		var X: int
+		var Y: int
+		for x(1, 9)
+			for y(0, 9)
+				if(lib@log(10.0, x $ float + 0.1 * (y + 1) $ float) >= v)
+					do X :: x
+					do Y :: y
+					break x
+				end if
+			end for
+		end for
+		do cui@print("\{X} \{Y} \{Z}\n")
+	end func
+end func

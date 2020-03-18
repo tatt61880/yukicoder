@@ -1,0 +1,12 @@
+func main()
+	var ss: [][]char :: cui@input().split(" ")
+	if(ss[0][0] = 'S')
+		if(ss[1][0] = 'S')
+			do cui@print("8/33\n")
+		else
+			do cui@print("8/32\n")
+		end if
+	else
+		do cui@print("8/31\n")
+	end if
+end func

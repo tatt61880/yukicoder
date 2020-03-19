@@ -1,0 +1,43 @@
+func main()
+	var ss: [][]char :: cui@input().split(" ")
+	var T: int :: ss[0].toInt(&)
+	var A: int :: ss[1].toInt(&)
+	var B: int :: ss[2].toInt(&)
+	var ans: bool :: true
+	if(A.abs() > T | B.abs() > T)
+		do ans :: false
+	end if
+	if(T = 1 & A = 0 & B = 0)
+		do ans :: false
+	end if
+	if(!ans)
+		do cui@print("NO\n")
+	else
+		do cui@print("YES\n")
+		var x: int :: 0
+		var y: int :: 0
+		for t(1, T)
+			if(t = 1 & (T - B) % 2 <> 0)
+				do y :+ moveY(A - y > 0 ?(1, -1))
+				do cui@print("\n")
+				skip t
+			end if
+			if(t = T & (T - A) % 2 <> 0)
+				do x :+ moveX(B - x > 0 ?(1, -1))
+				do cui@print("\n")
+				skip t
+			end if
+			do x :+ moveX(B - x > 0 ?(1, -1))
+			do y :+ moveY(A - y > 0 ?(1, -1))
+			do cui@print("\n")
+		end for
+		func moveY(dy: int): int
+			do cui@print(dy = 1 ?("^", "v"))
+			ret dy
+		end func
+		func moveX(dx: int): int
+			do cui@print(dx = 1 ?(">", "<"))
+			ret dx
+		end func
+	end if
+end func

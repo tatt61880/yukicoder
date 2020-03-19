@@ -1,0 +1,10 @@
+func main()
+	var s: []char :: cui@input()
+	var ans: bool :: true
+	for i(0, ^s - 1)
+		if(s[i] = 'W' | s[i] = 'E')
+			do ans :: false
+		end if
+	end for
+	do cui@print(ans ?("Done!\n", "Failed...\n"))
+end func

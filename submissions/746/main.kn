@@ -1,0 +1,12 @@
+func main()
+	var n: int :: cui@input().toInt(&)
+	if(n = 0)
+		do cui@print("0\n")
+		ret
+	end if
+	var s: []char :: #[n]char
+	for i(0, n)
+		do s[i] :: "142857"[i % 6]
+	end for
+	do cui@print("0.\{s}\n")
+end func

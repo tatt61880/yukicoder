@@ -1,0 +1,8 @@
+func main()
+	var ss: [][]char :: cui@input().split(" ")
+	var n: int :: ss[0].toInt(&)
+	var m: int :: ss[1].toInt(&)
+	var x: int :: ss[2].toInt(&)
+	var ans: bool :: m + x - n >= 3
+	do cui@print("\{ans ?("YES", "NO")}\n")
+end func

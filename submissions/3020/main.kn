@@ -1,0 +1,11 @@
+func main()
+	var s: []char :: cui@input()
+	var map: dict<char, int> :: #dict<char, int>
+	for i(0, ^s - 1)
+		do map.add(s[i], map.get(s[i], &) + 1)
+	end for
+	const str: []char :: "YEAH!"
+	for i(0, 4)
+		do cui@print("\{map.get(str[i], &)}\{i = 4 ?('\n', ' ')}")
+	end for
+end func

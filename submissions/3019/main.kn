@@ -1,0 +1,4 @@
+func main()
+	var ans: int :: 42
+	do cui@print("\{ans}\n")
+end func

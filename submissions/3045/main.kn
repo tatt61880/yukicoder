@@ -37,10 +37,11 @@ func main()
 			end for
 			do cui@print(" ")
 		end for
+		do cui@print("\n")
 	end if
-	var _: [][]char :: cui@input().split(" ")
-	var N: int :: _[0].toInt(&)
-	var M: int :: _[1].toInt(&)
+	var ss: [][]char :: cui@input().split(" ")
+	var N: int :: ss[0].toInt(&)
+	var M: int :: ss[1].toInt(&)
 	var ans: int :: 1
 	if(N >= M)
 		do ans :: 0

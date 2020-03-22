@@ -1,8 +1,8 @@
 func main()
-	var _: [][]char :: cui@input().split(" ")
-	var A: int :: _[0].toInt(&)
-	var B: int :: _[1].toInt(&)
-	var ans: bool :: A < B
-	do cui@print(ans ?("YES\n", "NO\n"))
-	do cui@print("\{(A + 1 - B).abs()}\n")
+	var ss: [][]char :: cui@input().split(" ")
+	var a: int :: ss[0].toInt(&)
+	var b: int :: ss[1].toInt(&)
+	var ans: bool :: a + 1 <= b
+	do cui@print("\{ans ?("YES", "NO")}\n")
+	do cui@print("\{(b - a - 1).abs()}\n")
 end func

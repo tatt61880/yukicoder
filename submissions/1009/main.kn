@@ -1,0 +1,7 @@
+func main()
+	var ss: [][]char :: cui@input().split(" ")
+	var a: float :: ss[0].toFloat(&)
+	var b: float :: ss[1].toFloat(&)
+	var ans: float :: (b - a) ^ 3.0 / 6.0
+	do cui@print("\{ans}\n")
+end func

@@ -6,9 +6,9 @@ func main()
 			do cui@print(s[i] ~ "\n")
 		end for
 	end if
-	var _: [][]char :: cui@input().split(" ")
-	var N: int :: _[0].toInt(&)
-	var M: int :: _[1].toInt(&)
+	var ss: [][]char :: cui@input().split(" ")
+	var N: int :: ss[0].toInt(&)
+	var M: int :: ss[1].toInt(&)
 	if(N = 16 & M = 16)
 		do cui@print("18446744073709551616\n")
 	else

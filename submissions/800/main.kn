@@ -1,7 +1,7 @@
 func main()
-	var _: [][]char :: cui@input().split(" ")
-	var N: int :: _[0].toInt(&)
-	var D: int :: _[1].toInt(&)
+	var ss: [][]char :: cui@input().split(" ")
+	var N: int :: ss[0].toInt(&)
+	var D: int :: ss[1].toInt(&)
 	var xy: []int :: #[2 * 2000 ^ 2 + 1]int
 	var zwD: []int :: #[2 * 2000 ^ 2 + 1]int
 	for x(1, N)

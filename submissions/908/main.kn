@@ -1,0 +1,9 @@
+func main()
+	var s: []char :: cui@input()
+	var b: bit8 :: 1b8
+	for i(0, ^s - 1)
+		do b :* ((i % 2 = 0) $ bit8.xor((s[i] = ' ') $ bit8))
+	end for
+	var ans: bool :: b $ bool
+	do cui@print(ans ?("Yes\n", "No\n"))
+end func

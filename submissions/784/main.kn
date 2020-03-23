@@ -1,11 +1,7 @@
 func main()
-	var N: []char :: cui@input()
-	for i(0, ^N - 1)
-		do cui@print([N[i]])
-		if(i = ^N - 1)
-			do cui@print("\n")
-		elif((^N - i) % 3 = 1)
-			do cui@print(",")
-		end if
+	var s: []char :: cui@input()
+	for i(0, ^s - 1)
+		do cui@print("\{(i <> 0 & (^s - i) % 3 = 0) ?(",", "")}\{s[i]}")
 	end for
+	do cui@print("\n")
 end func

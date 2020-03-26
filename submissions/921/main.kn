@@ -1,0 +1,20 @@
+func main()
+	var n: int :: cui@input().toInt(&)
+	var ss: [][]char :: cui@input().split(" ")
+	var a: []int :: #[n]int
+	for i(0, n - 1)
+		do a[i] :: ss[i].toInt(&)
+	end for
+	
+	var ans: int :: 0
+	var prev: int :: -1
+	var prevId: int :: -2
+	for i(0, n - 1)
+		if(prevId = i - 2 | a[i] = prev)
+			do prevId :: i
+			do prev :: a[i]
+			do ans :+ 1
+		end if
+	end for
+	do cui@print("\{ans}\n")
+end func

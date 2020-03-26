@@ -1,17 +1,18 @@
 func main()
 	var D: int :: cui@input().toInt(&)
 	var a: []int :: #[D + 1]int
-	var _: [][]char :: cui@input().split(" ")
+	var ss: [][]char :: cui@input().split(" ")
 	for i(0, D)
-		do a[i] :: _[i].toInt(&)
+		do a[i] :: ss[i].toInt(&)
 	end for
 	for i(D, 3, -1)
 		do a[i - 2] :+ a[i]
 	end for
 	var d: int
-	for i(0, 2)
+	for i(2, 0, -1)
 		if(a[i] <> 0)
 			do d :: i
+			break i
 		end if
 	end for
 	do cui@print("\{d}\n")

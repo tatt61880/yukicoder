@@ -1,0 +1,7 @@
+func main()
+	var ss: [][]char :: cui@input().split(" ")
+	var n: int :: ss[0].toInt(&)
+	var k: int :: ss[1].toInt(&)
+	var ans: int :: n >= k ?(k - 1, -1)
+	do cui@print("\{ans}\n")
+end func

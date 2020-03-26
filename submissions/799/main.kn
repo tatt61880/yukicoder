@@ -1,13 +1,13 @@
 func main()
-	var _: [][]char :: cui@input().split(" ")
-	var A: int :: _[0].toInt(&)
-	var B: int :: _[1].toInt(&)
-	var C: int :: _[2].toInt(&)
-	var D: int :: _[3].toInt(&)
-	var ans: int
-	for x(A, B)
-		for y(C, D)
-			do ans :+ x = y ?(0, 1)
+	var ss: [][]char :: cui@input().split(" ")
+	var a: int :: ss[0].toInt(&)
+	var b: int :: ss[1].toInt(&)
+	var c: int :: ss[2].toInt(&)
+	var d: int :: ss[3].toInt(&)
+	var ans: int :: 0
+	for x(a, b)
+		for y(c, d)
+			do ans :+ x <> y ?(1, 0)
 		end for
 	end for
 	do cui@print("\{ans}\n")

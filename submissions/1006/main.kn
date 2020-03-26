@@ -1,0 +1,52 @@
+func main()
+	var x: int :: cui@input().toInt(&)
+	func f(n: int): int
+		if(n <= 1)
+			ret 0
+		end if
+		var factors: []int :: math@primeFactors(n)
+		var res: int :: 1
+		var cnt: int :: 0
+		var prev: int :: factors[0]
+		for i(0, ^factors)
+			if(i = ^factors)
+				break i
+			end if
+			if(factors[i] <> prev)
+				do prev :: factors[i]
+				do res :* (cnt + 1)
+				do cnt :: 0
+			end if
+			do cnt :+ 1
+		end for
+		do res :* (cnt + 1)
+		ret n - res
+	end func
+	
+	{高度合成数である2162160の正の約数は320個}
+	func score(n: int, x: int): int
+		ret(f(n) - f(x - n)).abs()
+	end func
+	var ca: int :: x / 2
+	var min: int :: score(ca, x)
+	for i(0, 160)
+		var a: int :: ca - i
+		if(a < 0)
+			break i
+		end if
+		var v: int :: score(a, x)
+		if(v < min)
+			do min :: v
+		end if
+	end for
+	for i(160, -160, -1)
+		var a: int :: ca - i
+		if(a <= 0 | x - a <= 0)
+			skip i
+		end if
+		var v: int :: score(a, x)
+		if(v = min)
+			do cui@print("\{a} \{x - a}\n")
+		end if
+	end for
+end func

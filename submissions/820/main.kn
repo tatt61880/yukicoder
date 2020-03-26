@@ -1,0 +1,7 @@
+func main()
+	var ss: [][]char :: cui@input().split(" ")
+	var a: int :: ss[0].toInt(&)
+	var b: int :: ss[1].toInt(&)
+	var ans: int :: 2 ^ a / 2 ^ b
+	do cui@print("\{ans}\n")
+end func

@@ -1,0 +1,9 @@
+func main()
+	var N: int :: cui@input().toInt(&)
+	var s: []char :: "."
+	for i(1, 100)
+		do s :~ "\{i}"
+	end for
+	var ans: char :: s[N]
+	do cui@print("\{ans}\n")
+end func

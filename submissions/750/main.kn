@@ -1,0 +1,38 @@
+func main()
+	class Frac()
+		+var a: int
+		+var b: int
+		var str: []char
+		+func init(a: int, b: int): Frac
+			do me.a :: (b > 0) ?(a, -a)
+			do me.b :: (b > 0) ?(b, -b)
+			do me.str :: "\{a} \{b}"
+			ret me
+		end func
+		+*func cmp(t: Frac): int
+			if(me.a * t.b > t.a * me.b)
+				ret 1
+			elif(me.a * t.b < t.a * me.b)
+				ret - 1
+			end if
+			ret 0
+		end func
+		+*func toStr(): []char
+			ret me.str
+		end func
+	end class
+	
+	var n: int :: cui@input().toInt(&)
+	var fracs: []Frac :: #[n]Frac
+	for i(0, n - 1)
+		var ss: [][]char :: cui@input().split(" ")
+		var a: int :: ss[0].toInt(&)
+		var b: int :: ss[1].toInt(&)
+		do fracs[i] :: (#Frac).init(a, b)
+	end for
+	do fracs.sort()
+	do fracs.reverse()
+	for i(0, n - 1)
+		do cui@print("\{fracs[i]}\n")
+	end for
+end func

@@ -1,12 +1,12 @@
 func main()
 	var s: []char :: cui@input()
-	var lastOp: char :: '*'
+	var op: char :: '*'
 	var num: int :: 0
 	var ans: int :: 0
 	for i(0, ^s)
 		; 太郎君の国では足し算と掛け算の記号が普通と逆なので注意。
 		if(i = ^s | s[i] = '*' | s[i] = '+')
-			if(lastOp = '*')
+			if(op = '*')
 				do ans :+ num
 			else
 				do ans :* num
@@ -19,12 +19,12 @@ func main()
 				do ans :: 0
 			end if
 			if(i <> ^s)
-				do lastOp :: s[i]
+				do op :: s[i]
 				do num :: 0
 			end if
 		else
 			do num :* 10
-			do num :+ [s[i]].toInt(&)
+			do num :+ s[i] $ int - '0' $ int
 			if(num > 10000)
 				do num :: 0
 			end if

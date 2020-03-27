@@ -1,0 +1,40 @@
+func main()
+	var ss: [][]char
+	do ss :: cui@input().split(" ")
+	var n: int :: ss[0].toInt(&)
+	var m: int :: ss[1].toInt(&)
+	var k: int :: ss[2].toInt(&)
+	do ss :: cui@input().split(" ")
+	var op: char :: ss[0][0]
+	var b: []int :: #[m]int
+	for i(1, m)
+		do b[i - 1] :: ss[i].toInt(&)
+	end for
+	var a: []int :: #[n]int
+	for i(0, n - 1)
+		do a[i] :: cui@input().toInt(&)
+	end for
+	do a.sort()
+	do b.sort()
+	do b.reverse()
+	
+	var f: func<(int, int): int>
+	func add(x: int, y: int): int
+		ret x + y
+	end func
+	func product(x: int, y: int): int
+		ret x * y
+	end func
+	do f :: (op = '+') ?(add, product)
+	
+	var ans: int :: 0
+	var idx: int :: 0
+	for i(0, n - 1)
+		while(idx <> m & f(a[i], b[idx]) >= k)
+			do idx :+ 1
+		end while
+		do ans :+ idx
+	end for
+	
+	do cui@print("\{ans}\n")
+end func

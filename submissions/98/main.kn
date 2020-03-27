@@ -1,5 +1,5 @@
 func main()
-	var _: [][]char :: cui@input().split(" ")
-	var ans: int :: (lib@dist(_[0].toFloat(&), _[1].toFloat(&), 0.0, 0.0) * 2.0 + 1.0) $ int
+	var ss: [][]char :: cui@input().split(" ")
+	var ans: int :: (lib@dist(ss[0].toFloat(&), ss[1].toFloat(&), 0.0, 0.0) * 2.0 + 1.0) $ int
 	do cui@print("\{ans}\n")
 end func

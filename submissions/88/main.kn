@@ -1,7 +1,7 @@
 func main()
 	var num: int :: cui@input() = "oda" ?(0, 1)
 	for(1, 8)
-		do num :+ ^cui@input().split(".").join("")
+		do num :+ ^cui@input().replace(".", "")
 	end for
 	do cui@print(["oda\n", "yukiko\n"][num % 2])
 end func

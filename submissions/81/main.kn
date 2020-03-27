@@ -1,14 +1,14 @@
 func main()
-	var N: int :: cui@input().toInt(&)
+	var n: int :: cui@input().toInt(&)
 	var a: int
 	var b: int
-	for(1, N)
-		var _: [][]char :: cui@input().split(".")
-		var isNegative: bool :: _[0][0] = '-'
-		do a :+ _[0].toInt(&)
-		if(^_ = 2)
-			for i(0, ^_[1] - 1)
-				do b :+ (isNegative ?(-1, 1)) * (_[1][i] $ int - '0' $ int) * 10 ^ (9 - i)
+	for(1, n)
+		var ss: [][]char :: cui@input().split(".")
+		var isNegative: bool :: ss[0][0] = '-'
+		do a :+ ss[0].toInt(&)
+		if(^ss = 2)
+			for i(0, ^ss[1] - 1)
+				do b :+ (isNegative ?(-1, 1)) * (ss[1][i] $ int - '0' $ int) * 10 ^ (9 - i)
 			end for
 		end if
 	end for

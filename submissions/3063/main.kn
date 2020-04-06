@@ -1,0 +1,12 @@
+func main()
+	do cui@input()
+	var ss: [][]char
+	do ss :: cui@input().split(" ")
+	var sx: int :: ss[0].toInt(&)
+	var sy: int :: ss[1].toInt(&)
+	do ss :: cui@input().split(" ")
+	var gx: int :: ss[0].toInt(&)
+	var gy: int :: ss[1].toInt(&)
+	var ans: int :: (gx - sx).abs() + (gy - sy).abs()
+	do cui@print("\{ans}\n")
+end func

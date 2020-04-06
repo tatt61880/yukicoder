@@ -1,9 +1,9 @@
 func main()
-	var _: [][]char :: cui@input().split(" ")
-	var Y: int :: _[0].toInt(&)
-	var M: int :: _[1].toInt(&)
-	var D: int :: _[2].toInt(&)
-	var x: int :: Y * 10000 + M * 100 + D
+	var ss: [][]char :: cui@input().split(" ")
+	var y: int :: ss[0].toInt(&)
+	var m: int :: ss[1].toInt(&)
+	var d: int :: ss[2].toInt(&)
+	var x: int :: y * 10000 + m * 100 + d
 	var ans: bool :: 19890108 <= x & x <= 20190430
 	do cui@print(ans ?("Yes\n", "No\n"))
 end func

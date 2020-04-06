@@ -1,0 +1,51 @@
+func main()
+	var n: int :: cui@input().toInt(&)
+	var ss: [][]char :: cui@input().split(" ")
+	var x: []int :: #[n]int
+	var total: int :: 0
+	for i(0, n - 1)
+		do x[i] :: ss[i].toInt(&)
+		do total :+ x[i]
+	end for
+	func getDivisors(n: int): []int
+		var res: []int :: #[0]int
+		var i: int :: 1
+		while loop(true)
+			if(i * i > n)
+				break loop
+			end if
+			if(n % i = 0)
+				do res :~ [i]
+			end if
+			if(n / i <> i)
+				do res :~ [n / i]
+			end if
+			do i :+ 1
+		end while
+		do res.sort()
+		ret res
+	end func
+	var divisors: []int :: getDivisors(total)
+	
+	var ans: int :: 0
+	for i(0, ^divisors - 1)
+		var divisor: int :: divisors[i]
+		var sum: int :: 0
+		var cnt: int :: 0
+		for j(0, n - 1)
+			do sum :+ x[j]
+			if(sum > divisor)
+				skip i
+			end if
+			if(sum = divisor)
+				do cnt :+ 1
+				do sum :: 0
+			end if
+		end for
+		if(sum = 0)
+			do ans :: cnt
+			break i
+		end if
+	end for
+	do cui@print("\{ans}\n")
+end func

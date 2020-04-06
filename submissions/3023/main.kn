@@ -1,0 +1,16 @@
+func isYes(n: int): bool
+	for i(true $ int, n)
+		if(i = true $ int)
+			skip i
+		end if
+		if(n % i = false $ int)
+			ret i = n
+		end if
+	end for
+end func
+
+func main()
+	var n: int :: cui@input().toInt(&)
+	var ans: bool :: @isYes(n)
+	do cui@print(ans ?("YES\n", "NO\n"))
+end func

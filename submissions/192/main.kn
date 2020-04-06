@@ -1,5 +1,5 @@
 func main()
-	var N: int :: cui@input().toInt(&)
-	var ans: int :: N + N % 2
+	var n: int :: cui@input().toInt(&)
+	var ans: int :: n + n % 2
 	do cui@print("\{ans}\n")
 end func

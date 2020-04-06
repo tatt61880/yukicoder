@@ -1,0 +1,22 @@
+func main()
+	while(true)
+		var s: []char :: cui@input()
+		if(s = "")
+			ret
+		end if
+		switch(s)
+		case "0"
+			do cui@print("Nothing\n")
+		case "3.14159265"
+			do cui@print("pi\n")
+		case "1112345678999+X"
+			do cui@print("九蓮宝燈\n")
+		case "19m19p19s東南西北白發中+Y"
+			do cui@print("Thirteen Orphans\n")
+		case "All your base are belong to us."
+			do cui@print("3\n4\n4\n3\n6\n2\n2\n")
+		case "くぁｗせｄｒｆｔｇｙふじこｌｐ"
+			do cui@print("さｍｐぇ\n")
+		end switch
+	end while
+end func

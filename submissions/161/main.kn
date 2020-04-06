@@ -1,0 +1,30 @@
+func main()
+	var mp: dict<char, int> :: #dict<char, int>
+	do mp.add('G', 0)
+	do mp.add('C', 1)
+	do mp.add('P', 2)
+	var ss: [][]char :: cui@input().split(" ")
+	var m: []int :: #[3]int
+	for i(0, 2)
+		do m[i] :: ss[i].toInt(&)
+	end for
+	
+	var s: []char :: cui@input()
+	var o: []int :: #[3]int
+	for i(0, ^s - 1)
+		do o[mp.get(s[i], &)] :+ 1
+	end for
+	
+	var ans: int :: 0
+	for i(0, 2)
+		var tmp: int :: [o[i], m[(i + 2) % 3]].min()
+		do ans :+ 3 * tmp
+		do o[i] :- tmp
+		do m[(i + 2) % 3] :- tmp
+	end for
+	for i(0, 2)
+		do ans :+ [o[i], m[i]].min()
+	end for
+	
+	do cui@print("\{ans}\n")
+end func

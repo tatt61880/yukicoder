@@ -1,9 +1,9 @@
 func main()
-	var N: int :: cui@input().toInt(&)
+	var n: int :: cui@input().toInt(&)
 	var ans: int
-	var s: []char :: #[2 * N]char
-	for i(0, N - 1)
-		if(i = N - 1)
+	var s: []char :: #[2 * n]char
+	for i(0, n - 1)
+		if(i = n - 1)
 			do s[i * 2] :: '1'
 			do s[i * 2 + 1] :: '\n'
 		else

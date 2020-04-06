@@ -1,0 +1,32 @@
+func main()
+	var s: []char :: cui@input()
+	var n: int :: ^s
+	var nums: dict<char, int> :: #dict<char, int>
+	for i(0, n - 1)
+		do nums.add(s[i], nums.get(s[i], &) + 1)
+	end for
+	if(nums.get('0', &) = n - 1)
+		do cui@print("-1\n")
+		ret
+	end if
+	for i(0, 9)
+		if(nums.get('0'.offset(i), &) = n)
+			do cui@print("-1\n")
+			ret
+		end if
+	end for
+	var ans: []char :: ""
+	for i(0, 9)
+		var c: char :: '0'.offset(i)
+		do ans :~ [c].repeat(nums.get(c, &))
+	end for
+	var c: char :: ans[0]
+	for i(0, n - 1)
+		if(ans[i] <> c)
+			do ans[i] :$ ans[i - 1]
+			break i
+		end if
+	end for
+	do ans.reverse()
+	do cui@print("\{ans}\n")
+end func

@@ -1,0 +1,24 @@
+func main()
+	var q: int :: cui@input().toInt(&)
+	for i(1, q)
+		var ss: [][]char :: cui@input().split(" ")
+		var n: int :: ss[0].toInt(&)
+		var k: int :: ss[1].toInt(&)
+		if(k = 1)
+			do cui@print("\{n - 1}\n")
+			skip i
+		end if
+		var ans: int :: 0
+		var sum: int :: 0
+		var add: int :: 1
+		while loop(true)
+			do sum :+ add
+			if(sum >= n)
+				break loop
+			end if
+			do add :* k
+			do ans :+ 1
+		end while
+		do cui@print("\{ans}\n")
+	end for
+end func

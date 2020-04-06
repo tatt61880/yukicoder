@@ -11,7 +11,7 @@ func main()
 	if(!@makeDir(@dirHtml))
 		ret
 	end if
-
+	
 	{
     <td><a href="/submissions/322195">322195</a></td>
     <td class="time">2019-03-12 00:09:26</td>
@@ -23,7 +23,7 @@ func main()
 	}
 	var regexUrl: regex@Regex :: regex@makeRegex("\"/submissions/(\\d+)\"[\\d\\D]*?/problems/no/(\\d+)\">([^<]*)[\\d\\D]*?<td>(.*?)</td>")
 	assert regexUrl <>& null
-
+	
 	var id: int :: 0
 	var dictProblemSubmit: dict<int, int> :: #dict<int, int>
 	do @dictSubmitTitle :: #dict<int, []char>
@@ -32,15 +32,15 @@ func main()
 		do id :+ 1
 		var url: []char :: "\{@yukicoderBase}users/\{@userId}/submissions?page=\{id}&status=AC&date_asc=enabled"
 		var filepath: []char :: "\{@dirHtml}\{id}.html"
-		if (file@exist(filepath))
+		if(file@exist(filepath))
 			var filepathNext: []char :: "\{@dirHtml}\{id + 1}.html"
-			if (file@exist(filepathNext))
+			if(file@exist(filepathNext))
 				; データが更新されていないと思われるページは取得しません。
 				skip loop
 			end if
 		end if
 		var data: []char :: @fetchData(url)
-		if (data =& null)
+		if(data =& null)
 			break loop
 		end if
 		var result: [][][]char :: regexUrl.findAll(&, data)
@@ -52,10 +52,10 @@ func main()
 			var problemId: int :: result[i][2].toInt(&)
 			var title: []char :: result[i][3]
 			var language: []char :: result[i][4]
-
+			
 			do title :: @unsanitized(title)
 			do language :: @unsanitized(language)
-
+			
 			do dictProblemSubmit.add(problemId, subumitId)
 			do @dictSubmitTitle.add(subumitId, title)
 			do @dictSubmitLang.add(subumitId, language)
@@ -64,19 +64,19 @@ func main()
 		do writer.writeStr(data)
 		do writer.fin()
 	end while
-
+	
 	if(!@makeDir(@dirSubmissions))
 		ret
 	end if
-
+	
 	if(!@initExtensions())
 		do lib@exitCode(1)
 		do cui@print("拡張子データの初期化に失敗しました。\n")
 		ret
 	end if
-
+	
 	do dictProblemSubmit.forEach(callback, null)
-
+	
 	func callback(problemId: int, subumitId: int, _: kuin@Class): bool
 		var title: []char :: @dictSubmitTitle.get(subumitId, &)
 		var language: []char :: @dictSubmitLang.get(subumitId, &)
@@ -99,17 +99,25 @@ func main()
 		var urlSource: []char :: "\{@yukicoderBase}submissions/\{subumitId}/source"
 		do cui@print("No.\{problemId}: ")
 		var data: []char :: @fetchData(urlSource)
-		if (data =& null)
+		if(data =& null)
 			do cui@print("Error: Failed to find source code. [\{urlSource}]\n")
 		else
 			var dirPath: []char :: "\{@dirSubmissions}\{problemId}/"
-			if(file@exist(dirPath))
-				if(!file@delDir(dirPath))
-					do cui@print("Error: Failed to remove dir. [\{dirPath}]\n")
-					ret false
+			for i(0, 10)
+				if(file@exist(dirPath))
+					if(!file@delDir(dirPath))
+						if(i = 10)
+							do cui@print("Error: Failed to remove dir. [\{dirPath}]\n")
+							ret false
+						end if
+						do lib@sleep(200)
+					else
+						do lib@sleep(500)
+					end if
+				else
+					break i
 				end if
-				do lib@sleep(500)
-			end if
+			end for
 			if(!@makeDir(dirPath))
 				ret false
 			end if
@@ -120,7 +128,7 @@ func main()
 			var writerUrl: file@Writer :: file@makeWriter(filepathUrl, false)
 			do writerUrl.writeStr(url)
 			do writerUrl.fin()
-
+			
 			var writerTitle: file@Writer :: file@makeWriter(filepathTitle, false)
 			do writerTitle.writeStr(title)
 			do writerTitle.fin()
@@ -138,7 +146,7 @@ func fetchData(url: []char): []char
 	var http: net@Http :: net@makeHttp(url, false, "Kuin")
 	do cui@print("Fetching data: \{url}\n")
 	do lib@sleep(1000)
-
+	
 	if(http =& null)
 		do cui@print("接続に失敗しました。[\{url}]\n")
 		ret null

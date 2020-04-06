@@ -1,0 +1,7 @@
+func main()
+	var ss: [][]char :: cui@input().split(" ")
+	var m: int :: ss[0].toInt(&)
+	var d: int :: ss[1].toInt(&)
+	var ans: int :: m + d + (m = 4 & d = 1 ?(1, 0))
+	do cui@print("\{ans}\n")
+end func

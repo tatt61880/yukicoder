@@ -1,14 +1,14 @@
 func main()
-	var _: [][]char :: cui@input().split(" ")
-	var A: float :: _[0].toFloat(&)
-	var B: float :: _[1].toFloat(&)
-	var X: float :: _[2].toFloat(&)
-	var Y: float :: _[3].toFloat(&)
-	if(A / B >= X / Y)
-		do Y :: X * B / A
+	var ss: [][]char :: cui@input().split(" ")
+	var a: float :: ss[0].toFloat(&)
+	var b: float :: ss[1].toFloat(&)
+	var x: float :: ss[2].toFloat(&)
+	var y: float :: ss[3].toFloat(&)
+	if(a / b >= x / y)
+		do y :: x * b / a
 	else
-		do X :: Y * A / B
+		do x :: y * a / b
 	end if
-	var ans: float :: X + Y
+	var ans: float :: x + y
 	do cui@print("\{ans.toStrFmt(".12f")}\n")
 end func

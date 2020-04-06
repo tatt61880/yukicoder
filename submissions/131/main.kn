@@ -1,0 +1,21 @@
+func main()
+	var ss: [][]char :: cui@input().split(" ")
+	var x: int :: ss[0].toInt(&)
+	var y: int :: ss[1].toInt(&)
+	var d: int :: ss[2].toInt(&)
+	var ans: int :: 0
+	if(x > d)
+		if(y > d)
+			do ans :: d + 1
+		else
+			do ans :: y + 1
+		end if
+	else
+		if(y > d)
+			do ans :: x + 1
+		else
+			do ans :: [0, y - (d - x) + 1].max()
+		end if
+	end if
+	do cui@print("\{ans}\n")
+end func

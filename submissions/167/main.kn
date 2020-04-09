@@ -1,0 +1,13 @@
+func main()
+	var s: []char
+	do s :: cui@input()
+	var n: int :: [s[^s - 1]].toInt(&)
+	do s :: cui@input()
+	if(s = "0")
+		do cui@print("1\n")
+		ret
+	end if
+	var m: int :: ^s = 1 ?(s.toInt(&), s.sub(^s - 2, 2).toInt(&))
+	var ans: int :: math@modPow(n, 4 + m % 4, 10)
+	do cui@print("\{ans}\n")
+end func

@@ -1,0 +1,13 @@
+func main()
+	var n: int :: cui@input().toInt(&)
+	var ss: [][]char :: cui@input().split(" ")
+	var a: int :: ss[0].toInt(&)
+	var b: int :: ss[1].toInt(&)
+	var c: int :: ss[2].toInt(&)
+	var ans: int :: n / a + n / b + n / c
+	do ans :- n / math@lcm(a, b)
+	do ans :- n / math@lcm(b, c)
+	do ans :- n / math@lcm(c, a)
+	do ans :+ n / math@lcm(a, math@lcm(b, c))
+	do cui@print("\{ans}\n")
+end func

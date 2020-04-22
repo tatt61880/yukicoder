@@ -1,0 +1,13 @@
+func main()
+	var ss: [][]char :: cui@input().split(" ")
+	var n: int :: ss[0].toInt(&)
+	var m: int :: ss[1].toInt(&)
+	var ans: int :: 0
+	for(1, n)
+		var s: []char :: cui@input()
+		for i(0, m - 1)
+			do ans :+ s[i] = 'R' ?(0, 1)
+		end for
+	end for
+	do cui@print("\{ans}\n")
+end func

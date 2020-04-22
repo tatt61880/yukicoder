@@ -1,0 +1,20 @@
+func main()
+	var ss: [][]char :: cui@input().split(" ")
+	var a: int :: ss[0].toInt(&)
+	var b: int :: ss[1].toInt(&)
+	if(f(a) & f(b))
+		do cui@print("\{a * b / 10}\n")
+		ret
+	end if
+	var ans: int :: a * b
+	if((a * b).abs() < 10 ^ 8)
+		do cui@print("\{ans}\n")
+	else
+		do cui@print("E\n")
+	end if
+	
+	func f(x: int): bool
+		var re: regex@Regex :: regex@makeRegex("^-?[1-9]00+$")
+		ret re.match(x.toStr()) <>& null
+	end func
+end func

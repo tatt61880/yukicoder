@@ -1,0 +1,5 @@
+func main()
+	var s: []char :: cui@input()
+	var ans: bool :: s.sub(0, ^s / 2).repeat(2) = s
+	do cui@print(ans ?("YES\n", "NO\n"))
+end func

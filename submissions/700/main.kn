@@ -1,0 +1,14 @@
+func main()
+	var ss: [][]char :: cui@input().split(" ")
+	var n: int :: ss[0].toInt(&)
+	var m: int :: ss[1].toInt(&)
+	var ans: int :: 0
+	for(1, n)
+		var s: []char :: cui@input()
+		if(s.findStr("LOVE", -1) <> -1)
+			do cui@print("YES\n")
+			ret
+		end if
+	end for
+	do cui@print("NO\n")
+end func

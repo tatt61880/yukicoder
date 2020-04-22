@@ -1,0 +1,17 @@
+func main()
+	var n: int :: [cui@input().toInt(&), 60].min()
+	var ans: int :: 1
+	var f: bool :: false
+	for i(1, n)
+		do ans :* i
+		if(ans >= 10 ^ 12)
+			do f :: true
+		end if
+		do ans :% 10 ^ 12
+	end for
+	if(f)
+		do cui@print("\{ans.toStrFmt("012d")}\n")
+	else
+		do cui@print("\{ans}\n")
+	end if
+end func

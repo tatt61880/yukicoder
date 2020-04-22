@@ -1,0 +1,32 @@
+func f(s: []char, i: &int): int
+	var res: int :: @g(s, &i)
+	while(true)
+		switch c(s[i])
+		case '+', '-'
+			do i :+ 1
+			do res :+ @g(s, &i) * (c = '-' ?(-1, 1))
+		default
+			do i :+ 1
+			ret res
+		end switch
+	end while
+end func
+
+func g(s: []char, i: &int): int
+	switch c(s[i])
+	case '0' to '9'
+		do i :+ 1
+		ret c $ int - '0' $ int
+	case '('
+		do i :+ 1
+		ret @f(s, &i)
+	end switch
+end func
+
+func main()
+	var s: []char :: cui@input()
+	var n: int :: ^s
+	var i: int :: 0
+	var ans: int :: @f(s, &i)
+	do cui@print("\{ans}\n")
+end func

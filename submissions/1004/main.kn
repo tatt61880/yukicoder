@@ -1,0 +1,12 @@
+func main()
+	var ss: [][]char :: cui@input().split(" ")
+	var a: int :: ss[0].toInt(&)
+	var b: int :: ss[1].toInt(&)
+	var x0: int :: ss[2].toInt(&)
+	var n: int :: ss[3].toInt(&)
+	if(x0 % 2 = 1)
+		do cui@print("\{n / 2} 0\n")
+	else
+		do cui@print("0 \{n / 2}\n")
+	end if
+end func

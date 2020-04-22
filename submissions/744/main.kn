@@ -1,0 +1,5 @@
+func main()
+	var n: int :: cui@input().toInt(&)
+	var ans: int :: [4, 2, 8, 5, 7, 1][n % 6]
+	do cui@print("\{ans}\n")
+end func

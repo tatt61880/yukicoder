@@ -1,0 +1,26 @@
+func main()
+	var ss: [][]char
+	var n: int :: cui@input().toInt(&)
+	do ss :: cui@input().split(" ")
+	var a: []int :: #[n]int
+	for i(0, n - 1)
+		do a[i] :: ss[i].toInt(&)
+	end for
+	
+	var mp: dict<int, int> :: #dict<int, int>
+	for i(0, n - 1)
+		do mp.add(a[i], mp.get(a[i], &) + 1)
+	end for
+	
+	var ans: int :: 0
+	var keys: []int :: mp.toArrayKey()
+	for i(0, ^keys)
+		for j(i + 1, ^keys)
+			for k(j + 1, ^keys)
+				do ans :+ mp.get(keys[i], &) * mp.get(keys[j], &) * mp.get(keys[k], &)
+			end for
+		end for
+	end for
+	do ans :% 10 ^ 9 + 7
+	do cui@print("\{ans}\n")
+end func

@@ -1,0 +1,34 @@
+func main()
+	var s: []char :: cui@input()
+	var n: int :: ^s
+	var ans: int :: 0
+	for i(0, n - 1)
+		var cnt: int :: 1
+		for j(1, n)
+			var l: int :: i - j
+			var r: int :: i + j
+			if(l < 0 | n <= r)
+				break j
+			end if
+			if(s[l] = s[r])
+				do cnt :+ 2
+			end if
+		end for
+		do ans :: [ans, cnt].max()
+	end for
+	for i(0, n - 2)
+		var cnt: int :: 0
+		for j(0, n)
+			var l: int :: i - j
+			var r: int :: i + j + 1
+			if(l < 0 | n <= r)
+				break j
+			end if
+			if(s[l] = s[r])
+				do cnt :+ 2
+			end if
+		end for
+		do ans :: [ans, cnt].max()
+	end for
+	do cui@print("\{ans}\n")
+end func

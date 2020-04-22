@@ -1,0 +1,9 @@
+func main()
+	var m: int :: cui@input().toInt(&)
+	var ans: int :: 1
+	for i(1, 128)
+		do ans :* 2
+		do ans :% m
+	end for
+	do cui@print("\{ans}\n")
+end func

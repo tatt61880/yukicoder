@@ -1,0 +1,35 @@
+func main()
+	var ss: [][]char :: cui@input().split(" ")
+	var h: int :: ss[0].toInt(&)
+	var w: int :: ss[1].toInt(&)
+	var p: [][]char :: #[h, w]char
+	for i(0, h - 1)
+		do p[i] :: cui@input()
+	end for
+	var ans: float :: 100000000.0
+	var num: int :: 2 * h + 2 * w
+	var posX: []int :: #[0]int
+	var posY: []int :: #[0]int
+	for x(0, w - 1)
+		do posX :~ [x, x]
+		do posY :~ [-1, h]
+	end for
+	for y(0, h - 1)
+		do posX :~ [-1, w]
+		do posY :~ [y, y]
+	end for
+	for i(0, num - 1)
+		var mx: float :: posX[i] $ float
+		var my: float :: posY[i] $ float
+		var t: float :: 0.0
+		for y(0, h - 1)
+			for x(0, w - 1)
+				if(p[y][x] = '1')
+					do t :+ lib@dist(mx, my, x $ float, y $ float)
+				end if
+			end for
+		end for
+		do ans :: [ans, t].min()
+	end for
+	do cui@print("\{ans.toStrFmt(".8f")}\n")
+end func

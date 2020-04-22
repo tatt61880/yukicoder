@@ -1,0 +1,23 @@
+func main()
+	var s: []char :: cui@input()
+	var n: int :: ^s
+	var a: []char :: ""
+	var b: []char :: ""
+	var f: bool :: false
+	for i(0, n - 1)
+		if(s[i] = '7')
+			do f :: true
+			do a :~ "6"
+		else
+			do a :~ [s[i]]
+		end if
+		if(f)
+			if(s[i] = '7')
+				do b :~ "1"
+			else
+				do b :~ "0"
+			end if
+		end if
+	end for
+	do cui@print("\{a} \{b}\n")
+end func

@@ -1,0 +1,14 @@
+func main()
+	var n: int :: cui@input().toInt(&)
+	if(math@prime(n))
+		do cui@print("Sosu!\n")
+	elif(n = 4 | n = 9 | n = 16 | n = 25 | n = 36 | n = 49)
+		do cui@print("Heihosu!\n")
+	elif(n = 8 | n = 27)
+		do cui@print("Ripposu!\n")
+	elif(n = 6 | n = 28)
+		do cui@print("Kanzensu!\n")
+	else
+		do cui@print("\{n}\n")
+	end if
+end func

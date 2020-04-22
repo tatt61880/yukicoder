@@ -1,0 +1,24 @@
+func main()
+	const mod: int :: 1000000007
+	var ss: [][]char
+	var n: int :: cui@input().toInt(&) + 1
+	var a: []int :: #[n]int
+	for i(0, n - 1)
+		do a[i] :: cui@input().toInt(&)
+		if(i <> 0)
+			do a[i] :+ a[i - 1]
+			do a[i] :% mod
+		end if
+	end for
+	var b: []int :: #[n]int
+	for i(0, n - 1)
+		do b[i] :: cui@input().toInt(&)
+	end for
+	
+	var ans: int :: 0
+	for i(0, n - 1)
+		do ans :+ a[i] * b[n - 1 - i]
+		do ans :% mod
+	end for
+	do cui@print("\{ans}\n")
+end func

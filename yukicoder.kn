@@ -85,15 +85,19 @@ func main()
 			do @addExtension(language, &extension)
 		end if
 		var filepath: []char :: "\{@dirSubmissions}\{problemId}/main.\{extension}"
-		var filepathUrl: []char :: "\{@dirSubmissions}\{problemId}/url.txt"
+		var filepathUrl: []char :: "\{@dirSubmissions}\{problemId}/submission.url"
 		var filepathTitle: []char :: "\{@dirSubmissions}\{problemId}/title.txt"
 		var url: []char :: "\{@yukicoderBase}submissions/\{subumitId}/"
 		if(file@exist(filepathUrl))
 			var readerUrl: file@Reader :: file@makeReader(filepathUrl)
-			var currentUrl: []char :: readerUrl.readLine()
-			do readerUrl.fin()
-			if(url = currentUrl)
-				ret true
+			do readerUrl.readLine()
+			var ss: [][]char :: readerUrl.readLine().split("=")
+			if(^ss = 2)
+				var currentUrl: []char :: ss[1]
+				do readerUrl.fin()
+				if(url = currentUrl)
+					ret true
+				end if
 			end if
 		end if
 		var urlSource: []char :: "\{@yukicoderBase}submissions/\{subumitId}/source"
@@ -126,7 +130,8 @@ func main()
 			do writer.fin()
 			
 			var writerUrl: file@Writer :: file@makeWriter(filepathUrl, false)
-			do writerUrl.writeStr(url)
+			do writerUrl.writeStr("[InternetShortcut]\n")
+			do writerUrl.writeStr("URL="~ url)
 			do writerUrl.fin()
 			
 			var writerTitle: file@Writer :: file@makeWriter(filepathTitle, false)

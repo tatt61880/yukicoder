@@ -1,0 +1,28 @@
+func main()
+	var n: int :: cui@input().toInt(&)
+	var ss: [][]char :: cui@input().split(" ")
+	var a: []int :: #[n]int
+	for i(0, n - 1)
+		do a[i] :: ss[i].toInt(&)
+	end for
+	for i(1, 2 * n - 4)
+		var j: int :: -1
+		while loop(true)
+			do j :+ 1
+			var k: int :: i - j
+			if(j >= k)
+				break loop
+			end if
+			if(j < 0 | n <= j | k < 0 | n <= k)
+				skip loop
+			end if
+			if(a[j] > a[k])
+				do a[j] :$ a[k]
+			end if
+		end while
+	end for
+	
+	for i(0, n - 1)
+		do cui@print("\{a[i]}" ~ (i = n - 1 ?("\n", " ")))
+	end for
+end func

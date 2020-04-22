@@ -1,0 +1,22 @@
+func main()
+	var ss: [][]char :: cui@input().split(" ")
+	var n: int :: ss[0].toInt(&)
+	var m: int :: ss[1].toInt(&)
+	var s: []char :: cui@input()
+	var t: []char :: cui@input()
+	
+	var sa: int :: 0
+	for i(0, n - 1)
+		if(s[i] = 'A')
+			do sa :+ 1
+		end if
+	end for
+	var ta: int :: 0
+	for i(0, m - 1)
+		if(t[i] = 'A')
+			do ta :+ 1
+		end if
+	end for
+	var ans: int :: [sa, ta].min() + [n - sa, m - ta].min()
+	do cui@print("\{ans}\n")
+end func

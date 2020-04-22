@@ -1,0 +1,11 @@
+func main()
+	var n: int :: cui@input().toInt(&)
+	for i(1, n)
+		var ss: [][]char :: cui@input().split(" ")
+		var xl: int :: ss[0].toInt(&)
+		var xg: int :: ss[1].toInt(&)
+		var yl: int :: ss[2].toInt(&)
+		var yg: int :: ss[3].toInt(&)
+		do cui@print("SELECT count(*) FROM point WHERE \{xl}<=x AND x<=\{xg} AND \{yl}<=y AND y<=\{yg};")
+	end for
+end func

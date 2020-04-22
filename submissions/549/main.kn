@@ -1,0 +1,15 @@
+func main()
+	var ss: [][]char
+	var n: int :: cui@input().toInt(&)
+	do ss :: cui@input().split(" ")
+	var a: []int :: #[n]int
+	for i(0, n - 1)
+		do a[i] :: ss[i].toInt(&)
+	end for
+	do a.sort()
+	var ans: int :: a[n - 1]
+	for i(0, n - 2)
+		do ans :+ a[i] / 2
+	end for
+	do cui@print("\{ans}\n")
+end func

@@ -1,0 +1,32 @@
+func main()
+	var ss: [][]char :: cui@input().split(" ")
+	var a: int :: ss[0].toInt(&)
+	var b: int :: ss[1].toInt(&)
+	var c: int :: ss[2].toInt(&)
+	
+	var ok: int :: 10 ^ 18
+	var ng: int :: 0
+	while((ok - ng).abs() > 1)
+		var md: int :: (ok + ng) / 2
+		if(f(md, a, b, c))
+			do ok :: md
+		else
+			do ng :: md
+		end if
+	end while
+	var ans: int :: ok
+	do cui@print("\{ans}\n")
+	
+	func f(d: int, a: int, b: int, c: int): bool
+		var sum: num@BigInt :: num@makeBigInt()
+		do sum.fromInt(0)
+		var nb: num@BigInt :: num@makeBigInt()
+		do nb.fromInt(b)
+		do nb.mulInt(d / a)
+		var nc: num@BigInt :: num@makeBigInt()
+		do nc.fromInt(c)
+		do sum.add(nb)
+		do sum.addInt(d - d / a)
+		ret sum >= nc
+	end func
+end func

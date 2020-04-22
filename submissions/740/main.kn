@@ -1,0 +1,21 @@
+func main()
+	var ss: [][]char :: cui@input().split(" ")
+	var n: int :: ss[0].toInt(&)
+	var m: int :: ss[1].toInt(&)
+	var p: int :: ss[2].toInt(&)
+	var q: int :: ss[3].toInt(&)
+	
+	var ans: int :: n / ((12 + q) * m) * 12
+	do n :% ((12 + q) * m)
+	if(n <> 0)
+		for month(1, 12)
+			do ans :+ 1
+			do n :- m * ((p <= month & month < p + q) ?(2, 1))
+			if(n <= 0)
+				break month
+			end if
+		end for
+	end if
+	
+	do cui@print("\{ans}\n")
+end func

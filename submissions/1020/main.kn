@@ -1,0 +1,13 @@
+func main()
+	var ss: [][]char :: cui@input().split(" ")
+	var n: int :: ss[0].toInt(&)
+	var k: int :: ss[1].toInt(&)
+	var s: []char :: cui@input()
+	var ans: []char :: s.sub(k - 1, n - k + 1)
+	do s :: s.sub(0, k - 1)
+	if((n - k) % 2 = 0)
+		do s.reverse()
+	end if
+	do ans :~ s
+	do cui@print("\{ans}\n")
+end func

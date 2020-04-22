@@ -1,0 +1,13 @@
+func main()
+	var n: int :: cui@input().toInt(&)
+	for i(1, n)
+		do cui@print("a\{f(i.toStr())}" ~ (i = n ?("n\n", "a\n")))
+	end for
+	func f(s: []char): []char
+		var res: []char :: #[^s]char
+		for i(0, ^s - 1)
+			do res[i] :: 'a'.offset(s[i] $ int - '0' $ int)
+		end for
+		ret res
+	end func
+end func

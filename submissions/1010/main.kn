@@ -1,0 +1,21 @@
+func main()
+	var ss: [][]char :: cui@input().split(" ")
+	var x: int :: ss[0].toInt(&) * 1000
+	var y: int :: ss[1].toInt(&) * 1000
+	var h: int :: ss[2].toInt(&)
+	if(x > y)
+		do x :$ y
+	end if
+	var ans: int :: 0
+	while(x > h)
+		do h :* 4
+		do y :* 2
+		do ans :+ 1
+	end while
+	while(y > h)
+		do h :* 4
+		do x :* 2
+		do ans :+ 1
+	end while
+	do cui@print("\{ans}\n")
+end func

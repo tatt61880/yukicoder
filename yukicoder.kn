@@ -6,6 +6,8 @@ const dirSubmissions: []char :: "./submissions/"
 var dictSubmitTitle: dict<int, []char>
 var dictSubmitLang: dict<int, []char>
 var dictLangExtension: dict<[]char, []char>
+var regexUrl: regex@Regex
+var regexUrl2: regex@Regex
 
 func main()
 	if(!@makeDir(@dirHtml))
@@ -21,8 +23,10 @@ func main()
     <td><a href="/problems/no/129">No.129 お年玉(2)</a></td>
     <td>Kuin(beta)</td>
 	}
-	var regexUrl: regex@Regex :: regex@makeRegex("\"/submissions/(\\d+)\"[\\d\\D]*?/problems/no/(\\d+)\">([^<]*)[\\d\\D]*?<td>(.*?)</td>")
-	assert regexUrl <>& null
+	do @regexUrl :: regex@makeRegex("\"/submissions/(\\d+)\"[\\d\\D]*?/problems/no/(\\d+)\">([^<]*)[\\d\\D]*?<td>(.*?)</td>")
+	assert @regexUrl <>& null
+	do @regexUrl2 :: regex@makeRegex("/submissions/(\\d+)/")
+	assert @regexUrl2 <>& null
 	
 	var id: int :: 0
 	var dictProblemSubmit: dict<int, int> :: #dict<int, int>
@@ -43,7 +47,7 @@ func main()
 		if(data =& null)
 			break loop
 		end if
-		var result: [][][]char :: regexUrl.findAll(&, data)
+		var result: [][][]char :: @regexUrl.findAll(&, data)
 		if(result =& null)
 			break loop
 		end if
@@ -95,8 +99,12 @@ func main()
 			if(^ss = 2)
 				var currentUrl: []char :: ss[1]
 				do readerUrl.fin()
-				if(url = currentUrl)
-					ret true
+				var result: [][][]char :: @regexUrl2.findAll(&, currentUrl)
+				if(result <>& null)
+					var currentSubumitId: int :: result[0][1].toInt(&)
+					if(currentSubumitId <= subumitId)
+						ret true
+					end if
 				end if
 			end if
 		end if

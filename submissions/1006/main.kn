@@ -1,5 +1,5 @@
 func main()
-	var x: int :: cui@input().toInt(&)
+	var x: int :: cui@inputInt()
 	func f(n: int): int
 		if(n <= 1)
 			ret 0

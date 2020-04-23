@@ -1,9 +1,8 @@
 func main()
-	var ss: [][]char :: cui@input().split(" ")
-	var a: int :: ss[0].toInt(&)
-	var b: int :: ss[1].toInt(&)
-	var x0: int :: ss[2].toInt(&)
-	var n: int :: ss[3].toInt(&)
+	var a: int :: cui@inputInt()
+	var b: int :: cui@inputInt()
+	var x0: int :: cui@inputInt()
+	var n: int :: cui@inputInt()
 	if(x0 % 2 = 1)
 		do cui@print("\{n / 2} 0\n")
 	else

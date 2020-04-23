@@ -1,16 +1,14 @@
 func main()
-	var N: int :: cui@input().toInt(&)
+	var N: int :: cui@inputInt()
 	for(1, N)
-		do cui@input()
 		var ansRad: float :: lib@toRad(50.0)
 		var x: []float :: #[6]float
 		var y: []float :: #[6]float
 		var cx: float :: 0.0
 		var cy: float :: 0.0
 		for i(0, 5)
-			var ss: [][]char :: cui@input().split(" ")
-			do x[i] :: ss[0].toFloat(&)
-			do y[i] :: ss[1].toFloat(&)
+			do x[i] :: cui@inputFloat()
+			do y[i] :: cui@inputFloat()
 			do cx :+ x[i]
 			do cy :+ x[i]
 		end for

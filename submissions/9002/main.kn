@@ -1,14 +1,14 @@
 func main()
-	var N: int :: cui@input().toInt(&)
-	for n(1, N)
-		if(n % 15 = 0)
+	var n: int :: cui@inputInt()
+	for i(1, n)
+		if(i % 15 = 0)
 			do cui@print("FizzBuzz\n")
-		elif(n % 5 = 0)
+		elif(i % 5 = 0)
 			do cui@print("Buzz\n")
-		elif(n % 3 = 0)
+		elif(i % 3 = 0)
 			do cui@print("Fizz\n")
 		else
-			do cui@print("\{n}\n")
+			do cui@print("\{i}\n")
 		end if
 	end for
 end func

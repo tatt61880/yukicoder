@@ -1,23 +1,19 @@
 func main()
-	var ss: [][]char
-	
-	var Nw: int :: cui@input().toInt(&)
-	var W: []int :: #[Nw]int
-	do ss :: cui@input().split(" ")
-	for i(0, Nw - 1)
-		do W[i] :: ss[i].toInt(&)
+	var nw: int :: cui@inputInt()
+	var w: []int :: #[nw]int
+	for i(0, nw - 1)
+		do w[i] :: cui@inputInt()
 	end for
 	
-	var Nb: int :: cui@input().toInt(&)
-	var B: []int :: #[Nb]int
-	do ss :: cui@input().split(" ")
-	for i(0, Nb - 1)
-		do B[i] :: ss[i].toInt(&)
+	var nb: int :: cui@inputInt()
+	var b: []int :: #[nb]int
+	for i(0, nb - 1)
+		do b[i] :: cui@inputInt()
 	end for
 	
-	do W.sortDesc()
-	do B.sortDesc()
-	var wb: [][]int :: [W, B]
+	do w.sortDesc()
+	do b.sortDesc()
+	var wb: [][]int :: [w, b]
 	var ans: int
 	for i(0, 1)
 		var id: int :: i

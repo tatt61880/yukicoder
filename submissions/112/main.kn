@@ -1,20 +1,19 @@
 func main()
-	var N: int :: cui@input().toInt(&)
-	var a: []int :: #[N]int
-	var ss: [][]char :: cui@input().split(" ")
-	for i(0, N - 1)
-		do a[i] :: ss[i].toInt(&)
+	var n: int :: cui@inputInt()
+	var a: []int :: #[n]int
+	for i(0, n - 1)
+		do a[i] :: cui@inputInt()
 	end for
 	var ans: []char
 	if(a.min() = a.max())
-		if(a[0] = (N - 1) * 2)
-			do ans :: "\{N} 0\n"
+		if(a[0] = (n - 1) * 2)
+			do ans :: "\{n} 0\n"
 		else
-			do ans :: "0 \{N}\n"
+			do ans :: "0 \{n}\n"
 		end if
 	else
-		var k: int :: (a.max() + 2 - 2 * N) / 2
-		do ans :: "\{N - k} \{k}\n"
+		var k: int :: (a.max() + 2 - 2 * n) / 2
+		do ans :: "\{n - k} \{k}\n"
 	end if
 	do cui@print(ans)
 end func

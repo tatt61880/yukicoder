@@ -1,7 +1,6 @@
 func main()
-	var _: [][]char :: cui@input().split(" ")
-	var p: float :: _[0].toFloat(&)
-	var q: float :: _[1].toFloat(&)
+	var p: float :: cui@inputFloat()
+	var q: float :: cui@inputFloat()
 	
 	; P_0 = p * q
 	; P_1 = (1.0 - p) * q

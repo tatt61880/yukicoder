@@ -1,9 +1,9 @@
 func main()
 	const a: []char :: "yukicoder"
-	while loop(true)
-		var x: int :: cui@input().toInt(&)
+	while(true)
+		var x: int :: cui@inputInt()
 		if(x = 0)
-			break loop
+			ret
 		end if
 		do cui@print("\{a[x - 1]}\n")
 	end while

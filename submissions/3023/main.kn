@@ -10,7 +10,7 @@ func isYes(n: int): bool
 end func
 
 func main()
-	var n: int :: cui@input().toInt(&)
+	var n: int :: cui@inputInt()
 	var ans: bool :: @isYes(n)
 	do cui@print(ans ?("YES\n", "NO\n"))
 end func

@@ -102,7 +102,6 @@ func main()
 				var result: [][][]char :: @regexUrl2.findAll(&, currentUrl)
 				if(result <>& null)
 					var currentSubumitId: int :: result[0][1].toInt(&)
-					do cui@print("\{subumitId} \{currentSubumitId}\n")
 					if(subumitId <= currentSubumitId)
 						ret true
 					end if

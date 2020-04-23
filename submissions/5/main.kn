@@ -1,21 +1,20 @@
 func main()
-	var L: int :: cui@input().toInt(&)
-	var N: int :: cui@input().toInt(&)
-	var ss: [][]char :: cui@input().split(" ")
-	var W: []int :: #[N]int
-	for i(0, N - 1)
-		do W[i] :: ss[i].toInt(&)
+	var l: int :: cui@inputInt()
+	var n: int :: cui@inputInt()
+	var w: []int :: #[n]int
+	for i(0, n - 1)
+		do w[i] :: cui@inputInt()
 	end for
 	
-	do W.sort()
+	do w.sort()
 	
 	var sum: int
-	for i(0, N - 1)
-		do sum :+ W[i]
-		if(sum > L)
+	for i(0, n - 1)
+		do sum :+ w[i]
+		if(sum > l)
 			do cui@print("\{i}\n")
 			ret
 		end if
 	end for
-	do cui@print("\{N}\n")
+	do cui@print("\{n}\n")
 end func

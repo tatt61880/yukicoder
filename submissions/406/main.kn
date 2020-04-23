@@ -1,0 +1,18 @@
+func main()
+	var ss: [][]char
+	var n: int :: cui@input().toInt(&)
+	do ss :: cui@input().split(" ")
+	var a: []int :: #[n]int
+	for i(0, n - 1)
+		do a[i] :: ss[i].toInt(&)
+	end for
+	do a.sort()
+	
+	var ans: bool :: a[0] <> a[1]
+	for i(1, n - 1)
+		if(a[i] - a[i - 1] <> a[1] - a[0])
+			do ans :: false
+		end if
+	end for
+	do cui@print(ans ?("YES\n", "NO\n"))
+end func

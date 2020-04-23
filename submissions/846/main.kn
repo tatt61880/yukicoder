@@ -1,0 +1,15 @@
+func main()
+	var p: int :: cui@inputInt()
+	var q: int :: cui@inputInt()
+	var r: int :: cui@inputInt()
+	var a: int :: cui@inputInt()
+	var b: int :: cui@inputInt() + a
+	var c: int :: cui@inputInt() + b
+	var max: int :: [p * a, q * b, r * c].min()
+	var min: int :: [p * a - p + 1, q * b - q + 1, r * c - r + 1].max()
+	if(max >= min)
+		do cui@print("\{min} \{max}\n")
+	else
+		do cui@print("-1\n")
+	end if
+end func

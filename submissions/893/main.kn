@@ -1,0 +1,20 @@
+func main()
+	var n: int :: cui@inputInt()
+	var a: [][]int :: #[1000, 100]int
+	for i(0, n - 1)
+		var p: int :: cui@inputInt()
+		for j(0, p - 1)
+			do a[i][j] :: cui@inputInt()
+		end for
+	end for
+	
+	for j(0, 99)
+		for i(0, n - 1)
+			if(a[i][j] = 0)
+				skip i
+			end if
+			do cui@print("\{a[i][j]} ")
+		end for
+	end for
+	var ans: int :: 0
+end func

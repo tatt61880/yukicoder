@@ -1,0 +1,20 @@
+func main()
+	var n: int :: cui@inputInt()
+	var ss: [][]char :: cui@input().split(" ")
+	if(^ss = 3)
+		do cui@print("\"assert\"\n")
+		ret
+	end if
+	var a: []int :: #[3]int
+	do a[0] :: ss[0].toInt(&)
+	do a[1] :: cui@inputInt()
+	do a[2] :: cui@inputInt()
+	do a.sort()
+	var ans: int :: 0
+	if(a[0] <> a[1])
+		do ans :: a[0] + a[2]
+	else
+		do ans :: a[0] + a[1]
+	end if
+	do cui@print("\{ans}\n")
+end func

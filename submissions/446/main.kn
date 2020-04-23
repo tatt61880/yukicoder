@@ -1,0 +1,12 @@
+func main()
+	var ans: bool :: f(cui@input()) & f(cui@input())
+	do cui@print(ans ?("OK\n", "NG\n"))
+	
+	func f(s: []char): bool
+		if(s = "0")
+			ret true
+		end if
+		var re: regex@Regex :: regex@makeRegex("^[1-9]\\d*$")
+		ret re.match(s) <>& null & s.toInt(&) <= 12345
+	end func
+end func

@@ -1,13 +1,10 @@
 func main()
-	var ss: [][]char
-	do ss :: cui@input().split(" ")
-	var x: int :: ss[0].toInt(&)
-	var N: int :: ss[1].toInt(&)
-	do ss :: cui@input().split(" ")
+	var x: int :: cui@inputInt()
+	var n: int :: cui@inputInt()
 	var ans: int
 	const mod: int :: 1000003
-	for i(0, N - 1)
-		var a: int :: ss[i].toInt(&)
+	for i(0, n - 1)
+		var a: int :: cui@inputInt()
 		do ans :: (ans + math@modPow(x, a, mod)) % mod
 	end for
 	do cui@print("\{ans}\n")

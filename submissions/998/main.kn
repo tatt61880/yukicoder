@@ -1,8 +1,7 @@
 func main()
-	var ss: [][]char :: cui@input().split(" ")
 	var a: []int :: #[4]int
 	for i(0, 3)
-		do a[i] :: ss[i].toInt(&)
+		do a[i] :: cui@inputInt()
 	end for
 	do a.sort()
 	var ans: bool :: true

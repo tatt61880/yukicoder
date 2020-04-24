@@ -1,17 +1,16 @@
 func main()
 	if(dbg)
-		var s: [][]char :: ["?etirw ot syaw ynam woH .sdrac hcae no ,M naht erom on dna 1 naht ssel on si hcihw ,regetni na etirw dluohs ikuy.rM .N ot 1 morf derebmun era sdrac hcaE .elbat eht no sdrac N era erehT", ".61 dna 1 neewteb sregetni era M ,N", ".enil elgnis ni rewsna eht tuptuO"]
+		var s: [][]char :: ["?etirw ot syaw ynam woH .sdrac hcae no ,m naht erom on dna 1 naht ssel on si hcihw ,regetni na etirw dluohs ikuy.rM .n ot 1 morf derebmun era sdrac hcaE .elbat eht no sdrac n era erehT", ".61 dna 1 neewteb sregetni era m ,n", ".enil elgnis ni rewsna eht tuptuO"]
 		for i(0, ^s - 1)
 			do s[i].reverse()
 			do cui@print(s[i] ~ "\n")
 		end for
 	end if
-	var ss: [][]char :: cui@input().split(" ")
-	var N: int :: ss[0].toInt(&)
-	var M: int :: ss[1].toInt(&)
-	if(N = 16 & M = 16)
+	var n: int :: cui@inputInt()
+	var m: int :: cui@inputInt()
+	if(n = 16 & m = 16)
 		do cui@print("18446744073709551616\n")
 	else
-		do cui@print("\{M ^ N}\n")
+		do cui@print("\{m ^ n}\n")
 	end if
 end func

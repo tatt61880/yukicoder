@@ -1,9 +1,8 @@
 func main()
-	var N: int :: cui@input().toInt(&)
-	var ss: [][]char :: cui@input().split(" ")
+	var n: int :: cui@input().toInt(&)
 	var ans: int
-	for i(0, N - 1)
-		var x: int :: ss[i].toInt(&)
+	for i(0, n - 1)
+		var x: int :: cui@inputInt()
 		do ans :+ x % 2 = 0 ?(1, -1)
 	end for
 	do ans :: ans.abs()

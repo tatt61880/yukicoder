@@ -1,16 +1,16 @@
 func main()
 	var ss: [][]char
 	do ss :: cui@input().split(".")
-	var A0: int :: ss[0].toInt(&)
-	var B0: int :: ss[1].toInt(&)
-	var C0: int :: ss[2].toInt(&)
+	var a0: int :: ss[0].toInt(&)
+	var b0: int :: ss[1].toInt(&)
+	var c0: int :: ss[2].toInt(&)
 	do ss :: cui@input().split(".")
-	var A1: int :: ss[0].toInt(&)
-	var B1: int :: ss[1].toInt(&)
-	var C1: int :: ss[2].toInt(&)
+	var a1: int :: ss[0].toInt(&)
+	var b1: int :: ss[1].toInt(&)
+	var c1: int :: ss[2].toInt(&)
 	
-	var abc0: int :: A0 * 1000000 + B0 * 1000 + C0
-	var abc1: int :: A1 * 1000000 + B1 * 1000 + C1
+	var abc0: int :: a0 * 1000000 + b0 * 1000 + c0
+	var abc1: int :: a1 * 1000000 + b1 * 1000 + c1
 	var ans: bool :: abc0 >= abc1
 	do cui@print(ans ?("YES\n", "NO\n"))
 end func

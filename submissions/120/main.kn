@@ -1,23 +1,23 @@
 func main()
-	var T: int :: cui@input().toInt(&)
-	for(1, T)
-		var N: int :: cui@input().toInt(&)
-		var ans: int :: solve(N, cui@input().split(" "))
+	var t: int :: cui@inputInt()
+	for(1, t)
+		var ans: int :: solve()
 		do cui@print("\{ans}\n")
 	end for
 	
-	func solve(N: int, ss: [][]char): int
-		var L: []int :: #[N]int
-		for i(0, N - 1)
-			do L[i] :: ss[i].toInt(&)
+	func solve(): int
+		var n: int :: cui@inputInt()
+		var l: []int :: #[n]int
+		for i(0, n - 1)
+			do l[i] :: cui@inputInt()
 		end for
-		do L.sort()
+		do l.sort()
 		
 		var ok: int
-		var ng: int :: N / 3 + 2
+		var ng: int :: n / 3 + 2
 		while((ok - ng).abs() > 1)
 			var mid: int :: (ok + ng) / 2
-			if(isPossible(L, mid))
+			if(isPossible(l, mid))
 				do ok :: mid
 			else
 				do ng :: mid
@@ -25,19 +25,19 @@ func main()
 		end while
 		ret ok
 		
-		func isPossible(L: []int, targetNum: int): bool
+		func isPossible(l: []int, targetNum: int): bool
 			var num: int
 			var cnt: int
 			var prev: int :: -1
-			for i(0, ^L - 1)
-				if(L[i] <> prev)
+			for i(0, ^l - 1)
+				if(l[i] <> prev)
 					do cnt :: 0
 				end if
 				do cnt :+ 1
 				if(cnt <= targetNum)
 					do num :+ 1
 				end if
-				do prev :: L[i]
+				do prev :: l[i]
 			end for
 			ret num >= 3 * targetNum
 		end func

@@ -1,20 +1,17 @@
 func main()
-	var ss: [][]char
-	do ss :: cui@input().split(" ")
-	var N: int :: ss[0].toInt(&)
-	var M: int :: ss[1].toInt(&)
-	do ss :: cui@input().split(" ")
-	var C: []int :: #[N]int
-	for i(0, N - 1)
-		do C[i] :: ss[i].toInt(&)
+	var n: int :: cui@inputInt()
+	var m: int :: cui@inputInt()
+	var c: []int :: #[n]int
+	for i(0, n - 1)
+		do c[i] :: cui@inputInt()
 	end for
-	do C.sort()
+	do c.sort()
 	
 	var ans: int
-	for i(0, N - 1)
-		if(C[i] <= M)
+	for i(0, n - 1)
+		if(c[i] <= m)
 			do ans :+ 1
-			do M :- C[i]
+			do m :- c[i]
 		else
 			break i
 		end if

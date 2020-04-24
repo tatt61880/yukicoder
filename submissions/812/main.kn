@@ -1,16 +1,13 @@
 func main()
-	var ss: [][]char
-	do ss :: cui@input().split(" ")
-	var N: int :: ss[0].toInt(&)
-	var M: int :: ss[1].toInt(&)
+	var N: int :: cui@inputInt()
+	var M: int :: cui@inputInt()
 	var friendList: []list<int> :: #[N]list<int>
 	for i(0, N - 1)
 		do friendList[i] :: #list<int>
 	end for
 	for i(0, M - 1)
-		do ss :: cui@input().split(" ")
-		var p: int :: ss[0].toInt(&) - 1
-		var q: int :: ss[1].toInt(&) - 1
+		var p: int :: cui@inputInt() - 1
+		var q: int :: cui@inputInt() - 1
 		do friendList[p].add(q)
 		do friendList[q].add(p)
 	end for
@@ -18,7 +15,7 @@ func main()
 	for i(0, N - 1)
 		do friendArray[i] :: friendList[i].toArray()
 	end for
-	var Q: int :: cui@input().toInt(&)
+	var Q: int :: cui@inputInt()
 	
 	var que: queue<int> :: #queue<int>
 	var people: []int :: #[N]int
@@ -26,7 +23,7 @@ func main()
 		for i(0, N - 1)
 			do people[i] :: 0
 		end for
-		var A: int :: cui@input().toInt(&) - 1
+		var A: int :: cui@inputInt() - 1
 		do people[A] :: 1
 		do que.add(A)
 		var num: int :: 0

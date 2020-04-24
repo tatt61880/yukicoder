@@ -1,19 +1,17 @@
 func main()
-	var ss: [][]char :: cui@input().split(" ")
-	var N: int :: ss[0].toInt(&)
-	var M: int :: ss[1].toInt(&)
+	var n: int :: cui@inputInt()
+	var m: int :: cui@inputInt()
 	
-	var num: []int :: #[N + 1]int
-	for i(1, N)
+	var num: []int :: #[n + 1]int
+	for i(1, n)
 		do num[i] :: i
 	end for
 
-	do ss :: cui@input().split(" ")
-	for i(0, M - 1)
-		var A: int :: ss[i].toInt(&)
-		var tmp: int :: num[A]
-		for n(A - 1, 1, -1)
-			do num[n + 1] :: num[n]
+	for i(0, m - 1)
+		var a: int :: cui@inputInt()
+		var tmp: int :: num[a]
+		for j(a - 1, 1, -1)
+			do num[j + 1] :: num[j]
 		end for
 		do num[1] :: tmp
 	end for

@@ -1,5 +1,5 @@
 func main()
-	var n: int :: cui@input().toInt(&)
+	var n: int :: cui@inputInt()
 	var c: []int :: #[n]int
 	for i(0, n - 1)
 		do c[i] :: cui@inputInt()

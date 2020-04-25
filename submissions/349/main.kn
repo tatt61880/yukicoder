@@ -1,5 +1,5 @@
 func main()
-	var N: int :: cui@input().toInt(&)
+	var N: int :: cui@inputInt()
 	var d: dict<[]char, int> :: #dict<[]char, int>
 	var max: int
 	for i(0, N - 1)

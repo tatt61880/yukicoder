@@ -1,6 +1,6 @@
 func main()
 	const mod: int :: 1000000007
-	var n: int :: cui@input().toInt(&)
+	var n: int :: cui@inputInt()
 	var dp: []int :: #[3]int
 	do dp[2] :: 1
 	for(1, n)

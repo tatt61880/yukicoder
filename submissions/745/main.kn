@@ -1,22 +1,22 @@
 func main()
-	var _: [][]char :: cui@input().split(" ")
-	var A: int :: _[0].toInt(&)
-	var B: int :: _[1].toInt(&)
-	var C: int :: _[2].toInt(&)
-	var D: int :: _[3].toInt(&)
-	if(D = 10)
+	var a: int :: cui@inputInt()
+	var b: int :: cui@inputInt()
+	var c: int :: cui@inputInt()
+	var d: int :: cui@inputInt()
+
+	if(d = 10)
 		do cui@print("Impossible\n")
 		ret
 	end if
 	var rate: int :: 1
 	var combo: int :: 0
 	var ans: int
-	for i(1, B + A)
+	for i(1, b + a)
 		do combo :+ 1
 		if(combo > 100 & combo % 100 = 1)
 			do rate :* 2
 		end if
-		do ans :+ (i <= B ?(50, 100)) * rate
+		do ans :+ (i <= b ?(50, 100)) * rate
 	end for
 	do cui@print("Possible\n")
 	do cui@print("\{ans}\n")

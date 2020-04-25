@@ -1,13 +1,12 @@
 func main()
-	var _: [][]char :: cui@input().split(" ")
-	var A: int :: _[0].toInt(&)
-	var B: int :: _[1].toInt(&)
+	var a: int :: cui@inputInt()
+	var b: int :: cui@inputInt()
 	var ans: int
-	if(A = B)
-	elif(A > B)
-		do ans :: 2000000000 - B - 1
+	if(a = b)
+	elif(a > b)
+		do ans :: 2000000000 - b - 1
 	else
-		do ans :: B - 2
+		do ans :: b - 2
 	end if
 	do cui@print("\{ans}\n")
 end func

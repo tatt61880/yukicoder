@@ -1,5 +1,5 @@
 func main()
-	var N: int :: cui@input().toInt(&)
+	var n: int :: cui@inputInt()
 	var a1: int :: 3
 	var a2: int :: 20
 	var a3: int
@@ -7,17 +7,17 @@ func main()
 	var c2: int :: 29
 	var c3: int
 	var b: int
-	if(N = 1)
+	if(n = 1)
 		do cui@print("3 4 5\n")
 		ret
-	elif(N = 2)
+	elif(n = 2)
 		do cui@print("20 21 29\n")
 		ret
 	end if
 	while(true)
 		do a3 :: 6 * a2 - a1 + 2
 		do c3 :: 6 * c2 - c1
-		if(lib@log(10.0, c3 $ float) > (N - 1) $ float)
+		if(lib@log(10.0, c3 $ float) > (n - 1) $ float)
 			do cui@print("\{a3} \{a3 + 1} \{c3}\n")
 			ret
 		end if

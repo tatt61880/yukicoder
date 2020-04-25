@@ -1,22 +1,21 @@
 func main()
-	var ss: [][]char :: cui@input().split(" ")
-	var N: int :: ss[0].toInt(&)
-	var K: int :: ss[1].toInt(&)
-	var primes: []int :: math@primeFactors(N)
+	var n: int :: cui@inputInt()
+	var k: int :: cui@inputInt()
+	var primes: []int :: math@primeFactors(n)
 	var min: int :: 1
-	for i(0, K - 1)
+	for i(0, k - 1)
 		do min :* primes[i]
 	end for
 	
 	var maxDivisorNum: int :: getDivisorNum(math@primeFactors(min))
 	var ans: int :: min
-	for n(min, N - 1)
-		var primes2: []int :: math@primeFactors(n)
+	for i(min, n - 1)
+		var primes2: []int :: math@primeFactors(i)
 		var divisorNum: int :: getDivisorNum(primes2)
 		if(divisorNum > maxDivisorNum)
-			if(commonDevisorNum(primes, primes2) >= K)
+			if(commonDevisorNum(primes, primes2) >= k)
 				do maxDivisorNum :: divisorNum
-				do ans :: n
+				do ans :: i
 			end if
 		end if
 	end for

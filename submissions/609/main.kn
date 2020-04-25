@@ -1,10 +1,9 @@
 var y: []int
 func main()
-	var n: int :: cui@input().toInt(&)
-	var ss: [][]char :: cui@input().split(" ")
+	var n: int :: cui@inputInt()
 	do @y :: #[n]int
 	for i(0, n - 1)
-		do @y[i] :: ss[i].toInt(&)
+		do @y[i] :: cui@inputInt()
 	end for
 	do @y.sort()
 	var yMin: int :: @y.min()

@@ -1,52 +1,51 @@
 func main()
-	var T: int :: cui@input().toInt(&)
-	for t(1, T)
-		var ss: [][]char :: cui@input().split(" ")
-		var AA: int :: ss[0].toInt(&)
-		var BB: int :: ss[1].toInt(&)
-		var CC: int :: ss[2].toInt(&)
+	var t: int :: cui@inputInt()
+	for(1, t)
+		var A: int :: cui@inputInt()
+		var B: int :: cui@inputInt()
+		var C: int :: cui@inputInt()
 		
-		; Bが最大のとき
+		; bが最大のとき
 		var ans1: int :: 10 ^ 10
 		block
-			var A: int :: AA
-			var B: int :: BB
-			var C: int :: CC
+			var a: int :: A
+			var b: int :: B
+			var c: int :: C
 			var cnt: int :: 0
-			if(A >= B)
-				do cnt :+ A - (B - 1)
-				do A :: B - 1
+			if(a >= b)
+				do cnt :+ a - (b - 1)
+				do a :: b - 1
 			end if
-			if(C >= B)
-				do cnt :+ C - (B - 1)
-				do C :: B - 1
+			if(c >= b)
+				do cnt :+ c - (b - 1)
+				do c :: b - 1
 			end if
-			if(A = C)
+			if(a = c)
 				do cnt :+ 1
-				do A :- 1
+				do a :- 1
 			end if
-			if(A > 0 & C > 0)
+			if(a > 0 & c > 0)
 				do ans1 :: cnt
 			end if
 		end block
 		
-		; Bが最小のとき
+		; bが最小のとき
 		var ans2: int :: 10 ^ 10
 		block
-			var A: int :: AA
-			var B: int :: BB
-			var C: int :: CC
+			var a: int :: A
+			var b: int :: B
+			var c: int :: C
 			var cnt: int :: 0
-			if(A = C)
+			if(a = c)
 				do cnt :+ 1
-				do A :- 1
+				do a :- 1
 			end if
-			var target: int :: lib@min(A, C)
-			if(B >= target)
-				do cnt :+ B - (target - 1)
-				do B :: target - 1
+			var target: int :: lib@min(a, c)
+			if(b >= target)
+				do cnt :+ b - (target - 1)
+				do b :: target - 1
 			end if
-			if(B > 0)
+			if(b > 0)
 				do ans2 :: cnt
 			end if
 		end block

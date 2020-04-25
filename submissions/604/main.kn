@@ -1,8 +1,7 @@
 func main()
-	var ss: [][]char :: cui@input().split(" ")
-	var a: int :: ss[0].toInt(&)
-	var b: int :: ss[1].toInt(&)
-	var c: int :: ss[2].toInt(&)
+	var a: int :: cui@inputInt()
+	var b: int :: cui@inputInt()
+	var c: int :: cui@inputInt()
 	
 	var ok: int :: 10 ^ 18
 	var ng: int :: 0

@@ -1,10 +1,9 @@
 func main()
-	var ss: [][]char :: cui@input().split(" ")
-	var a: int :: ss[0].toInt(&)
-	var b: int :: ss[1].toInt(&)
+	var a: int :: cui@inputInt()
+	var b: int :: cui@inputInt()
 	do cui@print("\{a / b}.")
 	do a :- a / b * b
-	for i(0, 49)
+	for(1, 50)
 		do a :* 10
 		do cui@print("\{a / b}")
 		do a :- a / b * b

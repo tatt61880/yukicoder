@@ -1,13 +1,12 @@
 func main()
-	var n: int :: cui@input().toInt(&)
+	var n: int :: cui@inputInt()
 	var x: []int :: [2, 3, 7]
 	var y: []int :: [8, 9, 9]
 	for(1, n)
-		var ss: [][]char :: cui@input().split(" ")
-		var x1: int :: ss[0].toInt(&)
-		var y1: int :: ss[1].toInt(&)
-		var x2: int :: ss[2].toInt(&)
-		var y2: int :: ss[3].toInt(&)
+		var x1: int :: cui@inputInt()
+		var y1: int :: cui@inputInt()
+		var x2: int :: cui@inputInt()
+		var y2: int :: cui@inputInt()
 		for i(0, 2)
 			if(x[i] = x1 & y[i] = y1)
 				do x[i] :: x2

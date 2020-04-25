@@ -1,25 +1,24 @@
 func main()
-	var ss: [][]char :: cui@input().split(" ")
-	var N: int :: ss[0].toInt(&)
-	var D: int :: ss[1].toInt(&)
+	var n: int :: cui@inputInt()
+	var d: int :: cui@inputInt()
 	var xy: []int :: #[2 * 2000 ^ 2 + 1]int
-	var zwD: []int :: #[2 * 2000 ^ 2 + 1]int
-	for x(1, N)
-		for y(1, N)
+	var zwd: []int :: #[2 * 2000 ^ 2 + 1]int
+	for x(1, n)
+		for y(1, n)
 			do xy[x ^ 2 + y ^ 2] :+ 1
 		end for
 	end for
-	for z(1, N)
-		for w(1, N)
-			var v: int :: w ^ 2 - z ^ 2 + D
+	for z(1, n)
+		for w(1, n)
+			var v: int :: w ^ 2 - z ^ 2 + d
 			if(v > 0)
-				do zwD[v] :+ 1
+				do zwd[v] :+ 1
 			end if
 		end for
 	end for
 	var ans: int
-	for i(1, 2 * N ^ 2)
-		do ans :+ xy[i] * zwD[i]
+	for i(1, 2 * n ^ 2)
+		do ans :+ xy[i] * zwd[i]
 	end for
 	do cui@print("\{ans}\n")
 end func

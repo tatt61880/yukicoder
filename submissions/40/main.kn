@@ -1,14 +1,14 @@
 func main()
-	var D: int :: cui@input().toInt(&)
-	var a: []int :: #[D + 1]int
-	var ss: [][]char :: cui@input().split(" ")
-	for i(0, D)
-		do a[i] :: ss[i].toInt(&)
+	var d: int :: cui@inputInt()
+	var a: []int :: #[d + 1]int
+	for i(0, d)
+		do a[i] :: cui@inputInt()
 	end for
-	for i(D, 3, -1)
+	for i(d, 3, -1)
 		do a[i - 2] :+ a[i]
 	end for
-	var d: int
+	
+	do d :: 0
 	for i(2, 0, -1)
 		if(a[i] <> 0)
 			do d :: i

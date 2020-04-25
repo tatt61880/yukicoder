@@ -1,12 +1,12 @@
 func main()
 	var n: int :: cui@inputInt()
-	var ss: [][]char :: cui@input().split(" ")
-	if(^ss = 3)
+	var strs: [][]char :: cui@input().split(" ")
+	if(^strs = 3)
 		do cui@print("\"assert\"\n")
 		ret
 	end if
 	var a: []int :: #[3]int
-	do a[0] :: ss[0].toInt(&)
+	do a[0] :: strs[0].toInt(&)
 	do a[1] :: cui@inputInt()
 	do a[2] :: cui@inputInt()
 	do a.sort()

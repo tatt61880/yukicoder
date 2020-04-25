@@ -1,10 +1,10 @@
 func main()
-	var n: int :: cui@input().toInt(&)
-	var A: []char :: cui@input()
-	var B: []char :: cui@input()
+	var n: int :: cui@inputInt()
+	var a: []char :: cui@input()
+	var b: []char :: cui@input()
 	var ans: int
 	for i(0, n - 1)
-		do ans :+ A[i] = B[i] ?(0, 1)
+		do ans :+ a[i] = b[i] ?(0, 1)
 	end for
 	do cui@print("\{ans}\n")
 end func

@@ -1,10 +1,9 @@
 func main()
-	var N: int :: cui@input().toInt(&)
-	var ss: [][]char :: cui@input().split(" ")
+	var n: int :: cui@inputInt()
 	var nums: []int :: #[7]int
-	for i(0, N - 1)
-		var L: int :: ss[i].toInt(&)
-		do nums[L] :+ 1
+	for i(0, n - 1)
+		var l: int :: cui@inputInt()
+		do nums[l] :+ 1
 	end for
 	
 	var ans: int

@@ -1,12 +1,17 @@
 func main()
-	var N: int :: cui@input().toInt(&)
-	var _a: [][]char :: cui@input().split(" ")
-	var _b: [][]char :: cui@input().split(" ")
+	var n: int :: cui@inputInt()
+	var a: []int :: #[n]int
+	for i(0, n - 1)
+		do a[i] :: cui@inputInt()
+	end for
+	var b: []int :: #[n]int
+	for i(0, n - 1)
+		do b[i] :: cui@inputInt()
+	end for
+
 	var sum: []int :: #[101]int
-	for i(0, N - 1)
-		var a: int :: _a[i].toInt(&)
-		var b: int :: _b[i].toInt(&)
-		do sum[b] :+ a
+	for i(0, n - 1)
+		do sum[b[i]] :+ a[i]
 	end for
 	var ans: bool :: sum.max() <= sum[0]
 	do cui@print(ans ?("YES\n", "NO\n"))

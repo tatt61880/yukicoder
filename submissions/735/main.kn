@@ -1,7 +1,6 @@
 func main()
-	var ss: [][]char :: cui@input().split(" ")
-	var r: float :: ss[0].toFloat(&)
-	var d: float :: ss[1].toFloat(&)
+	var r: float :: cui@inputFloat()
+	var d: float :: cui@inputFloat()
 	var ans: float :: (d ^ 2.0 - r ^ 2.0) ^ 0.5
 	do cui@print("\{ans.toStrFmt(".10f")}\n")
 end func

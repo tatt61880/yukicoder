@@ -1,8 +1,7 @@
 func main()
-	var _: [][]char :: cui@input().split(" ")
-	var a: int :: _[0].toInt(&)
-	var b: int :: _[1].toInt(&)
-	var c: int :: _[2].toInt(&)
+	var a: int :: cui@inputInt()
+	var b: int :: cui@inputInt()
+	var c: int :: cui@inputInt()
 	if(a = b | b = c | c = a)
 		do cui@print("0\n")
 		ret

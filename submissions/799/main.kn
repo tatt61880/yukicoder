@@ -1,9 +1,8 @@
 func main()
-	var ss: [][]char :: cui@input().split(" ")
-	var a: int :: ss[0].toInt(&)
-	var b: int :: ss[1].toInt(&)
-	var c: int :: ss[2].toInt(&)
-	var d: int :: ss[3].toInt(&)
+	var a: int :: cui@inputInt()
+	var b: int :: cui@inputInt()
+	var c: int :: cui@inputInt()
+	var d: int :: cui@inputInt()
 	var ans: int :: 0
 	for x(a, b)
 		for y(c, d)

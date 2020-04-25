@@ -1,12 +1,14 @@
 func main()
-	var _: [][]char :: cui@input().split(" ")
-	var N: int :: _[2].toInt(&)
+	var f: []int :: #[2]int
+	do f[0] :: cui@inputInt()
+	do f[1] :: cui@inputInt()
+	var n: int :: cui@inputInt()
 	var ans: int
-	switch i(N % 3)
+	switch i(n % 3)
 	case 2
-		do ans :: _[0].toInt(&) $ bit64.xor(_[1].toInt(&) $ bit64) $ int
+		do ans :: f[0] $ bit64.xor(f[1] $ bit64) $ int
 	default
-		do ans :: _[i].toInt(&)
+		do ans :: f[i]
 	end switch
 	do cui@print("\{ans}\n")
 end func

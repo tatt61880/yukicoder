@@ -1,11 +1,10 @@
 func main()
-	var ss: [][]char :: cui@input().split(" ")
-	var W: int :: ss[0].toInt(&)
-	var H: int :: ss[1].toInt(&)
-	var C: char :: ss[2][0]
+	var W: int :: cui@inputInt()
+	var H: int :: cui@inputInt()
+	var c: char :: cui@inputChar()
 	var cc: []char :: #[2]char
-	do cc[0] :: C
-	do cc[1] :: C = 'B' ?('W', 'B')
+	do cc[0] :: c
+	do cc[1] :: c = 'B' ?('W', 'B')
 	
 	for h(1, H)
 		var line: []char :: #[W]char

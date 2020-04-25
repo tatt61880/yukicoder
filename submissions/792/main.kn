@@ -1,15 +1,13 @@
 func main()
-	var n: int :: cui@input().toInt(&)
+	var n: int :: cui@inputInt()
 	var nn: int :: 2 ^ n
 	var q: [][]int :: #[nn, n]int
 	var r: []int :: #[nn]int
-	var ss: [][]char
 	for i(0, nn - 1)
-		do ss :: cui@input().split(" ")
 		for j(0, n - 1)
-			do q[i][j] :: ss[j].toInt(&)
+			do q[i][j] :: cui@inputInt()
 		end for
-		do r[i] :: ss[n].toInt(&)
+		do r[i] :: cui@inputInt()
 	end for
 	var cnt: int :: 0
 	for i(0, nn - 1)

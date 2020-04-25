@@ -1,8 +1,7 @@
 func main()
-	var ss: [][]char :: cui@input().split(" ")
-	var l: int :: ss[0].toInt(&)
-	var r: int :: ss[1].toInt(&)
-	var n: int :: ss[2].toInt(&)
+	var l: int :: cui@inputInt()
+	var r: int :: cui@inputInt()
+	var n: int :: cui@inputInt()
 	for i(0, n - 1)
 		do cui@print("\{f(l + n - i, r + n - i, n)}\n")
 	end for

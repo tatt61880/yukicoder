@@ -1,5 +1,5 @@
 func main()
-	var N: int :: cui@input().toInt(&)
+	var N: int :: cui@inputInt()
 	var ans: bool :: ^math@primeFactors(N) > 2
 	do cui@print(ans ?("YES\n", "NO\n"))
 end func

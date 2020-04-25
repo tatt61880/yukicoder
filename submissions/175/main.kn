@@ -1,6 +1,6 @@
 func main()
-	var L: int :: cui@input().toInt(&)
-	var N: int :: cui@input().toInt(&)
-	var ans: int :: 2 ^ (L - 3) * N
+	var l: int :: cui@inputInt()
+	var n: int :: cui@inputInt()
+	var ans: int :: 2 ^ (l - 3) * n
 	do cui@print("\{ans}\n")
 end func

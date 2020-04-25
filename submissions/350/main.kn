@@ -1,7 +1,6 @@
 func main()
-	var _: [][]char :: cui@input().split(" ")
-	var v: int :: _[0].split(".")[1].toInt(&)
-	var t: int :: _[1].toInt(&)
+	var v: int :: cui@inputStr().split(".")[1].toInt(&)
+	var t: int :: cui@inputInt()
 	var ans: int :: v * t / 10000
 	do cui@print("\{ans}\n")
 end func

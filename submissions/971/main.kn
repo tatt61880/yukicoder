@@ -1,7 +1,6 @@
 func main()
-	var ss: [][]char :: cui@input().split(" ")
-	var H: int :: ss[0].toInt(&)
-	var W: int :: ss[1].toInt(&)
+	var H: int :: cui@inputInt()
+	var W: int :: cui@inputInt()
 	var m: [][]char :: #[H, W]char
 	var mp: [][]int :: #[H, W]int
 	for h(0, H - 1)

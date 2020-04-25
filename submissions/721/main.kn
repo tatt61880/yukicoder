@@ -1,8 +1,8 @@
 func main()
-	var ss: [][]char :: cui@input().split("/")
-	var y: int :: ss[0].toInt(&)
-	var m: int :: ss[1].toInt(&)
-	var d: int :: ss[2].toInt(&)
+	var strs: [][]char :: cui@input().split("/")
+	var y: int :: strs[0].toInt(&)
+	var m: int :: strs[1].toInt(&)
+	var d: int :: strs[2].toInt(&)
 	var time: int :: lib@dateToInt(y, m, d, 0, 0, 0) + 86400 * 2
 	do lib@intToDate(time, &y, &m, &d, &, &, &)
 	do cui@print("\{y.toStrFmt("04d")}/\{m.toStrFmt("02d")}/\{d.toStrFmt("02d")}\n")

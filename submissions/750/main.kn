@@ -22,12 +22,11 @@ func main()
 		end func
 	end class
 	
-	var n: int :: cui@input().toInt(&)
+	var n: int :: cui@inputInt()
 	var fracs: []Frac :: #[n]Frac
 	for i(0, n - 1)
-		var ss: [][]char :: cui@input().split(" ")
-		var a: int :: ss[0].toInt(&)
-		var b: int :: ss[1].toInt(&)
+		var a: int :: cui@inputInt()
+		var b: int :: cui@inputInt()
 		do fracs[i] :: (#Frac).init(a, b)
 	end for
 	do fracs.sort()

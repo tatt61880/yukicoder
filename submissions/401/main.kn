@@ -1,15 +1,15 @@
 func main()
-	var N: int :: cui@input().toInt(&)
-	var arr: [][]int :: #[N, N]int
+	var n: int :: cui@inputInt()
+	var arr: [][]int :: #[n, n]int
 	var x: int :: 0
 	var y: int :: 0
 	var dx: int :: 1
 	var dy: int :: 0
-	for n(1, N ^ 2)
-		do arr[y][x] :: n
+	for i(1, n ^ 2)
+		do arr[y][x] :: i
 		do x :+ dx
 		do y :+ dy
-		if(x < 0 | N <= x | y < 0 | N <= y | arr[y][x] <> 0)
+		if(x < 0 | n <= x | y < 0 | n <= y | arr[y][x] <> 0)
 			do x :- dx
 			do y :- dy
 			var dx2: int :: -dy
@@ -20,10 +20,10 @@ func main()
 			do y :+ dy
 		end if
 	end for
-	for yy(0, N - 1)
-		for xx(0, N - 1)
+	for yy(0, n - 1)
+		for xx(0, n - 1)
 			do cui@print(arr[yy][xx].toStrFmt("03d"))
-			do cui@print(xx = N - 1 ?("\n", " "))
+			do cui@print(xx = n - 1 ?("\n", " "))
 		end for
 	end for
 end func

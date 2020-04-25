@@ -1,12 +1,12 @@
 func main()
-	var _: [][]char :: cui@input().split(" ")
-	var A: int :: _[0].toInt(&)
-	var B: int :: _[1].toInt(&)
-	for n(A, B)
+	var a: int :: cui@inputInt()
+	var b: int :: cui@inputInt()
+	for n(a, b)
 		if(f(n))
 			do cui@print("\{n}\n")
 		end if
 	end for
+	
 	func f(n: int): bool
 		if(n % 3 = 0)
 			ret true

@@ -1,10 +1,8 @@
 func main()
-	var ss: [][]char
-	var n: int :: cui@input().toInt(&)
-	do ss :: cui@input().split(" ")
+	var n: int :: cui@inputInt()
 	var a: []int :: #[n]int
 	for i(0, n - 1)
-		do a[i] :: ss[i].toInt(&)
+		do a[i] :: cui@inputInt()
 	end for
 	do a.sort()
 	var ans: int :: a[n - 1]

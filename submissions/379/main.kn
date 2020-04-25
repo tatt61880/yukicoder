@@ -1,8 +1,7 @@
 func main()
-	var ss: [][]char :: cui@input().split(" ")
-	var n: int :: ss[0].toInt(&)
-	var g: int :: ss[1].toInt(&)
-	var v: int :: ss[2].toInt(&)
+	var n: int :: cui@inputInt()
+	var g: int :: cui@inputInt()
+	var v: int :: cui@inputInt()
 	do n :/ 5
 	var ans: float :: (g * n) $ float / v $ float
 	do cui@print("\{ans.toStrFmt(".15f")}\n")

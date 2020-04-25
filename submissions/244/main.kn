@@ -1,3 +1,5 @@
 func main()
-	do cui@print((cui@input().toInt(&) - 1).toStr())
+    var n: int :: cui@inputInt()
+    var ans: int :: n - 1
+	do cui@print("\{ans}\n")
 end func

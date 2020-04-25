@@ -1,7 +1,6 @@
 func main()
-	var ss: [][]char :: cui@input().split(" ")
-	var a: int :: ss[0].toInt(&)
-	var b: int :: ss[1].toInt(&)
+	var a: int :: cui@inputInt()
+	var b: int :: cui@inputInt()
 	var ans: bool :: a + 1 <= b
 	do cui@print("\{ans ?("YES", "NO")}\n")
 	do cui@print("\{(b - a - 1).abs()}\n")

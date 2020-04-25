@@ -1,5 +1,5 @@
 func main()
-	var n: int :: cui@input().toInt(&)
+	var n: int :: cui@inputInt()
 	var ans: bool :: n = 1
 	do cui@print(ans ?("square1001\n", "Petr\n"))
 end func

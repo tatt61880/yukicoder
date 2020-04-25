@@ -22,7 +22,7 @@ func main()
 		elif(strs[0] <> "")
 			var ans: int :: strs[0].toInt(&)
 			for(2, n)
-				var a: int :: cui@input().toInt(&)
+				var a: int :: cui@inputInt()
 				do ans :+ a
 			end for
 			do cui@print("\{ans}\n")

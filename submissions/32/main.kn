@@ -1,7 +1,7 @@
 func main()
-	var L: int :: cui@input().toInt(&)
-	var M: int :: cui@input().toInt(&)
-	var N: int :: cui@input().toInt(&)
+	var L: int :: cui@inputInt()
+	var M: int :: cui@inputInt()
+	var N: int :: cui@inputInt()
 	var sum: int :: L * 100 + M * 25 + N
 	var n: int :: sum % 25
 	do sum :- n

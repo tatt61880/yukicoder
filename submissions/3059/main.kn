@@ -1,7 +1,7 @@
 func main()
-	var t: int :: cui@input().toInt(&)
-	for i(1, t)
-		var x: int :: cui@input().toInt(&)
+	var t: int :: cui@inputInt()
+	for(1, t)
+		var x: int :: cui@inputInt()
 		do cui@print((x = 0 | x = 45) ?("Y\n", "N\n"))
 	end for
 end func

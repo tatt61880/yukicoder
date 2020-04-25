@@ -1,9 +1,8 @@
 func main()
-	var ss: [][]char :: cui@input().split(" ")
-	var n: int :: ss[0].toInt(&)
-	var m: int :: ss[1].toInt(&)
-	var p: int :: ss[2].toInt(&)
-	var q: int :: ss[3].toInt(&)
+	var n: int :: cui@inputInt()
+	var m: int :: cui@inputInt()
+	var p: int :: cui@inputInt()
+	var q: int :: cui@inputInt()
 	
 	var ans: int :: n / ((12 + q) * m) * 12
 	do n :% ((12 + q) * m)

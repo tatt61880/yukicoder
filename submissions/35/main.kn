@@ -1,14 +1,13 @@
 func main()
-	var N: int :: cui@input().toInt(&)
+	var n: int :: cui@inputInt()
 	var ok: int
 	var ng: int
-	for(1, N)
-		var ss: [][]char :: cui@input().split(" ")
-		var T: int :: ss[0].toInt(&)
-		var S: []char :: ss[1]
+	for(1, n)
+		var t: int :: cui@inputInt()
+		var s: []char :: cui@inputStr()
 		
-		var typeMax: int :: T * 12 / 1000
-		var sLen: int :: ^S
+		var typeMax: int :: t * 12 / 1000
+		var sLen: int :: ^s
 		
 		var type: int :: [typeMax, sLen].min()
 		var miss: int :: sLen - type

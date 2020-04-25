@@ -1,7 +1,7 @@
 func main()
-	var a: int :: cui@input().toInt(&)
-	var b: int :: cui@input().toInt(&)
-	var c: int :: cui@input().toInt(&)
+	var a: int :: cui@inputInt()
+	var b: int :: cui@inputInt()
+	var c: int :: cui@inputInt()
 	var ans: bool :: ((a + b - 1) / b) * 2 >= ((a + c - 1) / c) * 3
 	do cui@print(ans ?("YES\n", "NO\n"))
 end func

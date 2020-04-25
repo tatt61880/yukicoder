@@ -1,5 +1,5 @@
 func main()
-	var a: int :: cui@input().toInt(&)
-	var b: int :: cui@input().toInt(&)
+	var a: int :: cui@inputInt()
+	var b: int :: cui@inputInt()
 	do cui@print("\{(a * 40 * 40 <= b) $ int + 1}\n")
 end func

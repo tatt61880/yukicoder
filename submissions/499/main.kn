@@ -1,5 +1,5 @@
 func main()
-	var N: int :: cui@input().toInt(&)
+	var N: int :: cui@inputInt()
 	var ans: []char :: ""
 	while a(true)
 		do ans :~ "\{N % 7}"

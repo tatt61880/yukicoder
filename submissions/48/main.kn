@@ -1,15 +1,15 @@
 func main()
-	var X: int :: cui@input().toInt(&)
-	var Y: int :: cui@input().toInt(&)
-	var L: int :: cui@input().toInt(&)
+	var x: int :: cui@inputInt()
+	var y: int :: cui@inputInt()
+	var l: int :: cui@inputInt()
 	
 	var ans: int
-	if(Y < 0)
+	if(y < 0)
 		do ans :+ 2
-	elif(X <> 0)
+	elif(x <> 0)
 		do ans :+ 1
 	end if
-	do ans :+ (X.abs() + L - 1) / L
-	do ans :+ (Y.abs() + L - 1) / L
+	do ans :+ (x.abs() + l - 1) / l
+	do ans :+ (y.abs() + l - 1) / l
 	do cui@print("\{ans}\n")
 end func

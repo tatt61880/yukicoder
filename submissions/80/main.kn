@@ -1,5 +1,5 @@
 func main()
-	var n: int :: cui@input().toInt(&)
+	var n: int :: cui@inputInt()
 	var x: int :: n / 4
 	var y: int :: n / 4 + (n % 4 >= 2 ?(1, 0))
 	var ans: int :: x * y

@@ -1,8 +1,8 @@
 func main()
-	var n: int :: [cui@input().toInt(&), 60].min()
+	var n: int :: cui@inputInt()
 	var ans: int :: 1
 	var f: bool :: false
-	for i(1, n)
+	for i(1, [n, 60].min())
 		do ans :* i
 		if(ans >= 10 ^ 12)
 			do f :: true

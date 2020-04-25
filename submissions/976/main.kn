@@ -1,7 +1,7 @@
 func main()
-	var m: int :: cui@input().toInt(&)
+	var m: int :: cui@inputInt()
 	var ans: int :: 1
-	for i(1, 128)
+	for(1, 128)
 		do ans :* 2
 		do ans :% m
 	end for

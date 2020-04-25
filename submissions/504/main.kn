@@ -1,10 +1,10 @@
 func main()
-	var N: int :: cui@input().toInt(&)
-	var a0: int :: cui@input().toInt(&)
+	var n: int :: cui@inputInt()
+	var a0: int :: cui@inputInt()
 	var ans: int :: 1
 	do cui@print("1\n")
-	for i(1, N - 1)
-		var a: int :: cui@input().toInt(&)
+	for(1, n - 1)
+		var a: int :: cui@inputInt()
 		if(a > a0)
 			do ans :+ 1
 		end if

@@ -1,8 +1,8 @@
 func main()
-	var N: int :: cui@input().toInt(&)
+	var n: int :: cui@inputInt()
 	var ans: []int :: #[0]int
-	for i(0, N)
-		for j(0, N)
+	for i(0, n)
+		for j(0, n)
 			do ans :~ [2 ^ i * 5 ^ j]
 		end for
 	end for

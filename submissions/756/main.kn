@@ -1,9 +1,9 @@
 func main()
-	var N: int :: cui@input().toInt(&)
+	var n: int :: cui@inputInt()
 	var s: []char :: "."
 	for i(1, 100)
 		do s :~ "\{i}"
 	end for
-	var ans: char :: s[N]
+	var ans: char :: s[n]
 	do cui@print("\{ans}\n")
 end func

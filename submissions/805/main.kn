@@ -1,16 +1,16 @@
 func main()
-	var N: int :: cui@input().toInt(&)
-	var S: []char :: cui@input()
+	var n: int :: cui@inputInt()
+	var s: []char :: cui@input()
 	var ans: int
-	for i(0, N - 3)
-		if(S[i] <> 'U')
+	for i(0, n - 3)
+		if(s[i] <> 'U')
 			skip i
 		end if
-		for j(i + 1, N - 2)
-			if(S[j] <> 'M')
+		for j(i + 1, n - 2)
+			if(s[j] <> 'M')
 				skip j
 			end if
-			if(2 * j - i < N & S[2 * j - i] = 'G')
+			if(2 * j - i < n & s[2 * j - i] = 'G')
 				do ans :+ 1
 			end if
 		end for

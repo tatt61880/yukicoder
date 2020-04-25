@@ -1,15 +1,15 @@
 func main()
-	var n: int :: cui@input().toInt(&)
-	var ans: int
-	var s: []char :: #[2 * n]char
+	var n: int :: cui@inputInt()
+	
+	var ans: []char :: #[2 * n]char
 	for i(0, n - 1)
 		if(i = n - 1)
-			do s[i * 2] :: '1'
-			do s[i * 2 + 1] :: '\n'
+			do ans[i * 2] :: '1'
+			do ans[i * 2 + 1] :: '\n'
 		else
-			do s[i * 2] :: '3'
-			do s[i * 2 + 1] :: ' '
+			do ans[i * 2] :: '3'
+			do ans[i * 2 + 1] :: ' '
 		end if
 	end for
-	do cui@print(s)
+	do cui@print(ans)
 end func

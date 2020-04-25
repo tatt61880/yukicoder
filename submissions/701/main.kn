@@ -1,5 +1,5 @@
 func main()
-	var n: int :: cui@input().toInt(&)
+	var n: int :: cui@inputInt()
 	for i(1, n)
 		do cui@print("a\{f(i.toStr())}" ~ (i = n ?("n\n", "a\n")))
 	end for

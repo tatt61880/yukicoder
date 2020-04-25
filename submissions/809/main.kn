@@ -1,4 +1,4 @@
 func main()
-	var C: int :: cui@input().toInt(&)
-	do cui@print("1 \{C}\n")
+	var c: int :: cui@inputInt()
+	do cui@print("1 \{c}\n")
 end func

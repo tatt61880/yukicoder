@@ -1,5 +1,5 @@
 func main()
-	var n: float :: cui@input().toFloat(&)
-	var ans: float :: 1.0 / n
+	var n: int :: cui@inputInt()
+	var ans: float :: 1.0 / n $ float
 	do cui@print("\{ans}\n")
 end func

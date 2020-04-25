@@ -1,5 +1,5 @@
 func main()
-	var n: int :: cui@input().toInt(&)
+	var n: int :: cui@inputInt()
 	var ans: int :: 3 * n / 2
 	do cui@print("\{ans}\n")
 end func

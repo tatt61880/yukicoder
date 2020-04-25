@@ -1,9 +1,9 @@
 func main()
-	var W: int :: cui@input().toInt(&)
-	var D: int :: cui@input().toInt(&)
-	for d(D, 2, -1)
-		do W :- W / d ^ 2
+	var w: int :: cui@inputInt()
+	var d: int :: cui@inputInt()
+	for day(d, 2, -1)
+		do w :- w / day ^ 2
 	end for
-	var ans: int :: W
+	var ans: int :: w
 	do cui@print("\{ans}\n")
 end func

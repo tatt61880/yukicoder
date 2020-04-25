@@ -1,4 +1,5 @@
 func main()
-	var n: int :: cui@input().toInt(&)
-	do cui@print("\{n * 10}\n")
+	var n: int :: cui@inputInt()
+	var ans: int :: n * 10
+	do cui@print("\{ans}\n")
 end func

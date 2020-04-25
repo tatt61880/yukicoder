@@ -1,13 +1,13 @@
 func main()
-	var ss: [][]char
-	do ss :: cui@input().split(".")
-	var a0: int :: ss[0].toInt(&)
-	var b0: int :: ss[1].toInt(&)
-	var c0: int :: ss[2].toInt(&)
-	do ss :: cui@input().split(".")
-	var a1: int :: ss[0].toInt(&)
-	var b1: int :: ss[1].toInt(&)
-	var c1: int :: ss[2].toInt(&)
+	var vers: [][]char
+	do vers :: cui@input().split(".")
+	var a0: int :: vers[0].toInt(&)
+	var b0: int :: vers[1].toInt(&)
+	var c0: int :: vers[2].toInt(&)
+	do vers :: cui@input().split(".")
+	var a1: int :: vers[0].toInt(&)
+	var b1: int :: vers[1].toInt(&)
+	var c1: int :: vers[2].toInt(&)
 	
 	var abc0: int :: a0 * 1000000 + b0 * 1000 + c0
 	var abc1: int :: a1 * 1000000 + b1 * 1000 + c1

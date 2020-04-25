@@ -1,0 +1,12 @@
+func main()
+	var n: int :: cui@inputInt()
+	var m: int :: cui@inputInt()
+	var cnt: dict<int, int> :: #dict<int, int>
+	for(1, n)
+		var l: int :: cui@inputInt()
+		do cnt.add(l, cnt.get(l, &) + 1)
+	end for
+	for i(1, m)
+		do cui@print("\{i} \{cnt.get(i, &)}\n")
+	end for
+end func

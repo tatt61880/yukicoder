@@ -1,11 +1,9 @@
 func main()
-	var ss: [][]char
-	do ss :: cui@input().split(" ")
-	var sa: []char :: ss[0]
-	var pa: []char :: ss[1]
-	do ss :: cui@input().split(" ")
-	var sb: []char :: ss[0]
-	var pb: []char :: ss[1]
+	var sa: []char :: cui@inputStr()
+	var pa: []char :: cui@inputStr()
+	do cui@inputStr()
+	var sb: []char :: cui@inputStr()
+	var pb: []char :: cui@inputStr()
 	
 	var ans: []char :: "-1"
 	var res: int :: f(pa, pb)

@@ -1,19 +1,18 @@
 func main()
-	var N: int :: cui@input().toInt(&)
-	var ss: [][]char :: cui@input().split(" ")
-	var C: []int :: #[N]int
-	for i(0, N - 1)
-		do C[i] :: ss[i].toInt(&)
+	var n: int :: cui@input().toInt(&)
+	var c: []int :: #[n]int
+	for i(0, n - 1)
+		do c[i] :: cui@inputInt()
 	end for
 	
 	var sum: int
-	for i(0, N - 1)
-		do sum :+ C[i]
+	for i(0, n - 1)
+		do sum :+ c[i]
 	end for
 	
 	var ans: int
-	for i(0, N - 1)
-		if(C[i] * 10 <= sum)
+	for i(0, n - 1)
+		if(c[i] * 10 <= sum)
 			do ans :+ 30
 		end if
 	end for

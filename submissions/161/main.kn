@@ -3,10 +3,9 @@ func main()
 	do mp.add('G', 0)
 	do mp.add('C', 1)
 	do mp.add('P', 2)
-	var ss: [][]char :: cui@input().split(" ")
 	var m: []int :: #[3]int
 	for i(0, 2)
-		do m[i] :: ss[i].toInt(&)
+		do m[i] :: cui@inputInt()
 	end for
 	
 	var s: []char :: cui@input()

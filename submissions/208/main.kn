@@ -1,11 +1,8 @@
 func main()
-	var ss: [][]char
-	do ss :: cui@input().split(" ")
-	var x: int :: ss[0].toInt(&)
-	var y: int :: ss[1].toInt(&)
-	do ss :: cui@input().split(" ")
-	var x2: int :: ss[0].toInt(&)
-	var y2: int :: ss[1].toInt(&)
+	var x: int :: cui@inputInt()
+	var y: int :: cui@inputInt()
+	var x2: int :: cui@inputInt()
+	var y2: int :: cui@inputInt()
 	var ans: int :: [x, y].max()
 	if(x = y & x2 = y2 & x2 < x)
 		do ans :+ 1

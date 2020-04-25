@@ -1,8 +1,7 @@
 func main()
-	var ss: [][]char :: cui@input().split(" ")
-	var N: int :: ss[0].toInt(&)
-	var K: int :: ss[1].toInt(&)
-	switch(N - K)
+	var n: int :: cui@inputInt()
+	var k: int :: cui@inputInt()
+	switch(n - k)
 	case 1, -2
 		do cui@print("Lost")
 	case 2, -1

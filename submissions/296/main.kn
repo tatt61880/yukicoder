@@ -1,12 +1,11 @@
 func main()
-	var ss: [][]char :: cui@input().split(" ")
-	var N: int :: ss[0].toInt(&)
-	var H: int :: ss[1].toInt(&)
-	var M: int :: ss[2].toInt(&)
-	var T: int :: ss[3].toInt(&)
-	do M :+ T * (N - 1)
-	do H :+ M / 60
-	do M :% 60
-	do H :% 24
-	do cui@print("\{H}\n\{M}\n")
+	var n: int :: cui@inputInt()
+	var h: int :: cui@inputInt()
+	var m: int :: cui@inputInt()
+	var t: int :: cui@inputInt()
+	do m :+ t * (n - 1)
+	do h :+ m / 60
+	do m :% 60
+	do h :% 24
+	do cui@print("\{h}\n\{m}\n")
 end func

@@ -1,13 +1,12 @@
 func main()
-	var ss: [][]char
-	do ss :: cui@input().split(" ")
-	var a: int :: ss[0].toInt(&)
-	var b: int :: ss[1].toInt(&)
+	var strs: [][]char :: cui@input().split(" ")
+	var a: int :: strs[0].toInt(&)
+	var b: int :: strs[1].toInt(&)
 	var ans: int
 	if(b < 0)
 		do ans :: a + b
 		do cui@print("\{ans}\n")
-	elif(ss[1][0] = '+')
+	elif(strs[1][0] = '+')
 		do ans :: a + b
 		do cui@print("\{ans}\n")
 	elif(a = 0)

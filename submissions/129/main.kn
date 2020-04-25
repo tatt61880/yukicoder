@@ -1,18 +1,18 @@
 func main()
-	var N: int :: cui@input().toInt(&)
-	var M: int :: cui@input().toInt(&)
-	var num: int :: (N / 1000) % M
+	var n: int :: cui@inputInt()
+	var m: int :: cui@inputInt()
+	var num: int :: (n / 1000) % m
 	var primeNums: []int :: #[10000]int
-	for n(M, M - num + 1, -1)
-		var primes: []int :: math@primeFactors(n)
-		for i(0, ^primes - 1)
-			do primeNums[primes[i]] :+ 1
+	for i(m, m - num + 1, -1)
+		var primes: []int :: math@primeFactors(i)
+		for j(0, ^primes - 1)
+			do primeNums[primes[j]] :+ 1
 		end for
 	end for
-	for n(1, num)
-		var primes: []int :: math@primeFactors(n)
-		for i(0, ^primes - 1)
-			do primeNums[primes[i]] :- 1
+	for i(1, num)
+		var primes: []int :: math@primeFactors(i)
+		for j(0, ^primes - 1)
+			do primeNums[primes[j]] :- 1
 		end for
 	end for
 	var ans: int :: 1

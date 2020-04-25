@@ -1,15 +1,14 @@
 func main()
-	var N: int :: cui@input().toInt(&)
-	var M: int :: cui@input().toInt(&)
+	var n: int :: cui@inputInt()
+	var m: int :: cui@inputInt()
 	
 	var cup: []bool :: #[4]bool
-	do cup[N] :: true
+	do cup[n] :: true
 	
-	for(1, M)
-		var ss: [][]char :: cui@input().split(" ")
-		var P: int :: ss[0].toInt(&)
-		var Q: int :: ss[1].toInt(&)
-		do cup[P] :$ cup[Q]
+	for(1, m)
+		var p: int :: cui@inputInt()
+		var q: int :: cui@inputInt()
+		do cup[p] :$ cup[q]
 	end for
 	
 	for i(1, 3)

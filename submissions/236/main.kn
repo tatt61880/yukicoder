@@ -1,9 +1,8 @@
 func main()
-	var ss: [][]char :: cui@input().split(" ")
-	var a: float :: ss[0].toFloat(&)
-	var b: float :: ss[1].toFloat(&)
-	var x: float :: ss[2].toFloat(&)
-	var y: float :: ss[3].toFloat(&)
+	var a: float :: cui@inputFloat()
+	var b: float :: cui@inputFloat()
+	var x: float :: cui@inputFloat()
+	var y: float :: cui@inputFloat()
 	if(a / b >= x / y)
 		do y :: x * b / a
 	else

@@ -1,15 +1,16 @@
 func main()
-	var T: int :: cui@input().toInt(&)
-	for(1, T)
+	var t: int :: cui@inputInt()
+	for(1, t)
 		var ans: int :: 11
-		var S: []char :: cui@input()
-		for i(0, ^S - 11)
-			for j(i + 4, ^S - 7)
-				do ans :: [ans, f(i, j, S)].min()
+		var s: []char :: cui@input()
+		for i(0, ^s - 11)
+			for j(i + 4, ^s - 7)
+				do ans :: [ans, f(i, j, s)].min()
 			end for
 		end for
 		do cui@print("\{ans}\n")
 	end for
+
 	func f(i: int, j: int, s: []char): int
 		var res: int :: 0
 		for ii(0, 3)

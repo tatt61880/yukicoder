@@ -1,12 +1,11 @@
 func main()
-	var ss: [][]char :: cui@input().split(" ")
-	var N: int :: ss[0].toInt(&)
-	var K: int :: ss[1].toInt(&)
-	var S: []char :: cui@input()
-	var i: int :: K - 1
+	var n: int :: cui@inputInt()
+	var k: int :: cui@inputInt()
+	var s: []char :: cui@input()
+	var i: int :: k - 1
 	var nestLevel: int :: 0
 	while(true)
-		do nestLevel :+ S[i] = '(' ?(1, -1)
+		do nestLevel :+ s[i] = '(' ?(1, -1)
 		if(nestLevel = 0)
 			do cui@print("\{i + 1}\n")
 			ret

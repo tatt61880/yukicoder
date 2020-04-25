@@ -1,10 +1,9 @@
 func main()
 	var items: []int :: #[11]int
-	var N: int :: cui@input().toInt(&)
-	for(1, N)
-		var ss: [][]char :: cui@input().split(" ")
-		for i(0, 2)
-			do items[ss[i].toInt(&)] :+ 1
+	var n: int :: cui@inputInt()
+	for(1, n)
+		for(1, 3)
+			do items[cui@inputInt()] :+ 1
 		end for
 	end for
 	

@@ -1,9 +1,9 @@
 func main()
-	var N: int :: cui@input().toInt(&)
-	var M: int :: cui@input().toInt(&)
+	var n: int :: cui@inputInt()
+	var m: int :: cui@inputInt()
     
-	var totalNum: int :: N / 1000
-	var num: int :: totalNum / M
+	var totalNum: int :: n / 1000
+	var num: int :: totalNum / m
 	var ans: int :: num * 1000
 	do cui@print("\{ans}\n")
 end func

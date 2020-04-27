@@ -1,0 +1,5 @@
+func main()
+	var s: []char :: cui@input()
+	var ans: int :: (^"1000000007" - ^s).abs()
+	do cui@print("\{ans}\n")
+end func

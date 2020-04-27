@@ -1,0 +1,16 @@
+func main()
+	var n: int :: cui@inputInt()
+	var a: []int :: #[n]int
+	for i(0, n - 1)
+		do a[i] :: cui@inputInt()
+	end for
+	do a.sort()
+	
+	if(n % 2 = 1)
+		do cui@print("\{a[n / 2]}\n")
+	else
+		var ans: float :: (a[n / 2] + a[n / 2 - 1]) $ float / 2.0
+		do cui@print("\{ans}\n")
+	end if
+	
+end func

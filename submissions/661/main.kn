@@ -1,0 +1,15 @@
+func main()
+	var i: int :: cui@inputInt()
+	for(1, i)
+		var n: int :: cui@inputInt()
+		if(n % 40 = 0)
+			do cui@print("ikisugi\n")
+		elif(n % 10 = 0)
+			do cui@print("sugi\n")
+		elif(n % 8 = 0)
+			do cui@print("iki\n")
+		else
+			do cui@print("\{n / 3}\n")
+		end if
+	end for
+end func

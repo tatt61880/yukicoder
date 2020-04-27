@@ -1,0 +1,11 @@
+func main()
+	var n: int :: cui@inputInt()
+	var k: int :: cui@inputInt()
+	if(k = 0 | k > n)
+		do cui@print("0\n")
+		ret
+	end if
+	
+	var ans: int :: n - ((n + 1 - k = k) ?(1, 2))
+	do cui@print("\{ans}\n")
+end func

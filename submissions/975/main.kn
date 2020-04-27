@@ -1,5 +1,6 @@
 func main()
-	var x: int :: cui@input().split(" ")[0].toInt(&)
+	var x: int :: cui@inputInt()
+	do cui@input()
 	var regex: regex@Regex :: regex@makeRegex("\\b\{x}\\b")
 	do cui@print("\{["-1", "MaxValu", "MrMax", "MrMaxValu"][
 	|(regex.find(&, cui@input(), -1) <>& null ?(2, 0)) +

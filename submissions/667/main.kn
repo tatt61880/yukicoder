@@ -1,0 +1,16 @@
+func main()
+	var s: []char :: cui@input()
+	var n: int :: ^s
+	var ok: int :: 0
+	for i(0, n - 1)
+		if(s[i] = 'o')
+			do ok :+ 1
+		end if
+	end for
+	for i(0, n - 1)
+		do cui@print("\{(100.0 $ float * ok $ float / (n - i) $ float).toStrFmt(".13f")}\n")
+		if(s[i] = 'o')
+			do ok :- 1
+		end if
+	end for
+end func

@@ -1,0 +1,28 @@
+func main()
+	var a: int :: cui@inputInt()
+	var b: int :: cui@inputInt()
+	var c: int :: cui@inputInt()
+	var ans: int :: 10 ^ 10
+	for aa(0, a)
+		for bb(0, b)
+			if(aa + bb = 0)
+				skip bb
+			end if
+			for x(1, 220)
+				var change: int :: 10 * bb + aa - x
+				if(change < 0)
+					skip x
+				end if
+				var cc: int :: change / 10 + change % 10
+				if(a + b - aa - bb + cc = c)
+					do ans :: [ans, x].min()
+				end if
+			end for
+		end for
+	end for
+	if(ans = 10 ^ 10)
+		do cui@print("Impossible\n")
+	else
+		do cui@print("\{ans}\n")
+	end if
+end func

@@ -1,0 +1,6 @@
+func main()
+	var n: int :: cui@inputInt()
+	
+	var ans: float :: n $ float / 2.0
+	do cui@print("\{ans}\n")
+end func

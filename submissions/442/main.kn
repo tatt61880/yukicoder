@@ -1,0 +1,29 @@
+func main()
+	var a: int :: cui@inputInt()
+	var b: int :: cui@inputInt()
+	var sum: int :: a + b
+	
+	var factors: []int :: math@primeFactors(sum)
+	var factorsA: []int :: math@primeFactors(a)
+	var factorsB: []int :: math@primeFactors(b)
+	var ans: int :: 1
+	for i(0, ^factorsA - 1)
+		for j(0, ^factors - 1)
+			if(factorsA[i] = factors[j])
+				do factors[j] :: 1
+				do ans :* factorsA[i]
+				break j
+			end if
+		end for
+	end for
+	for i(0, ^factorsB - 1)
+		for j(0, ^factors - 1)
+			if(factorsB[i] = factors[j])
+				do factors[j] :: 1
+				do ans :* factorsB[i]
+				break j
+			end if
+		end for
+	end for
+	do cui@print("\{ans}\n")
+end func

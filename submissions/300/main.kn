@@ -1,0 +1,18 @@
+func main()
+	var x: int :: cui@inputInt()
+	var a: []int :: math@primeFactors(x)
+	var nums: dict<int, int> :: #dict<int, int>
+	for i(0, ^a - 1)
+		do nums.add(a[i], nums.get(a[i], &) + 1)
+	end for
+	
+	var ans: int :: 1
+	var keys: []int :: nums.toArrayKey()
+	var vals: []int :: nums.toArrayValue()
+	for i(0, ^keys - 1)
+		if(vals[i] % 2 = 1)
+			do ans :* keys[i]
+		end if
+	end for
+	do cui@print("\{ans}\n")
+end func

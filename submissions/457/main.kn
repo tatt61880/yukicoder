@@ -1,0 +1,41 @@
+func main()
+	var s: []char :: cui@input()
+	var a: int :: f(s)
+	do s.reverse()
+	for i(0, ^s - 1)
+		switch(s[i])
+		case '('
+			do s[i] :: ')'
+		case ')'
+			do s[i] :: '('
+		end switch
+	end for
+	var b: int :: f(s)
+	do cui@print("\{a} \{b}\n")
+	
+	func f(s: []char): int
+		var res: int :: 0
+		var n: int :: ^s
+		for i(0, n - 1)
+			if(s[i] = '(')
+				var x: int :: 0
+				var y: int :: 0
+				for j(i + 1, n - 1)
+					switch(s[j])
+					case '^'
+						do x :+ 1
+					case '*'
+						if(x >= 2)
+							do y :+ 1
+						end if
+					case ')'
+						if(y >= 1)
+							do res :+ 1
+						end if
+					end switch
+				end for
+			end if
+		end for
+		ret res
+	end func
+end func

@@ -1,0 +1,10 @@
+func main()
+	var n: int :: 6
+	var a: []int :: #[n]int
+	for i(0, 5)
+		do a[i] :: cui@inputInt()
+	end for
+	do a.sort()
+	var ans: float :: (a[1] + a[2] + a[3] + a[4]) $ float / 4.0
+	do cui@print("\{ans.toStrFmt(".2f")}\n")
+end func

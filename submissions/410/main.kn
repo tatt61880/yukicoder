@@ -1,0 +1,9 @@
+func main()
+	var px: int :: cui@inputInt()
+	var py: int :: cui@inputInt()
+	var qx: int :: cui@inputInt()
+	var qy: int :: cui@inputInt()
+	
+	var ans: float :: ((px - qx).abs() + (py - qy).abs()) $ float / 2.0
+	do cui@print("\{ans}\n")
+end func

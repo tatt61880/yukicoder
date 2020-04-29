@@ -1,0 +1,5 @@
+func main()
+	var strs: [][]char :: cui@input().split("n")
+	var ans: int :: ^strs - 1
+	do cui@print("\{ans}\n")
+end func

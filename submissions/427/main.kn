@@ -1,0 +1,5 @@
+func main()
+	var h: int :: cui@inputInt()
+	var w: int :: cui@inputInt()
+	do cui@print(h > w ?("TATE\n", "YOKO\n"))
+end func

@@ -1,0 +1,12 @@
+func main()
+	var s: []char :: cui@input()
+	for i(0, ^s - 1)
+		if(s[i] = '<')
+			do s[i] :: '>'
+		else
+			do s[i] :: '<'
+		end if
+	end for
+	do s.reverse()
+	do cui@print("\{s}\n")
+end func

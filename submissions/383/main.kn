@@ -1,0 +1,10 @@
+func main()
+	var a: int :: cui@inputInt()
+	var b: int :: cui@inputInt()
+	var ans: int :: b - a
+	if(ans = 0)
+		do cui@print("0\n")
+	else
+		do cui@print("\{ans.toStrFmt("+d")}\n")
+	end if
+end func

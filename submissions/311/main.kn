@@ -1,0 +1,5 @@
+func main()
+	var n: int :: cui@inputInt()
+	var ans: int :: (n / 3 + n / 5) * 2
+	do cui@print("\{ans}\n")
+end func

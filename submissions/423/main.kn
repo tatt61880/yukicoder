@@ -1,0 +1,7 @@
+func main()
+	var s: []char :: cui@input()
+	if(s <> "ham")
+		do s :~ "ham"
+	end if
+	do cui@print(s ~ "\n")
+end func

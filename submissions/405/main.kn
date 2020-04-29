@@ -1,0 +1,10 @@
+func main()
+	var strs: [][]char :: ["I", "II", "III", "IIII", "V", "VI", "VII", "VIII", "IX", "X", "XI", "XII"]
+	var s1: []char :: cui@inputStr()
+	var t: int :: cui@inputInt()
+	for i(0, ^strs - 1)
+		if(strs[i] = s1)
+			do cui@print("\{strs[(i + t + 1200) % 12]}\n")
+		end if
+	end for
+end func

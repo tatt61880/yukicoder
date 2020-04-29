@@ -1,0 +1,43 @@
+func main()
+	var n: int :: cui@inputInt()
+	var tags: dict<[]char, int> :: #dict<[]char, int>
+	for(1, n)
+		do cui@input()
+		var m: int :: cui@inputInt()
+		var s: int :: cui@inputInt()
+		for(1, m)
+			var t: []char :: cui@inputStr()
+			do tags.add(t, tags.get(t, &) + s)
+		end for
+	end for
+	class TagData()
+		+var tag: []char
+		+var score: int
+		+func init(t: []char, s: int): TagData
+			do me.tag :: t
+			do me.score :: s
+			ret me
+		end func
+		+*func cmp(t: TagData): int
+			if(t.score < me.score)
+				ret - 1
+			elif(t.score = me.score)
+				ret me.tag < t.tag ?(-1, 1)
+			end if
+			ret 1
+		end func
+	end class
+	
+	var keys: [][]char :: tags.toArrayKey()
+	var data: []TagData :: #[0]TagData
+	for i(0, ^keys - 1)
+		var t: []char :: keys[i]
+		var s: int :: tags.get(t, &)
+		do data :~ [(#TagData).init(t, s)]
+	end for
+	do data.sort()
+	
+	for i(0, [^data - 1, 9].min())
+		do cui@print("\{data[i].tag} \{data[i].score}\n")
+	end for
+end func

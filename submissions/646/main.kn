@@ -1,0 +1,6 @@
+func main()
+	var n: int :: cui@inputInt()
+	for i(n, 1, -1)
+		do cui@print("\{n}".repeat(i) ~ "\n")
+	end for
+end func

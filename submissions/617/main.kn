@@ -1,0 +1,20 @@
+func main()
+	var n: int :: cui@inputInt()
+	var k: int :: cui@inputInt()
+	var dp: []bool :: #[k + 1]bool
+	do dp[0] :: true
+	for i(0, n - 1)
+		var a: int :: cui@inputInt()
+		for j(k - a, 0, -1)
+			if(dp[j])
+				do dp[j + a] :: true
+			end if
+		end for
+	end for
+	for j(k, 0, -1)
+		if(dp[j])
+			do cui@print("\{j}\n")
+			ret
+		end if
+	end for
+end func

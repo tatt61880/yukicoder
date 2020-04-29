@@ -1,0 +1,22 @@
+func main()
+	var h: int :: cui@inputInt()
+	var n: int :: cui@inputInt()
+	var a: []int :: #[n]int
+	do a[0] :: h
+	for i(1, n - 1)
+		do a[i] :: cui@inputInt()
+	end for
+	do a.sortDesc()
+	
+	var ans: int :: 1 + a.find(h, -1)
+	var s: []char :: "th"
+	switch(ans % 10)
+	case 1
+		do s :: "st"
+	case 2
+		do s :: "nd"
+	case 3
+		do s :: "rd"
+	end switch
+	do cui@print("\{ans}\{s}\n")
+end func

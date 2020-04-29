@@ -1,0 +1,12 @@
+func main()
+	var n: int :: cui@inputInt()
+	var m: int :: cui@inputInt()
+	var a: int :: 0
+	var b: int :: 1
+	for(1, n - 1)
+		do a :$ b
+		do b :+ a
+		do b :% m
+	end for
+	do cui@print("\{a}\n")
+end func

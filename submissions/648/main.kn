@@ -1,0 +1,23 @@
+func main()
+	var n: int :: cui@inputInt()
+	
+	var hi: int :: 2 ^ 31
+	var lo: int :: 0
+	while(hi - lo > 1)
+		var md: int :: lo + (hi - lo) / 2
+		if(f(md) > n)
+			do hi :: md
+		else
+			do lo :: md
+		end if
+	end while
+	if(f(lo) = n)
+		do cui@print("YES\n\{lo}\n")
+	else
+		do cui@print("NO\n")
+	end if
+	
+	func f(n: int): int
+		ret n * (n + 1) / 2
+	end func
+end func

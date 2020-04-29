@@ -1,0 +1,12 @@
+func main()
+	var mp: dict<int, char> :: #dict<int, char>
+	for i(0, 2)
+		var h: int :: cui@inputInt()
+		var w: int :: cui@inputInt()
+		do mp.add((200 - h) * 1000 + w, 'A'.offset(i))
+	end for
+	var values: []char :: mp.toArrayValue()
+	for i(0, 2)
+		do cui@print("\{values[i]}\n")
+	end for
+end func

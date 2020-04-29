@@ -1,0 +1,14 @@
+func main()
+	var n: int :: cui@inputInt()
+	var i: int :: 1
+	var mp: dict<[]char, bool> :: #dict<[]char, bool>
+	while(i * i <= n)
+		if(n % i = 0)
+			do mp.add("\{i}\{n / i}", true)
+			do mp.add("\{n / i}\{i}", true)
+		end if
+		do i :+ 1
+	end while
+	var ans: int :: ^mp
+	do cui@print("\{ans}\n")
+end func

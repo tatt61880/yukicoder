@@ -1,0 +1,26 @@
+func main()
+	var s: []char :: cui@input()
+	do s.sort()
+	if(s = "abcdefghijklm")
+		for i(0, 12)
+			do cui@print("\{s[i]}\n")
+		end for
+		ret
+	end if
+	
+	var cnt: dict<char, int> :: #dict<char, int>
+	for i(0, 12)
+		var c: char :: s[i]
+		do cnt.add(c, cnt.get(c, &) + 1)
+	end for
+	if(^cnt <> 12)
+		do cui@print("Impossible\n")
+	else
+		for i(0, 12)
+			var c: char :: 'a'.offset(i)
+			if(!cnt.exist(c))
+				do cui@print("\{c}\n")
+			end if
+		end for
+	end if
+end func

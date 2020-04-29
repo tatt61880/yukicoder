@@ -1,0 +1,15 @@
+func main()
+	var p1: int :: cui@inputInt()
+	var p2: int :: cui@inputInt()
+	var n: int :: cui@inputInt()
+	var ans: int :: 0
+	var room: []bool :: #[1000]bool
+	for(1, n)
+		var r: int :: cui@inputInt()
+		if(room[r])
+			do ans :+ p1 + p2
+		end if
+		do room[r] :: true
+	end for
+	do cui@print("\{ans}\n")
+end func

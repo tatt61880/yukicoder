@@ -1,0 +1,14 @@
+func main()
+	var t: int :: cui@inputInt()
+	var prev: int :: 0
+	for(1, t)
+		var x: int :: cui@inputInt()
+		if((x - prev).abs() <> 1)
+			do cui@print("F\n")
+			ret
+		end if
+		do prev :: x
+	end for
+	
+	do cui@print("T\n")
+end func

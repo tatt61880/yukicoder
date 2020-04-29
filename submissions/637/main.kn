@@ -1,0 +1,14 @@
+func main()
+	var ans: int :: 0
+	for(1, 5)
+		var n: int :: cui@inputInt()
+		var add: int :: 0
+		do add :+ n % 3 = 0 ?(4, 0)
+		do add :+ n % 5 = 0 ?(4, 0)
+		if(add = 0)
+			do add :+ ^"\{n}"
+		end if
+		do ans :+ add
+	end for
+	do cui@print("\{ans}\n")
+end func

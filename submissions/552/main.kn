@@ -1,0 +1,8 @@
+func main()
+	var s: []char :: cui@input()
+	if(s = "0")
+		do cui@print("0\n")
+	else
+		do cui@print("\{s}0\n")
+	end if
+end func

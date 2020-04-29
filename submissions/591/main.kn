@@ -1,0 +1,5 @@
+func main()
+	var t1: char :: cui@inputChar()
+	var t2: char :: cui@inputChar()
+	do cui@print("(\{t1}\{t2}\{t1})/\n")
+end func

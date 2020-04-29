@@ -1,0 +1,8 @@
+func main()
+	var a: int :: cui@inputInt()
+	do a :/ 10
+	do a :* 6
+	var m: int :: a % 60
+	var h: int :: 10 + a / 60
+	do cui@print("\{h.toStrFmt("02d")}:\{m.toStrFmt("02d")}\n")
+end func

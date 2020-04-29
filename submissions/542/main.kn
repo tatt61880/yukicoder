@@ -1,0 +1,15 @@
+func main()
+	var a: int :: cui@inputInt()
+	var b: int :: cui@inputInt()
+	var v: []bool :: #[601]bool
+	for i(0, a)
+		for j(0, b)
+			do v[i + j * 5] :: true
+		end for
+	end for
+	for i(1, 600)
+		if(v[i])
+			do cui@print("\{i}\n")
+		end if
+	end for
+end func

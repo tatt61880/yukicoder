@@ -1,0 +1,11 @@
+func main()
+	var n: int :: cui@inputInt()
+	var m: int :: cui@inputInt()
+	if(n <= m)
+		do cui@print("1\n")
+	elif(n % 2 = 0 & n <= m * 2)
+		do cui@print("2\n")
+	else
+		do cui@print("-1\n")
+	end if
+end func

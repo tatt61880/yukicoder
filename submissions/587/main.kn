@@ -1,0 +1,24 @@
+func main()
+	var s: []char :: cui@input()
+	var cnt: dict<char, int> :: #dict<char, int>
+	for i(0, ^s - 1)
+		var c: char :: s[i]
+		var num: int :: cnt.get(c, &)
+		do cnt.add(c, num + 1)
+		if(num = 2)
+			do cui@print("Impossible\n")
+			ret
+		end if
+	end for
+	if(^cnt <> 7)
+		do cui@print("Impossible\n")
+		ret
+	end if
+	
+	var keys: []char :: cnt.toArrayKey()
+	for i(0, 6)
+		if(cnt.get(keys[i], &) = 1)
+			do cui@print("\{keys[i]}\n")
+		end if
+	end for
+end func

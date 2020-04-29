@@ -1,0 +1,19 @@
+func main()
+	var n: int :: cui@inputInt()
+	var s: [][]char :: #[n][]char
+	var t: [][]char :: #[n][]char
+	for i(0, n - 1)
+		do s[i] :: cui@inputStr()
+	end for
+	for i(0, n - 1)
+		do t[i] :: cui@inputStr()
+	end for
+	
+	for i(0, n - 1)
+		if(s[i] <> t[i])
+			do cui@print("\{i + 1}\n")
+			do cui@print("\{s[i]}\n")
+			do cui@print("\{t[i]}\n")
+		end if
+	end for
+end func

@@ -1,0 +1,14 @@
+func main()
+	var s: [][]char :: cui@input().split(":")
+	var h: int :: s[0].toInt(&)
+	var m: int :: s[1].toInt(&)
+	do m :+ 5
+	if(m >= 60)
+		do m :- 60
+		do h :+ 1
+	end if
+	if(h = 24)
+		do h :: 0
+	end if
+	do cui@print("\{h.toStrFmt("02d")}:\{m.toStrFmt("02d")}\n")
+end func

@@ -1,0 +1,8 @@
+func main()
+	var s: []char :: cui@input()
+	if(s.sub(^s - 2, 2) = "ai")
+		do cui@print("\{s.sub(0, ^s - 2)}AI\n")
+	else
+		do cui@print("\{s}-AI\n")
+	end if
+end func

@@ -1,0 +1,10 @@
+func main()
+	var s: []char :: cui@input()
+	var ans: int :: 0
+	for i(0, ^s - 1)
+		if('0' <= s[i] & s[i] <= '9')
+			do ans :+ s[i] $ int - '0' $ int
+		end if
+	end for
+	do cui@print("\{ans}\n")
+end func

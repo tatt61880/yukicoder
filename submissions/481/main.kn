@@ -1,0 +1,10 @@
+func main()
+	var n: int :: 9
+	var sum: int :: 0
+	for i(0, n - 1)
+		do sum :+ cui@inputInt()
+	end for
+	
+	var ans: int :: 55 - sum
+	do cui@print("\{ans}\n")
+end func

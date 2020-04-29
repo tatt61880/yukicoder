@@ -1,0 +1,6 @@
+func main()
+	var a: int :: cui@inputInt()
+	var b: int :: cui@inputInt()
+	var ans: bool :: b % a = 0
+	do cui@print(ans ?("\{b / a}\n", "NO\n"))
+end func

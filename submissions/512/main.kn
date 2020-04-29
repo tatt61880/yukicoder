@@ -1,0 +1,18 @@
+func main()
+	var x: int :: cui@inputInt()
+	var y: int :: cui@inputInt()
+	var n: int :: cui@inputInt()
+	var a: []int :: #[n]int
+	for i(0, n - 1)
+		do a[i] :: cui@inputInt()
+	end for
+	
+	for i(0, n - 2)
+		if(a[i] * y > a[i + 1] * x)
+			do cui@print("NO\n")
+			ret
+		end if
+	end for
+	
+	do cui@print("YES\n")
+end func

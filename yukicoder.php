@@ -18,9 +18,10 @@ if (!file_exists($title_filepath)) exit ("404 問題タイトル not found!");
 $problem_title =  htmlspecialchars(file_get_contents($title_filepath));
 $page_title = "解説【yukicoder ${problem_title}】";
 
-$url_filepath = "./submissions/$problem_id/url.txt";
+$url_filepath = "./submissions/$problem_id/submission.url";
 if (!file_exists($url_filepath)) exit ("404 提出コードURL not found!");
 $submissions_url =  htmlspecialchars(file_get_contents($url_filepath));
+$submissions_url = preg_replace('/[\d\D]*=/', '', $submissions_url);
 
 $kuin_filepath = "./submissions/$problem_id/main.kn";
 if (!file_exists($kuin_filepath)) exit ("404 main.kn not found!");

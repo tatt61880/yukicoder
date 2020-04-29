@@ -1,0 +1,20 @@
+func main()
+	var a: []char :: cui@inputStr()
+	var b: []char :: cui@inputStr()
+	if(a = "0")
+		if(b = "0")
+			do cui@print("E")
+		else
+			do cui@print("S")
+		end if
+	elif(b = "0")
+		do cui@print("S")
+	elif(a = "2" & b = "2")
+		do cui@print("E")
+	elif(a = "1" | b = "1")
+		do cui@print("S")
+	else
+		do cui@print("P")
+	end if
+	do cui@print("\n")
+end func

@@ -1,0 +1,17 @@
+func main()
+	var s: []char :: cui@input()
+	var e: int :: s.findStr("OOO", -1)
+	var w: int :: s.findStr("XXX", -1)
+	if(e = -1)
+		if(w = -1)
+			do cui@print("NA")
+		else
+			do cui@print("West")
+		end if
+	elif(w = -1)
+		do cui@print("East")
+	else
+		do cui@print(e < w ?("East", "West"))
+	end if
+	do cui@print("\n")
+end func

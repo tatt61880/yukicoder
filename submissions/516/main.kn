@@ -1,0 +1,4 @@
+func main()
+	var s: []char :: cui@input() ~ cui@input() ~ cui@input()
+	do cui@print(^s <= 10 ?("RED\n", "BLUE\n"))
+end func

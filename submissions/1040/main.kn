@@ -1,0 +1,9 @@
+func main()
+	var n: int :: cui@inputInt()
+	if(n % 90 <> 0)
+		do cui@print("No\n")
+		ret
+	end if
+	var ans: bool :: (n / 90) % 2 = 1
+	do cui@print(ans ?("Yes\n", "No\n"))
+end func

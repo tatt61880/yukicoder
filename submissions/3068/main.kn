@@ -1,0 +1,17 @@
+func main()
+	; デ6ルとL5sを利用して問題文を読みました。
+	; evil0はKuinでは突破できなさそうです。
+	var s: []char :: cui@input()
+	do s :: s.lower()
+	for i(0, ^s - 9)
+		var mp: dict<char, bool> :: #dict<char, bool>
+		for j(i, i + 8)
+			do mp.add(s[j], true)
+		end for
+		while(^mp = 9)
+			do cui@print("Yes\n")
+			ret
+		end while
+	end for
+	do cui@print("No\n")
+end func

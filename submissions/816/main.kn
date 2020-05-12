@@ -1,0 +1,38 @@
+func main()
+	var a: int :: cui@inputInt()
+	var b: int :: cui@inputInt()
+	var ab: int :: a + b
+	var c: int :: 1
+	var ans: int :: -1
+	while loop(true)
+		if(c * c > ab)
+			break loop
+		end if
+		if(ab % c = 0)
+			var d: int :: ab / c
+			if(f(a, b, c))
+				if(ans = -1)
+					do ans :: c
+				else
+					do ans :: [ans, c].min()
+				end if
+			end if
+			if(f(a, b, d))
+				if(ans = -1)
+					do ans :: d
+				else
+					do ans :: [ans, d].min()
+				end if
+			end if
+		end if
+		do c :+ 1
+	end while
+	do cui@print("\{ans}\n")
+	
+	func f(a: int, b: int, c: int): bool
+		if(a = c | b = c)
+			ret false
+		end if
+		ret(c + a)%b = 0 & (b + c)%a = 0
+	end func
+end func

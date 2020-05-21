@@ -1,0 +1,16 @@
+func main()
+	var w: int :: cui@inputInt()
+	var h: int :: cui@inputInt()
+	var n: int :: cui@inputInt()
+	var ms: dict<int, bool> :: #dict<int, bool>
+	var mk: dict<int, bool> :: #dict<int, bool>
+	for i(0, n - 1)
+		do ms.add(cui@inputInt(), true)
+		do mk.add(cui@inputInt(), true)
+	end for
+	var ns: int :: ^ms
+	var nk: int :: ^mk
+	
+	var ans: int :: ns * nk - n + (w - ns) * nk + (h - nk) * ns
+	do cui@print("\{ans}\n")
+end func

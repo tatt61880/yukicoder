@@ -1,0 +1,12 @@
+func main()
+	do cui@print("000\n")
+	do cui@flush()
+	for i(1, 999)
+		if(cui@input()[0] = 'u')
+			ret
+		end if
+		do cui@print(i.toStrFmt("03d"))
+		do cui@print("\n")
+		do cui@flush()
+	end for
+end func

@@ -1,0 +1,9 @@
+func main()
+	var n: int :: cui@inputInt()
+	var s: []char :: cui@input()
+	for(1, n)
+		do cui@print("click\n")
+		do cui@flush()
+		do s :: cui@input()
+	end for
+end func

@@ -1,0 +1,10 @@
+func main()
+	var a: int :: cui@inputInt()
+	var b: int :: cui@inputInt()
+	if(a > b)
+		do a :$ b
+	end if
+	do b :: [b, a + 1].min()
+	var ans: int :: a + b - 1
+	do cui@print("\{ans}\n")
+end func

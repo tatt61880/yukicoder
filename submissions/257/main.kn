@@ -1,0 +1,16 @@
+func main()
+	var n: int :: cui@inputInt()
+	var k: int :: cui@inputInt()
+	var last: int :: (n - 1) % (k + 1)
+	do cui@print("\{last}\n")
+	do cui@flush()
+	while(true)
+		var num: int :: cui@inputInt()
+		if(num >= n)
+			ret
+		end if
+		do last :+ k + 1
+		do cui@print("\{last}\n")
+		do cui@flush()
+	end while
+end func

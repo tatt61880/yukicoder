@@ -1,0 +1,17 @@
+func main()
+	var n: int :: cui@inputInt()
+	var divisors: []int :: math@primeFactors(n)
+	
+	var a: int :: 1
+	var b: int :: 1
+	for i(0, ^divisors - 1)
+		if(i <> 0 & divisors[i] = divisors[i - 1])
+			do b :/ divisors[i]
+			do a :* divisors[i]
+			do divisors[i] :: 0
+		else
+			do b :* divisors[i]
+		end if
+	end for
+	do cui@print("\{a} \{b}\n")
+end func

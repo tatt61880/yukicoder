@@ -1,0 +1,12 @@
+func main()
+	var p: int :: cui@inputInt()
+	var c: int :: cui@inputInt()
+	var ans: float :: 1.0
+	for(1, p)
+		do ans :* (2 + 3 + 5 + 7 + 11 + 13) $ float / 6.0
+	end for
+	for(1, c)
+		do ans :* (4 + 6 + 8 + 9 + 10 + 12) $ float / 6.0
+	end for
+	do cui@print("\{ans.toStrFmt(".17f")}\n")
+end func

@@ -1,0 +1,16 @@
+func main()
+	var a: int :: cui@inputInt()
+	var b: int :: cui@inputInt()
+	var c: int :: cui@inputInt()
+	var d: int :: cui@inputInt()
+	var det: int :: (a - c) ^ 2 - 4 * 2 * (b - d)
+	if(det = 0)
+		do cui@print("Yes\n")
+		ret
+	end if
+	if(det < 0)
+		do cui@print("No\n")
+		ret
+	end if
+	do cui@print("\{(a + c) $ float / 2.0} \{(b + d) $ float / 2.0}\n")
+end func

@@ -1,0 +1,24 @@
+func main()
+	var n: int :: cui@inputInt()
+	
+	var primes: []int :: #[10]int
+	var primesNum: int :: 0
+	var num: int :: 100001
+	while(primesNum <> 10)
+		if(math@prime(num))
+			do primes[primesNum] :: num
+			do primesNum :+ 1
+		end if
+		do num :+ 2
+	end while
+	var a: []int :: #[0]int
+	do a :~ [1]
+	for i(0, 9)
+		for j(i, 9)
+			do a :~ [primes[i] * primes[j]]
+		end for
+	end for
+	do a.sort()
+	var ans: int :: a[n - 1]
+	do cui@print("\{ans}\n")
+end func

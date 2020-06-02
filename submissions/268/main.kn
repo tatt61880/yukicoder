@@ -1,0 +1,9 @@
+func main()
+	var l: []int :: [cui@inputInt(), cui@inputInt(), cui@inputInt()]
+	var n: []int :: [cui@inputInt(), cui@inputInt(), cui@inputInt()]
+	do l.sort()
+	do n.sort()
+	var ans: int :: (l[0] + l[1]) * n[2] + (l[0] + l[2]) * n[1] + (l[1] + l[2]) * n[0]
+	do ans :* 2
+	do cui@print("\{ans}\n")
+end func

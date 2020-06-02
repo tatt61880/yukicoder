@@ -1,0 +1,10 @@
+func main()
+	var n: int :: cui@inputInt()
+	var m: int :: cui@inputInt()
+	var x: int :: (cui@inputInt() - 1) % (2 * m)
+	var y: int :: (cui@inputInt() - 1) % (2 * m)
+	do x :: [x, 2 * m - 1 - x].min()
+	do y :: [y, 2 * m - 1 - y].min()
+	var ans: bool :: x = y
+	do cui@print(ans ?("YES\n", "NO\n"))
+end func

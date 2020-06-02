@@ -1,0 +1,38 @@
+func main()
+	var n: int :: cui@inputInt()
+	var k: int :: cui@inputInt()
+	var x: []int :: #[n]int
+	var a: []int :: #[n]int
+	for i(0, n - 1)
+		do x[i] :: cui@inputInt()
+	end for
+	for i(0, n - 1)
+		do a[i] :: cui@inputInt()
+	end for
+	
+	var l: int :: k - 2
+	var r: int :: k
+	var xl: int :: x[k - 1] - a[k - 1]
+	var xr: int :: x[k - 1] + a[k - 1]
+	
+	while loop(true)
+		if(l >= 0 & x[l] >= xl)
+			do xl :: [xl, x[l] - a[l]].min()
+			do xr :: [xr, x[l] + a[l]].max()
+			do l :- 1
+			do ans :+ 1
+			skip loop
+		end if
+		if(r < n & x[r] <= xr)
+			do xl :: [xl, x[r] - a[r]].min()
+			do xr :: [xr, x[r] + a[r]].max()
+			do r :+ 1
+			do ans :+ 1
+			skip loop
+		end if
+		break loop
+	end while
+	
+	var ans: int :: r - l - 1
+	do cui@print("\{ans}\n")
+end func

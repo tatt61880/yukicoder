@@ -1,0 +1,33 @@
+func main()
+	var q: int :: cui@inputInt()
+	for(1, q)
+		var n: int :: cui@inputInt()
+		var i: int :: cui@inputInt()
+		var j: int :: cui@inputInt()
+		var y: int :: [i, n - 1 - i].min()
+		var x: int :: [j, n - 1 - j].min()
+		var m: int :: [x, y].min()
+		var ans: int :: 4 * n * m - 4 * m ^ 2
+		if(i <= j)
+			if(n - 1 - j = m)
+				; r
+				do ans :+ (n - (2 * m + 1))
+				do ans :+ i - m
+			else
+				; u
+				do ans :+ j - m
+			end if
+		else
+			do ans :+ 2 * (n - (2 * m + 1))
+			if(j = m)
+				; l
+				do ans :+ (n - (2 * m + 1))
+				do ans :+ n - 1 - i - m
+			else
+				; d
+				do ans :+ n - 1 - j - m
+			end if
+		end if
+		do cui@print("\{ans}\n")
+	end for
+end func

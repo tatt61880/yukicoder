@@ -1,0 +1,11 @@
+func main()
+	var s: []char :: cui@input()
+	var ans: int :: ^s - 1
+	for i(0, ^s - 1)
+		if(s[i] = '0')
+			do ans :- 1
+		end if
+	end for
+	
+	do cui@print("\{ans}\n")
+end func

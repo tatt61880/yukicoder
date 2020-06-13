@@ -1,0 +1,5 @@
+func main()
+	var p: float :: cui@inputFloat()
+	var ans: float :: 1.0 / (1.0 - p) - 1.0
+	do cui@print("\{ans}\n")
+end func

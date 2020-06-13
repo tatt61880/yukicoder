@@ -1,8 +1,6 @@
 func main()
-var a:[][]char::#[0,0]char
-for(1,cui@inputInt())
-do a:~[cui@input()]
-end for
+do cui@delimiter("")
+var a:[][]char::cui@inputStr().split("\n")
 do a.sort()
-do cui@print(a.join("\n"))
+do cui@print(a.sub(2,^a-2).join("\n"))
 end func

@@ -1,0 +1,18 @@
+func main()
+	var n: int :: cui@inputInt()
+	var a: []int :: #[n]int
+	for i(0, n - 1)
+		do a[i] :: cui@inputInt()
+	end for
+	
+	for i(n - 1, 1, -1)
+		var nx: []int :: #[i]int
+		for j(0, i - 1)
+			do nx[j] :: (a[j] + a[j + 1]) % (10 ^ 9 + 7)
+		end for
+		do a :: nx
+	end for
+	
+	var ans: int :: a[0]
+	do cui@print("\{ans}\n")
+end func

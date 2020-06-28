@@ -1,0 +1,15 @@
+func main()
+	var n: int :: cui@inputInt()
+	var d: int :: cui@inputInt()
+	var a: []int :: #[n]int
+	for i(1, n - 1)
+		do a[i] :: a[i - 1] + cui@inputInt()
+	end for
+	
+	for i(0, n - 1)
+		if(i <> 0)
+			do a[i] :: [a[i], a[i - 1] + d].max()
+		end if
+		do cui@print("\{a[i]}" ~ (i <> n - 1 ?(" ", "\n")))
+	end for
+end func

@@ -2,6 +2,8 @@ func main()
 	var s: []char :: cui@input()
 	var x: int :: cui@inputInt()
 	var y: int :: cui@inputInt()
-	do s[x] :$ s[y]
+	var tmp: char :: s[x]
+	do s[x] :: s[y]
+	do s[y] :: tmp
 	do cui@print(s ~ "\n")
 end func

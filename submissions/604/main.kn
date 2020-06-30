@@ -17,15 +17,12 @@ func main()
 	do cui@print("\{ans}\n")
 	
 	func f(d: int, a: int, b: int, c: int): bool
-		var sum: num@BigInt :: num@makeBigInt()
-		do sum.fromInt(0)
-		var nb: num@BigInt :: num@makeBigInt()
-		do nb.fromInt(b)
-		do nb.mulInt(d / a)
-		var nc: num@BigInt :: num@makeBigInt()
-		do nc.fromInt(c)
-		do sum.add(nb)
-		do sum.addInt(d - d / a)
+		var sum: num@BigInt :: num@makeBigIntFromInt(0)
+		var nb: num@BigInt :: num@makeBigIntFromInt(b)
+		var nc: num@BigInt :: num@makeBigIntFromInt(c)
+		do nb :: nb.mulInt(d / a)
+		do sum :: sum.add(nb)
+		do sum :: sum.addInt(d - d / a)
 		ret sum >= nc
 	end func
 end func

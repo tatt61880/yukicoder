@@ -3,7 +3,9 @@ func main()
 	var y: int :: cui@inputInt() * 1000
 	var h: int :: cui@inputInt()
 	if(x > y)
-		do x :$ y
+		var tmp: int :: x
+		do x :: y
+		do y :: tmp
 	end if
 	var ans: int :: 0
 	while(x > h)

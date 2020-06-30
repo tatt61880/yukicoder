@@ -8,7 +8,9 @@ func main()
 	for(1, m)
 		var p: int :: cui@inputInt()
 		var q: int :: cui@inputInt()
-		do cup[p] :$ cup[q]
+		var tmp: bool :: cup[p]
+		do cup[p] :: cup[q]
+		do cup[q] :: tmp
 	end for
 	
 	for i(1, 3)

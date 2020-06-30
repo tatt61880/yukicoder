@@ -16,7 +16,9 @@ func main()
 				skip loop
 			end if
 			if(a[j] > a[k])
-				do a[j] :$ a[k]
+				var tmp: int :: a[j]
+				do a[j] :: a[k]
+				do a[k] :: tmp
 			end if
 		end while
 	end for

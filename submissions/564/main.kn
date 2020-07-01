@@ -6,7 +6,8 @@ func main()
 	for i(1, n - 1)
 		do a[i] :: cui@inputInt()
 	end for
-	do a.sortDesc()
+	do a.sort()
+	do a.reverse()
 	
 	var ans: int :: 1 + a.find(h, -1)
 	var s: []char :: "th"

@@ -18,11 +18,11 @@ func main()
 			do me.score :: s
 			ret me
 		end func
-		+*func cmp(t: TagData): int
-			if(t.score < me.score)
+		+*func cmp(t: kuin@Class): int
+			if((t $ TagData).score < me.score)
 				ret - 1
-			elif(t.score = me.score)
-				ret me.tag < t.tag ?(-1, 1)
+			elif((t $ TagData).score = me.score)
+				ret me.tag < (t $ TagData).tag ?(-1, 1)
 			end if
 			ret 1
 		end func

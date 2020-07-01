@@ -12,6 +12,6 @@ func main()
 			do ans :: ans = -2 ?(i + 1, -1)
 		end if
 	end for
-	do ans :: ans.clampMin(-1)
+	do ans :: [ans, -1].max()
 	do cui@print("\{ans}\n")
 end func

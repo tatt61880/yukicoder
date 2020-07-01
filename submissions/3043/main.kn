@@ -12,21 +12,8 @@ func main()
 		do cui@print("\{a + b} \{s}\n")
 	elif(^strs[0] < 4)
 		var n: int :: strs[0].toInt(&)
-		do strs :: cui@input().split(" ")
-		if(^strs = n)
-			var ans: int :: 0
-			for i(0, n - 1)
-				do ans :+ strs[i].toInt(&)
-			end for
-			do cui@print("\{ans}\n")
-		elif(strs[0] <> "")
-			var ans: int :: strs[0].toInt(&)
-			for(2, n)
-				var a: int :: cui@inputInt()
-				do ans :+ a
-			end for
-			do cui@print("\{ans}\n")
-		else
+		var s: []char :: cui@input()
+		if(s =& null)
 			if(n > 60)
 				var ans: int :: n * (n + 1) / 2
 				do cui@print("\{ans}\n")
@@ -43,6 +30,22 @@ func main()
 					end if
 				end for
 			end if
+			ret
+		end if
+		do strs :: s.split(" ")
+		if(^strs = n)
+			var ans: int :: 0
+			for i(0, n - 1)
+				do ans :+ strs[i].toInt(&)
+			end for
+			do cui@print("\{ans}\n")
+		elif(strs[0] <> "")
+			var ans: int :: strs[0].toInt(&)
+			for(2, n)
+				var a: int :: cui@inputInt()
+				do ans :+ a
+			end for
+			do cui@print("\{ans}\n")
 		end if
 	end if
 end func

@@ -4,7 +4,9 @@ func main()
 	var a: int :: 0
 	var b: int :: 1
 	for(1, n - 1)
-		do a :$ b
+		var tmp: int :: a
+		do a :: b
+		do b :: tmp
 		do b :+ a
 		do b :% m
 	end for

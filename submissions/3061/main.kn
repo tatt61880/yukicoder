@@ -1,6 +1,10 @@
 func main()
 	var ans: bool :: false
 	var t: []char :: cui@input()
+	if(t =& null)
+		do cui@print("NO\n")
+		ret
+	end if
 	for i(0, ^t - 2)
 		for j(i + 1, ^t - 1)
 			var s: []char :: ##t

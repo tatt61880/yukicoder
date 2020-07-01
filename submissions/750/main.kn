@@ -9,10 +9,10 @@ func main()
 			do me.str :: "\{a} \{b}"
 			ret me
 		end func
-		+*func cmp(t: Frac): int
-			if(me.a * t.b > t.a * me.b)
+		+*func cmp(t: kuin@Class): int
+			if(me.a * (t $ Frac).b > (t $ Frac).a * me.b)
 				ret 1
-			elif(me.a * t.b < t.a * me.b)
+			elif(me.a * (t $ Frac).b < (t $ Frac).a * me.b)
 				ret - 1
 			end if
 			ret 0

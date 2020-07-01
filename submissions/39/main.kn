@@ -3,9 +3,14 @@ func main()
 	var ans: int :: 0
 	for a(0, ^s - 1)
 		for b(0, ^s - 1)
-			do s[a] :$ s[b]
+			var tmp: char
+			do tmp :: s[a]
+			do s[a] :: s[b]
+			do s[b] :: tmp
 			do ans :: [ans, s.toInt(&)].max()
-			do s[a] :$ s[b]
+			do tmp :: s[a]
+			do s[a] :: s[b]
+			do s[b] :: tmp
 		end for
 	end for
 	do cui@print("\{ans}\n")

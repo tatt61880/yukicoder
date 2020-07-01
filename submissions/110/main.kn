@@ -11,8 +11,10 @@ func main()
 		do b[i] :: cui@inputInt()
 	end for
 	
-	do w.sortDesc()
-	do b.sortDesc()
+	do w.sort()
+	do w.reverse()
+	do b.sort()
+	do b.reverse()
 	var wb: [][]int :: [w, b]
 	var ans: int
 	for i(0, 1)

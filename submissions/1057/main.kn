@@ -2,7 +2,9 @@ func main()
 	var a: int :: cui@inputInt()
 	var b: int :: cui@inputInt()
 	if(a > b)
-		do a :$ b
+		var tmp: int :: a
+		do a :: b
+		do b :: tmp
 	end if
 	do b :: [b, a + 1].min()
 	var ans: int :: a + b - 1

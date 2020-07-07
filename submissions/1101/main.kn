@@ -1,0 +1,18 @@
+func main()
+	var v: int :: cui@inputInt()
+	var t: int :: cui@inputInt()
+	var p: int :: cui@inputInt()
+	do v :* (p + 1)
+	
+	var ans: int :: v
+	var prev: int :: 0
+	while a(true)
+		var add: int :: (ans - 1) / t + 1
+		do ans :: v + add
+		if(prev = ans)
+			break a
+		end if
+		do prev :: ans
+	end while
+	do cui@print("\{ans}\n")
+end func

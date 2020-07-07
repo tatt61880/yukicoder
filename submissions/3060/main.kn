@@ -1,7 +1,7 @@
 func main()
 	while(true)
 		var s: []char :: cui@input()
-		if(s = "")
+		if(s =& null)
 			ret
 		end if
 		switch(s)

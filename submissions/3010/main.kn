@@ -1,16 +1,16 @@
 var ans: [][]char
-const targetDir: []char :: "/bin/"
+const targetDir: []char :: "/usr/bin/"
 func main()
 	do @ans :: #[0][]char
 	do file@forEach(@targetDir, false, callback, null)
 	do @ans.sort()
-	for i(0, ^@ans - 1)
+	for i(2, ^@ans - 1)
 		do cui@print(@ans[i] ~ "\n")
 	end for
 	
 	func callback(path: []char, isDir: bool, data: kuin@Class): bool
 		if(^path <> ^@targetDir)
-			do @ans :~ ["\{path.sub(^@targetDir, ^path - ^@targetDir)}"]
+			do @ans :~ ["\{path.sub(^@targetDir, -1)}"]
 		end if
 		ret true
 	end func

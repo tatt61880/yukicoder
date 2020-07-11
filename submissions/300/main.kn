@@ -6,13 +6,14 @@ func main()
 		do nums.add(a[i], nums.get(a[i], &) + 1)
 	end for
 	
-	var ans: int :: 1
-	var keys: []int :: nums.toArrayKey()
-	var vals: []int :: nums.toArrayValue()
-	for i(0, ^keys - 1)
-		if(vals[i] % 2 = 1)
-			do ans :* keys[i]
+	var ans: lib@Int :: #lib@Int
+	do ans.value :: 1
+	do nums.forEach(f, ans $ kuin@Class)
+	func f(key: int, val: int, data: kuin@Class): bool
+		if(val % 2 = 1)
+			do(data $ lib@Int).value :* key
 		end if
-	end for
+		ret true
+	end func
 	do cui@print("\{ans}\n")
 end func

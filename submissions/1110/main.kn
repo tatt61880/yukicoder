@@ -1,0 +1,24 @@
+func main()
+	var n: int :: cui@inputInt()
+	var d: int :: cui@inputInt()
+	var a: []int :: #[n]int
+	for i(0, n - 1)
+		do a[i] :: cui@inputInt()
+	end for
+	var b: []int :: ##a
+	do b.sort()
+	
+	var r: int :: 0
+	var mp: dict<int, int> :: #dict<int, int>
+	for i(0, n - 1)
+		while(r <> i & b[r] + d <= b[i])
+			do r :+ 1
+		end while
+		var ans: int :: r
+		do mp.add(b[i], ans)
+	end for
+	
+	for i(0, n - 1)
+		do cui@print("\{mp.get(a[i], &)}\n")
+	end for
+end func

@@ -23,5 +23,6 @@ func main()
 				ret pa[i] $ int - pb[i] $ int
 			end if
 		end for
+		ret 0
 	end func
 end func

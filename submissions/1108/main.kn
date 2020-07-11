@@ -1,0 +1,9 @@
+func main()
+	var n: int :: cui@inputInt()
+	var h: int :: cui@inputInt()
+	var a: []int :: #[n]int
+	for i(0, n - 1)
+		do a[i] :: cui@inputInt() + h
+		do cui@print("\{a[i]}" ~ (i = n - 1 ?("\n", " ")))
+	end for
+end func

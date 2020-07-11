@@ -1,0 +1,32 @@
+func main()
+	var n: int :: cui@inputInt()
+	var t: []int :: #[n]int
+	for i(0, n - 1)
+		do t[i] :: cui@inputInt()
+	end for
+	
+	var ans: int :: -1
+	var dd: []int :: [0, 2, 4, 5, 7, 9, 11]
+	for d(0, 11)
+		var f: bool :: true
+		for i(0, n - 1)
+			for j(0, 6)
+				if(t[i]= (dd[j] + d) % 12)
+					skip i
+				end if
+			end for
+			do f :: false
+			break i
+		end for
+		
+		if(f)
+			if(ans = -1)
+				do ans :: d
+			else
+				do ans :: -1
+				break d
+			end if
+		end if
+	end for
+	do cui@print("\{ans}\n")
+end func

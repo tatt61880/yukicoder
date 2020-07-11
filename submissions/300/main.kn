@@ -9,11 +9,12 @@ func main()
 	var ans: lib@Int :: #lib@Int
 	do ans.value :: 1
 	do nums.forEach(f, ans $ kuin@Class)
+	do cui@print("\{ans}\n")
+	
 	func f(key: int, val: int, data: kuin@Class): bool
 		if(val % 2 = 1)
 			do(data $ lib@Int).value :* key
 		end if
 		ret true
 	end func
-	do cui@print("\{ans}\n")
 end func

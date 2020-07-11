@@ -11,7 +11,7 @@ func main()
 	end for
 	var ans: lib@Int :: #lib@Int
 	do dic.forEach(f, ans)
-	do cui@print("\{ans.value}\n")
+	do cui@print("\{ans}\n")
 	
 	func f(key: int, value: int, data: kuin@Class): bool
 		if(value = 1)

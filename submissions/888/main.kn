@@ -9,7 +9,7 @@ func main()
 	var ans: lib@Int :: #lib@Int
 	do ans.value :: 1
 	do factNums.forEach(f, ans)
-	do cui@print("\{ans.value}\n")
+	do cui@print("\{ans}\n")
 	
 	func f(key: int, value: int, ans: kuin@Class): bool
 		var res: int :: 0

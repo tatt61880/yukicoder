@@ -1,6 +1,9 @@
 func f(s: []char, i: &int): int
 	var res: int :: @g(s, &i)
 	while(true)
+		if(i >= ^s)
+			ret res
+		end if
 		switch c(s[i])
 		case '+', '-'
 			do i :+ 1
@@ -10,9 +13,13 @@ func f(s: []char, i: &int): int
 			ret res
 		end switch
 	end while
+	ret 0
 end func
 
 func g(s: []char, i: &int): int
+	if(i >= ^s)
+		ret 0
+	end if
 	switch c(s[i])
 	case '0' to '9'
 		do i :+ 1
@@ -21,11 +28,11 @@ func g(s: []char, i: &int): int
 		do i :+ 1
 		ret @f(s, &i)
 	end switch
+	ret 0
 end func
 
 func main()
 	var s: []char :: cui@input()
-	var n: int :: ^s
 	var i: int :: 0
 	var ans: int :: @f(s, &i)
 	do cui@print("\{ans}\n")

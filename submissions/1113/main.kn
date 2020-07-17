@@ -1,0 +1,7 @@
+func main()
+	var a: int :: cui@inputInt()
+	var b: int :: cui@inputInt()
+	var gcd: int :: math@gcd(a, b)
+	var ans: bool :: lib@sqrt(gcd $ float) $ int ^ 2 <> gcd
+	do cui@print(ans ?("Even\n", "Odd\n"))
+end func

@@ -34,21 +34,23 @@ $kuin_src =  htmlspecialchars(file_get_contents($kuin_filepath));
 <head>
 <meta charset="UTF-8">
 <title>$page_title</title>
-<link rel="stylesheet" href="http://tatt.ch/style.css?20190407">
+<link rel="stylesheet" href="./style.css?20200725">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML" defer="defer"></script>
-<link rel="stylesheet" href="http://tatt.ch/kuin/prettify/prettify.css" type="text/css">
-<script src="http://tatt.ch/kuin/prettify/prettify.js"></script>
-<script src="http://tatt.ch/kuin/prettify/lang-kuin.js"></script>
+<script src="https://tatt61880.github.io/kuin-web/src-noconflict/ace.js?2020-07-17"></script>
+<script src="https://tatt61880.github.io/kuin-web/src-noconflict/ext-language_tools.js?2020-07-17"></script>
 <script>
-    // <![CDATA[
-    (function(){
-        function init(event){
-            prettyPrint();
-        }
-        if(window.addEventListener)window.addEventListener("load",init,false);
-        else if(window.attachEvent)window.attachEvent("onload",init);
-    })();
-    // ]]>
+window.onload = function() {
+  let editor = ace.edit('code');
+  editor.setTheme('ace/theme/kuin');
+  editor.session.setMode('ace/mode/kuin');
+  editor.setReadOnly(true);
+  editor.setOptions({
+    maxLines: 10000,
+    autoScrollEditorIntoView: true,
+    fontSize: '16px',
+  });
+  editor.resize();
+}
 </script>
 </head>
 <body>
@@ -74,7 +76,7 @@ echo $parser->parse($markdown);
 <h2>提出したソースコード (言語: Kuin)</h2>
 <div>
   提出URL: <a href="$submissions_url">$submissions_url</a>
-  <pre class="prettyprint lang-kuin linenums" style="border-radius:0; margin: 0 -10px -5px;">$kuin_src</pre>
+  <pre id="code" style="margin: 0 -10px;">$kuin_src</pre>
 </div>
 <hr>
 <h2>この解説を書いた人</h2>

@@ -1,0 +1,7 @@
+func main()
+	var x: int :: cui@inputInt() % 3
+	var y: int :: cui@inputInt() % 3
+	var z: int :: cui@inputInt() % 3
+	var ans: bool :: x * y * z % 3 = 0
+	do cui@print(ans ?("Yes\n", "No\n"))
+end func

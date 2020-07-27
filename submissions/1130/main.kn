@@ -1,0 +1,13 @@
+func main()
+	var h: int :: cui@inputInt()
+	var w: int :: cui@inputInt()
+	var n: int :: h * w
+	var a: []int :: #[n]int
+	for i(0, n - 1)
+		do a[i] :: cui@inputInt()
+	end for
+	do a.sort()
+	for i(0, n - 1)
+		do cui@print("\{a[i]}\{i % w = w - 1 ?("\n", " ")}")
+	end for
+end func

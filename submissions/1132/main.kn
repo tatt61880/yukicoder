@@ -1,0 +1,28 @@
+func main()
+	var a: int :: cui@inputInt()
+	var b: int :: cui@inputInt()
+	var c: int :: cui@inputInt()
+	var d: int :: cui@inputInt()
+	var p: int :: cui@inputInt()
+	var q: int :: cui@inputInt()
+	
+	var max: int :: -10 ^ 10
+	var min: int :: 10 ^ 10
+	var maxX: int
+	var minX: int
+	for x(p, q)
+		var val: int :: f(x, a, b, c, d)
+		if(val < min)
+			do min :: val
+			do minX :: x
+		end if
+		if(val > max)
+			do max :: val
+			do maxX :: x
+		end if
+	end for
+	do cui@print("\{max} \{maxX} \{min} \{minX}\n")
+	func f(x: int, a: int, b: int, c: int, d: int): int
+		ret a * x ^ 3 + b * x ^ 2 + c * x + d
+	end func
+end func

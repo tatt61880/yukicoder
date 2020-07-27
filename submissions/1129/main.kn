@@ -1,0 +1,15 @@
+func main()
+	var a: int :: cui@inputInt()
+	var b: int :: cui@inputInt()
+	var c: int :: cui@inputInt()
+	var d: int :: cui@inputInt()
+	if(a <> c)
+		do cui@print(a > c ?("null\n", "tRue\n"))
+		ret
+	end if
+	if(b <> d)
+		do cui@print((b - d + 3) % 3 = 2 ?("null\n", "tRue\n"))
+		ret
+	end if
+	do cui@print("Draw\n")
+end func

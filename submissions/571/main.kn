@@ -5,7 +5,22 @@ func main()
 		var w: int :: cui@inputInt()
 		do mp.add((200 - h) * 1000 + w, 'A'.offset(i))
 	end for
-	var values: []char :: mp.toArrayValue()
+	var values: []char
+	block
+		var valueList: List :: #List
+		class List()
+			+var li: list<char>
+			*func ctor()
+				do me.li :: #list<char>
+			end func
+		end class
+		do mp.forEach(callback, valueList $ kuin@Class)
+		func callback(key: int, value: char, data: kuin@Class): bool
+			do(data $ List).li.add(value)
+			ret true
+		end func
+		do values :: valueList.li.toArray()
+	end block
 	for i(0, 2)
 		do cui@print("\{values[i]}\n")
 	end for

@@ -1,0 +1,22 @@
+func main()
+	var n: int :: cui@inputInt()
+	var st: stack<int> :: #stack<int>
+	for i(1, n)
+		var s: []char :: cui@inputStr()
+		switch(s)
+		case "+"
+			var a: int :: st.get()
+			var b: int :: st.get()
+			do st.add(a + b)
+		case "-"
+			var a: int :: st.get()
+			var b: int :: st.get()
+			do st.add(b - a)
+		default
+			var x: int :: s.toInt(&)
+			do st.add(x)
+		end switch
+	end for
+	var ans: int :: st.get()
+	do cui@print("\{ans}\n")
+end func

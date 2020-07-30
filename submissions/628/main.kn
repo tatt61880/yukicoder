@@ -28,7 +28,22 @@ func main()
 		end func
 	end class
 	
-	var keys: [][]char :: tags.toArrayKey()
+	var keys: [][]char
+	block
+		var keyList: List :: #List
+		class List()
+			+var li: list<[]char>
+			*func ctor()
+				do me.li :: #list<[]char>
+			end func
+		end class
+		do tags.forEach(callback, keyList $ kuin@Class)
+		func callback(key: []char, value: int, data: kuin@Class): bool
+			do(data $ List).li.add(key)
+			ret true
+		end func
+		do keys :: keyList.li.toArray()
+	end block
 	var data: []TagData :: #[0]TagData
 	for i(0, ^keys - 1)
 		var t: []char :: keys[i]

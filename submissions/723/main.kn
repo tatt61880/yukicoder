@@ -6,7 +6,22 @@ func main()
 		var a: int :: cui@inputInt()
 		do mp.add(a, mp.get(a, &) + 1)
 	end for
-	var keys: []int :: mp.toArrayKey()
+	var keys: []int
+	block
+		var keyList: List :: #List
+		class List()
+			+var li: list<int>
+			*func ctor()
+				do me.li :: #list<int>
+			end func
+		end class
+		do mp.forEach(callback, keyList $ kuin@Class)
+		func callback(key: int, value: int, data: kuin@Class): bool
+			do(data $ List).li.add(key)
+			ret true
+		end func
+		do keys :: keyList.li.toArray()
+	end block
 	var ans: int :: 0
 	for i(0, ^keys - 1)
 		var k: int :: keys[i]

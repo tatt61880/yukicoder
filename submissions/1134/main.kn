@@ -1,0 +1,22 @@
+func main()
+	var n: int :: cui@inputInt()
+	var x: []int :: #[n]int
+	var sum: int :: 0
+	for i(0, n - 1)
+		do x[i] :: cui@inputInt()
+		do sum :+ x[i]
+	end for
+	var ave: float :: sum $ float / n $ float
+	
+	var diffSquare: []float :: #[n]float
+	var diffSquareSum: float :: 0.0
+	for i(0, n - 1)
+		do diffSquare[i] :: (ave - x[i] $ float).abs() ^ 2.0
+		do diffSquareSum :+ diffSquare[i]
+	end for
+	var aveDiff: float :: (diffSquareSum / n $ float) ^ 0.5
+	
+	var m: int :: cui@inputInt() - 1
+	var ans: float :: 50.0 + (aveDiff = 0.0 ?(0.0, (x[m] $ float - ave) * 10.0 / aveDiff))
+	do cui@print("\{ans $ int}\n")
+end func

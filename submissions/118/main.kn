@@ -11,10 +11,26 @@ func main()
 	end for
 	
 	var ans: int :: 0
-	var keys: []int :: mp.toArrayKey()
-	for i(0, ^keys)
-		for j(i + 1, ^keys)
-			for k(j + 1, ^keys)
+	var keys: []int
+	block
+		var keyList: List :: #List
+		class List()
+			+var li: list<int>
+			*func ctor()
+				do me.li :: #list<int>
+			end func
+		end class
+		do mp.forEach(callback, keyList $ kuin@Class)
+		func callback(key: int, value: int, data: kuin@Class): bool
+			do(data $ List).li.add(key)
+			ret true
+		end func
+		do keys :: keyList.li.toArray()
+	end block
+	
+	for i(0, ^keys - 1)
+		for j(i + 1, ^keys - 1)
+			for k(j + 1, ^keys - 1)
 				do ans :+ mp.get(keys[i], &) * mp.get(keys[j], &) * mp.get(keys[k], &)
 			end for
 		end for

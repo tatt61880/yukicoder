@@ -1,0 +1,29 @@
+func main()
+	var n: int :: cui@inputInt()
+	var m: int :: cui@inputInt()
+	var a: [][]int :: #[n + 1, n + 1]int
+	
+	var x: int :: 0
+	var y: int :: 0
+	do a[y][x] :: 1
+	for i(0, m - 1)
+		var c: char :: cui@inputChar()
+		switch(c)
+		case 'R'
+			do x :+ 1
+		case 'L'
+			do x :- 1
+		case 'U'
+			do y :+ 1
+		case 'D'
+			do y :- 1
+		end switch
+		do a[y][x] :: 1
+	end for
+	
+	for h(n, 0, -1)
+		for w(0, n)
+			do cui@print("\{1 - a[h][w]}\{w = n ?("\n", " ")}")
+		end for
+	end for
+end func

@@ -15,10 +15,12 @@ func main()
 		ret
 	end if
 	
-	var keys: []char :: cnt.toArrayKey()
-	for i(0, 6)
-		if(cnt.get(keys[i], &) = 1)
-			do cui@print("\{keys[i]}\n")
+	do cnt.forEach(f, null)
+	
+	func f(key: char, val: int, data: kuin@Class): bool
+		if(val = 1)
+			do cui@print("\{key}\n")
 		end if
-	end for
+		ret true
+	end func
 end func

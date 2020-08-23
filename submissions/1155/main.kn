@@ -1,0 +1,11 @@
+func main()
+	var n: int :: cui@inputInt()
+	switch(n)
+	case 1
+		do cui@print("Shiitakerando\n")
+	case 2
+		do cui@print("Otsukakokusaibijutsukan\n")
+	case 3
+		do cui@print("Spring-8\n")
+	end switch
+end func

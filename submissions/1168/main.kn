@@ -1,0 +1,12 @@
+func main()
+	var n: int :: cui@inputInt()
+	for i(1, 100)
+		var nx: int :: 0
+		while(n <> 0)
+			do nx :+ n % 10
+			do n :/ 10
+		end while
+		do n :: nx
+	end for
+	do cui@print("\{n}\n")
+end func

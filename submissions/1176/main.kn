@@ -1,0 +1,18 @@
+func main()
+	var a: int :: cui@inputInt()
+	var ans: int :: 0
+	for base(2, 7)
+		var num: int :: 1
+		var m: int :: 0
+		while(num < a)
+			do num :* base
+			do m :+ 1
+		end while
+		if(base = 2)
+			do ans :: base * m
+		else
+			do ans :: lib@min(ans, base * m)
+		end if
+	end for
+	do cui@print("\{ans}\n")
+end func

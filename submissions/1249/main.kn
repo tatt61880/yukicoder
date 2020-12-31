@@ -1,0 +1,7 @@
+func main()
+	var a: int :: cui@inputInt()
+	var b: int :: cui@inputInt()
+	var c: int :: cui@inputInt()
+	var ans: bool :: a + b = c
+	do cui@print(ans ?("Correct\n", "Incorrect\n"))
+end func

@@ -1,0 +1,12 @@
+func main()
+	var a: int :: cui@inputInt()
+	var b: int :: cui@inputInt()
+	var c: int :: cui@inputInt()
+	var d: int :: cui@inputInt()
+	var e: int :: cui@inputInt()
+	var f: int :: cui@inputInt()
+	var del: float :: 1.0 / (a * e - b * d) $ float
+	var x: float :: del * (e * c - b * f) $ float
+	var y: float :: del * (-d * c + a * f) $ float
+	do cui@print("\{x} \{y}\n")
+end func

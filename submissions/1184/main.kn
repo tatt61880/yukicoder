@@ -1,0 +1,8 @@
+func main()
+	var n: int :: cui@inputInt()
+	var l: int :: cui@inputInt()
+	do n :: (n + l - 1) / l
+	var mod: int :: 998244353
+	var ans: int :: (math@modPow(2, n, mod) + mod - 1) % mod
+	do cui@print("\{ans}\n")
+end func

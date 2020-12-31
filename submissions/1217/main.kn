@@ -1,0 +1,8 @@
+func main()
+	var s: []char :: cui@inputStr()
+	for i(0, 25)
+		if(s[i] <> 'a'.offset(i))
+			do cui@print(("\{'a'.offset(i)}to\{s[i]}\n"))
+		end if
+	end for
+end func

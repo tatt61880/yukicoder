@@ -1,0 +1,18 @@
+func main()
+	var n: int :: cui@inputInt()
+	var m: int :: n
+	var t: int :: 0
+	while(m > 0)
+		do m :/ 2
+		do t :+ 1
+	end while
+	var a: int :: n
+	var b: int :: 2 ^ (t - 1)
+	var c: int :: a - b
+	if(c = 0)
+		do a :: -1
+		do b :: -1
+		do c :: -1
+	end if
+	do cui@print("\{a} \{b} \{c}\n")
+end func

@@ -1,0 +1,14 @@
+func main()
+	var n: int :: cui@inputInt()
+	var ans: int :: 0
+	for t(0, 20)
+		for g(0, t)
+			for pg(0, 33)
+				if(t * 5 + g * 2 + pg * 3 = n)
+					do ans :+ 1
+				end if
+			end for
+		end for
+	end for
+	do cui@print("\{ans}\n")
+end func

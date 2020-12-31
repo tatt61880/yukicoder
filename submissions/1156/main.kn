@@ -1,0 +1,10 @@
+func main()
+    switch(cui@inputInt())
+    case(1)
+        do cui@print("1071\n")
+    case(2)
+        do cui@print("10947\n")
+    case(3)
+        do cui@print("841341\n")
+    end switch
+end func

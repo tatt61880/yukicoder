@@ -1,0 +1,13 @@
+func main()
+	var a: int :: cui@inputInt()
+	var b: int :: cui@inputInt()
+	do b :/ math@gcd(a, b)
+	while(b % 2 = 0)
+		do b :/ 2
+	end while
+	while(b % 5 = 0)
+		do b :/ 5
+	end while
+	var ans: bool :: b <> 1
+	do cui@print(ans ?("Yes\n", "No\n"))
+end func

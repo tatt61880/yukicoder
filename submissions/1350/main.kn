@@ -1,0 +1,18 @@
+func main()
+	var a: int :: cui@inputInt()
+	var b: int :: cui@inputInt()
+	var k: int :: cui@inputInt()
+	
+	var ok: int :: a * k
+	var ng: int :: 0
+	while((ok - ng).abs() > 1)
+		var mid: int :: (ok + ng) / 2
+		if(mid / a + mid / b - mid / (math@lcm(a, b)) >= k)
+			do ok :: mid
+		else
+			do ng :: mid
+		end if
+	end while
+	var ans: int :: ok
+	do cui@print("\{ans}\n")
+end func

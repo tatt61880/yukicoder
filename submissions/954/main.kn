@@ -1,0 +1,31 @@
+func main()
+	var a: []int :: #[5]int
+	for i(0, 4)
+		do a[i] :: cui@inputInt()
+	end for
+	do a.reverse()
+	
+	var ans: int :: 0
+	var b: int :: a[1] = 2 ?(1, 0)
+	var c: int :: 1
+	while loop(true)
+		var tmp: int :: b + c
+		do b :: c
+		do c :: tmp
+		if(b = a[0])
+			do ans :+ 1
+			for i(1, 4)
+				do tmp :: b + c
+				do b :: c
+				do c :: tmp
+				if(b <> a[i])
+					break loop
+				end if
+				do ans :+ 1
+			end for
+		elif(b > a[0])
+			break loop
+		end if
+	end while
+	do cui@print("\{ans}\n")
+end func

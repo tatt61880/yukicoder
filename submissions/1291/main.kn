@@ -1,0 +1,11 @@
+func main()
+	var n: int :: cui@inputInt()
+	for(0, n - 1)
+		var d: int :: cui@inputInt()
+		var ans: []char :: "10"
+		if(d <> 1)
+			do ans :: "9" ~ "0".repeat(d - 1)
+		end if
+		do cui@print("\{ans}\n")
+	end for
+end func

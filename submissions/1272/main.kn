@@ -1,0 +1,8 @@
+func main()
+	var k: int :: cui@inputInt()
+	var ans: float :: 0.0
+	for n(1, 10)
+		do ans :+ lib@sin((k * n) $ float) / (n ^ n) $ float
+	end for
+	do cui@print("\{ans.toStrFmt(".10f")}\n")
+end func

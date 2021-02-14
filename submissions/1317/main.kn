@@ -1,0 +1,35 @@
+func main()
+	var n: int :: cui@inputInt()
+	var dic: dict<[]char, int> :: #dict<[]char, int>
+	do dic.add("WA", 1)
+	do dic.add("TLE", 2)
+	do dic.add("MLE", 3)
+	do dic.add("OLE", 4)
+	do dic.add("RE", 5)
+	for(0, n - 1)
+		var a: []int :: #[6]int
+		var b: []int :: #[6]int
+		for i(0, 5)
+			do a[i] :: cui@inputInt()
+		end for
+		for i(0, 5)
+			do b[i] :: cui@inputInt()
+		end for
+		var x: []char :: cui@input()
+		
+		var idx: int :: dic.get(x, &)
+		var ans: bool :: true
+		for i(1, 5)
+			if(i = idx)
+				if(a[i] <> 0)
+					do ans :: false
+				end if
+			else
+				if(b[i] <> 0)
+					do ans :: false
+				end if
+			end if
+		end for
+		do cui@print(ans ?("Yes\n", "No\n"))
+	end for
+end func

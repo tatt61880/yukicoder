@@ -1,0 +1,16 @@
+func main()
+	var s: []char :: cui@input()
+	var c: char
+	if(s[0] = s[1])
+		do c :: s[0]
+	else
+		do c :: s[2]
+	end if
+	for i(0, ^s - 1)
+		if(s[i] <> c)
+			var k: int :: i + 1
+			var a: char :: s[i]
+			do cui@print("\{k} \{a}\n")
+		end if
+	end for
+end func

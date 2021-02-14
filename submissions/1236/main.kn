@@ -1,0 +1,16 @@
+func main()
+	var a: int :: cui@inputInt()
+	var b: int :: cui@inputInt()
+	do a :% 12
+	do a :: a * 3600 + b * 60
+	var ans: int :: a
+	for i(11, 0, -1)
+		var t: float :: 12.0 * 3600.0 * i $ float / 11.0
+		if(t < a $ float)
+			break i
+		end if
+		do ans :: t $ int - a
+	end for
+	
+	do cui@print("\{ans}\n")
+end func

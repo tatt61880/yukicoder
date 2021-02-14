@@ -1,0 +1,10 @@
+func main()
+	; "0000000000010"
+	; "0000000000101"
+	; "0000000001011"
+	; "0000000010111"
+	; ...
+	var n: int :: cui@inputInt()
+	var ans: []char :: "0".repeat(n) ~ "10\n"
+	do cui@print(ans)
+end func

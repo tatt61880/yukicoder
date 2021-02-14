@@ -1,0 +1,8 @@
+func main()
+	var k: int :: cui@inputInt()
+	var ans: float :: 0.0
+	for n(1, 10000000)
+		do ans :+ 1.0 / (n $ float * (n + k) $ float)
+	end for
+	do cui@print("\{ans}\n")
+end func

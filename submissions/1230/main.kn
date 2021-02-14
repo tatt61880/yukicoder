@@ -1,0 +1,18 @@
+func main()
+	var a: []int :: #[3]int
+	for i(0, 2)
+		do a[i] :: cui@inputInt()
+	end for
+	do a.sort()
+	
+	var p: float :: a[2] $ float
+	var q: float :: a[1] $ float
+	var r: float :: a[0] $ float
+	var s: float :: p + q + r
+	do p :/ s
+	do q :/ s
+	do r :/ s
+	
+	var ans: float :: [p, (1.0 - r)].max()
+	do cui@print("\{ans.toStrFmt(".12f")}\n")
+end func

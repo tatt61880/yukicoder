@@ -1,0 +1,9 @@
+func main()
+	var n: int :: cui@inputInt()
+	var ans: int :: 1
+	while(n >= 2)
+		do n :/ 2
+		do ans :* 2
+	end while
+	do cui@print("\{ans}\n")
+end func

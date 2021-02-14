@@ -139,7 +139,7 @@ func main()
 			
 			var writerUrl: file@Writer :: file@makeWriter(filepathUrl, false)
 			do writerUrl.writeStr("[InternetShortcut]\n")
-			do writerUrl.writeStr("URL="~ url)
+			do writerUrl.writeStr("URL=" ~ url)
 			do writerUrl.fin()
 			
 			var writerTitle: file@Writer :: file@makeWriter(filepathTitle, false)
@@ -196,7 +196,7 @@ var arrLanguages: [][]char
 var arrExtensions: [][]char
 
 func initExtensions(): bool
-	var extensionFilepath: []char :: "\{file@exeDir()}extensions.csv"
+	var extensionFilepath: []char :: "\{wnd@exeDir()}extensions.csv"
 	var reader: file@Reader :: file@makeReader(extensionFilepath)
 	if(reader =& null)
 		do lib@exitCode(1)

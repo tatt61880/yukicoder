@@ -1,0 +1,5 @@
+func main()
+	var x: int :: (19 * 43 + 28 * 47) / 27
+	var ans: int :: x
+	do cui@print("\{ans}\n")
+end func

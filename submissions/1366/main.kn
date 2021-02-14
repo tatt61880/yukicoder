@@ -1,0 +1,35 @@
+func main()
+	var a: []int :: #[3]int
+	var b: []int :: #[3]int
+	for i(0, 2)
+		do a[i] :: cui@inputInt()
+	end for
+	for i(0, 2)
+		do b[i] :: cui@inputInt()
+	end for
+	
+	var ans: bool :: false
+	for i(0, 2)
+		for j(0, 2)
+			var tmp: int :: a[i]
+			do tmp :: a[i]
+			do a[i] :: b[j]
+			do b[j] :: tmp
+			if(isKadomatsu(a) & isKadomatsu(b))
+				do ans :: true
+			end if
+			do tmp :: a[i]
+			do a[i] :: b[j]
+			do b[j] :: tmp
+		end for
+	end for
+	
+	do cui@print(ans ?("Yes\n", "No\n"))
+	
+	func isKadomatsu(a: []int): bool
+		if(a[0] = a[1] | a[1] = a[2] | a[2] = a[0])
+			ret false
+		end if
+		ret(a[1] = a.min() | a[1] = a.max())
+	end func
+end func

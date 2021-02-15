@@ -1,0 +1,32 @@
+func main()
+	var t: int :: cui@inputInt()
+	for(1, t)
+		var n: int :: cui@inputInt()
+		var g: int :: cui@inputInt()
+		var G: int :: cui@inputInt()
+		var c: int :: cui@inputInt()
+		var C: int :: cui@inputInt()
+		var p: int :: cui@inputInt()
+		var P: int :: cui@inputInt()
+		var mod: int :: 1000000007
+		
+		var ans: int :: 0
+		do ans :+ math@modPow(G * C % mod * P % mod, n, mod)
+		do ans :% mod
+		do ans :+ math@modPow(g * C % mod * P % mod, n, mod) * 2
+		do ans :% mod
+		do ans :+ math@modPow(G * c % mod * P % mod, n, mod) * 2
+		do ans :% mod
+		do ans :+ math@modPow(G * C % mod * p % mod, n, mod) * 2
+		do ans :% mod
+		do ans :+ mod - math@modPow((G - g) * C % mod * P % mod, n, mod)
+		do ans :% mod
+		do ans :+ mod - math@modPow(G * (C - c) % mod * P % mod, n, mod)
+		do ans :% mod
+		do ans :+ mod - math@modPow(G * C % mod * (P - p) % mod, n, mod)
+		do ans :% mod
+		do ans :* math@modPow(math@modPow(G * C % mod * P % mod, n, mod), mod - 2, mod)
+		do ans :% mod
+		do cui@print("\{ans}\n")
+	end for
+end func

@@ -1,0 +1,16 @@
+func main()
+	var n: int :: cui@inputInt()
+	var dic: dict<int, int> :: #dict<int, int>
+	var ans: int :: 0
+	for(0, n - 2)
+		for i(0, 1)
+			var a: int :: cui@inputInt()
+			var num: int :: dic.get(a, &)
+			if(num > 1)
+				do ans :+ 1
+			end if
+			do dic.add(a, num + 1)
+		end for
+	end for
+	do cui@print("\{ans}\n")
+end func

@@ -1,0 +1,22 @@
+func main()
+	var t: int :: cui@inputInt()
+	for(1, t)
+		var d: int :: cui@inputInt()
+		var a: int :: cui@inputInt()
+		var b: int :: cui@inputInt()
+		do d :- 1
+		var ans: int :: f(b, d) - f(a - 1, d)
+		do cui@print("\{ans}\n")
+		
+		func f(x: int, d: int): int
+			if(x = -1)
+				ret 0
+			end if
+			var res: int :: 0
+			do res :+ (d + 1) * d / 2 * (x / d)
+			var y: int :: x % d
+			do res :+ (y + 1) * y / 2
+			ret res
+		end func
+	end for
+end func

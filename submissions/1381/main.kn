@@ -1,0 +1,23 @@
+func main()
+	var x: int :: cui@inputInt()
+	var y: int :: cui@inputInt()
+	var z: int :: cui@inputInt()
+	var w: int :: cui@inputInt()
+	
+	var ok: float :: 1.0e+10
+	var ng: float :: 0.0
+	for(1, 1000)
+		var mid: float :: (ok + ng) / 2.0
+		var bp: float :: lib@dist(ok, 0.0, 0.0, y $ float)
+		var bq: float :: lib@dist(x $ float / ok, 0.0, 0.0, z $ float)
+		if(bp - bq > w $ float)
+			do ok :: mid
+		else
+			do ng :: mid
+		end if
+	end for
+	
+	var bc: float :: x $ float / ok
+	var ans: float :: x $ float - (ok * y $ float + bc * z $ float + (bc - y $ float) * (ok - z $ float)) / 2.0
+	do cui@print("\{ans.toStrFmt(".10f")}\n")
+end func

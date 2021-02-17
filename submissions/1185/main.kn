@@ -1,0 +1,28 @@
+func main()
+	var s: []char :: cui@input()
+	var ans: int :: 0
+	if(^s > 2)
+		for i(0, ^s - 1)
+			var d: int :: s[i] $ int - '0' $ int
+			if(d % 3 <> 0)
+				do ans :+ (d / 3 + 1) * 4 ^ (^s - 1 - i)
+				break i
+			end if
+			do ans :+ (d / 3) * 4 ^ (^s - 1 - i)
+			if(i = ^s - 1)
+				do ans :+ 1
+			end if
+		end for
+		do ans :+ 14
+	else
+		var n: int :: s.toInt(&)
+		for i(10, n)
+			var a: int :: i % 10
+			var b: int :: i / 10
+			if((a + b) % 3 = 0)
+				do ans :+ 1
+			end if
+		end for
+	end if
+	do cui@print("\{ans}\n")
+end func

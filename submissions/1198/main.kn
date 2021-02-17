@@ -1,0 +1,17 @@
+func main()
+	var s: []char :: cui@input()
+	var n: int :: 0
+	var ans: int :: 1
+	if(^s > 2)
+		do n :: s.sub(^s - 2, -1).toInt(&)
+	else
+		do n :: s.toInt(&)
+		if(n = 1 | n = 4)
+			do ans :: -1
+		end if
+	end if
+	if(n % 4 = 2)
+		do ans :: -1
+	end if
+	do cui@print("\{ans}\n")
+end func

@@ -1,0 +1,11 @@
+func main()
+	var n: int :: cui@inputInt()
+	var x: int :: cui@inputInt()
+	var c: []int :: #[n]int
+	for i(0, n - 1)
+		do c[i] :: cui@inputInt()
+	end for
+	
+	var ans: bool :: c.min() <= x & x <= c.max()
+	do cui@print(ans ?("Yes\n", "No\n"))
+end func

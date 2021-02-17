@@ -1,0 +1,35 @@
+func main()
+	var n: int :: cui@inputInt()
+	var a: []int :: #[n]int
+	var sum: int :: 0
+	var mp: dict<int, int> :: #dict<int, int>
+	for i(0, n - 1)
+		do a[i] :: cui@inputInt()
+		do sum :+ a[i]
+		do mp.add(a[i] % 10, mp.get(a[i] % 10, &) + 1)
+	end for
+	
+	const rMax: int :: 555
+	var dp: []int :: [-1].repeat(rMax)
+	do dp[0] :: n
+	for i(1, 9)
+		var num: int :: [10, mp.get(i, &)].min()
+		for(1, num)
+			for j(rMax - 1 - i, 0, -1)
+				if(dp[j] <> -1)
+					do dp[j + i] :: dp[j] - 1
+				end if
+			end for
+		end for
+	end for
+	
+	var target: int :: sum % 10
+	var ans: int :: 0
+	for i(target, rMax - 1, 10)
+		if(dp[i] <> -1 & dp[i] > ans)
+			do ans :: dp[i]
+		end if
+	end for
+	
+	do cui@print("\{ans}\n")
+end func

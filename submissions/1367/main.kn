@@ -1,0 +1,6 @@
+func main()
+	var re: regex@Regex :: regex@makeRegex("k?a?d?o?m?a?t?s?u?")
+	
+	var ans: bool :: re.match(cui@input()) <>& null
+	do cui@print(ans ?("Yes\n", "No\n"))
+end func

@@ -1,0 +1,18 @@
+func main()
+	var h: int :: cui@inputInt()
+	var w: int :: cui@inputInt()
+	var q: int :: cui@inputInt()
+	var ans: int :: h * w
+	var nums: dict<int, int> :: #dict<int, int>
+	for(1, q)
+		var y: int :: cui@inputInt()
+		var x: int :: cui@inputInt()
+		var n: int :: h + 1 - y
+		var v: int :: nums.get(x, &)
+		if(n > v)
+			do ans :- n - v
+			do nums.add(x, n)
+		end if
+		do cui@print("\{ans}\n")
+	end for
+end func

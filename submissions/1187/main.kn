@@ -1,0 +1,33 @@
+func main()
+	do cui@print("? 1\n")
+	do cui@flush()
+	if(cui@input() = "out")
+		do cui@print("! 0\n")
+		do cui@flush()
+		ret
+	end if
+	var ok: int :: 1
+	var ng: int :: 1000
+	while((ok - ng).abs() > 1)
+		var mid: int :: (ok + ng) / 2
+		if(isOk(mid))
+			do ok :: mid
+		else
+			do ng :: mid
+		end if
+	end while
+	do cui@print("? \{ok}\n")
+	do cui@flush()
+	do cui@print("! \{ok + (cui@input() = "safe" ?(0, 1))}\n")
+	
+	func isOk(n: int): bool
+		for i(0, 1)
+			do cui@print("? \{n + i}\n")
+			do cui@flush()
+			if(cui@input() = "safe")
+				ret true
+			end if
+		end for
+		ret false
+	end func
+end func

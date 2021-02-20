@@ -1,0 +1,42 @@
+func main()
+	var n: int :: cui@inputInt()
+	var ans: modInt :: (#modInt).init(1, 10 ^ 9 + 7)
+	for i(1, 9)
+		do ans.mul(n + i)
+		do ans.div(i)
+	end for
+	do cui@print("\{ans}\n")
+	
+	class modInt()
+		+var val: int
+		var mod: int
+		+func init(val: int, mod: int): modInt
+			do me.val :: val
+			do me.mod :: mod
+			ret me
+		end func
+		+func add(a: int): modInt
+			do me.val :: (me.val + a) % me.mod
+			ret me
+		end func
+		+func sub(a: int): modInt
+			do me.val :: (me.val + me.mod - a) % me.mod
+			ret me
+		end func
+		+func mul(a: int): modInt
+			do me.val :: (me.val * a) % me.mod
+			ret me
+		end func
+		+func div(a: int): modInt
+			do me.val :: me.val * math@modPow(a, me.mod - 2, me.mod) % me.mod
+			ret me
+		end func
+		+func pow(a: int): modInt
+			do me.val :: math@modPow(me.val, a, me.mod)
+			ret me
+		end func
+		+*func toStr(): []char
+			ret "\{me.val}"
+		end func
+	end class
+end func

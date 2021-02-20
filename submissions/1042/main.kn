@@ -1,0 +1,17 @@
+func main()
+	var p: int :: cui@inputInt()
+	var q: int :: cui@inputInt()
+	
+	var ok: float :: 1.0
+	var ng: float :: (10 ^ 15) $ float
+	for i(1, 200)
+		var mid: float :: (ok + ng) / 2.0
+		if(mid * mid <= p $ float + q $ float * mid * lib@log(2.0, mid))
+			do ok :: mid
+		else
+			do ng :: mid
+		end if
+	end for
+	var ans: float :: ok
+	do cui@print("\{ans.toStrFmt(".9f")}\n")
+end func

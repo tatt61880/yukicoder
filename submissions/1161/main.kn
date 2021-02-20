@@ -1,0 +1,26 @@
+func main()
+	var a: int :: cui@inputInt()
+	var b: int :: cui@inputInt()
+	var c: int :: cui@inputInt()
+	
+	var d: int :: a % c
+	var n: int :: a / c
+	
+	var ans: int :: 0
+	var x: []int :: #[c]int
+	for i(0, c - 1)
+		do x[i] :+ math@modPow(i, b, c)
+	end for
+	
+	for i(0, c - 1)
+		do ans :+ x[i]
+		do ans :% c
+	end for
+	do ans :* n
+	for i(0, d)
+		do ans :+ x[i]
+		do ans :% c
+	end for
+	
+	do cui@print("\{ans}\n")
+end func

@@ -1,0 +1,45 @@
+func main()
+	var n: int :: cui@inputInt()
+	var k: int :: cui@inputInt()
+	var m: int :: cui@inputInt()
+	var p: []int :: #[n]int
+	var e: []int :: #[n]int
+	var a: []int :: #[n]int
+	var h: []int :: #[n]int
+	for i(0, n - 1)
+		do p[i] :: cui@inputInt()
+	end for
+	for i(0, n - 1)
+		do e[i] :: cui@inputInt()
+	end for
+	for i(0, n - 1)
+		do a[i] :: cui@inputInt()
+	end for
+	for i(0, n - 1)
+		do h[i] :: cui@inputInt()
+	end for
+	do p.sort()
+	do e.sort()
+	do a.sort()
+	do h.sort()
+	
+	var ans: int :: 0
+	for i(0, n - 1)
+		var d: int :: [p[i], e[i], a[i], h[i]].max() - [p[i], e[i], a[i], h[i]].min()
+		do ans :+ modPow(d, k, m)
+	end for
+	do ans :% m
+	do cui@print("\{ans}\n")
+	
+	func modPow(a: int, b: int, mod: int): int
+		if(b = 0)
+			ret 1
+		end if
+		var res: int :: modPow(a, b / 2, mod)
+		do res :: res * res % mod
+		if(b % 2 = 1)
+			do res :: res * a % mod
+		end if
+		ret res
+	end func
+end func

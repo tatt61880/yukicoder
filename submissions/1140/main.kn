@@ -1,0 +1,26 @@
+func main()
+	var isPrime: []bool :: sieve(5000000)
+	func sieve(n: int): []bool
+		var isPrime: []bool :: [true].repeat(n + 1)
+		do isPrime[0] :: false
+		do isPrime[1] :: false
+		for i(2, n)
+			if(isPrime[i])
+				var j: int :: i * i
+				while(j <= n)
+					do isPrime[j] :: false
+					do j :+ i
+				end while
+			end if
+		end for
+		ret isPrime
+	end func
+	
+	var t: int :: cui@inputInt()
+	for(1, t)
+		var a: int :: cui@inputInt()
+		var p: int :: cui@inputInt()
+		var ans: int :: isPrime[p] ?(a % p = 0 ?(0, 1), -1)
+		do cui@print("\{ans}\n")
+	end for
+end func

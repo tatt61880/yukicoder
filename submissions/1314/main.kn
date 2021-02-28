@@ -1,0 +1,31 @@
+func main()
+	var m: int :: cui@inputInt()
+	var k: int :: cui@inputInt()
+	
+	do m :- 1
+	do k :+ 1
+	
+	; 先手負け(後手勝ち)の試合数
+	var lose: int :: m / k
+	; 先手勝ちの試合数
+	var win: int :: m - lose
+	
+	; 互いに先手勝ちの試合を選び続けるのが最適。
+	var a: int :: win - win / 2
+	var b: int :: win / 2
+	
+	; 先手負け(後手勝ち)の試合しか残ってない。
+	if(win % 2 = 0)
+		do b :+ lose
+	else
+		do a :+ lose
+	end if
+	
+	if(a > b)
+		do cui@print("Win\n")
+	elif(a = b)
+		do cui@print("Draw\n")
+	else
+		do cui@print("Lose\n")
+	end if
+end func

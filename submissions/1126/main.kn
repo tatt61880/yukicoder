@@ -1,0 +1,27 @@
+const mod: int :: 1000000007
+const kMax: int :: 1000001
+var fact: []int
+var inv: []int
+
+func main()
+	do @fact :: #[@kMax + 1]int
+	do @inv :: #[@kMax + 1]int
+	var n: int :: cui@inputInt()
+	var m: int :: cui@inputInt()
+	var ans: int :: comb(m + 1, n + 1)
+	do cui@print("\{ans}\n")
+	
+	func comb(n: int, r: int): int
+		if(@fact[0] = 0)
+			do @fact[0] :: 1
+			for i(1, @kMax)
+				do @fact[i] :: @fact[i - 1] * i % @mod
+			end for
+			do @inv[@kMax] :: math@modPow(@fact[@kMax], @mod - 2, @mod)
+			for i(@kMax, 1, -1)
+				do @inv[i - 1] :: @inv[i] * i % @mod
+			end for
+		end if
+		ret @fact[n] * @inv[n - r] % @mod * @inv[r] % @mod
+	end func
+end func

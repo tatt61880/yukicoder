@@ -1,0 +1,17 @@
+func main()
+	var k: int :: cui@inputInt()
+	for i(1, k)
+		var x: int :: 2 ^ (k - i)
+		var dx: int :: x * 2
+		for j(1, 2 ^ (i - 1))
+			if(x <= 2)
+				do cui@print("\{3 - x}")
+			else
+				do cui@print("\{x}")
+			end if
+			do cui@print(j = 2 ^ (i - 1) ?("", " "))
+			do x :+ dx
+		end for
+		do cui@print((i = k) ?("\n", " "))
+	end for
+end func

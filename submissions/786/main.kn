@@ -1,0 +1,11 @@
+func main()
+	var n: int :: cui@inputInt()
+	var dp: []int :: #[n + 2]int
+	do dp[0] :: 1
+	for i(0, n - 1)
+		do dp[i + 1] :+ dp[i]
+		do dp[i + 2] :+ dp[i]
+	end for
+	var ans: int :: dp[n]
+	do cui@print("\{ans}\n")
+end func

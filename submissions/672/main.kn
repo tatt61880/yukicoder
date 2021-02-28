@@ -1,0 +1,23 @@
+func main()
+	var s: []char :: cui@input()
+	var n: int :: ^s
+	var cum: []int :: #[n + 1]int
+	for i(0, n - 1)
+		do cum[i + 1] :: cum[i] + (s[i] = 'A' ?(1, -1))
+	end for
+	var l: dict<int, int> :: #dict<int, int>
+	var r: dict<int, int> :: #dict<int, int>
+	for i(0, n)
+		var v: int :: cum[i]
+		if(!l.exist(v))
+			do l.add(v, i)
+		end if
+		do r.add(v, i)
+	end for
+	
+	var ans: int :: 0
+	for i(-n, n)
+		do ans :: lib@max(ans, r.get(i, &) - l.get(i, &))
+	end for
+	do cui@print("\{ans}\n")
+end func

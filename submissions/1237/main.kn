@@ -1,0 +1,27 @@
+func main()
+	var n: int :: cui@inputInt()
+	var a: []int :: #[n]int
+	for i(0, n - 1)
+		do a[i] :: cui@inputInt()
+	end for
+	if(a.min() = 0)
+		do cui@print("-1\n")
+		ret
+	end if
+	
+	const c: int :: 1000000007
+	if(a.max() > 3)
+		do cui@print("\{c}\n")
+		ret
+	end if
+	
+	var val: []int :: [0, 1, 2 ^ 2, 3 ^ 6]
+	var ans: int :: 1
+	for i(0, n - 1)
+		do ans :* val[a[i]]
+		if(ans > c)
+			break i
+		end if
+	end for
+	do cui@print("\{c % ans}\n")
+end func

@@ -1,0 +1,61 @@
+func main()
+	; target
+	var a: [][]int :: #[4, 4]int
+	for i(0, 3)
+		for j(0, 3)
+			do a[i][j] :: cui@inputInt()
+		end for
+	end for
+	
+	; current
+	var b: [][]int :: #[4, 4]int
+	for i(0, 3)
+		for j(0, 3)
+			do b[i][j] :: (1 + i * 4 + j) % 16
+		end for
+	end for
+	
+	while(true)
+		if(isEqual(a, b))
+			do cui@print("Yes\n")
+			ret
+		end if
+		var flag: bool :: false
+		for i(0, 3)
+			for j(0, 3)
+				if(b[i][j] = 0)
+					var dx: []int :: [0, 1, 0, -1]
+					var dy: []int :: [1, 0, -1, 0]
+					for k(0, 3)
+						var x: int :: j + dx[k]
+						var y: int :: i + dy[k]
+						if(0 <= x & x <= 3 & 0 <= y & y <= 3)
+							if(b[y][x] = a[i][j])
+								do b[i][j] :: b[y][x]
+								do b[y][x] :: 0
+								do flag :: true
+								break i
+							end if
+						end if
+					end for
+				end if
+			end for
+		end for
+		if(!flag)
+			do cui@print("No\n")
+			ret
+		end if
+		
+		func isEqual(a: [][]int, b: [][]int): bool
+			for i(0, 3)
+				for j(0, 3)
+					if(a[i][j] <> b[i][j])
+						ret false
+					end if
+				end for
+			end for
+			ret true
+		end func
+	end while
+	var ans: int :: 0
+end func

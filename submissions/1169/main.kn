@@ -1,0 +1,11 @@
+func main()
+	var n: int :: cui@inputInt()
+	for i(0, n - 1)
+		var x: int :: (n - i) % n
+		for j(1, n)
+			do cui@print("\{x + 1}\{j = n ?("\n", " ")}")
+			do x :+ 2
+			do x :% n
+		end for
+	end for
+end func

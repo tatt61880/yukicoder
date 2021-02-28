@@ -1,0 +1,33 @@
+func main()
+	var str: [][]char :: #[5][]char
+	var coin: []int :: #[5]int
+	var dic: dict<[]char, int> :: #dict<[]char, int>
+	for i(0, 4)
+		do str[i] :: cui@inputStr()
+		do coin[i] :: cui@inputInt()
+		do dic.add(str[i], i)
+	end for
+	var a: []dict<int, int> :: #[3]dict<int, int>
+	var n: []int :: #[3]int
+	for i(0, 2)
+		do n[i] :: cui@inputInt()
+		do a[i] :: #dict<int, int>
+		for(1, n[i])
+			var idx: int :: dic.get(cui@input(), &)
+			do a[i].add(idx, a[i].get(idx, &) + 1)
+		end for
+	end for
+	
+	var ans: float :: 0.0
+	var nums: []int :: #[5]int
+	for i(0, 4)
+		do nums[i] :: 5 * a[0].get(i, &) * a[1].get(i, &) * a[2].get(i, &)
+		do ans :+ (nums[i] * coin[i]) $ float
+	end for
+	do ans :/ (n[0] * n[1] * n[2]) $ float
+	
+	do cui@print("\{ans.toStrFmt(".6f")}\n")
+	for i(0, 4)
+		do cui@print("\{nums[i]}\n")
+	end for
+end func

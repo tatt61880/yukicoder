@@ -1,0 +1,22 @@
+func main()
+	var n: int :: cui@inputInt()
+	var k: int :: cui@inputInt()
+	var x: int :: cui@inputInt()
+	var y: int :: cui@inputInt()
+	var a: []int :: #[n + 1]int
+	for i(1, n)
+		do a[i] :: (cui@inputInt() - 1 + k - 1) / k
+	end for
+	do a.sort()
+	do a.reverse()
+	
+	var mp: num@BigInt :: num@makeBigIntFromInt(y * a[0])
+	var ans: num@BigInt :: mp
+	for i(0, n - 1)
+		var numDiff: num@BigInt :: num@makeBigIntFromInt(a[i] - a[i + 1])
+		do mp :: mp.sub(numDiff.mulInt(y))
+		do mp :: mp.add(numDiff.mulInt((i + 1) * x))
+		do ans :: [ans, mp].min()
+	end for
+	do cui@print("\{ans}\n")
+end func

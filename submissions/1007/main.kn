@@ -1,0 +1,35 @@
+func main()
+	var n: int :: cui@inputInt()
+	var k: int :: cui@inputInt()
+	do k :- 1
+	var a: []int :: #[n]int
+	for i(0, n - 1)
+		do a[i] :: cui@inputInt()
+	end for
+	var numL: int :: 0
+	var numR: int :: 0
+	for i(k - 1, 0, -1)
+		do numL :+ a[i]
+		if(a[i] <= 1)
+			break i
+		end if
+	end for
+	for i(k + 1, n - 1)
+		do numR :+ a[i]
+		if(a[i] <= 1)
+			break i
+		end if
+	end for
+	
+	var ans: int :: 0
+	switch(a[k])
+	case 0
+		do ans :: 0
+	case 1
+		do ans :: 1 + lib@max(numL, numR)
+	default
+		do ans :: a[k] + numL + numR
+	end switch
+	
+	do cui@print("\{ans}\n")
+end func

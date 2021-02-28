@@ -1,0 +1,38 @@
+func main()
+	var n: int :: cui@inputInt()
+	var x: []int :: #[n]int
+	for i(0, n - 1)
+		do x[i] :: cui@inputInt()
+	end for
+	var y: []int :: #[n]int
+	for i(0, n - 1)
+		do y[i] :: cui@inputInt()
+	end for
+	
+	var ok: int :: 0
+	var ng: int :: 10 ^ 7
+	while((ok - ng).abs() > 1)
+		var mid: int :: (ok + ng) / 2
+		var isOk: bool :: true
+		
+		for i(0, n - 1)
+			if(mid > x[i] + y[i])
+				do isOk :: false
+				break i
+			end if
+		end for
+		if(isOk)
+			do ok :: mid
+		else
+			do ng :: mid
+		end if
+	end while
+	var ans: int :: ok
+	do cui@print("\{ans}\n")
+	
+	do cui@print("0\n")
+	for i(0, n - 1)
+		do cui@print("\{x[i] < ok ?(x[i], ok)}\n")
+	end for
+	do cui@print("\{ok}\n")
+end func

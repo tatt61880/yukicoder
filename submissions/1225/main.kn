@@ -1,0 +1,27 @@
+func main()
+	var n: int :: cui@inputInt()
+	var cs: []int :: #[3]int
+	for i(0, n - 1)
+		do cs[cui@inputInt()] :+ 1
+	end for
+	var ct: []int :: #[3]int
+	for i(0, n - 1)
+		do ct[cui@inputInt()] :+ 1
+	end for
+	
+	var ans: int :: 0
+	if(cs[2] <> 0)
+		if(ct[2] <> 0)
+			do ans :: (cs[2] + ct[2]) * n - cs[2] * ct[2]
+		else
+			do ans :: cs[2] * n + cs[1]
+		end if
+	else
+		if(ct[2] <> 0)
+			do ans :: ct[2] * n + ct[1]
+		else
+			do ans :: lib@max(cs[1], ct[1])
+		end if
+	end if
+	do cui@print("\{ans}\n")
+end func

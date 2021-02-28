@@ -1,0 +1,42 @@
+const mod: int :: 1000000007
+const kMax: int :: 200000
+var fact: []int
+var inv: []int
+
+func main()
+	var a: int :: cui@inputInt()
+	var b: int :: cui@inputInt()
+	do a :% @mod
+	do b :% @mod
+	var n: int :: cui@inputInt()
+	var k: int :: cui@inputInt()
+	do k :- 1
+	var ans: int :: b * comb(n - 1, k - 1) + a * comb(n - 1, k)
+	do ans :% @mod
+	do cui@print("\{ans}\n")
+	var sum: int :: a ^ 2 + b ^ 2
+	do sum :% @mod
+	for i(1, n - 1)
+		var v: int :: b * comb(n - 1, i - 1) + a * comb(n - 1, i)
+		do v :% @mod
+		do sum :+ v ^ 2
+		do sum :% @mod
+	end for
+	do cui@print("\{sum}\n")
+	
+	func comb(n: int, r: int): int
+		if(@fact =& null)
+			do @fact :: #[@kMax + 1]int
+			do @inv :: #[@kMax + 1]int
+			do @fact[0] :: 1
+			for i(1, @kMax)
+				do @fact[i] :: @fact[i - 1] * i % @mod
+			end for
+			do @inv[@kMax] :: math@modPow(@fact[@kMax], @mod - 2, @mod)
+			for i(@kMax, 1, -1)
+				do @inv[i - 1] :: @inv[i] * i % @mod
+			end for
+		end if
+		ret @fact[n] * @inv[n - r] % @mod * @inv[r] % @mod
+	end func
+end func

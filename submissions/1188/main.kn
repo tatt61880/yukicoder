@@ -1,0 +1,54 @@
+func main()
+	var n: int :: cui@inputInt()
+	var a: []int :: #[n]int
+	for i(0, n - 1)
+		do a[i] :: cui@inputInt()
+	end for
+	
+	var ans: int :: solve(a)
+	for i(0, n - 1)
+		do a[i] :: -1 * a[i]
+	end for
+	do ans :: lib@max(ans, solve(a))
+	do cui@print("\{ans}\n")
+	
+	func solve(a: []int): int
+		var lis: []int :: getLisArr(a)
+		do a.reverse()
+		var revLis: []int :: getLisArr(a)
+		do revLis.reverse()
+		do a.reverse()
+		var res: int :: 0
+		for i(0, ^a - 1)
+			do res :: lib@max(res, lib@min(lis[i], revLis[i]) - 1)
+		end for
+		ret res
+		
+		func getLisArr(a: []int): []int
+			const infInt: int :: lib@intMax
+			var n: int :: ^a
+			var buff: []int :: [infInt].repeat(n + 1)
+			var lisArr: []int :: #[n]int
+			for i(0, n - 1)
+				var idx: int :: f(buff, a[i])
+				do buff[idx] :: a[i]
+				do lisArr[i] :: f(buff, infInt)
+				
+				func f(arr: []int, val: int): int
+					var ok: int :: -1
+					var ng: int :: ^arr - 1
+					while((ok - ng).abs() > 1)
+						var mid: int :: (ok + ng) / 2
+						if(val > arr[mid])
+							do ok :: mid
+						else
+							do ng :: mid
+						end if
+					end while
+					ret ok + 1
+				end func
+			end for
+			ret lisArr
+		end func
+	end func
+end func

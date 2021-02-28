@@ -1,0 +1,18 @@
+func main()
+	var s: []char :: cui@input()
+	var a: int :: s[0] $ int - '0' $ int
+	var b: int :: s[1] $ int - '0' $ int
+	var c: int :: ^s - 1
+	if(s[2] > '4')
+		do b :+ 1
+		if(b = 10)
+			do a :+ 1
+			do b :: 0
+			if(a = 10)
+				do a :: 1
+				do c :+ 1
+			end if
+		end if
+	end if
+	do cui@print("\{a}.\{b}*10^\{c}\n")
+end func

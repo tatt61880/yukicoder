@@ -1,0 +1,27 @@
+func main()
+	var n: int :: cui@inputInt()
+	var m: int :: cui@inputInt()
+	var a: []int :: #[m + n + m]int
+	var l: int :: m
+	var r: int :: m + n
+	for i(0, n - 1)
+		do a[m + i] :: cui@inputInt()
+	end for
+	var s: []char :: cui@input()
+	for i(0, m - 1)
+		if(s[i] = 'L')
+			do a[l + 1] :+ a[l]
+			do a[l] :: 0
+			do l :+ 1
+			do r :+ 1
+		else
+			do a[r - 2] :+ a[r - 1]
+			do a[r - 1] :: 0
+			do l :- 1
+			do r :- 1
+		end if
+	end for
+	for i(0, n - 1)
+		do cui@print("\{a[l + i]}\{i = n - 1 ?("\n", " ")}")
+	end for
+end func

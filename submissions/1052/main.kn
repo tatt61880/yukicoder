@@ -1,0 +1,6 @@
+func main()
+	var n: int :: cui@inputInt()
+	var k: int :: cui@inputInt()
+	var ans: int :: [n / (2 - n % 2), k + 1].min()
+	do cui@print("\{ans}\n")
+end func

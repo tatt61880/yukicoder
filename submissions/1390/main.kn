@@ -1,0 +1,60 @@
+func main()
+	var n: int :: cui@inputInt()
+	var m: int :: cui@inputInt()
+	var uni: UnionFind :: (#UnionFind).init(m + 1)
+	
+	var ans: int :: 0
+	var boxs: []int :: #[n + 1]int
+	for(1, n)
+		var b: int :: cui@inputInt()
+		var c: int :: cui@inputInt()
+		if(boxs[c] = 0)
+			do boxs[c] :: b
+		else
+			var b0: int :: boxs[c]
+			if(!uni.same(b, b0))
+				do ans :+ 1
+				do uni.unite(b, b0)
+			end if
+		end if
+	end for
+	do cui@print("\{ans}\n")
+	
+	class UnionFind()
+		var parents: []int
+		+func init(n: int): UnionFind
+			do me.parents :: [-1].repeat(n)
+			ret me
+		end func
+		+func size(x: int): int
+			ret - me.parents[me.root(x)]
+		end func
+		+func same(x: int, y: int): bool
+			ret me.root(x) = me.root(y)
+		end func
+		+func unite(x: int, y: int): bool
+			do x :: me.root(x)
+			do y :: me.root(y)
+			if(x = y)
+				ret false
+			end if
+			if(me.size(x) < me.size(y))
+				do me.parents[y] :+ me.parents[x]
+				do me.parents[x] :: y
+			else
+				do me.parents[x] :+ me.parents[y]
+				do me.parents[y] :: x
+			end if
+			ret true
+		end func
+		
+		func root(x: int): int
+			if(me.parents[x] < 0)
+				ret x
+			else
+				do me.parents[x] :: me.root(me.parents[x])
+				ret me.parents[x]
+			end if
+		end func
+	end class
+end func

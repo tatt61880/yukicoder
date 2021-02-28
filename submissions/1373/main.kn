@@ -1,0 +1,39 @@
+func main()
+	var n: int :: cui@inputInt()
+	var lines: []Line :: #[n - 1]Line
+	
+	for id(0, n - 2)
+		var len: int :: cui@inputInt()
+		do lines[id] :: (#Line).init(id, len)
+	end for
+	do lines.sort()
+	
+	var ans: []int :: #[n - 1]int
+	for i(0, n - 2)
+		var id: int :: lines[i].id
+		var len: int :: lines[i].len
+		var a: int :: i + 2 - len
+		if(a < 1)
+			do cui@print("NO\n")
+			ret
+		end if
+		do ans[id] :: a
+	end for
+	do cui@print("YES\n")
+	for i(0, n - 2)
+		do cui@print("\{ans[i]}\n")
+	end for
+	
+	class Line()
+		+var id: int
+		+var len: int
+		+func init(id: int, len: int): Line
+			do me.id :: id
+			do me.len :: len
+			ret me
+		end func
+		+*func cmp(t: kuin@Class): int
+			ret me.len - (t $ Line).len
+		end func
+	end class
+end func

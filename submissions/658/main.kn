@@ -1,0 +1,24 @@
+func main()
+	var t: []int :: #[17 ^ 4]int
+	var i: int :: 4
+	var num: int :: 1
+	do t[3] :: 1
+	while loop(true)
+		do t[i] :: (num + 17) % 17
+		do num :- t[i - 4]
+		do num :+ t[i]
+		
+		var v: int :: t[i - 3] * 17 ^ 3 + t[i - 2] * 17 ^ 2 + t[i - 1] * 17 + t[i]
+		if(v = 1)
+			break loop
+		end if
+		do i :+ 1
+	end while
+	var mod: int :: i - 3
+	
+	var q: int :: cui@inputInt()
+	for(1, q)
+		var n: int :: cui@inputInt()
+		do cui@print("\{t[(n - 1) % mod]}\n")
+	end for
+end func

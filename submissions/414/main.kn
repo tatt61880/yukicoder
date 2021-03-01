@@ -1,0 +1,9 @@
+func main()
+	var n: int :: cui@inputInt()
+	var factors: []int :: math@primeFactors(n)
+	if(^factors = 0 | factors[0] = n)
+		do cui@print("1 \{n}\n")
+	else
+		do cui@print("\{factors[0]} \{n / factors[0]}\n")
+	end if
+end func

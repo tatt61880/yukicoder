@@ -1,0 +1,5 @@
+func main()
+	var m: int :: cui@inputInt()
+	var n: int :: cui@inputInt()
+	do cui@print("\{m $ float + n $ float / 3.0}\n")
+end func

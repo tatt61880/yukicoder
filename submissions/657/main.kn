@@ -1,0 +1,16 @@
+func main()
+	var t: []int :: #[1000000]int
+	var num: int :: 1
+	do t[3] :: 1
+	for i(4, 999999)
+		do t[i] :: (num + 17) % 17
+		do num :- t[i - 4]
+		do num :+ t[i]
+	end for
+	
+	var q: int :: cui@inputInt()
+	for(1, q)
+		var n: int :: cui@inputInt()
+		do cui@print("\{t[n - 1]}\n")
+	end for
+end func

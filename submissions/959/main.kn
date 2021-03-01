@@ -1,0 +1,26 @@
+func main()
+	var n: int :: cui@inputInt()
+	var m: int :: cui@inputInt()
+	var p: []float :: #[5]float
+	do p[0] :: cui@inputFloat()
+	for i(1, 4)
+		do p[i] :: p[0] ^ (i + 1) $ float
+	end for
+	if(n > m)
+		var tmp: int :: n
+		do n :: m
+		do m :: tmp
+	end if
+	
+	var ans: float :: 0.0
+	if(n = 1)
+		if(m = 1)
+			do ans :: p[0]
+		else
+			do ans :: 2.0 * p[1] + (m - 2) $ float * p[2]
+		end if
+	else
+		do ans :: 4.0 * p[2] + (2 * n + 2 * m - 8) $ float * p[3] + ((n - 2) * (m - 2)) $ float * p[4]
+	end if
+	do cui@print("\{ans}\n")
+end func

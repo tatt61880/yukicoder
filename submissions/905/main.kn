@@ -1,0 +1,23 @@
+func main()
+	var n: int :: cui@inputInt()
+	var a: []int :: #[n + 1]int
+	for i(1, n)
+		do a[i] :: cui@inputInt()
+	end for
+	var df: []int :: #[n + 1]int
+	var dg: []int :: #[n + 1]int
+	for i(1, n)
+		var da: int :: a[i] - a[i - 1]
+		do df[i] :: df[i - 1] + (da >= 0 ?(1, 0))
+		do dg[i] :: dg[i - 1] + (da <= 0 ?(1, 0))
+	end for
+	
+	var q: int :: cui@inputInt()
+	for(1, q)
+		var l: int :: cui@inputInt() + 1
+		var r: int :: cui@inputInt() + 1
+		var f: int :: df[r] - df[l] = r - l ?(1, 0)
+		var g: int :: dg[r] - dg[l] = r - l ?(1, 0)
+		do cui@print("\{f} \{g}\n")
+	end for
+end func

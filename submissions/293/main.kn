@@ -1,0 +1,25 @@
+func main()
+	var a: []char :: cui@inputStr()
+	var b: []char :: cui@inputStr()
+	if(^a < ^b)
+		do cui@print("\{b}\n")
+	elif(^a > ^b)
+		do cui@print("\{a}\n")
+	else
+		for i(0, ^a - 1)
+			if(a[i] = b[i])
+				skip i
+			end if
+			if(a[i] = '4' & b[i] = '7')
+				do cui@print("\{a}\n")
+			elif(a[i] = '7' & b[i] = '4')
+				do cui@print("\{b}\n")
+			elif(a[i] < b[i])
+				do cui@print("\{b}\n")
+			else
+				do cui@print("\{a}\n")
+			end if
+			ret
+		end for
+	end if
+end func

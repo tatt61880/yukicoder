@@ -1,0 +1,8 @@
+func main()
+	var vl: float :: cui@inputFloat()
+	var vr: float :: cui@inputFloat()
+	var d: float :: cui@inputFloat()
+	var w: float :: cui@inputFloat()
+	var ans: float :: d / (vl + vr) * w
+	do cui@print("\{ans}\n")
+end func

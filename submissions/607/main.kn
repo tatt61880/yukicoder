@@ -1,0 +1,31 @@
+func main()
+	var n: int :: cui@inputInt()
+	var m: int :: cui@inputInt()
+	var a: []int :: #[n]int
+	for(1, m)
+		for i(0, n - 1)
+			do a[i] :+ cui@inputInt()
+		end for
+		var l: int :: 0
+		var r: int :: 0
+		var sum: int :: 0
+		while loop(true)
+			if(sum < 777)
+				if(r = n)
+					break loop
+				end if
+				do sum :+ a[r]
+				do r :+ 1
+			else
+				do sum :- a[l]
+				do l :+ 1
+			end if
+			if(sum = 777)
+				do cui@print("YES\n")
+				ret
+			end if
+		end while
+	end for
+	
+	do cui@print("NO\n")
+end func

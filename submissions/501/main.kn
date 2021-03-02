@@ -1,0 +1,12 @@
+func main()
+	var n: int :: cui@inputInt()
+	var d: int :: cui@inputInt()
+	
+	var s: []char
+	if(d <= n)
+		do s :: "A".repeat(d) ~ "C".repeat(n - d)
+	else
+		do s :: "A".repeat(2 * n - d) ~ "B".repeat(d - n)
+	end if
+	do cui@print("\{s}\n")
+end func

@@ -1,0 +1,13 @@
+func main()
+	var l: int :: cui@inputInt()
+	var r: int :: cui@inputInt()
+	var m: int :: cui@inputInt()
+	var k: int :: cui@inputInt()
+	
+	var ans: bool ::
+	|l * k % m = 0
+	||k = 0
+	||r * k % m = 0
+	||r * k / m > l * k / m
+	do cui@print(ans ?("Yes\n", "No\n"))
+end func

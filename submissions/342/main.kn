@@ -1,0 +1,33 @@
+func main()
+	var s: []char :: cui@input()
+	var ss: [][]char :: s.split("ｗ")
+	var max: int :: 0
+	var cnt: int :: -1000
+	for i(0, ^ss - 2)
+		if(^ss[i] = 0)
+			do cnt :+ 1
+			if(cnt > max)
+				do max :: cnt
+			end if
+		else
+			do cnt :: 0
+		end if
+	end for
+	
+	do cnt :: -1
+	var ans: [][]char :: #[0, 0]char
+	for i(^ss - 1, 0, -1)
+		if(ss[i] = "")
+			do cnt :+ 1
+		else
+			if(cnt = max)
+				do ans :~ [ss[i]]
+			end if
+			do cnt :: 0
+		end if
+	end for
+	do ans.reverse()
+	for i(0, ^ans - 1)
+		do cui@print("\{ans[i]}\n")
+	end for
+end func

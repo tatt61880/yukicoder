@@ -1,0 +1,9 @@
+func main()
+	var s: []char :: cui@input()
+	
+	var ans: []char :: "0"
+	if(s[0] <> '-' & ^s > 2)
+		do ans :: s.sub(0, ^s - 2)
+	end if
+	do cui@print("\{ans}\n")
+end func

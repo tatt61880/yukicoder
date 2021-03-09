@@ -1,0 +1,18 @@
+func main()
+	var n: int :: cui@inputInt()
+	var s: []char :: cui@input()
+	var st: stack<int> :: #stack<int>
+	var ans: []int :: #[n]int
+	for i(0, n - 1)
+		if(s[i] = '(')
+			do st.add(i)
+		else
+			var idx: int :: st.get()
+			do ans[idx] :: i
+			do ans[i] :: idx
+		end if
+	end for
+	for i(0, n - 1)
+		do cui@print("\{ans[i] + 1}\n")
+	end for
+end func

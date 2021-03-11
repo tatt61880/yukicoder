@@ -1,0 +1,42 @@
+func main()
+	var n: int :: cui@inputInt()
+	var m: int :: cui@inputInt()
+	var s: []char :: cui@input()
+	var u: []int :: #[m]int
+	var v: []int :: #[m]int
+	for i(0, m - 1)
+		do u[i] :: cui@inputInt() - 1
+		do v[i] :: cui@inputInt() - 1
+	end for
+	
+	var pd: []int :: #[n]int
+	var ca: []int :: #[n]int
+	for i(0, m - 1)
+		var ui: int :: u[i]
+		var vi: int :: v[i]
+		if(s[ui] = 'P' & s[vi] = 'D')
+			do pd[vi] :+ 1
+		elif(s[ui] = 'D' & s[vi] = 'P')
+			do pd[ui] :+ 1
+		elif(s[ui] = 'C' & s[vi] = 'A')
+			do ca[ui] :+ 1
+		elif(s[ui] = 'A' & s[vi] = 'C')
+			do ca[vi] :+ 1
+		end if
+	end for
+	
+	const mod: int :: 1000000007
+	var ans: int :: 0
+	for i(0, m - 1)
+		var ui: int :: u[i]
+		var vi: int :: v[i]
+		if(s[ui] = 'D' & s[vi] = 'C')
+			do ans :+ pd[ui] * ca[vi]
+			do ans :% mod
+		elif(s[ui] = 'C' & s[vi] = 'D')
+			do ans :+ pd[vi] * ca[ui]
+			do ans :% mod
+		end if
+	end for
+	do cui@print("\{ans}\n")
+end func

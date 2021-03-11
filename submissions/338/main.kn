@@ -1,0 +1,20 @@
+func main()
+	var a: int :: cui@inputInt()
+	var b: int :: cui@inputInt()
+	
+	var ans: int :: 200
+	for c(0, 200)
+		for d(0, 200)
+			; a * 10 - 5 <= c / (c + d) * 1000 < a * 10 + 5
+			; b * 10 - 5 <= d / (c + d) * 1000 < b * 10 + 5
+			if((a * 10 - 5) * (c + d) <= c * 1000
+				|&c * 1000 < (a * 10 + 5) * (c + d)
+				|&(b * 10 - 5) * (c + d) <= d * 1000
+				|&d * 1000 < (b * 10 + 5) * (c + d)
+				|)
+				do ans :: [ans, c + d].min()
+			end if
+		end for
+	end for
+	do cui@print("\{ans}\n")
+end func

@@ -1,0 +1,8 @@
+func main()
+	var xa: int :: cui@inputInt()
+	var ya: int :: cui@inputInt()
+	var xb: int :: cui@inputInt()
+	var yb: int :: cui@inputInt()
+	var ans: float :: (xa * yb + xb * ya) $ float / (xa + xb) $ float
+	do cui@print("\{ans}\n")
+end func

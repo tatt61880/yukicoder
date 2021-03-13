@@ -1,0 +1,27 @@
+func main()
+	var d: int :: cui@inputInt()
+	var s: []char :: "x".repeat(20) ~ cui@input() ~ cui@input() ~ "x".repeat(20)
+	var cnt: int :: 0
+	var c: char :: 'x'
+	var a: []int :: #[0]int
+	for i(0, ^s - 1)
+		if(s[i] = c)
+			do cnt :+ 1
+		else
+			do a :~ [cnt]
+			do cnt :: 1
+			do c :: s[i]
+		end if
+	end for
+	do a :~ [cnt]
+	var ans: int :: d
+	for i(1, ^a - 1, 2)
+		if(a[i - 1] > d | a[i + 1] > d)
+			do ans :: [ans, a[i] + d].max()
+		end if
+		if(i <> 1 & a[i - 1] <= d)
+			do ans :: [ans, a[i] + a[i - 1] + a[i - 2]].max()
+		end if
+	end for
+	do cui@print("\{ans}\n")
+end func

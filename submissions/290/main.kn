@@ -1,0 +1,6 @@
+func main()
+	var n: int :: cui@inputInt()
+	var s: []char :: cui@input()
+	var ans: bool :: !(n = 1 | s = "01" | s = "10" | s = "010" | s = "101")
+	do cui@print(ans ?("YES\n", "NO\n"))
+end func

@@ -1,0 +1,11 @@
+func main()
+	var a: float :: cui@inputFloat()
+	var b: float :: cui@inputFloat()
+	var c: float :: cui@inputFloat()
+	var d: float :: cui@inputFloat()
+	var e: float :: cui@inputFloat()
+	var f: float :: cui@inputFloat()
+	
+	var ans: float :: ((f - e) / a + (c ^ 2.0 + d ^ 2.0) / 4.0 / a ^ 2.0) ^ 0.5
+	do cui@print("\{ans.toStrFmt(".15f")}\n")
+end func

@@ -1,0 +1,11 @@
+func main()
+	var n: int :: cui@inputInt() + 1
+	var s: []char :: ""
+	while(n <> 0)
+		do n :- 1
+		do s :~ ['A'.offset(n % 26)]
+		do n :/ 26
+	end while
+	do s.reverse()
+	do cui@print("\{s}\n")
+end func

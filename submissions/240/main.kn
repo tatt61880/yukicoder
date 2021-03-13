@@ -1,0 +1,39 @@
+func main()
+	var x: int :: cui@inputInt()
+	var y: int :: cui@inputInt()
+	
+	var dx: []int :: [2, 2, 1, 1, -1, -1, -2, -2]
+	var dy: []int :: [1, -1, 2, -2, 2, -2, 1, -1]
+	var qu: queue<C> :: #queue<C>
+	do qu.add((#C).init(0, 0, 0))
+	
+	var ans: bool :: false
+	while loop(^qu <> 0)
+		var c: C :: qu.get()
+		if(c.cnt = 3)
+			skip loop
+		end if
+		for i(0, 7)
+			var px: int :: c.px + dx[i]
+			var py: int :: c.py + dy[i]
+			if(px = x & py = y)
+				do ans :: true
+				break loop
+			end if
+			do qu.add((#C).init(px, py, c.cnt + 1))
+		end for
+	end while
+	do cui@print(ans ?("YES\n", "NO\n"))
+	
+	class C()
+		+var px: int
+		+var py: int
+		+var cnt: int
+		+func init(px: int, py: int, cnt: int): C
+			do me.px :: px
+			do me.py :: py
+			do me.cnt :: cnt
+			ret me
+		end func
+	end class
+end func

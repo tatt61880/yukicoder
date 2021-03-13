@@ -1,0 +1,34 @@
+func main()
+	var h: int :: cui@inputInt()
+	var w: int :: cui@inputInt()
+	var n: int :: cui@inputInt()
+	var s: []char :: #[n]char
+	var k: []int :: #[n]int
+	for i(0, n - 1)
+		do s[i] :: cui@inputChar()
+		do k[i] :: cui@inputInt()
+	end for
+	var x: int :: 0
+	var y: int :: 0
+	for i(n - 1, 0, -1)
+		if(s[i] = 'R')
+			if(k[i] = y)
+				if(x = 0)
+					do x :: w - 1
+				else
+					do x :- 1
+				end if
+			end if
+		else
+			if(k[i] = x)
+				if(y = 0)
+					do y :: h - 1
+				else
+					do y :- 1
+				end if
+			end if
+		end if
+	end for
+	var ans: bool :: x % 2 = y % 2
+	do cui@print(ans ?("white\n", "black\n"))
+end func

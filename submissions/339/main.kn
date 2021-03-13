@@ -1,0 +1,11 @@
+func main()
+	var n: int :: cui@inputInt()
+	var gcd: int :: 100
+	for i(0, n - 1)
+		var a: int :: cui@inputInt()
+		do gcd :: math@gcd(gcd, a)
+	end for
+	
+	var ans: int :: 100 / gcd
+	do cui@print("\{ans}\n")
+end func

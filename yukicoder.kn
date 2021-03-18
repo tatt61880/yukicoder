@@ -158,7 +158,7 @@ func fetchData(url: []char): []char
 	end if
 	var http: net@Http :: net@makeHttp(url, false, "Kuin")
 	do cui@print("Fetching data: \{url}\n")
-	do lib@sleep(1000)
+	do lib@sleep(1500)
 	
 	if(http =& null)
 		do cui@print("接続に失敗しました。[\{url}]\n")

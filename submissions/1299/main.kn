@@ -25,7 +25,7 @@ func main()
 		end func
 		+func add(a: int): modInt
 			do me.val :+ a
-			if(me.val > me.mod)
+			if(me.val >= me.mod)
 				do me.val :- me.mod
 			end if
 			ret me

@@ -7,8 +7,9 @@ func main()
 	do ans.div(4)
 	do cui@print("\{ans}\n")
 	
+	; val, mod, a, b: 0 to 2 ^ 31.
 	class modInt()
-		+var val: int
+		var val: int
 		var mod: int
 		+func init(val: int, mod: int): modInt
 			do me.val :: val % mod
@@ -17,7 +18,7 @@ func main()
 		end func
 		+func add(a: int): modInt
 			do me.val :+ a
-			if(me.val > me.mod)
+			if(me.val >= me.mod)
 				do me.val :- me.mod
 			end if
 			ret me
@@ -30,19 +31,31 @@ func main()
 			ret me
 		end func
 		+func mul(a: int): modInt
-			do me.val :: math@modMul(me.val, a, me.mod)
+			do me.val :: me.val * a % me.mod
 			ret me
 		end func
 		+func div(a: int): modInt
-			do me.val :: me.val * math@modPow(a, me.mod - 2, me.mod) % me.mod
+			do me.val :: me.val * me.modPow(a, me.mod - 2) % me.mod
 			ret me
 		end func
 		+func pow(a: int): modInt
-			do me.val :: math@modPow(me.val, a, me.mod)
+			do me.val :: me.modPow(me.val, a)
 			ret me
 		end func
 		+*func toStr(): []char
 			ret "\{me.val}"
+		end func
+		
+		func modPow(a: int, b: int): int
+			if(b = 0)
+				ret 1
+			end if
+			var res: int :: me.modPow(a, b / 2)
+			do res :: res * res % me.mod
+			if(b % 2 = 1)
+				do res :: res * a % me.mod
+			end if
+			ret res
 		end func
 	end class
 end func

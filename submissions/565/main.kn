@@ -1,0 +1,36 @@
+func main()
+	var r: int :: cui@inputInt()
+	var k: int :: cui@inputInt()
+	var h: int :: cui@inputInt()
+	var w: int :: cui@inputInt()
+	var s: [][]char :: #[h][]char
+	for i(0, h - 1)
+		do s[i] :: cui@input()
+	end for
+	
+	var ww: int :: r % 180 = 0 ?(w, h)
+	var hh: int :: r % 180 = 0 ?(h, w)
+	for y(0, hh - 1)
+		var ans: []char :: #[ww]char
+		for x(0, ww - 1)
+			switch(r)
+			case 0
+				do ans[x] :: s[y][x]
+			case 90
+				do ans[x] :: s[ww - 1 - x][y]
+			case 180
+				do ans[x] :: s[hh - 1 - y][ww - 1 - x]
+			case 270
+				do ans[x] :: s[x][hh - 1 - y]
+			end switch
+		end for
+		for(1, k)
+			for i(0, ww - 1)
+				for(1, k)
+					do cui@print("\{ans[i]}")
+				end for
+			end for
+			do cui@print("\n")
+		end for
+	end for
+end func

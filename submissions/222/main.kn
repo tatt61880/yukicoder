@@ -1,0 +1,55 @@
+func main()
+	var s: []char :: cui@input()
+	var state: int :: 0
+	var a: int
+	var b: int
+	var op: char
+	var aop: char :: '+'
+	var bop: char :: '+'
+	for i(0, ^s - 1)
+		switch(state)
+		case 0
+			if(s[i] = '-' | s[i] = '+')
+				do aop :: s[i]
+			else
+				do i :- 1
+			end if
+			do state :+ 1
+		case 1
+			if(s[i] = '-' | s[i] = '+')
+				do i :- 1
+				do state :+ 1
+			else
+				do a :* 10
+				do a :+ s[i] $ int - '0' $ int
+			end if
+		case 2
+			do op :: s[i]
+			do state :+ 1
+		case 3
+			if(s[i] = '-' | s[i] = '+')
+				do bop :: s[i]
+			else
+				do i :- 1
+			end if
+			do state :+ 1
+		case 4
+			do b :* 10
+			do b :+ s[i] $ int - '0' $ int
+		end switch
+	end for
+	if(aop = '-')
+		do a :: -a
+	end if
+	if(bop = '-')
+		do b :: -b
+	end if
+	
+	var ans: int :: 0
+	if(op = '-')
+		do ans :: a + b
+	else
+		do ans :: a - b
+	end if
+	do cui@print("\{ans}\n")
+end func

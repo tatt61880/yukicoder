@@ -1,0 +1,16 @@
+func main()
+	do cui@print("? 0 0\n")
+	do cui@flush()
+	var d: int :: cui@inputInt()
+	do cui@print("? 100 0\n")
+	do cui@flush()
+	var d2: int :: cui@inputInt()
+	for y(0, 100)
+		for x(0, 100)
+			if(x ^ 2 + y ^ 2 = d & (x - 100) ^ 2 + y ^ 2 = d2)
+				do cui@print("! \{x} \{y}\n")
+				do cui@flush()
+			end if
+		end for
+	end for
+end func

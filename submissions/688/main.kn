@@ -1,0 +1,30 @@
+func main()
+	var k: int :: cui@inputInt()
+	if(k = 0)
+		do cui@print("1\n0\n")
+		ret
+	end if
+	for i(2, 30)
+		var a: int :: i * (i - 1) / 2
+		if(k % a = 0)
+			var rest: int :: k / a
+			var cnt: int :: 0
+			while(rest % 2 = 0)
+				do rest :/ 2
+				do cnt :+ 1
+			end while
+			if(rest = 1 & cnt + i <= 30)
+				var n: int :: cnt + i
+				var b: []int :: #[n]int
+				for j(0, i - 1)
+					do b[j] :: 1
+				end for
+				do cui@print("\{n}\n")
+				for j(0, n - 1)
+					do cui@print("\{b[j]}\{j = n - 1 ?("\n", " ")}")
+				end for
+				ret
+			end if
+		end if
+	end for
+end func

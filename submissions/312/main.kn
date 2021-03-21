@@ -1,0 +1,17 @@
+func main()
+	var n: int :: cui@inputInt()
+	var a: []int :: math@primeFactors(n)
+	var ans: int
+	if(a[0] = 2)
+		do ans :: a[1]
+		if(ans = 2)
+			do ans :: 4
+			if(n % 3 = 0)
+				do ans :: 3
+			end if
+		end if
+	else
+		do ans :: a[0]
+	end if
+	do cui@print("\{ans}\n")
+end func

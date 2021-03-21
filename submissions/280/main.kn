@@ -1,0 +1,10 @@
+func main()
+	var n: int :: cui@inputInt()
+	var z: []int :: #[n]int
+	for i(0, n - 1)
+		do z[i] :: cui@inputInt()
+	end for
+	
+	var ans: int :: 0
+	do cui@print("\{z[n - 1]}/\{z[0]}\n")
+end func

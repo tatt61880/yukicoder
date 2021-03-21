@@ -1,0 +1,25 @@
+func main()
+	var s: []char :: cui@input()
+	var n: int :: ^s
+	
+	var dic: dict<[]char, bool> :: #dict<[]char, bool>
+	for id(0, 2 ^ (n - 1) - 1)
+		var ns: []char :: #[n]char
+		var ii: int :: id
+		var mn: int :: 0
+		var mx: int :: n - 1
+		for i(0, n - 1)
+			if(ii % 2 = 0)
+				do ns[i] :: s[mn]
+				do mn :+ 1
+			else
+				do ns[i] :: s[mx]
+				do mx :- 1
+			end if
+			do ii :/ 2
+		end for
+		do dic.add(ns, true)
+	end for
+	var ans: int :: ^dic
+	do cui@print("\{ans}\n")
+end func

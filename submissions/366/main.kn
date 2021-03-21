@@ -1,0 +1,34 @@
+func main()
+	var n: int :: cui@inputInt()
+	var k: int :: cui@inputInt()
+	var a: []int :: #[n]int
+	for i(0, n - 1)
+		do a[i] :: cui@inputInt()
+	end for
+	var cnt: int :: 0
+	for start(0, k - 1)
+		var arr: []int :: #[0]int
+		var idx: int :: start
+		while(idx < n)
+			for j(0, ^arr - 1)
+				if(a[idx] < arr[j])
+					do cnt :+ 1
+				end if
+			end for
+			do arr :~ [a[idx]]
+			do idx :+ k
+		end while
+		do arr.sort()
+		for i(0, ^arr - 1)
+			do a[start + i * k] :: arr[i]
+		end for
+	end for
+	for i(1, n - 1)
+		if(a[i] < a[i - 1])
+			do cui@print("-1\n")
+			ret
+		end if
+	end for
+	var ans: int :: cnt
+	do cui@print("\{ans}\n")
+end func

@@ -1,0 +1,5 @@
+func main()
+	var m: int :: cui@inputInt()
+	var ans: int :: (2017 + math@modPow(2017 * 2017, 2017, m)) % m
+	do cui@print("\{ans}\n")
+end func

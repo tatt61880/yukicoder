@@ -1,0 +1,6 @@
+func main()
+	var r: int :: cui@inputInt()
+	var c: int :: cui@inputInt()
+	var ans: int :: (r * c - 1) / (r = c ?(4, 2))
+	do cui@print("\{ans}\n")
+end func

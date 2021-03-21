@@ -1,0 +1,34 @@
+func main()
+	var pos: []Pos :: #[3]Pos
+	for i(0, 2)
+		var x: int :: cui@inputInt()
+		var y: int :: cui@inputInt()
+		do pos[i] :: (#Pos).init(x, y)
+	end for
+	for i(0, 2)
+		do swap(&pos[i], &pos[0])
+		if((pos[1].x - pos[0].x) * (pos[2].x - pos[0].x) + (pos[1].y - pos[0].y) * (pos[2].y - pos[0].y) = 0)
+			if((pos[1].x - pos[0].x) ^ 2 + (pos[1].y - pos[0].y) ^ 2 = (pos[2].x - pos[0].x) ^ 2 + (pos[2].y - pos[0].y) ^ 2)
+				do cui@print("\{pos[2].x + pos[1].x - pos[0].x} \{pos[2].y + pos[1].y - pos[0].y}\n")
+				ret
+			end if
+		end if
+	end for
+	do cui@print("-1\n")
+	
+	func swap(a: &Pos, b: &Pos)
+		var t: Pos :: ##a
+		do a :: ##b
+		do b :: ##t
+	end func
+	
+	class Pos()
+		+var x: int
+		+var y: int
+		+func init(x: int, y: int): Pos
+			do me.x :: x
+			do me.y :: y
+			ret me
+		end func
+	end class
+end func

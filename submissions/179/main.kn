@@ -1,0 +1,42 @@
+func main()
+	var h: int :: cui@inputInt()
+	var w: int :: cui@inputInt()
+	var s: [][]char :: #[h][]char
+	for i(0, h - 1)
+		do s[i] :: cui@input()
+	end for
+	var cnt: int :: 0
+	for y(0, h - 1)
+		for x(0, w - 1)
+			if(s[y][x] = '#')
+				do cnt :+ 1
+			end if
+		end for
+	end for
+	var ans: bool :: false
+	if(cnt <> 0)
+		for dy(0, h - 1)
+			for dx(-w + 1, w - 1)
+				if(dy = 0 & dx = 0)
+					skip dx
+				end if
+				var ss: [][]char :: ##s
+				for y(0, h - 1)
+					for x(0, w - 1)
+						if(ss[y][x] = '#')
+							var ny: int :: y + dy
+							var nx: int :: x + dx
+							if(ny < 0 | ny >= h | nx < 0 | nx >= w | ss[ny][nx] = '.')
+								skip dx
+							end if
+							do ss[ny][nx] :: '.'
+						end if
+					end for
+				end for
+				do ans :: true
+				break dy
+			end for
+		end for
+	end if
+	do cui@print(ans ?("YES\n", "NO\n"))
+end func

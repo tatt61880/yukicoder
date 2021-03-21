@@ -1,0 +1,23 @@
+func main()
+	var sa: []char :: cui@input()
+	var n: int :: cui@inputInt()
+	var sb: []char :: cui@input()
+	; 操作によって一致させられる場合にtrue。
+	var ans: bool :: false
+	if(n = 0)
+		do ans :: sa = sb
+	elif(n = 1)
+		if(sa[0] = sb[0])
+			do ans :: sa[1] = sb[2] & sa[2] = sb[1] | sa = sb & (sa[0] = sa[1] | sa[1] = sa[2])
+		elif(sa[2] = sb[2])
+			do ans :: sa[0] = sb[1] & sa[1] = sb[0]
+		else
+			do ans :: false
+		end if
+	else
+		do sa.sort()
+		do sb.sort()
+		do ans :: sa = sb
+	end if
+	do cui@print(ans ?("FAILURE\n", "SUCCESS\n"))
+end func

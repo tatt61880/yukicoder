@@ -1,0 +1,9 @@
+func main()
+	const mod: int :: 1000007
+	var n: int :: cui@inputInt()
+	var a: int :: n / 2
+	var b: int :: n - a
+	var ans: int :: math@modMul(a + 1, b + 1, mod)
+	do ans :: (ans + mod - 1) % mod
+	do cui@print("\{ans}\n")
+end func

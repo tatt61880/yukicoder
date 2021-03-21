@@ -1,0 +1,21 @@
+func main()
+	var a: int :: cui@inputInt()
+	var b: int :: cui@inputInt()
+	var s: int :: cui@inputInt()
+	var ans: int :: 0
+	if(s = 1 | (a - s).abs() <= (b - s).abs())
+		do ans :: (a - s).abs()
+		do a :: s
+		do ans :+ a
+	else
+		do ans :: (b - s).abs()
+		do b :: s
+		if(a = 0)
+			do ans :+ b + 1
+		else
+			do ans :+ a
+			do ans :+ [(a - b).abs(), b - 1].min()
+		end if
+	end if
+	do cui@print("\{ans}\n")
+end func

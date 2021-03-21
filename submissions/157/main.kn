@@ -1,0 +1,56 @@
+func main()
+	var w: int :: cui@inputInt()
+	var h: int :: cui@inputInt()
+	var c: [][]char :: #[h][]char
+	for i(0, h - 1)
+		do c[i] :: cui@input()
+	end for
+	const ch: char :: 'a'
+	var flag: bool :: true
+	var ans: int :: w + h
+	for y(0, h - 1)
+		for x(0, w - 1)
+			if(c[y][x] = '.')
+				if(flag)
+					var dx: []int :: [1, 0, -1, 0]
+					var dy: []int :: [0, 1, 0, -1]
+					var qu: queue<int> :: #queue<int>
+					do qu.add(y * w + x)
+					while loop(^qu <> 0)
+						var pos: int :: qu.get()
+						var cy: int :: pos / w
+						var cx: int :: pos % w
+						if(c[cy][cx] <> '.')
+							skip loop
+						end if
+						do c[cy][cx] :: ch
+						for i(0, 3)
+							var nx: int :: cx + dx[i]
+							if(nx < 0 | w <= nx)
+								skip i
+							end if
+							var ny: int :: cy + dy[i]
+							if(ny < 0 | h <= ny)
+								skip i
+							end if
+							if(c[ny][nx] = '.')
+								do qu.add(ny * w + nx)
+							end if
+						end for
+					end while
+					do flag :: false
+				else
+					for ny(0, h - 1)
+						for nx(0, w - 1)
+							if(c[ny][nx] = ch)
+								do ans :: [ans, (x - nx).abs() + (y - ny).abs() - 1].min()
+							end if
+						end for
+					end for
+				end if
+			end if
+		end for
+	end for
+	
+	do cui@print("\{ans}\n")
+end func

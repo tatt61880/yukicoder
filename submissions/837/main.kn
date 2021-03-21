@@ -1,0 +1,32 @@
+func main()
+	var n: int :: cui@inputInt()
+	var a: []int :: #[n]int
+	for i(0, n - 1)
+		do a[i] :: cui@inputInt()
+	end for
+	do a.sort()
+	if(a[0] = a[n - 1])
+		do cui@print("1\n")
+		ret
+	end if
+	
+	var cum: []int :: #[n + 1]int
+	for i(0, n - 1)
+		do cum[i + 1] :: cum[i] + a[i]
+	end for
+	
+	var ans: int :: lib@intMax
+	for i(0, n - 2)
+		var mn: []int :: [0, i + 1]
+		var mx: []int :: [i, n - 1]
+		var md: []int :: [(mn[0] + mx[0]) / 2, (mn[1] + mx[1]) / 2]
+		var vm: []int :: [a[md[0]], a[md[1]]]
+		var cnt: int :: 0
+		for j(0, 1)
+			do cnt :+ vm[j] * (md[j] - mn[j] + 1) - (cum[md[j] + 1] - cum[mn[j]])
+			do cnt :+ cum[mx[j] + 1] - cum[md[j] + 1] - (mx[j] - md[j]) * vm[j]
+		end for
+		do ans :: [ans, cnt].min()
+	end for
+	do cui@print("\{ans}\n")
+end func

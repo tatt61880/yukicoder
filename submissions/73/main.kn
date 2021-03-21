@@ -1,0 +1,31 @@
+func main()
+	var a: []int :: #[26 + 'a' $ int]int
+	for i(0 + 'a' $ int, 25 + 'a' $ int)
+		do a[i] :: cui@inputInt()
+	end for
+	
+	var ans: int :: 1
+	do ans :* a['d' $ int]
+	do ans :* a['e' $ int]
+	do ans :* a['h' $ int]
+	do ans :* a['r' $ int]
+	do ans :* a['w' $ int]
+	var l: int :: a['l' $ int]
+	var o: int :: a['o' $ int]
+	if(l < 3)
+		do ans :: 0
+	else
+		var maxCnt: int :: 1
+		for i(2, l - 1)
+			var cnt: int :: i * (i - 1) / 2 * (l - i)
+			do maxCnt :: [maxCnt, cnt].max()
+		end for
+		do ans :* maxCnt
+	end if
+	if(o < 2)
+		do ans :: 0
+	else
+		do ans :* (o + 1) / 2 * (o / 2)
+	end if
+	do cui@print("\{ans}\n")
+end func

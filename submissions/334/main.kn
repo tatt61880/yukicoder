@@ -1,0 +1,46 @@
+var used: []bool
+var k: []int
+func main()
+	var n: int :: cui@inputInt()
+	do @k :: #[n]int
+	for i(0, n - 1)
+		do @k[i] :: cui@inputInt()
+	end for
+	do @used :: #[n]bool
+	var ans: []int :: f()
+	do cui@print(ans =& null ?("-1\n", "\{ans[0]} \{ans[1]} \{ans[2]}\n"))
+	
+	func f(): []int
+		for i(0, ^@k - 1)
+			if(@used[i])
+				skip i
+			end if
+			for j(i + 1, ^@k - 1)
+				if(@used[j])
+					skip j
+				end if
+				for k(j + 1, ^@k - 1)
+					if(@used[k])
+						skip k
+					end if
+					var a: int :: @k[i]
+					var b: int :: @k[j]
+					var c: int :: @k[k]
+					if(!(a = b | b = c | c = a | a < b & b < c | a > b & b > c))
+						do @used[i] :: true
+						do @used[j] :: true
+						do @used[k] :: true
+						var res: []int :: f()
+						do @used[i] :: false
+						do @used[j] :: false
+						do @used[k] :: false
+						if(res =& null)
+							ret[i, j, k]
+						end if
+					end if
+				end for
+			end for
+		end for
+		ret null
+	end func
+end func

@@ -1,0 +1,7 @@
+func main()
+	var n: int :: cui@inputInt()
+	var pT: float :: n $ float * 0.99
+	var pF: float :: (10000 - n) $ float * 0.01
+	var ans: float :: pF / (pT + pF) * 100.0
+	do cui@print("\{ans}\n")
+end func

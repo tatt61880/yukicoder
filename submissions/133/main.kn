@@ -1,0 +1,60 @@
+func main()
+	var n: int :: cui@inputInt()
+	var a: []int :: #[n]int
+	for i(0, n - 1)
+		do a[i] :: cui@inputInt()
+	end for
+	var b: []int :: #[n]int
+	for i(0, n - 1)
+		do b[i] :: cui@inputInt()
+	end for
+	
+	var idxs: []int :: #[n]int
+	for i(0, n - 1)
+		do idxs[i] :: i
+	end for
+	
+	var cnt: int :: 0
+	var cntWin: int :: 0
+	while(nextPermutation(idxs), skip)
+		do cnt :+ 1
+		var win: int :: 0
+		for i(0, n - 1)
+			do win :+ a[idxs[i]] > b[i] ?(1, -1)
+		end for
+		if(win > 0)
+			do cntWin :+ 1
+		end if
+	end while
+	
+	var ans: float :: cntWin $ float / cnt $ float
+	do cui@print("\{ans}\n")
+	
+	func nextPermutation(arr: []int): bool
+		var len: int :: ^arr
+		var left: int :: len - 2
+		while(left >= 0 & arr[left] >= arr[left + 1])
+			do left :- 1
+		end while
+		if(left < 0)
+			ret false
+		end if
+		var right: int :: len - 1
+		while(arr[left] >= arr[right])
+			do right :- 1
+		end while
+		var tmp: int :: arr[left]
+		do arr[left] :: arr[right]
+		do arr[right] :: tmp
+		do left :+ 1
+		do right :: len - 1
+		while(left < right)
+			do tmp :: arr[left]
+			do arr[left] :: arr[right]
+			do arr[right] :: tmp
+			do left :+ 1
+			do right :- 1
+		end while
+		ret true
+	end func
+end func

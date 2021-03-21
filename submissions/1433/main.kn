@@ -1,0 +1,13 @@
+func main()
+	var n: int :: cui@inputInt()
+	var s: []char :: cui@input()
+	var a: []int :: #[n]int
+	var cum: []int :: #[n + 1]int
+	for i(0, n - 1)
+		do a[i] :: cui@inputInt() * (s[i] = 'R' ?(1, -1))
+		do cum[i + 1] :: cum[i] + a[i]
+	end for
+	
+	var ans: int :: cum.max() - cum.min()
+	do cui@print("\{ans}\n")
+end func

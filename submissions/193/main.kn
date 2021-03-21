@@ -1,0 +1,44 @@
+func main()
+	var s: []char :: cui@input()
+	var n: int :: ^s
+	var ans: int :: -10 ^ 10
+	for(1, n)
+		if(isNum(s[0]) & isNum(s[n - 1]))
+			do ans :: [ans, f(s)].max()
+		end if
+		do s :: s.sub(1, -1) ~ [s[0]]
+	end for
+	do cui@print("\{ans}\n")
+	
+	func f(s: []char): int
+		var res: int :: 0
+		var ope: char :: '+'
+		var nextOpe: char
+		var flag: bool :: false
+		var num: int :: 0
+		for i(0, ^s - 1)
+			switch c(s[i])
+			case '+', '-'
+				do nextOpe :: c
+				do flag :: true
+			default
+				do num :* 10
+				do num :+ c $ int - '0' $ int
+			end switch
+			if(flag | i = ^s - 1)
+				do flag :: false
+				if(ope = '+')
+					do res :+ num
+				else
+					do res :- num
+				end if
+				do ope :: nextOpe
+				do num :: 0
+			end if
+		end for
+		ret res
+	end func
+	func isNum(c: char): bool
+		ret '0' <= c & c <= '9'
+	end func
+end func

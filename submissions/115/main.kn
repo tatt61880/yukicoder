@@ -1,0 +1,32 @@
+func main()
+	var n: int :: cui@inputInt()
+	var d: int :: cui@inputInt()
+	var k: int :: cui@inputInt()
+	
+	var ans: []int :: f(1, n, d, k)
+	if(ans =& null)
+		do cui@print("-1\n")
+	else
+		for i(0, k - 1)
+			do cui@print("\{ans[i]}\{i = k - 1 ?("\n", " ")}")
+		end for
+	end if
+	
+	func f(mn: int, n: int, d: int, k: int): []int
+		if(k = 1)
+			if(mn <= d & d <= n)
+				ret[d]
+			end if
+			ret null
+		elif(n - mn + 1 < k | k * (n + n - k + 1) / 2 < d)
+			ret null
+		end if
+		for i(mn, n)
+			var res: []int :: f(i + 1, n, d - i, k - 1)
+			if(res <>& null)
+				ret[i] ~ res
+			end if
+		end for
+		ret null
+	end func
+end func

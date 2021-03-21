@@ -1,0 +1,33 @@
+func main()
+	var n: int :: cui@inputInt()
+	var wish: []dict<[]char, int> :: #[21]dict<[]char, int>
+	for(1, n)
+		switch(cui@inputInt())
+		case 0
+			var c: int :: cui@inputInt()
+			do wish[c] :: #dict<[]char, int>
+			var m: int :: cui@inputInt()
+			for(1, m)
+				var a: []char :: cui@inputStr()
+				do wish[c].add(a, wish[c].get(a, &) + 1)
+			end for
+		case 1
+			var b: []char :: cui@inputStr()
+			var ans: int :: -1
+			for c(1, 20)
+				if(wish[c] <>& null)
+					var val: int :: wish[c].get(b, &)
+					if(val <> 0)
+						do wish[c].add(b, val - 1)
+						do ans :: c
+						break c
+					end if
+				end if
+			end for
+			do cui@print("\{ans}\n")
+		case 2
+			var c: int :: cui@inputInt()
+			do wish[c] :: null
+		end switch
+	end for
+end func

@@ -1,0 +1,14 @@
+func main()
+	var s: []char :: cui@input()
+	var ans: int :: 0
+	var cnt: int :: 0
+	for i(^s - 1, 0, -1)
+		switch(s[i])
+		case 'c'
+			do ans :+ cnt * (cnt - 1) / 2
+		case 'w'
+			do cnt :+ 1
+		end switch
+	end for
+	do cui@print("\{ans}\n")
+end func

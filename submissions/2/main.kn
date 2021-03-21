@@ -1,0 +1,16 @@
+func main()
+	var n: int :: cui@inputInt()
+	var a: []int :: math@primeFactors(n)
+	var c: int :: 0
+	var cnt: int :: 0
+	var xor: bit64 :: 0b64
+	for i(0, ^a - 1)
+		do cnt :+ 1
+		if(i = ^a - 1 | a[i + 1] <> a[i])
+			do xor :: xor.xor(cnt $ bit64)
+			do cnt :: 0
+		end if
+	end for
+	var ans: bool :: xor <> 0b64
+	do cui@print(ans ?("Alice\n", "Bob\n"))
+end func

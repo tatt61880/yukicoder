@@ -1,0 +1,12 @@
+func main()
+	var n: int :: cui@inputInt()
+	var x: bit64 :: cui@inputInt() $ bit64
+	var dic: dict<bit64, int> :: #dict<bit64, int>
+	var ans: int :: 0
+	for(1, n)
+		var a: bit64 :: cui@inputInt() $ bit64
+		do ans :+ dic.get(a.xor(x), &)
+		do dic.add(a, dic.get(a, &) + 1)
+	end for
+	do cui@print("\{ans}\n")
+end func

@@ -1,0 +1,39 @@
+func main()
+	var n: int :: cui@inputInt()
+	var ans: int :: 0
+	var a: []int :: #[n - 1]int
+	var b: []int :: #[n - 1]int
+	for i(0, n - 2)
+		do a[i] :: cui@inputInt()
+		do b[i] :: cui@inputInt()
+	end for
+	
+	var sumIn: int :: 0
+	var sumOut: int :: 0
+	for i(0, n - 2)
+		do sumIn :+ a[i]
+		do sumOut :+ b[i]
+	end for
+	if(sumIn < sumOut)
+		var t: []int :: ##a
+		do a :: ##b
+		do b :: ##t
+		var sumT: int :: sumIn
+		do sumIn :: sumOut
+		do sumOut :: sumT
+	end if
+	
+	var maxOut: int :: sumIn
+	var minOut: int :: sumIn - sumOut
+	for i(0, n - 2)
+		var sum: int :: 0
+		for j(0, n - 2)
+			if(i <> j)
+				do sum :+ b[j]
+			end if
+		end for
+		do minOut :: [minOut, a[i] - sum].max()
+	end for
+	do ans :: maxOut - minOut + 1
+	do cui@print("\{ans}\n")
+end func

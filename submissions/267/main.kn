@@ -1,0 +1,36 @@
+const s: []char :: "DCHS"
+const v: []char :: "A23456789TJQK"
+func main()
+	var n: int :: cui@inputInt()
+	var a: []C :: #[n]C
+	for i(0, n - 1)
+		do a[i] :: (#C).init(cui@inputStr())
+	end for
+	do a.sort()
+	for i(0, n - 1)
+		do cui@print("\{a[i]}\{i = n - 1 ?("\n", " ")}")
+	end for
+	
+	class C()
+		+var v: int
+		+func init(s: []char): C
+			for i(0, ^@s - 1)
+				if(@s[i] = s[0])
+					do me.v :+ ^@v * i
+				end if
+			end for
+			for i(0, ^@v - 1)
+				if(@v[i] = s[1])
+					do me.v :+ i
+				end if
+			end for
+			ret me
+		end func
+		+*func cmp(t: kuin@Class): int
+			ret me.v - (t $ C).v
+		end func
+		+*func toStr(): []char
+			ret "\{@s[me.v / ^@v]}\{@v[me.v % ^@v]}"
+		end func
+	end class
+end func

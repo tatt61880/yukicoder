@@ -1,5 +1,6 @@
 /data/
 /html/
+/MathJax/
 /vendor/
 
 composer.lock

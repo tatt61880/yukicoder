@@ -4,6 +4,9 @@ span {
 iframe,pre,ul,ol,blockquote,table,input {
 	margin: 5px 15px;
 }
+blockquote {
+	border-left: .25em solid #dfe2e5;
+}
 p {
 	margin: 15px 15px;
 }

@@ -1,0 +1,26 @@
+func main()
+	const max: int :: 100000
+	var x: int
+	var ok: int :: 0
+	var ng: int :: max + 1
+	while((ok - ng).abs() > 1)
+		var mid: int :: (ok + ng) / 2
+		var a: int :: f(mid - 1, -1)
+		var b: int :: f(mid, -1)
+		if(b < a)
+			do ok :: mid
+		else
+			do ng :: mid
+		end if
+	end while
+	do x :: ok
+	
+	var y: int :: f(x, -1) - 1
+	do cui@print("\{x} \{y}\n")
+	
+	func f(x: int, y: int): int
+		do cui@print("\{x} \{y}\n")
+		do cui@flush()
+		ret cui@inputInt()
+	end func
+end func

@@ -1,0 +1,40 @@
+func main()
+	var n: int :: cui@inputInt()
+	var k: int :: cui@inputInt()
+	
+	; dp[i][j][sum]: 回数
+	; i: サイコロの個数
+	; j: イカサマサイコロの個数
+	; sum: サイコロの出目の合計
+	var dp: [][][]int :: #[n + 1, k + 1, n * 6 + 1]int
+	do dp[0][0][0] :: 1
+	for i(0, n - 1)
+		for j(0, i)
+			for sum(0, i * 6)
+				if(j <= k & dp[i][j][sum] <> 0)
+					for x(0, 5)
+						do dp[i + 1][j][sum + x + 1] :+ dp[i][j][sum]
+						if(i < k)
+							do dp[i + 1][j + 1][sum + x / 2 + 4] :+ dp[i][j][sum]
+						end if
+					end for
+				end if
+			end for
+		end for
+	end for
+	
+	var cum: []int :: #[n * 6 + 2]int
+	do cum[0] :: 0
+	for sum(0, n * 6)
+		do cum[sum + 1] :: cum[sum] + dp[n][0][sum]
+	end for
+	
+	var win: int :: 0
+	for sum(0, n * 6)
+		do win :+ dp[n][k][sum] * cum[sum]
+	end for
+	
+	var total: int :: (6 ^ n) ^ 2
+	var ans: float :: win $ float / total $ float
+	do cui@print("\{ans}\n")
+end func

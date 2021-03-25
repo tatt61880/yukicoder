@@ -1,0 +1,15 @@
+func main()
+	var x: int :: cui@inputInt()
+	var y: int :: cui@inputInt()
+	if(x = y)
+		do cui@print("0\n")
+	elif(y = 0)
+		do cui@print("1\n")
+	elif(x = 0)
+		do cui@print("2\n")
+	elif(x + y = 0)
+		do cui@print("3\n")
+	else
+		do cui@print("-1\n")
+	end if
+end func

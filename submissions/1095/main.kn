@@ -191,7 +191,7 @@ func main()
 					if(t.lst =& null)
 						ret t
 					end if
-					if(key > t.lst.key)
+					if(key > t.lst.key & t.lst.rst =& null)
 						ret t
 					end if
 					do t :: t.lst

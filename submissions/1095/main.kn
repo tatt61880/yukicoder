@@ -25,20 +25,20 @@ func main()
 	var rLow: []int :: #[n]int
 	block
 		var set: Set :: #Set
-		do set.ins(a[0])
+		do set.add(a[0])
 		for i(1, n - 1)
 			var p: Node :: set.lower_bound(a[i])
 			do lLow[i] :: p =& null ?(-1, p.key)
-			do set.ins(a[i])
+			do set.add(a[i])
 		end for
 	end block
 	block
 		var set: Set :: #Set
-		do set.ins(a[n - 1])
+		do set.add(a[n - 1])
 		for i(n - 2, 0, -1)
 			var p: Node :: set.lower_bound(a[i])
 			do rLow[i] :: p =& null ?(-1, p.key)
-			do set.ins(a[i])
+			do set.add(a[i])
 		end for
 	end block
 	
@@ -80,11 +80,7 @@ func main()
 		end func
 	end class
 	func height(t: Node): int
-		if(t =& null)
-			ret 0
-		else
-			ret t.height
-		end if
+		ret t =& null ?(0, t.height)
 	end func
 	func bias(t: Node): int
 		ret height(t.lst) - height(t.rst)
@@ -154,18 +150,18 @@ func main()
 			do me.change :: (h <> height(t))
 			ret t
 		end func
-		+func ins(key: int)
-			do me.root :: me.insSub(me.root, key)
+		+func add(key: int)
+			do me.root :: me.addSub(me.root, key)
 		end func
-		+func insSub(t: Node, key: int): Node
+		+func addSub(t: Node, key: int): Node
 			if(t =& null)
 				do me.change :: true
 				ret(#Node).init(1, key)
 			elif(key < t.key)
-				do t.lst :: me.insSub(t.lst, key)
+				do t.lst :: me.addSub(t.lst, key)
 				ret me.balanceL(t)
 			elif(key > t.key)
-				do t.rst :: me.insSub(t.rst, key)
+				do t.rst :: me.addSub(t.rst, key)
 				ret me.balanceR(t)
 			else
 				do me.change :: false

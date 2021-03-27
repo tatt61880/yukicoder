@@ -1,79 +1,36 @@
 func main()
-	const invalid: int :: lib@intMax
 	var n: int :: cui@inputInt()
-	var a: []int :: #[n]int
+	var a: []bool :: #[n + 1]bool
+	var map: Map :: #Map
 	for i(0, n - 1)
-		do a[i] :: cui@inputInt()
+		var key: int :: cui@inputInt()
+		var value: int :: i
+		do map.add(key, value)
 	end for
-	var lMin: []int :: #[n]int
-	var rMin: []int :: #[n]int
-	block
-		var min: int :: a[0]
-		for i(1, n - 1)
-			do lMin[i] :: min
-			do min :: [min, a[i]].min()
-		end for
-	end block
-	block
-		var min: int :: a[n - 1]
-		for i(n - 2, 0, -1)
-			do rMin[i] :: min
-			do min :: [min, a[i]].min()
-		end for
-	end block
-	var lLow: []int :: #[n]int
-	var rLow: []int :: #[n]int
-	block
-		var set: Set :: #Set
-		do set.add(a[0])
-		for i(1, n - 1)
-			var p: Node :: set.lower_bound(a[i])
-			do lLow[i] :: p =& null ?(-1, p.key)
-			do set.add(a[i])
-		end for
-	end block
-	block
-		var set: Set :: #Set
-		do set.add(a[n - 1])
-		for i(n - 2, 0, -1)
-			var p: Node :: set.lower_bound(a[i])
-			do rLow[i] :: p =& null ?(-1, p.key)
-			do set.add(a[i])
-		end for
-	end block
-	
-	var ans: int :: invalid
-	for i(1, n - 2)
-		var v: int :: a[i]
-		; ^
-		var lm: int :: lMin[i]
-		var rm: int :: rMin[i]
-		if(lm < v & v > rm)
-			do ans :: [ans, lm + v + rm].min()
+	var it: Node :: map.begin()
+	var ans: int :: 0
+	for(1, n)
+		var value: int :: it.value
+		if(!a[value + 1])
+			do a[value] :: true
+			do ans :+ 1
 		end if
-		; v
-		var ll: int :: lLow[i]
-		var rl: int :: rLow[i]
-		if(ll > v & v < rl)
-			do ans :: [ans, ll + v + rl].min()
-		end if
+		do it :: it.next
 	end for
-	if(ans = invalid)
-		do ans :: -1
-	end if
 	do cui@print("\{ans}\n")
 	
 	class Node()
 		+var height: int
 		+var key: int
-
+		+var value: int
 		+var prev: Node
 		+var next: Node
 		+var lst: Node
 		+var rst: Node
-		+func init(key: int, prev: Node, next: Node): Node
+		+func init(key: int, value: int, prev: Node, next: Node): Node
 			do me.height :: 1
 			do me.key :: key
+			do me.value :: value
 			do me.prev :: prev
 			do me.next :: next
 			ret me
@@ -81,7 +38,7 @@ func main()
 	end class
 	
 	; AVL Tree
-	class Set()
+	class Map()
 		var root: Node
 		var change: bool
 		var num: int
@@ -162,23 +119,23 @@ func main()
 			do me.change :: (h <> me.height(t))
 			ret t
 		end func
-		+func add(key: int)
-			do me.root :: me.addSub(me.root, null, key)
+		+func add(key: int, value: int)
+			do me.root :: me.addSub(me.root, null, key, value)
 		end func
-		+func addSub(t: Node, root: Node, key: int): Node
+		+func addSub(t: Node, root: Node, key: int, value: int): Node
 			if(t =& null)
 				var a: Node
 				do me.change :: true
 				if(root =& null)
-					do a :: (#Node).init(key, null, null)
+					do a :: (#Node).init(key, value, null, null)
 				elif(key < root.key)
-					do a :: (#Node).init(key, root.prev, root)
+					do a :: (#Node).init(key, value, root.prev, root)
 					if(root.prev <>& null)
 						do root.prev.next :: a
 					end if
 					do root.prev :: a
 				elif(key > root.key)
-					do a :: (#Node).init(key, root, root.next)
+					do a :: (#Node).init(key, value, root, root.next)
 					if(root.next <>& null)
 						do root.next.prev :: a
 					end if
@@ -187,13 +144,14 @@ func main()
 				do me.num :+ 1
 				ret a
 			elif(key < t.key)
-				do t.lst :: me.addSub(t.lst, t, key)
+				do t.lst :: me.addSub(t.lst, t, key, value)
 				ret me.balanceL(t)
 			elif(key > t.key)
-				do t.rst :: me.addSub(t.rst, t, key)
+				do t.rst :: me.addSub(t.rst, t, key, value)
 				ret me.balanceR(t)
 			else
 				do me.change :: false
+				do t.value :: value
 				ret t
 			end if
 		end func

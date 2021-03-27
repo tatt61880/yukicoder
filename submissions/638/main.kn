@@ -1,0 +1,21 @@
+func main()
+	var n: int :: cui@inputInt()
+	var ans: int :: 0
+	for i(3, n - 1)
+		if(isOk(i) & isOk(n - i))
+			do cui@print("\{i} \{n - i}\n")
+			ret
+		end if
+	end for
+	do cui@print("-1\n")
+	
+	func isOk(x: int): bool
+		while(x <> 1)
+			if(x % 2 = 1)
+				ret true
+			end if
+			do x :/ 2
+		end while
+		ret false
+	end func
+end func

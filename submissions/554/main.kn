@@ -1,0 +1,70 @@
+func main()
+	const mod: int :: 1000000007
+	var n: int :: cui@inputInt()
+	var sumOdd: @ModInt :: (#@ModInt).init(0, mod)
+	var sumEven: @ModInt :: (#@ModInt).init(0, mod)
+	var a: []@ModInt :: #[n + 1]@ModInt
+	do a[1] :: (#@ModInt).init(1, mod)
+	for i(2, n)
+		if(i % 2 = 0)
+			do sumOdd.add(a[i - 1].val)
+			do a[i] :: ##sumOdd
+		else
+			do sumEven.add(a[i - 1].val)
+			do a[i] :: ##sumEven
+		end if
+		do a[i].mul(i)
+	end for
+	do cui@print("\{a[n]}\n")
+end func
+
+; val, mod, a, b: 0 to 2 ^ 31.
+class ModInt()
+	+var val: int
+	var mod: int
+	+*func toStr(): []char
+		ret "\{me.val}"
+	end func
+	+func init(val: int, mod: int): ModInt
+		do me.val :: val % mod
+		do me.mod :: mod
+		ret me
+	end func
+	+func add(a: int): ModInt
+		do me.val :+ a
+		if(me.val >= me.mod)
+			do me.val :- me.mod
+		end if
+		ret me
+	end func
+	+func sub(a: int): ModInt
+		if(me.val < a)
+			do me.val :+ me.mod
+		end if
+		do me.val :- a
+		ret me
+	end func
+	+func mul(a: int): ModInt
+		do me.val :: me.val * a % me.mod
+		ret me
+	end func
+	+func div(a: int): ModInt
+		do me.val :: me.val * me.modPow(a, me.mod - 2) % me.mod
+		ret me
+	end func
+	+func pow(a: int): ModInt
+		do me.val :: me.modPow(me.val, a)
+		ret me
+	end func
+	func modPow(a: int, b: int): int
+		if(b = 0)
+			ret 1
+		end if
+		var res: int :: me.modPow(a, b / 2)
+		do res :: res * res % me.mod
+		if(b % 2 = 1)
+			do res :: res * a % me.mod
+		end if
+		ret res
+	end func
+end class

@@ -70,6 +70,9 @@ func main()
 		+var next: Node
 		+var lst: Node
 		+var rst: Node
+		+*func toStr(): []char
+			ret me.key.toStr()
+		end func
 		+func init(key: int, prev: Node, next: Node): Node
 			do me.height :: 1
 			do me.key :: key
@@ -83,12 +86,16 @@ func main()
 	class Set()
 		var root: Node
 		var change: bool
+		var lMax: int
 		var num: int
 		+func size(): int
 			ret me.num
 		end func
 		+func begin(): Node
 			var t: Node :: me.root
+			if(t =& null)
+				ret null
+			end if
 			while(true)
 				if(t.lst =& null)
 					ret t
@@ -127,7 +134,7 @@ func main()
 			do t.rst :: me.rotateR(t.rst)
 			ret me.rotateL(t)
 		end func
-		+func balanceL(t: Node): Node
+		func balanceL(t: Node): Node
 			if(!me.change)
 				ret t
 			end if
@@ -141,7 +148,7 @@ func main()
 			else
 				do me.modHeight(t)
 			end if
-			do me.change :: (h <> me.height(t))
+			do me.change :: h <> me.height(t)
 			ret t
 		end func
 		+func balanceR(t: Node): Node
@@ -158,13 +165,13 @@ func main()
 			else
 				do me.modHeight(t)
 			end if
-			do me.change :: (h <> me.height(t))
+			do me.change :: h <> me.height(t)
 			ret t
 		end func
 		+func add(key: int)
 			do me.root :: me.addSub(me.root, null, key)
 		end func
-		+func addSub(t: Node, parent: Node, key: int): Node
+		func addSub(t: Node, parent: Node, key: int): Node
 			if(t =& null)
 				var a: Node
 				do me.change :: true
@@ -194,6 +201,47 @@ func main()
 			else
 				do me.change :: false
 				ret t
+			end if
+		end func
+		+func del(key: int)
+			do me.root :: me.delSub(me.root, key)
+		end func
+		func delSub(t: Node, key: int): Node
+			if(t =& null)
+				do me.change :: false
+				ret null
+			elif(key < t.key)
+				do t.lst :: me.delSub(t.lst, key)
+				ret me.balanceR(t)
+			elif(key > t.key)
+				do t.rst :: me.delSub(t.rst, key)
+				ret me.balanceL(t)
+			else
+				do me.num :- 1
+				if(t.next <>& null)
+					do t.next.prev :: t.prev
+				end if
+				if(t.prev <>& null)
+					do t.prev.next :: t.next
+				end if
+				if(t.lst =& null)
+					do me.change :: true
+					ret t.rst
+				else
+					do t.lst :: me.delMax(t.lst)
+					do t.key :: me.lMax
+					ret me.balanceR(t)
+				end if
+			end if
+		end func
+		func delMax(t: Node): Node
+			if(t.rst <>& null)
+				do t.rst :: me.delMax(t.rst)
+				ret me.balanceL(t)
+			else
+				do me.change :: true
+				do me.lMax :: t.key
+				ret t.lst
 			end if
 		end func
 		+func find(key: int): Node

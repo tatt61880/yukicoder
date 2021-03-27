@@ -66,7 +66,6 @@ func main()
 	class Node()
 		+var height: int
 		+var key: int
-
 		+var prev: Node
 		+var next: Node
 		+var lst: Node
@@ -165,24 +164,24 @@ func main()
 		+func add(key: int)
 			do me.root :: me.addSub(me.root, null, key)
 		end func
-		+func addSub(t: Node, root: Node, key: int): Node
+		+func addSub(t: Node, parent: Node, key: int): Node
 			if(t =& null)
 				var a: Node
 				do me.change :: true
-				if(root =& null)
+				if(parent =& null)
 					do a :: (#Node).init(key, null, null)
-				elif(key < root.key)
-					do a :: (#Node).init(key, root.prev, root)
-					if(root.prev <>& null)
-						do root.prev.next :: a
+				elif(key < parent.key)
+					do a :: (#Node).init(key, parent.prev, parent)
+					if(parent.prev <>& null)
+						do parent.prev.next :: a
 					end if
-					do root.prev :: a
-				elif(key > root.key)
-					do a :: (#Node).init(key, root, root.next)
-					if(root.next <>& null)
-						do root.next.prev :: a
+					do parent.prev :: a
+				elif(key > parent.key)
+					do a :: (#Node).init(key, parent, parent.next)
+					if(parent.next <>& null)
+						do parent.next.prev :: a
 					end if
-					do root.next :: a
+					do parent.next :: a
 				end if
 				do me.num :+ 1
 				ret a
@@ -209,6 +208,9 @@ func main()
 				end if
 			end while
 			ret t
+		end func
+		+func exist(key: int): bool
+			ret me.find(key) <>& null
 		end func
 		+func lower_bound(key: int): Node
 			var t: Node :: me.root

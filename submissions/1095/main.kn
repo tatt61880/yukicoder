@@ -104,71 +104,6 @@ class Set()
 			do t :: t.lst
 		end while
 	end func
-	func height(t: @Node): int
-		ret t =& null ?(0, t.height)
-	end func
-	func bias(t: @Node): int
-		ret me.height(t.lst) - me.height(t.rst)
-	end func
-	func modHeight(t: @Node)
-		do t.height :: 1 + lib@max(me.height(t.lst), me.height(t.rst))
-	end func
-	func rotateL(v: @Node): @Node
-		var u: @Node :: v.rst
-		var t: @Node :: u.lst
-		do u.lst :: v
-		do v.rst :: t
-		ret u
-	end func
-	func rotateR(u: @Node): @Node
-		var v: @Node :: u.lst
-		var t: @Node :: v.rst
-		do v.rst :: u
-		do u.lst :: t
-		ret v
-	end func
-	func rotateLR(t: @Node): @Node
-		do t.lst :: me.rotateL(t.lst)
-		ret me.rotateR(t)
-	end func
-	func rotateRL(t: @Node): @Node
-		do t.rst :: me.rotateR(t.rst)
-		ret me.rotateL(t)
-	end func
-	func balanceL(t: @Node): @Node
-		if(!me.change)
-			ret t
-		end if
-		var h: int :: me.height(t)
-		if(me.bias(t) = 2)
-			if(me.bias(t.lst) >= 0)
-				do t :: me.rotateR(t)
-			else
-				do t :: me.rotateLR(t)
-			end if
-		else
-			do me.modHeight(t)
-		end if
-		do me.change :: h <> me.height(t)
-		ret t
-	end func
-	+func balanceR(t: @Node): @Node
-		if(!me.change)
-			ret t
-		end if
-		var h: int :: me.height(t)
-		if(me.bias(t) = -2)
-			if(me.bias(t.rst) <= 0)
-				do t :: me.rotateL(t)
-			else
-				do t :: me.rotateRL(t)
-			end if
-		else
-			do me.modHeight(t)
-		end if
-		do me.change :: h <> me.height(t)
-		ret t
-	end func
 	+func add(key: int)
 		do me.root :: me.addSub(me.root, null, key)
 	end func
@@ -229,15 +164,15 @@ class Set()
 				do me.change :: true
 				ret t.rst
 			else
-				do t.lst :: me.delMax(t.lst)
+				do t.lst :: me.delSubMax(t.lst)
 				do t.key :: me.lMax
 				ret me.balanceR(t)
 			end if
 		end if
 	end func
-	func delMax(t: @Node): @Node
+	func delSubMax(t: @Node): @Node
 		if(t.rst <>& null)
-			do t.rst :: me.delMax(t.rst)
+			do t.rst :: me.delSubMax(t.rst)
 			ret me.balanceL(t)
 		else
 			do me.change :: true
@@ -284,5 +219,70 @@ class Set()
 				ret t
 			end if
 		end while
+	end func
+	func height(t: @Node): int
+		ret t =& null ?(0, t.height)
+	end func
+	func bias(t: @Node): int
+		ret me.height(t.lst) - me.height(t.rst)
+	end func
+	func modHeight(t: @Node)
+		do t.height :: 1 + lib@max(me.height(t.lst), me.height(t.rst))
+	end func
+	func rotateL(v: @Node): @Node
+		var u: @Node :: v.rst
+		var t: @Node :: u.lst
+		do u.lst :: v
+		do v.rst :: t
+		ret u
+	end func
+	func rotateR(u: @Node): @Node
+		var v: @Node :: u.lst
+		var t: @Node :: v.rst
+		do v.rst :: u
+		do u.lst :: t
+		ret v
+	end func
+	func rotateLR(t: @Node): @Node
+		do t.lst :: me.rotateL(t.lst)
+		ret me.rotateR(t)
+	end func
+	func rotateRL(t: @Node): @Node
+		do t.rst :: me.rotateR(t.rst)
+		ret me.rotateL(t)
+	end func
+	func balanceL(t: @Node): @Node
+		if(!me.change)
+			ret t
+		end if
+		var h: int :: me.height(t)
+		if(me.bias(t) = 2)
+			if(me.bias(t.lst) >= 0)
+				do t :: me.rotateR(t)
+			else
+				do t :: me.rotateLR(t)
+			end if
+		else
+			do me.modHeight(t)
+		end if
+		do me.change :: h <> me.height(t)
+		ret t
+	end func
+	func balanceR(t: @Node): @Node
+		if(!me.change)
+			ret t
+		end if
+		var h: int :: me.height(t)
+		if(me.bias(t) = -2)
+			if(me.bias(t.rst) <= 0)
+				do t :: me.rotateL(t)
+			else
+				do t :: me.rotateRL(t)
+			end if
+		else
+			do me.modHeight(t)
+		end if
+		do me.change :: h <> me.height(t)
+		ret t
 	end func
 end class

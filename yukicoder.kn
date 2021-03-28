@@ -121,44 +121,44 @@ func main()
 			do @pause()
 			do lib@exitCode(1)
 			ret false
-		else
-			var dirPath: []char :: "\{@dirSubmissions}\{problemId}/"
-			for i(0, 10)
-				if(file@exist(dirPath))
-					if(!file@delDir(dirPath))
-						if(i = 10)
-							do cui@print("Error: Failed to remove dir. [\{dirPath}]\n")
-							do @pause()
-							do lib@exitCode(1)
-							ret false
-						end if
-						do lib@sleep(200)
-					else
-						do lib@sleep(500)
-					end if
-				else
-					break i
-				end if
-			end for
-			if(!@makeDir(dirPath))
-				do @pause()
-				do lib@exitCode(1)
-				ret false
-			end if
-			var writer: file@Writer :: file@makeWriter(filepath, false)
-			do writer.writeStr(data)
-			do writer.fin()
-			
-			var writerUrl: file@Writer :: file@makeWriter(filepathUrl, false)
-			do writerUrl.writeStr("[InternetShortcut]\n")
-			do writerUrl.writeStr("URL=" ~ url)
-			do writerUrl.fin()
-			
-			var writerTitle: file@Writer :: file@makeWriter(filepathTitle, false)
-			do writerTitle.writeStr(title)
-			do writerTitle.fin()
-			ret true
 		end if
+		
+		var dirPath: []char :: "\{@dirSubmissions}\{problemId}/"
+		for i(0, 10)
+			if(file@exist(dirPath))
+				if(!file@delDir(dirPath))
+					if(i = 10)
+						do cui@print("Error: Failed to remove dir. [\{dirPath}]\n")
+						do @pause()
+						do lib@exitCode(1)
+						ret false
+					end if
+					do lib@sleep(200)
+				else
+					do lib@sleep(500)
+				end if
+			else
+				break i
+			end if
+		end for
+		if(!@makeDir(dirPath))
+			do @pause()
+			do lib@exitCode(1)
+			ret false
+		end if
+		var writer: file@Writer :: file@makeWriter(filepath, false)
+		do writer.writeStr(data)
+		do writer.fin()
+		
+		var writerUrl: file@Writer :: file@makeWriter(filepathUrl, false)
+		do writerUrl.writeStr("[InternetShortcut]\n")
+		do writerUrl.writeStr("URL=" ~ url)
+		do writerUrl.fin()
+		
+		var writerTitle: file@Writer :: file@makeWriter(filepathTitle, false)
+		do writerTitle.writeStr(title)
+		do writerTitle.fin()
+		ret true
 	end func
 end func
 

@@ -6,7 +6,7 @@ func main()
 		do a[i] :: cui@inputInt()
 	end for
 	
-	var ans: @modInt :: (#@modInt).init(a[0], p)
+	var ans: @ModInt :: (#@ModInt).init(a[0], p)
 	var s: []char :: cui@input()
 	for i(0, n - 2)
 		var x: int :: a[i + 1]
@@ -25,44 +25,43 @@ func main()
 end func
 
 ; val, mod, a, b: 0 to 2 ^ 31.
-class modInt()
-	var val: int
+class ModInt()
+	+var val: int
 	var mod: int
-	+func init(val: int, mod: int): modInt
+	+*func toStr(): []char
+		ret "\{me.val}"
+	end func
+	+func init(val: int, mod: int): ModInt
 		do me.val :: val % mod
 		do me.mod :: mod
 		ret me
 	end func
-	+func add(a: int): modInt
+	+func add(a: int): ModInt
 		do me.val :+ a
 		if(me.val >= me.mod)
 			do me.val :- me.mod
 		end if
 		ret me
 	end func
-	+func sub(a: int): modInt
+	+func sub(a: int): ModInt
 		if(me.val < a)
 			do me.val :+ me.mod
 		end if
 		do me.val :- a
 		ret me
 	end func
-	+func mul(a: int): modInt
+	+func mul(a: int): ModInt
 		do me.val :: me.val * a % me.mod
 		ret me
 	end func
-	+func div(a: int): modInt
+	+func div(a: int): ModInt
 		do me.val :: me.val * me.modPow(a, me.mod - 2) % me.mod
 		ret me
 	end func
-	+func pow(a: int): modInt
+	+func pow(a: int): ModInt
 		do me.val :: me.modPow(me.val, a)
 		ret me
 	end func
-	+*func toStr(): []char
-		ret "\{me.val}"
-	end func
-	
 	func modPow(a: int, b: int): int
 		if(b = 0)
 			ret 1

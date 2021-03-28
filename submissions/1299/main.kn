@@ -9,60 +9,59 @@ func main()
 		do sum :+ a[i]
 	end for
 	
-	var ans: modInt :: (#modInt).init(2, @mod)
+	var ans: @ModInt :: (#@ModInt).init(2, @mod)
 	do ans.pow(k)
 	do ans.mul(sum % @mod)
 	do cui@print("\{ans}\n")
-	
-	; val, mod, a, b: 0 to 2 ^ 31.
-	class modInt()
-		var val: int
-		var mod: int
-		+func init(val: int, mod: int): modInt
-			do me.val :: val % mod
-			do me.mod :: mod
-			ret me
-		end func
-		+func add(a: int): modInt
-			do me.val :+ a
-			if(me.val >= me.mod)
-				do me.val :- me.mod
-			end if
-			ret me
-		end func
-		+func sub(a: int): modInt
-			if(me.val < a)
-				do me.val :+ me.mod
-			end if
-			do me.val :- a
-			ret me
-		end func
-		+func mul(a: int): modInt
-			do me.val :: me.val * a % me.mod
-			ret me
-		end func
-		+func div(a: int): modInt
-			do me.val :: me.val * me.modPow(a, me.mod - 2) % me.mod
-			ret me
-		end func
-		+func pow(a: int): modInt
-			do me.val :: me.modPow(me.val, a)
-			ret me
-		end func
-		+*func toStr(): []char
-			ret "\{me.val}"
-		end func
-		
-		func modPow(a: int, b: int): int
-			if(b = 0)
-				ret 1
-			end if
-			var res: int :: me.modPow(a, b / 2)
-			do res :: res * res % me.mod
-			if(b % 2 = 1)
-				do res :: res * a % me.mod
-			end if
-			ret res
-		end func
-	end class
 end func
+
+; val, mod, a, b: 0 to 2 ^ 31.
+class ModInt()
+	+var val: int
+	var mod: int
+	+*func toStr(): []char
+		ret "\{me.val}"
+	end func
+	+func init(val: int, mod: int): ModInt
+		do me.val :: val % mod
+		do me.mod :: mod
+		ret me
+	end func
+	+func add(a: int): ModInt
+		do me.val :+ a
+		if(me.val >= me.mod)
+			do me.val :- me.mod
+		end if
+		ret me
+	end func
+	+func sub(a: int): ModInt
+		if(me.val < a)
+			do me.val :+ me.mod
+		end if
+		do me.val :- a
+		ret me
+	end func
+	+func mul(a: int): ModInt
+		do me.val :: me.val * a % me.mod
+		ret me
+	end func
+	+func div(a: int): ModInt
+		do me.val :: me.val * me.modPow(a, me.mod - 2) % me.mod
+		ret me
+	end func
+	+func pow(a: int): ModInt
+		do me.val :: me.modPow(me.val, a)
+		ret me
+	end func
+	func modPow(a: int, b: int): int
+		if(b = 0)
+			ret 1
+		end if
+		var res: int :: me.modPow(a, b / 2)
+		do res :: res * res % me.mod
+		if(b % 2 = 1)
+			do res :: res * a % me.mod
+		end if
+		ret res
+	end func
+end class

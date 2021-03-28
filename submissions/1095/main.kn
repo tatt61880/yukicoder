@@ -206,13 +206,10 @@ class Set()
 				if(t.lst =& null)
 					ret t
 				end if
-				if(key > t.lst.key & t.lst.rst =& null)
-					ret t
-				end if
 				do t :: t.lst
 			elif(key > t.key)
 				if(t.rst =& null)
-					ret null
+					ret t.next
 				end if
 				do t :: t.rst
 			else

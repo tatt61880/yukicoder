@@ -1,0 +1,15 @@
+func main()
+	var n: int :: cui@inputInt()
+	for(1, n)
+		var a: int :: cui@inputInt()
+		var b: int :: cui@inputInt()
+		var offset: int :: 0
+		if(a - b = 0)
+		elif([a - b, 0].min() = 0)
+			do offset :: 1
+		else
+			do offset :: -1
+		end if
+		do cui@print("\{'='.offset(offset)}\n")
+	end for
+end func

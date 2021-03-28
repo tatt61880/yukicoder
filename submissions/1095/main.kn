@@ -89,6 +89,18 @@ class Set()
 	var change: bool
 	var lMax: int
 	var num: int
+	+*func toStr(): []char
+		ret me.toGraph(me.root, "", "")
+	end func
+	func toGraph(t: @Node, head: []char, bar: []char): []char
+		var res: []char :: ""
+		if(t <>& null)
+			do res :~ me.toGraph(t.rst, head ~ "  ", "/")
+			do res :~ head ~ bar ~ t.key.toStr() ~ "\n"
+			do res :~ me.toGraph(t.lst, head ~ "  ", "`")
+		end if
+		ret res
+	end func
 	+func size(): int
 		ret me.num
 	end func

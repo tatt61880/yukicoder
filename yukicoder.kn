@@ -11,6 +11,8 @@ var regexUrl2: regex@Regex
 
 func main()
 	if(!@makeDir(@dirHtml))
+		do @pause()
+		do lib@exitCode(1)
 		ret
 	end if
 	
@@ -70,12 +72,15 @@ func main()
 	end while
 	
 	if(!@makeDir(@dirSubmissions))
+		do @pause()
+		do lib@exitCode(1)
 		ret
 	end if
 	
 	if(!@initExtensions())
+		do cui@print("Error: 拡張子データの初期化に失敗しました。\n")
+		do @pause()
 		do lib@exitCode(1)
-		do cui@print("拡張子データの初期化に失敗しました。\n")
 		ret
 	end if
 	
@@ -113,6 +118,9 @@ func main()
 		var data: []char :: @fetchData(urlSource)
 		if(data =& null)
 			do cui@print("Error: Failed to find source code. [\{urlSource}]\n")
+			do @pause()
+			do lib@exitCode(1)
+			ret false
 		else
 			var dirPath: []char :: "\{@dirSubmissions}\{problemId}/"
 			for i(0, 10)
@@ -120,6 +128,8 @@ func main()
 					if(!file@delDir(dirPath))
 						if(i = 10)
 							do cui@print("Error: Failed to remove dir. [\{dirPath}]\n")
+							do @pause()
+							do lib@exitCode(1)
 							ret false
 						end if
 						do lib@sleep(200)
@@ -131,6 +141,8 @@ func main()
 				end if
 			end for
 			if(!@makeDir(dirPath))
+				do @pause()
+				do lib@exitCode(1)
 				ret false
 			end if
 			var writer: file@Writer :: file@makeWriter(filepath, false)
@@ -147,13 +159,12 @@ func main()
 			do writerTitle.fin()
 			ret true
 		end if
-		ret false
 	end func
 end func
 
 func fetchData(url: []char): []char
 	if(url =& null)
-		do cui@print("urlがnullです。\n")
+		do cui@print("Error: urlがnullです。\n")
 		ret null
 	end if
 	var http: net@Http :: net@makeHttp(url, false, "Kuin")
@@ -161,7 +172,8 @@ func fetchData(url: []char): []char
 	do lib@sleep(1500)
 	
 	if(http =& null)
-		do cui@print("接続に失敗しました。[\{url}]\n")
+		do cui@print("Error: 接続に失敗しました。[\{url}]\n")
+		do @pause()
 		ret null
 	else
 		var data: []char
@@ -174,7 +186,8 @@ func fetchData(url: []char): []char
 		end for
 		do http.fin()
 	end if
-	do cui@print("データの取得に失敗しました。[\{url}]\n")
+	do cui@print("Error: データの取得に失敗しました。[\{url}]\n")
+	do @pause()
 	ret null
 end func
 
@@ -185,8 +198,7 @@ func makeDir(dirPath: []char): bool
 		if(file@makeDir(dirPath))
 			ret true
 		else
-			do lib@exitCode(1)
-			do cui@print("\{dirPath}を作成できません。\n")
+			do cui@print("Error: Failed to create dir. [\{dirPath}]\n")
 			ret false
 		end if
 	end if
@@ -199,8 +211,7 @@ func initExtensions(): bool
 	var extensionFilepath: []char :: "\{wnd@exeDir()}extensions.csv"
 	var reader: file@Reader :: file@makeReader(extensionFilepath)
 	if(reader =& null)
-		do lib@exitCode(1)
-		do cui@print("\{extensionFilepath} can't be opened.\n")
+		do cui@print("Error: \{extensionFilepath} can't be opened.\n")
 		ret false
 	end if
 	do reader.delimiter(",\n")
@@ -250,4 +261,9 @@ func unsanitized(str: []char): []char
 		do i :+ 1
 	end while
 	ret res
+end func
+
+func pause()
+	do cui@print("Press Enter-key to continue...\n")
+	do cui@input()
 end func

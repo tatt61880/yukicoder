@@ -1,0 +1,17 @@
+func main()
+	var n: int :: cui@inputInt()
+	var k: bit64 :: cui@inputInt() $ bit64
+	var map: dict<bit64, bool> :: #dict<bit64, bool>
+	do map.add(0b64, true)
+	var xor: bit64 :: 0b64
+	var ans: bool :: false
+	for(1, n)
+		var a: bit64 :: cui@inputInt() $ bit64
+		do xor :: xor.xor(a)
+		do map.add(xor, true)
+		if(map.get(xor.xor(k), &))
+			do ans :: true
+		end if
+	end for
+	do cui@print(ans ?("Yes\n", "No\n"))
+end func

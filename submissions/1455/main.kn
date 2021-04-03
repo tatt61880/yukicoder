@@ -1,0 +1,35 @@
+func main()
+	var s: []char :: cui@input()
+	var n: int :: cui@inputInt()
+	var ans: []char :: ""
+	for i(0, ^s - 1)
+		do ans :~ f(s[i], n)
+	end for
+	do cui@print("\{ans}\n")
+	
+	func f(c: char, n: int): []char
+		var res: []char :: ""
+		switch(c)
+		case '0' to '9'
+			if(c $ int + n <= '9' $ int)
+				do res :~ [c.offset(n)]
+			else
+				const str: []char :: "CpCzNkSuTbEoA"
+				for i(0, ^str - 1)
+					do res :~ g(str[i], n - (10 - (c $ int - '0' $ int)))
+				end for
+			end if
+		default
+			do res :~ g(c, n)
+		end switch
+		ret res
+		func g(c: char, n: int): []char
+			switch(c)
+			case 'a' to 'z'
+				ret['a'.offset((c $ int - 'a' $ int + n) % 26)]
+			case 'A' to 'Z'
+				ret['A'.offset((c $ int - 'A' $ int + n) % 26)]
+			end switch
+		end func
+	end func
+end func

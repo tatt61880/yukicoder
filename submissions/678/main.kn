@@ -1,0 +1,36 @@
+func main()
+	var n: int :: cui@inputInt()
+	var l: int :: cui@inputInt()
+	var r: int :: cui@inputInt()
+	var a: []int :: #[n]int
+	var xl: []int :: #[n]int
+	var xr: []int :: #[n]int
+	var yu: []int :: #[n]int
+	var yd: []int :: #[n]int
+	for i(0, n - 1)
+		do xl[i] :: cui@inputInt()
+		do yu[i] :: cui@inputInt()
+		do xr[i] :: cui@inputInt()
+		do yd[i] :: cui@inputInt()
+	end for
+	
+	for x(l, r)
+		var target: int :: -1
+		var targetU: int :: -1
+		for i(0, n - 1)
+			if(xl[i] <= x & x <= xr[i])
+				if(target = -1 | yu[i] > targetU)
+					do target :: i
+					do targetU :: yu[i]
+				end if
+			end if
+		end for
+		if(target <> -1)
+			do a[target] :: 1
+		end if
+	end for
+	
+	for i(0, n - 1)
+		do cui@print("\{a[i]}\n")
+	end for
+end func

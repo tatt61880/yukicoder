@@ -1,0 +1,9 @@
+func main()
+	var a: int :: cui@inputInt()
+	var b: int :: cui@inputInt()
+	var c: int :: cui@inputInt()
+	var d: int :: cui@inputInt()
+	var k: int :: cui@inputInt()
+	var ans: int :: (a * b + c - d)%k
+	do cui@print("\{ans}\n")
+end func

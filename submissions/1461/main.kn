@@ -1,0 +1,10 @@
+func main()
+	var n: int :: cui@inputInt()
+	var ans: int :: 0
+	if(n <= 3)
+		do ans :: n
+	else
+		do ans :+ (n - 3) * 5 + 3
+	end if
+	do cui@print("\{ans}\n")
+end func

@@ -1,0 +1,31 @@
+func main()
+	var n: int :: cui@inputInt()
+	var a: []int :: #[n]int
+	for i(0, n - 1)
+		do a[i] :: cui@inputInt()
+	end for
+	
+	var u: []int :: #[0]int
+	var v: []int :: #[0]int
+	var minIdx: int :: 0
+	for target(1, 100)
+		for i(minIdx, n - 1)
+			if(a[i] = target)
+				if(i <> minIdx)
+					do u :~ [minIdx]
+					do v :~ [i]
+					var t: int :: a[minIdx]
+					do a[minIdx] :: a[i]
+					do a[i] :: t
+				end if
+				do minIdx :+ 1
+			end if
+		end for
+	end for
+	do cui@print("\{^u}\n")
+	for i(0, ^u - 1)
+		do cui@print("\{u[i]} \{v[i]}\n")
+	end for
+	do cui@flush()
+	do cui@input()
+end func

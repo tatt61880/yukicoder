@@ -1,0 +1,23 @@
+func main()
+	var x: int :: cui@inputInt()
+	var y: int :: cui@inputInt()
+	var max: int :: y
+	var a: []int :: #[max + 1]int
+	var square: []int :: #[(y $ float ^ 0.51) $ int + 1]int
+	var map: dict<int, bool> :: #dict<int, bool>
+	for i(0, ^square - 1)
+		do square[i] :: i ^ 2
+		do map.add(square[i], true)
+	end for
+	for i(0, ^square - 1)
+		for j(1, ^square - 1)
+			var sum: int :: square[i] + square[j]
+			if(sum <= max)
+				do a[sum] :+ 1
+			end if
+		end for
+	end for
+	
+	var ans: int :: a.sub(x, y - x + 1).max() * 4
+	do cui@print("\{ans}\n")
+end func

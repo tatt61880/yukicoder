@@ -1,0 +1,16 @@
+func main()
+	var n: int :: cui@inputInt()
+	var x0: int :: cui@inputInt()
+	var y0: int :: cui@inputInt()
+	var x1: int :: cui@inputInt() - x0
+	var y1: int :: cui@inputInt() - y0
+	var ans: int :: 0
+	for i(1, n - 2)
+		var x2: int :: cui@inputInt() - x0
+		var y2: int :: cui@inputInt() - y0
+		do ans :+ x1 * y2 - y1 * x2
+		do x1 :: x2
+		do y1 :: y2
+	end for
+	do cui@print("\{ans}\n")
+end func

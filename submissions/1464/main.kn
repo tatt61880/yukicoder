@@ -1,0 +1,16 @@
+func main()
+	var s: []char :: cui@input()
+	var d: int :: 0
+	var a: int :: 0
+	for i(0, ^s - 1)
+		if(s[i] = '.')
+			do d :: ^s - i - 1
+		else
+			do a :* 10
+			do a :+ s[i] $ int - '0' $ int
+		end if
+	end for
+	var b: int :: 10 ^ d
+	var gcd: int :: math@gcd(a, b)
+	do cui@print("\{a / gcd}/\{b / gcd}\n")
+end func

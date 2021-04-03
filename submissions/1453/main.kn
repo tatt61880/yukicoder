@@ -1,0 +1,17 @@
+func main()
+	var a: int :: cui@inputInt()
+	var b: int :: cui@inputInt()
+	var c: int :: cui@inputInt()
+	var d: int :: cui@inputInt()
+	var e: int :: cui@inputInt()
+	var n: int :: a * (b - c)
+	var ans: int :: 0
+	var x: int :: d
+	for i(1, n)
+		if(i % 10 = 0 & e <= x)
+			do x :- e
+		end if
+		do ans :+ x
+	end for
+	do cui@print("\{ans}\n")
+end func

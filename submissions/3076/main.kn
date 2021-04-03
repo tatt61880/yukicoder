@@ -1,0 +1,6 @@
+func main()
+	var h: float :: cui@inputFloat()
+	var r: float :: cui@inputFloat()
+	var ans: float :: -8.245 + 6.807 * h + 7.073 * r * 2.0 * lib@pi
+	do cui@print("\{ans}\n")
+end func

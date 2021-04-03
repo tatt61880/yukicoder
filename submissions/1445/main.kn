@@ -1,0 +1,6 @@
+func main()
+	var n: int :: cui@inputInt()
+	for(1, n)
+		do cui@print("Hello! You're new here, right? It's nice to meet you.\n")
+	end for
+end func

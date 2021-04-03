@@ -1,0 +1,13 @@
+func main()
+	var m: int :: cui@inputInt()
+	for(1, m)
+		var a: int :: cui@inputInt() + 1
+		var s: []char :: ""
+		while(a <> 1)
+			do s :~ ["LR"[a % 2]]
+			do a :/ 2
+		end while
+		do s.reverse()
+		do cui@print(s ~ "\n")
+	end for
+end func

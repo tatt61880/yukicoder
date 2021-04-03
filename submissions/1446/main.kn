@@ -1,0 +1,8 @@
+func main()
+	var a: int :: cui@inputInt()
+	var b: int :: cui@inputInt()
+	var n: int :: cui@inputInt()
+	var m: int :: cui@inputInt()
+	var ans: int :: [a, b].min() + [(a - b) / (n + 1), (b - a) / (m + 1)].max()
+	do cui@print("\{ans}\n")
+end func

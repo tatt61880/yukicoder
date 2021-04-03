@@ -1,0 +1,22 @@
+func main()
+	var x: int :: cui@inputInt()
+	var ans: int :: -1
+	for n([x - 100, 1].max(), x + 100)
+		if((n $ bit64).xor(hammingWeight(n)) = x $ bit64)
+			do ans :: n
+			break n
+		end if
+	end for
+	do cui@print("\{ans}\n")
+	
+	func hammingWeight(n: int): bit64
+		var res: int :: 0
+		while(n <> 0)
+			if(n % 2 = 1)
+				do res :+ 1
+			end if
+			do n :/ 2
+		end while
+		ret res $ bit64
+	end func
+end func

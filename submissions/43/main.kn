@@ -1,0 +1,38 @@
+func main()
+	var n: int :: cui@inputInt()
+	var s: [][]char :: #[n][]char
+	for i(0, n - 1)
+		do s[i] :: cui@input()
+	end for
+	
+	var ans: int :: n
+	var num: int :: n * (n - 1) / 2
+	for ii(0, 2 ^ num - 1)
+		var id: int :: ii
+		var cnt: []int :: #[n]int
+		for i(0, n - 1)
+			for j(i + 1, n - 1)
+				var result: char :: "ox"[id % 2]
+				do id :/ 2
+				if(s[i][j] <> '-' & s[i][j] <> result)
+					skip ii
+				end if
+				do cnt[result = 'o' ?(i, j)] :+ 1
+			end for
+		end for
+		var cnt0: int :: cnt[0]
+		do cnt.sort()
+		do cnt.reverse()
+		var rank: int :: 1
+		for i(0, n - 1)
+			if(cnt[i] = cnt0)
+				do ans :: [ans, rank].min()
+				break i
+			end if
+			if(cnt[i] <> cnt[i + 1])
+				do rank :+ 1
+			end if
+		end for
+	end for
+	do cui@print("\{ans}\n")
+end func

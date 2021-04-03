@@ -1,0 +1,43 @@
+func main()
+	var n: int :: cui@inputInt()
+	var m: int :: cui@inputInt()
+	var k: int :: cui@inputInt()
+	var map: [][]dict<int, bool> :: #[n, n]dict<int, bool>
+	for a(0, n - 1)
+		for b(0, n - 1)
+			do map[a][b] :: #dict<int, bool>
+		end for
+	end for
+	for(1, m)
+		var a: int :: cui@inputInt() - 1
+		var b: int :: cui@inputInt() - 1
+		var c: int :: cui@inputInt()
+		do map[a][b].add(c, true)
+		do map[b][a].add(c, true)
+	end for
+	
+	var exists: [][]bool :: #[k + 1, n]bool
+	do exists[0] :: [true].repeat(n)
+	for i(0, k - 1)
+		var d: int :: cui@inputInt()
+		for a(0, n - 1)
+			if(exists[i][a])
+				for b(0, n - 1)
+					if(map[a][b].get(d, &))
+						do exists[i + 1][b] :: true
+					end if
+				end for
+			end if
+		end for
+	end for
+	var ans: []int :: #[0]int
+	for i(0, n - 1)
+		if(exists[k][i])
+			do ans :~ [i + 1]
+		end if
+	end for
+	do cui@print("\{^ans}\n")
+	for i(0, ^ans - 1)
+		do cui@print("\{ans[i]}" ~ (i = ^ans - 1 ?("\n", " ")))
+	end for
+end func

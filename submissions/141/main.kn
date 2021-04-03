@@ -1,0 +1,19 @@
+func main()
+	var m: int :: cui@inputInt()
+	var n: int :: cui@inputInt()
+	
+	var ans: int :: 0
+	while(m <> n)
+		if(m > n)
+			var cnt: int :: (m - 1) / n
+			do m :- n * cnt
+			do ans :+ cnt
+		else
+			var t: int :: n
+			do n :: m
+			do m :: t
+			do ans :+ 1
+		end if
+	end while
+	do cui@print("\{ans}\n")
+end func

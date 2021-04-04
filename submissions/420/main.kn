@@ -1,0 +1,26 @@
+func main()
+	const nMax: int :: 31
+	const valueMax: int :: lib@intMax / 2
+	var comb: [][]int :: #[nMax + 1][]int
+	do comb[0] :: [1]
+	for n(1, nMax)
+		do comb[n] :: #[n + 1]int
+		do comb[n][0] :: 1
+		do comb[n][n] :: 1
+		for r(1, n - 1)
+			do comb[n][r] :: comb[n - 1][r - 1] + comb[n - 1][r]
+			if(comb[n][r] > valueMax)
+				do comb[n][r] :: valueMax
+			end if
+		end for
+	end for
+	
+	var x: int :: cui@inputInt()
+	if(x > 31)
+		do cui@print("0 0\n")
+		ret
+	end if
+	var ans: int :: comb[31][x]
+	var sum: int :: x = 0 ?(0, (2 ^ 31 - 1) * comb[30][x - 1])
+	do cui@print("\{ans} \{sum}\n")
+end func

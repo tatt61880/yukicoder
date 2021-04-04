@@ -1,0 +1,10 @@
+func main()
+	const mod: int :: 998244353
+	var t: int :: cui@inputInt()
+	for(1, t)
+		var n: int :: cui@inputInt()
+		var k: int :: cui@inputInt()
+		var ans: int :: (math@modPow(2, n * k, mod) - math@modPow(2, (n - 1) * k, mod) + mod) * n % mod
+		do cui@print("\{ans}\n")
+	end for
+end func

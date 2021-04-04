@@ -1,0 +1,26 @@
+func main()
+	const nMax: int :: 3000
+	const valueMax: int :: lib@intMax / 2
+	var comb: [][]int :: #[nMax + 1][]int
+	do comb[0] :: [1]
+	for n(1, nMax)
+		do comb[n] :: #[n + 1]int
+		do comb[n][0] :: 1
+		do comb[n][n] :: 1
+		for r(1, n - 1)
+			do comb[n][r] :: comb[n - 1][r - 1] + comb[n - 1][r]
+			if(comb[n][r] > valueMax)
+				do comb[n][r] :: valueMax
+			end if
+		end for
+	end for
+	
+	var q: int :: cui@inputInt()
+	for(1, q)
+		var d: int :: cui@inputInt()
+		var x: int :: cui@inputInt()
+		var t: int :: cui@inputInt()
+		var ans: bool :: comb[x + d - 1][d - 1] <= t
+		do cui@print((ans ?("AC", "ZETUBOU")) ~ "\n")
+	end for
+end func

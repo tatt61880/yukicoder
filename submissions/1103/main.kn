@@ -1,0 +1,66 @@
+func main()
+	const mod: int :: 1000000007
+	class Node()
+		+var parent: Node
+		+var children: list<Node>
+		+var depth: int
+		+var num: int
+		*func ctor()
+			do me.parent :: null
+			do me.children :: #list<Node>
+		end func
+		+func calcDepth()
+			if(me.parent =& null)
+				do me.depth :: 0
+			else
+				do me.depth :: me.parent.depth + 1
+			end if
+			do me.children.head()
+			for i(0, ^me.children - 1)
+				do me.children.get().calcDepth()
+				do me.children.next()
+			end for
+		end func
+		+func calcNum()
+			if(^me.children = 0)
+				do me.num :: 1
+				ret
+			end if
+			do me.children.head()
+			for i(0, ^me.children - 1)
+				do me.children.get().calcNum()
+				do me.num :+ me.children.get().num
+				do me.children.next()
+			end for
+			do me.num :+ 1
+		end func
+	end class
+	
+	var n: int :: cui@inputInt()
+	var nodes: []Node :: #[n]Node
+	for i(0, n - 1)
+		do nodes[i] :: #Node
+	end for
+	for i(0, n - 2)
+		var a: int :: cui@inputInt() - 1
+		var b: int :: cui@inputInt() - 1
+		do nodes[a].children.add(nodes[b])
+		do nodes[b].parent :: nodes[a]
+	end for
+	var root: Node
+	for i(0, n - 1)
+		if(nodes[i].parent =& null)
+			do root :: nodes[i]
+		end if
+	end for
+	
+	do root.calcDepth()
+	do root.calcNum()
+	
+	var ans: int :: 0
+	for i(0, n - 1)
+		do ans :+ nodes[i].depth * nodes[i].num
+		do ans :% mod
+	end for
+	do cui@print("\{ans}\n")
+end func

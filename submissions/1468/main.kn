@@ -1,0 +1,14 @@
+func main()
+	var n: int :: cui@inputInt()
+	var a: [][]char :: cui@input().split(" ")
+	var b: [][]char :: cui@input().split(" ")
+	do a.sort()
+	do b.sort()
+	for i(0, n - 2)
+		if(a[i] <> b[i])
+			do cui@print("\{a[i]}\n")
+			ret
+		end if
+	end for
+	do cui@print("\{a[n - 1]}\n")
+end func

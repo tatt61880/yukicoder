@@ -1,0 +1,31 @@
+func main()
+	const mod: int :: 1000000007
+	var a: int :: cui@inputInt()
+	var b: int :: cui@inputInt()
+	var c: int :: cui@inputInt()
+	var d: int :: cui@inputInt()
+	var n: int :: cui@inputInt() + 1
+	var m: int :: n / 4
+	var ans: int :: math@modPow(4, m, mod)
+	if(m % 2 = 1)
+		do ans :: (mod - ans) % mod
+	end if
+	var mul: int
+	switch(n % 4)
+	case 0
+		do mul :: m % 2 = 0 ?(d, c)
+	case 1
+		do mul :: m % 2 = 0 ?(b + d, a + c)
+	case 2
+		do mul :: 2 * (m % 2 = 0 ?(b, a))
+	case 3
+		do mul :: 2 * (m % 2 = 0 ?(b - c, a - d))
+	end switch
+	if(mul >= 0)
+		do ans :: ans * mul % mod
+	else
+		do ans :: ans * (-mul) % mod
+		do ans :: (mod - ans) % mod
+	end if
+	do cui@print("\{ans}\n")
+end func

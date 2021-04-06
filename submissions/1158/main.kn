@@ -1,0 +1,22 @@
+func main()
+	const mod: int :: 1000000007
+	var a: int :: cui@inputInt()
+	var b: int :: cui@inputInt()
+	var n: int :: cui@inputInt()
+	var ans: int :: 1
+	for gcd(a, b)
+		do dfs(&ans, gcd, a, b, n, 1)
+	end for
+	do cui@print("\{ans}\n")
+	
+	func dfs(ans: &int, gcd: int, a: int, b: int, n: int, depth: int)
+		if(depth = n)
+			do ans :* gcd
+			do ans :% mod
+			ret
+		end if
+		for i(a, b)
+			do dfs(&ans, math@gcd(gcd, i), a, b, n, depth + 1)
+		end for
+	end func
+end func

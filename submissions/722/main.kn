@@ -13,7 +13,14 @@ func main()
 	end if
 	
 	func f(x: int): bool
-		var re: regex@Regex :: regex@makeRegex("^-?[1-9]00+$")
-		ret re.match(x.toStr()) <>& null
+		if(x = 0)
+			ret false
+		end if
+		var cnt: int :: 0
+		while(x % 10 = 0)
+			do x :/ 10
+			do cnt :+ 1
+		end while
+		ret cnt >= 2 & x.abs() <= 9
 	end func
 end func

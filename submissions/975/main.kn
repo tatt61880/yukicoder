@@ -1,9 +1,34 @@
 func main()
 	var x: int :: cui@inputInt()
-	do cui@input()
-	var regex: regex@Regex :: regex@makeRegex("\\b\{x}\\b")
-	do cui@print("\{["-1", "MaxValu", "MrMax", "MrMaxValu"][
-	|(regex.find(&, cui@input(), -1) <>& null ?(2, 0)) +
-	|(regex.find(&, cui@input(), -1) <>& null ?(1, 0))
-	|]}\n")
+	var n: int :: cui@inputInt()
+	var m: int :: cui@inputInt()
+	var fa: bool :: false
+	var fb: bool :: false
+	for i(0, n - 1)
+		var a: int :: cui@inputInt()
+		if(a = x)
+			do fa :: true
+			break i
+		end if
+	end for
+	for i(0, m - 1)
+		var b: int :: cui@inputInt()
+		if(b = x)
+			do fb :: true
+			break i
+		end if
+	end for
+	if(fa)
+		if(fb)
+			do cui@print("MrMaxValu\n")
+		else
+			do cui@print("MrMax\n")
+		end if
+	else
+		if(fb)
+			do cui@print("MaxValu\n")
+		else
+			do cui@print("-1\n")
+		end if
+	end if
 end func

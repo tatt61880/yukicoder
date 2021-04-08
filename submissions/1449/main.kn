@@ -1,0 +1,296 @@
+func main()
+	var n: int :: cui@inputInt()
+	var m: int :: cui@inputInt()
+	var a: []int :: #[m]int
+	var b: []int :: #[m]int
+	var c: []int :: #[m]int
+	for i(0, m - 1)
+		do a[i] :: cui@inputInt() - 1
+		do b[i] :: cui@inputInt() - 1
+		do c[i] :: cui@inputInt()
+	end for
+	
+	var t: []int :: #[n]int
+	for i(0, n - 1)
+		do t[i] :: cui@inputInt()
+	end for
+	
+	var cc: [][]int :: #[n, n]int
+	var neighbor: [][]int :: #[n, 0]int
+	for i(0, m - 1)
+		do neighbor[a[i]] :~ [b[i]]
+		do neighbor[b[i]] :~ [a[i]]
+		do cc[a[i]][b[i]] :: c[i]
+		do cc[b[i]][a[i]] :: c[i]
+	end for
+	
+	var used: []bool :: #[1001 * n + n]bool
+	var dist: []int :: [lib@intMax].repeat(1001 * n + n)
+	var posU0: int :: 0
+	var pU0: int :: t[0]
+	var u0: int :: pU0 * n + posU0
+	do dist[t[0] * n] :: pU0
+	
+	var q: @Set :: #@Set
+	do q.add(t[0] * n)
+	while loop(q.size() <> 0)
+		var uVal: int :: q.begin().key
+		do q.del(uVal)
+		var u: int :: uVal % 10 ^ 6
+		if(used[u])
+			skip loop
+		end if
+		do used[u] :: true
+		var posU: int :: u % n
+		var pU: int :: u / n
+		for i(0, ^neighbor[posU] - 1)
+			var posV: int :: neighbor[posU][i]
+			var pV: int :: [pU + t[posV], 1001].min()
+			var v: int :: pV * n + posV
+			var alt: int :: dist[u] + cc[posU][posV] / pU + t[posV]
+			if(alt < dist[v])
+				do dist[v] :: alt
+				var vVal: int :: alt * 10 ^ 6 + v
+				do q.add(vVal)
+			end if
+		end for
+	end while
+	
+	var ans: int :: lib@intMax
+	for i(0, 1001)
+		do ans :: [ans, dist[i * n + n - 1]].min()
+	end for
+	do cui@print("\{ans}\n")
+end func
+
+class Node()
+	+var height: int
+	+var key: int
+	+var prev: Node
+	+var next: Node
+	+var lst: Node
+	+var rst: Node
+	+*func toStr(): []char
+		ret me.key.toStr()
+	end func
+	+func init(key: int, prev: Node, next: Node): Node
+		do me.height :: 1
+		do me.key :: key
+		do me.prev :: prev
+		do me.next :: next
+		ret me
+	end func
+end class
+
+; AVL Tree
+class Set()
+	var root: @Node
+	var change: bool
+	var lMax: int
+	var num: int
+	+*func toStr(): []char
+		ret me.toGraph(me.root, "", "")
+	end func
+	func toGraph(t: @Node, head: []char, bar: []char): []char
+		var res: []char :: ""
+		if(t <>& null)
+			do res :~ me.toGraph(t.rst, head ~ "  ", "/")
+			do res :~ head ~ bar ~ t.key.toStr() ~ "\n"
+			do res :~ me.toGraph(t.lst, head ~ "  ", "`")
+		end if
+		ret res
+	end func
+	+func size(): int
+		ret me.num
+	end func
+	+func begin(): @Node
+		var t: @Node :: me.root
+		if(t =& null)
+			ret null
+		end if
+		while(true)
+			if(t.lst =& null)
+				ret t
+			end if
+			do t :: t.lst
+		end while
+	end func
+	+func add(key: int)
+		do me.root :: me.addSub(me.root, null, key)
+	end func
+	func addSub(t: @Node, parent: @Node, key: int): @Node
+		if(t =& null)
+			var a: @Node
+			do me.change :: true
+			if(parent =& null)
+				do a :: (#@Node).init(key, null, null)
+			elif(key < parent.key)
+				do a :: (#@Node).init(key, parent.prev, parent)
+				if(parent.prev <>& null)
+					do parent.prev.next :: a
+				end if
+				do parent.prev :: a
+			elif(key > parent.key)
+				do a :: (#@Node).init(key, parent, parent.next)
+				if(parent.next <>& null)
+					do parent.next.prev :: a
+				end if
+				do parent.next :: a
+			end if
+			do me.num :+ 1
+			ret a
+		elif(key < t.key)
+			do t.lst :: me.addSub(t.lst, t, key)
+			ret me.balanceL(t)
+		elif(key > t.key)
+			do t.rst :: me.addSub(t.rst, t, key)
+			ret me.balanceR(t)
+		else
+			do me.change :: false
+			ret t
+		end if
+	end func
+	+func del(key: int)
+		do me.root :: me.delSub(me.root, key)
+	end func
+	func delSub(t: @Node, key: int): @Node
+		if(t =& null)
+			do me.change :: false
+			ret null
+		elif(key < t.key)
+			do t.lst :: me.delSub(t.lst, key)
+			ret me.balanceR(t)
+		elif(key > t.key)
+			do t.rst :: me.delSub(t.rst, key)
+			ret me.balanceL(t)
+		else
+			do me.num :- 1
+			if(t.next <>& null)
+				do t.next.prev :: t.prev
+			end if
+			if(t.prev <>& null)
+				do t.prev.next :: t.next
+			end if
+			if(t.lst =& null)
+				do me.change :: true
+				ret t.rst
+			else
+				do t.lst :: me.delSubMax(t.lst)
+				do t.key :: me.lMax
+				ret me.balanceR(t)
+			end if
+		end if
+	end func
+	func delSubMax(t: @Node): @Node
+		if(t.rst <>& null)
+			do t.rst :: me.delSubMax(t.rst)
+			ret me.balanceL(t)
+		else
+			do me.change :: true
+			do me.lMax :: t.key
+			ret t.lst
+		end if
+	end func
+	+func find(key: int): @Node
+		var t: @Node :: me.root
+		while loop(t <>& null)
+			if(key < t.key)
+				do t :: t.lst
+			elif(key > t.key)
+				do t :: t.rst
+			else
+				break loop
+			end if
+		end while
+		ret t
+	end func
+	+func exist(key: int): bool
+		ret me.find(key) <>& null
+	end func
+	+func lower_bound(key: int): @Node
+		var t: @Node :: me.root
+		if(t =& null)
+			ret null
+		end if
+		while(true)
+			if(key < t.key)
+				if(t.lst =& null)
+					ret t
+				end if
+				do t :: t.lst
+			elif(key > t.key)
+				if(t.rst =& null)
+					ret t.next
+				end if
+				do t :: t.rst
+			else
+				ret t
+			end if
+		end while
+	end func
+	func height(t: @Node): int
+		ret t =& null ?(0, t.height)
+	end func
+	func bias(t: @Node): int
+		ret me.height(t.lst) - me.height(t.rst)
+	end func
+	func modHeight(t: @Node)
+		do t.height :: 1 + lib@max(me.height(t.lst), me.height(t.rst))
+	end func
+	func rotateL(v: @Node): @Node
+		var u: @Node :: v.rst
+		var t: @Node :: u.lst
+		do u.lst :: v
+		do v.rst :: t
+		ret u
+	end func
+	func rotateR(u: @Node): @Node
+		var v: @Node :: u.lst
+		var t: @Node :: v.rst
+		do v.rst :: u
+		do u.lst :: t
+		ret v
+	end func
+	func rotateLR(t: @Node): @Node
+		do t.lst :: me.rotateL(t.lst)
+		ret me.rotateR(t)
+	end func
+	func rotateRL(t: @Node): @Node
+		do t.rst :: me.rotateR(t.rst)
+		ret me.rotateL(t)
+	end func
+	func balanceL(t: @Node): @Node
+		if(!me.change)
+			ret t
+		end if
+		var h: int :: me.height(t)
+		if(me.bias(t) = 2)
+			if(me.bias(t.lst) >= 0)
+				do t :: me.rotateR(t)
+			else
+				do t :: me.rotateLR(t)
+			end if
+		else
+			do me.modHeight(t)
+		end if
+		do me.change :: h <> me.height(t)
+		ret t
+	end func
+	func balanceR(t: @Node): @Node
+		if(!me.change)
+			ret t
+		end if
+		var h: int :: me.height(t)
+		if(me.bias(t) = -2)
+			if(me.bias(t.rst) <= 0)
+				do t :: me.rotateL(t)
+			else
+				do t :: me.rotateRL(t)
+			end if
+		else
+			do me.modHeight(t)
+		end if
+		do me.change :: h <> me.height(t)
+		ret t
+	end func
+end class

@@ -1,0 +1,119 @@
+func main()
+	var s: []char :: cui@input()
+	if(s =& null)
+		do s :: ""
+	end if
+	do s :: @md5(@md5(s))
+	do cui@print("\{s}\n")
+end func
+
+func md5(input: []char): []char
+	var message: []bit8 :: #[^input]bit8
+	for i(0, ^input - 1)
+		do message[i] :: input[i] $ bit8
+	end for
+	
+	var s: []int :: [
+	|7, 12, 17, 22, 7, 12, 17, 22, 7, 12, 17, 22, 7, 12, 17, 22,
+	|5, 9, 14, 20, 5, 9, 14, 20, 5, 9, 14, 20, 5, 9, 14, 20,
+	|4, 11, 16, 23, 4, 11, 16, 23, 4, 11, 16, 23, 4, 11, 16, 23,
+	|6, 10, 15, 21, 6, 10, 15, 21, 6, 10, 15, 21, 6, 10, 15, 21
+	|]
+	
+	var k: []bit32 :: [
+	|0xD76AA478b32, 0xE8C7B756b32, 0x242070DBb32, 0xC1BDCEEEb32,
+	|0xF57C0FAFb32, 0x4787C62Ab32, 0xA8304613b32, 0xFD469501b32,
+	|0x698098D8b32, 0x8B44F7AFb32, 0xFFFF5BB1b32, 0x895CD7BEb32,
+	|0x6B901122b32, 0xFD987193b32, 0xA679438Eb32, 0x49B40821b32,
+	|0xF61E2562b32, 0xC040B340b32, 0x265E5A51b32, 0xE9B6C7AAb32,
+	|0xD62F105Db32, 0x02441453b32, 0xD8A1E681b32, 0xE7D3FBC8b32,
+	|0x21E1CDE6b32, 0xC33707D6b32, 0xF4D50D87b32, 0x455A14EDb32,
+	|0xA9E3E905b32, 0xFCEFA3F8b32, 0x676F02D9b32, 0x8D2A4C8Ab32,
+	|0xFFFA3942b32, 0x8771F681b32, 0x6D9D6122b32, 0xFDE5380Cb32,
+	|0xA4BEEA44b32, 0x4BDECFA9b32, 0xF6BB4B60b32, 0xBEBFBC70b32,
+	|0x289B7EC6b32, 0xEAA127FAb32, 0xD4EF3085b32, 0x04881D05b32,
+	|0xD9D4D039b32, 0xE6DB99E5b32, 0x1FA27CF8b32, 0xC4AC5665b32,
+	|0xF4292244b32, 0x432AFF97b32, 0xAB9423A7b32, 0xFC93A039b32,
+	|0x655B59C3b32, 0x8F0CCC92b32, 0xFFEFF47Db32, 0x85845DD1b32,
+	|0x6FA87E4Fb32, 0xFE2CE6E0b32, 0xA3014314b32, 0x4E0811A1b32,
+	|0xF7537E82b32, 0xBD3AF235b32, 0x2AD7D2BBb32, 0xEB86D391b32
+	|]
+	
+	var state: []bit32 :: [
+	|0x67452301b32,
+	|0xEFCDAB89b32,
+	|0x98BADCFEb32,
+	|0x10325476b32
+	|]
+	
+	var bitNum: int :: ^message % (2 ^ 61) * 8
+	do message :~ [0x80b8]
+	var len: int :: ^message % (2 ^ 61)
+	var padLen: int :: len < 56 ?(56 - len, 120 - len)
+	do message :~ [0b8].repeat(padLen)
+	for i(0, 7)
+		do message :~ [(bitNum % 256) $ bit8]
+		do bitNum :/ 256
+	end for
+	
+	for ii(0, ^message / 64 - 1)
+		var m: []bit32 :: #[16]bit32
+		for i(0, 15)
+			for j(3, 0, -1)
+				do m[i] :* 256b32
+				do m[i] :+ message[ii * 64 + 4 * i + j] $ bit32
+			end for
+		end for
+		var a: bit32 :: state[0]
+		var b: bit32 :: state[1]
+		var c: bit32 :: state[2]
+		var d: bit32 :: state[3]
+		for i(0, 63)
+			var f: bit32
+			var g: int
+			switch(i)
+			case 0 to 15
+				do f :: (b.and(c)).or(b.not().and(d))
+				do g :: i
+			case 16 to 31
+				do f :: (d.and(b)).or(d.not().and(c))
+				do g :: (5 * i + 1) % 16
+			case 32 to 47
+				do f :: b.xor(c).xor(d)
+				do g :: (3 * i + 5) % 16
+			case 48 to 63
+				do f :: c.xor(b.or(d.not()))
+				do g :: (7 * i) % 16
+			end switch
+			do f :+ a + k[i] + m[g]
+			do a :: d
+			do d :: c
+			do c :: b
+			do b :+ leftRotate(f, s[i])
+		end for
+		do state[0] :+ a
+		do state[1] :+ b
+		do state[2] :+ c
+		do state[3] :+ d
+	end for
+	
+	var resBit8: []bit8 :: #[16]bit8
+	for i(0, 3)
+		for j(0, 3)
+			do resBit8[4 * i + j] :: state[i].and(0xFFb32) $ bit8
+			do state[i] :: state[i].shr(8)
+		end for
+	end for
+	var res: []char :: #[32]char
+	for i(0, 15)
+		var val: []char :: resBit8[i] $ int.toStrFmt("02x")
+		for j(0, 1)
+			do res[2 * i + j] :: val[j]
+		end for
+	end for
+	ret res
+	
+	func leftRotate(x: bit32, c: int): bit32
+		ret x.shl(c).or(x.shr(32 - c))
+	end func
+end func

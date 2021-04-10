@@ -1,0 +1,29 @@
+func main()
+	var n: int :: cui@inputInt()
+	var q: int :: cui@inputInt()
+	var s: []char :: cui@input()
+	var cum: [][]int :: #[26, n + 1]int
+	for i(1, n)
+		for j(0, 25)
+			do cum[j][i] :: cum[j][i - 1]
+		end for
+		do cum[s[i - 1] $ int - 'a' $ int][i] :+ 1
+	end for
+	
+	for(1, q)
+		var l: int :: cui@inputInt()
+		var r: int :: cui@inputInt()
+		var x: int :: cui@inputInt()
+		var num: int
+		var ans: char
+		for i(0, 25)
+			do num :: cum[i][r] - cum[i][l - 1]
+			do x :- num
+			if(x <= 0)
+				do ans :: 'a'.offset(i)
+				break i
+			end if
+		end for
+		do cui@print("\{ans}\n")
+	end for
+end func

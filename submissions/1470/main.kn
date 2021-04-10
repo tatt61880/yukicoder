@@ -1,0 +1,18 @@
+func main()
+	var n: int :: cui@inputInt()
+	var a: []int :: #[n]int
+	var map: dict<int, int> :: #dict<int, int>
+	for i(0, n - 1)
+		do a[i] :: cui@inputInt()
+		do map.add(a[i], map.get(a[i], &) + 1)
+	end for
+	
+	var ans: int :: n * (n - 1) / 2
+	var n1: int :: map.get(1, &)
+	var n2: int :: map.get(2, &)
+	var n3: int :: n - n1 - n2
+	do ans :+ n1 * (n1 - 1) / 2
+	do ans :+ n1 * n2 * 2
+	do ans :+ n1 * n3
+	do cui@print("\{ans}\n")
+end func

@@ -24,15 +24,13 @@ func main()
 		do cc[b[i]][a[i]] :: c[i]
 	end for
 	
-	var used: []bool :: #[1001 * n + n]bool
-	var dist: []int :: [lib@intMax].repeat(1001 * n + n)
-	var posU0: int :: 0
-	var pU0: int :: t[0]
-	var u0: int :: pU0 * n + posU0
-	do dist[t[0] * n] :: pU0
+	var maxCplus1: int :: c.max() + 1
+	var used: []bool :: #[maxCplus1 * n + n]bool
+	var minTime: []int :: [lib@intMax].repeat(n * (maxCplus1 + 1))
+	do minTime[0] :: 0
 	
 	var q: @Set :: #@Set
-	do q.add(t[0] * n)
+	do q.add(0)
 	while loop(q.size() <> 0)
 		var uVal: int :: q.begin().key
 		do q.del(uVal)
@@ -41,25 +39,22 @@ func main()
 			skip loop
 		end if
 		do used[u] :: true
-		var posU: int :: u % n
-		var pU: int :: u / n
+		var posU: int :: u / (maxCplus1 + 1)
+		var pUt: int :: [u % (maxCplus1 + 1) + t[posU], maxCplus1].min()
 		for i(0, ^neighbor[posU] - 1)
 			var posV: int :: neighbor[posU][i]
-			var pV: int :: [pU + t[posV], 1001].min()
-			var v: int :: pV * n + posV
-			var alt: int :: dist[u] + cc[posU][posV] / pU + t[posV]
-			if(alt < dist[v])
-				do dist[v] :: alt
-				var vVal: int :: alt * 10 ^ 6 + v
+			var pV: int :: pUt
+			var v: int :: posV * (maxCplus1 + 1) + pV
+			var time: int :: minTime[u] + cc[posU][posV] / pUt + t[posU]
+			if(time < minTime[v])
+				do minTime[v] :: time
+				var vVal: int :: time * 10 ^ 6 + v
 				do q.add(vVal)
 			end if
 		end for
 	end while
 	
-	var ans: int :: lib@intMax
-	for i(0, 1001)
-		do ans :: [ans, dist[i * n + n - 1]].min()
-	end for
+	var ans: int :: minTime.sub((n - 1) * maxCplus1, -1).min()
 	do cui@print("\{ans}\n")
 end func
 

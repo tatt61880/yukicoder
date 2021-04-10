@@ -1,0 +1,13 @@
+func main()
+	const mod: int :: 1000000007
+	var n: int :: cui@inputInt()
+	var ans: int
+	if(n = 1)
+		do ans :: 2
+	else
+		do ans :: math@modPow(5, n / 2 - 1, mod)
+		do ans :* 4 * ((n % 2) * 2 + 1)
+		do ans :% mod
+	end if
+	do cui@print("\{ans}\n")
+end func

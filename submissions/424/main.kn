@@ -1,0 +1,54 @@
+func main()
+	var h: int :: cui@inputInt()
+	var w: int :: cui@inputInt()
+	var sy: int :: cui@inputInt() - 1
+	var sx: int :: cui@inputInt() - 1
+	var gy: int :: cui@inputInt() - 1
+	var gx: int :: cui@inputInt() - 1
+	var b: [][]int :: #[h, w]int
+	for y(0, h - 1)
+		var s: []char :: cui@input()
+		for x(0, w - 1)
+			do b[y][x] :: s[x] $ int - '0' $ int
+		end for
+	end for
+	var ok: [][]bool :: #[h, w]bool
+	do ok[sy][sx] :: true
+	
+	var q: queue<int> :: #queue<int>
+	do q.add(sy * w + sx)
+	while(^q <> 0)
+		var pos: int :: q.get()
+		var x0: int :: pos % w
+		var y0: int :: pos / w
+		var dx: []int :: [1, 0, -1, 0]
+		var dy: []int :: [0, 1, 0, -1]
+		for i(0, 3)
+			var x: int :: x0 + dx[i]
+			var y: int :: y0 + dy[i]
+			if(x < 0 | w <= x | y < 0 | h <= y)
+				skip i
+			end if
+			if((b[y0][x0] - b[y][x]).abs() <= 1 & !ok[y][x])
+				do ok[y][x] :: true
+				do q.add(y * w + x)
+			end if
+		end for
+		for i(0, 3)
+			var x: int :: x0 + 2 * dx[i]
+			var y: int :: y0 + 2 * dy[i]
+			var xm: int :: x0 + dx[i]
+			var ym: int :: y0 + dy[i]
+			if(x < 0 | w <= x | y < 0 | h <= y)
+				skip i
+			end if
+			if(b[y0][x0] = b[y][x] & b[ym][xm] < b[y][x] & !ok[y][x])
+				do ok[y][x] :: true
+				do q.add(y * w + x)
+			end if
+		end for
+	end while
+	
+	var ans: bool :: ok[gy][gx]
+	do cui@print((ans ?("YES", "NO")) ~ "\n")
+end func

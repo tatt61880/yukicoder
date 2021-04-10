@@ -1,0 +1,95 @@
+func main()
+	var n: int :: cui@inputInt()
+	var q: int :: cui@inputInt()
+	var seg: @SegmentTree :: (#@SegmentTree).init(n)
+	var a: []int :: #[n]int
+	for i(0, n - 1)
+		do a[i] :: cui@inputInt() - 1
+		do seg.update(i, a[i] * n + i)
+	end for
+	
+	for(1, q)
+		var type: int :: cui@inputInt()
+		var l: int :: cui@inputInt() - 1
+		var r: int :: cui@inputInt() - 1
+		if(type = 1)
+			do @swap(&a[l], &a[r])
+			do seg.update(l, a[l] * n + l)
+			do seg.update(r, a[r] * n + r)
+		else
+			var idx: int :: seg.query(l, r + 1) % n
+			do cui@print("\{idx + 1}\n")
+		end if
+	end for
+end func
+
+func swap(a: &int, b: &int)
+	var t: int :: a
+	do a :: b
+	do b :: t
+end func
+
+class SegmentTree()
+	const inf_: int :: lib@intMax
+	var size: int
+	var node: []int
+	+func init(n: int): SegmentTree
+		do me.size :: 1
+		while(me.size < n)
+			do me.size :* 2
+		end while
+		do me.node :: #[2 * me.size]int
+		for i(0, 2 * me.size - 1)
+			do me.node[i] :: inf_
+		end for
+		ret me
+	end func
+	+func update(idx: int, val: int)
+		do idx :+ me.size - 1
+		do me.node[idx] :: val
+		while(idx > 0)
+			do idx :: (idx - 1) / 2
+			do me.node[idx] :: lib@min(me.node[2 * idx + 1], me.node[2 * idx + 2])
+		end while
+	end func
+	+func query(a: int, b: int): int
+		ret me.querySub(a, b, 0, 0, me.size)
+	end func
+	func querySub(a: int, b: int, k: int, l: int, r: int): int
+		if(b <= l | r <= a)
+			ret inf_
+		end if
+		if(a <= l & r <= b)
+			ret me.node[k]
+		end if
+		var vl: int :: me.querySub(a, b, 2 * k + 1, l, (l + r) / 2)
+		var vr: int :: me.querySub(a, b, 2 * k + 2, (l + r) / 2, r)
+		ret lib@min(vl, vr)
+	end func
+	+*func toStr(): []char
+		var padding: int :: 1
+		while(padding <= me.size)
+			do padding :* 2
+		end while
+		do padding :- 1
+		var res: []char :: ""
+		var s: int :: 0
+		var e: int :: 0
+		var n: int :: 1
+		const digit: int :: 6
+		var fmt: []char :: " \{digit}d"
+		var strInf: []char :: " ".repeat(digit - 3) ~ "inf"
+		while(padding > 0)
+			do padding :/ 2
+			for i(s, e)
+				do res :~ " ".repeat((digit + 1) * padding)
+				do res :~ "\{me.node[i] = inf_ ?(strInf, me.node[i].toStrFmt(fmt))}|"
+			end for
+			do res :~ "\n"
+			do n :* 2
+			do s :: e + 1
+			do e :: s + n - 1
+		end while
+		ret res
+	end func
+end class

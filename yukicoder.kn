@@ -118,9 +118,18 @@ func main()
 		var data: []char :: @fetchData(urlSource)
 		if(data =& null)
 			do cui@print("Error: Failed to find source code. [\{urlSource}]\n")
-			do @pause()
 			do lib@exitCode(1)
-			ret false
+			do @pause()
+			while(true)
+				do cui@print("処理を続行しますか？ (y/n): ")
+				var s: []char :: cui@input()
+				switch(s)
+				case "y"
+					ret true
+				case "n"
+					ret false
+				end switch
+			end while
 		end if
 		
 		var dirPath: []char :: "\{@dirSubmissions}\{problemId}/"

@@ -1,0 +1,16 @@
+func main()
+	var n: int :: cui@inputInt()
+	for(1, n)
+		var k: int :: cui@inputInt()
+		var a: []int :: #[k]int
+		for i(0, k - 1)
+			do a[i] :: cui@inputInt()
+		end for
+		do a.sort()
+		do a.reverse()
+		
+		for i(0, k - 1)
+			do cui@print("\{a[i]}" ~ (i = k - 1 ?("\n", " ")))
+		end for
+	end for
+end func

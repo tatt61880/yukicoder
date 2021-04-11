@@ -1,0 +1,30 @@
+func main()
+	const mod: int :: 1000000007
+	var n: int :: cui@inputInt()
+	; dp[i][j] = val
+	; i: 昇ったステップ
+	; j: 最後のステップ
+	; val: 通り数
+	var dp: [][]int :: #[n + 1, 4]int
+	do dp[0][0] :: 1
+	for i(0, n - 1)
+		for j(0, 3)
+			for k(1, 3)
+				if(j = k)
+					skip k
+				end if
+				if(dp[i][j] <> 0 & i + k <= n)
+					do dp[i + k][k] :+ dp[i][j]
+					do dp[i + k][k] :% mod
+				end if
+			end for
+		end for
+	end for
+	
+	var ans: int :: 0
+	for j(1, 3)
+		do ans :+ dp[n][j]
+		do ans :% mod
+	end for
+	do cui@print("\{ans}\n")
+end func

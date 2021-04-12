@@ -1,0 +1,24 @@
+func main()
+	const mod: int :: 1000000007
+	var n: int :: cui@inputInt()
+	var d: int :: cui@inputInt()
+	var k: int :: cui@inputInt()
+	; dp[i][j] = v
+	; i: 移動した回数
+	; j: 昇ったステップ
+	; v: 通り数 % mod
+	var dp: [][]int :: #[n + 1, k + 1]int
+	do dp[0][0] :: 1
+	var cum: []int :: #[k + 1]int
+	for i(1, n)
+		for j(1, k)
+			do cum[j] :: cum[j - 1] + dp[i - 1][j - 1]
+			; 「dp[i - 1][[j - d, 0].max()] ～ dp[i - 1][j - 1]」の総和。
+			do dp[i][j] :: cum[j] - cum[[j - d, 0].max()]
+			do dp[i][j] :% mod
+		end for
+	end for
+	
+	var ans: int :: dp[n][k]
+	do cui@print("\{ans}\n")
+end func

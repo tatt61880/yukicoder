@@ -88,7 +88,7 @@ echo $parser->parse($markdown);
     <td style="border:none;">
     たっと(Tatt)<br>
     Twitter: <a target="_blank" href="https://twitter.com/tatt61880">@tatt61880</a><br>
-    yukicoder: <a target="_blank" href="https://yukicoder.me/users/5112">tatt61880</a><br>
+    yukicoder: <a target="_blank" href="https://yukicoder.me/users/5112">tatt61880</a> (<a target="_blank" href="https://yukicoder.me/users/5112/editorial">解説一覧</a>)<br>
     AtCoder: <a target="_blank" href="https://atcoder.jp/users/tatt61880">tatt61880</a>
     </td>
   </tr>

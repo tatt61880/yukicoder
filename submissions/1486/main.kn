@@ -1,0 +1,27 @@
+func main()
+	var a: int :: cui@inputInt()
+	var b: int :: cui@inputInt()
+	var c: int :: cui@inputInt()
+	var d: int :: cui@inputInt()
+	var e: int :: cui@inputInt()
+	var lcm: int :: math@lcm(a + b, c + d)
+	var ans: int :: 0
+	for i(0, lcm - 1)
+		do ans :+ f(i, a, a + b, c, c + d)
+	end for
+	do ans :* e / lcm
+	for i(0, e % lcm - 1)
+		do ans :+ f(i, a, a + b, c, c + d)
+	end for
+	do cui@print("\{ans}\n")
+	
+	func f(i: int, a: int, ab: int, c: int, cd: int): int
+		if(i % ab >= a)
+			ret 0
+		end if
+		if(i % cd >= c)
+			ret 0
+		end if
+		ret 1
+	end func
+end func

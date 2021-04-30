@@ -1,0 +1,34 @@
+func main()
+	var t: int :: cui@inputInt()
+	for(1, t)
+		var s: []char :: cui@input()
+		var r: int :: 0
+		var g: int :: 0
+		var rg: bool :: false
+		var ans: bool :: true
+		; 逆順に見ていきます。
+		for i(^s - 1, 0, -1)
+			switch(s[i])
+			case 'R'
+				do r :+ 1
+			case 'G'
+				do rg :: true
+				do g :+ 1
+				if(r < g)
+					do ans :: false
+				end if
+			case 'W'
+				if(!rg & (r = 0 | g = 0))
+					do ans :: false
+				elif(r <> 0 & g <> 0)
+					do r :- 1
+					do g :- 1
+				end if
+			end switch
+		end for
+		if(r <> 0 | g <> 0)
+			do ans :: false
+		end if
+		do cui@print((ans ?("possible", "impossible")) ~ "\n")
+	end for
+end func

@@ -1,0 +1,21 @@
+func main()
+	var n: int :: cui@inputInt()
+	var a: []int :: #[n]int
+	for i(0, n - 1)
+		do a[i] :: cui@inputInt()
+	end for
+	
+	var ans: bool :: false
+	for i(0, n - 1)
+		if(!ans)
+			do ans :: true
+		else
+			if(a[i] = 1)
+				do ans :: false
+			else
+				do ans :: true
+			end if
+		end if
+	end for
+	do cui@print((ans ?("Alice", "Bob")) ~ "\n")
+end func

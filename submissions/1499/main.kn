@@ -1,0 +1,10 @@
+func main()
+	var t: int :: cui@inputInt()
+	for(1, t)
+		do cui@inputStr()
+		do cui@inputStr()
+		var ans: int :: cui@inputInt() + 1
+		do cui@inputStr()
+		do cui@print("Hitsuji ga \{ans} hiki\n")
+	end for
+end func

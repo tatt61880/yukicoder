@@ -6,17 +6,24 @@ $problem_id = preg_replace('/.*\/(\d+)[^\/]*/', '\1', $REQUEST_URI);
 
 $problem_url = "https://yukicoder.me/problems/no/$problem_id";
 
+$editorial_flag = false;
 $markdown_filepath = "./md/$problem_id.md";
-if (!file_exists($markdown_filepath)) exit ("404 解説 not found!");
-#$markdown =  htmlspecialchars(file_get_contents($markdown_filepath));
-$markdown =  file_get_contents($markdown_filepath);
-$markdown = str_replace('\\(', '\\\\(', $markdown);
-$markdown = str_replace('\\)', '\\\\)', $markdown);
+if (file_exists($markdown_filepath)) {
+	$editorial_flag = true;
+	#$markdown =  htmlspecialchars(file_get_contents($markdown_filepath));
+	$markdown =  file_get_contents($markdown_filepath);
+	$markdown = str_replace('\\(', '\\\\(', $markdown);
+	$markdown = str_replace('\\)', '\\\\)', $markdown);
+}
 
 $title_filepath = "./submissions/$problem_id/title.txt";
 if (!file_exists($title_filepath)) exit ("404 問題タイトル not found!");
 $problem_title =  htmlspecialchars(file_get_contents($title_filepath));
-$page_title = "解説【yukicoder ${problem_title}】";
+
+$page_title = "【yukicoder ${problem_title}】";
+if ($editorial_flag) {
+	$page_title = "解説" . $page_title;
+}
 
 $url_filepath = "./submissions/$problem_id/submission.url";
 if (!file_exists($url_filepath)) exit ("404 提出コードURL not found!");
@@ -60,15 +67,18 @@ window.onload = function() {
 問題URL: <a href="$problem_url">$problem_url</a>
 
 <hr>
+EOD;
+
+if ($editorial_flag) {
+  print <<< EOD
 <h2>解説</h2>
 <!-- ====================================================================== -->
 
 EOD;
 
-
-$parser = new \cebe\markdown\GithubMarkdown();
-echo $parser->parse($markdown);
-
+  $parser = new \cebe\markdown\GithubMarkdown();
+  echo $parser->parse($markdown);
+}
 
   print <<< EOD
 <!-- ====================================================================== -->
@@ -79,7 +89,7 @@ echo $parser->parse($markdown);
   <pre id="code" style="margin: 0 -10px;">$kuin_src</pre>
 </div>
 <hr>
-<h2>この解説を書いた人</h2>
+<h2>このページの作成者</h2>
 <table style="border:none;">
   <tr style="border:none;">
     <td style="border:none;">

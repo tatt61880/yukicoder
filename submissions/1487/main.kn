@@ -1,0 +1,9 @@
+func main()
+	var a: float :: cui@inputFloat()
+	var b: float :: cui@inputFloat()
+	var c: float :: cui@inputFloat()
+	var s: float :: (a + b + c) / 2.0
+	
+	var ans: float :: lib@sqrt(s * (s - a) * (s - b) * (s - c)) / 4.0
+	do cui@print("\{ans}\n")
+end func

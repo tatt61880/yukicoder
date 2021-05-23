@@ -1,0 +1,7 @@
+func main()
+	var a: bit64 :: cui@inputInt() $ bit64
+	var b: bit64 :: cui@inputInt() $ bit64
+	
+	var ans: int :: a.xor(b) $ int
+	do cui@print("\{ans}\n")
+end func

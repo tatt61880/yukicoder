@@ -1,0 +1,29 @@
+func main()
+	var n: int :: cui@inputInt()
+	var map: [][]int :: #[26, 26]int
+	for loop(1, n)
+		var s: []char :: cui@input()
+		var t: []char :: ##s
+		do t.sort()
+		if(s <> t)
+			skip loop
+		end if
+		var cs: int :: s[0] $ int - 'a' $ int
+		var ce: int :: s[^s - 1] $ int - 'a' $ int
+		if(cs = ce)
+			do map[cs][ce] :+ ^s
+		else
+			do map[cs][ce] :: [map[cs][ce], ^s].max()
+		end if
+	end for
+	
+	var dp: []int :: #[26]int
+	for cs(0, 25)
+		for ce(cs, 25)
+			do dp[ce] :: [dp[ce], dp[cs] + map[cs][ce]].max()
+		end for
+	end for
+	
+	var ans: int :: dp[25]
+	do cui@print("\{ans}\n")
+end func

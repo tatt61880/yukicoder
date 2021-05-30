@@ -62,6 +62,9 @@ func main()
 			do title :: @unsanitized(title)
 			do language :: @unsanitized(language)
 			
+			if(problemId = 9004)
+				skip i
+			end if
 			do dictProblemSubmit.add(problemId, subumitId)
 			do @dictSubmitTitle.add(subumitId, title)
 			do @dictSubmitLang.add(subumitId, language)

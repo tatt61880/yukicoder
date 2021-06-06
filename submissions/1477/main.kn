@@ -1,0 +1,79 @@
+func main()
+	var n: int :: cui@inputInt()
+	var m: int :: cui@inputInt()
+	var a: []int :: #[n]int
+	for i(0, n - 1)
+		do a[i] :: cui@inputInt()
+	end for
+	
+	var uvs: []list<int> :: #[n]list<int>
+	for i(0, n - 1)
+		do uvs[i] :: #list<int>
+	end for
+	
+	for(1, m)
+		var u: int :: cui@inputInt() - 1
+		var v: int :: cui@inputInt() - 1
+		do uvs[u].add(v)
+		do uvs[v].add(u)
+	end for
+	
+	var c: []bool :: #[n]bool
+	var k: int :: cui@inputInt()
+	for i(0, k - 1)
+		do c[cui@inputInt() - 1] :: true
+	end for
+	
+	class ValIdx()
+		+var val: int
+		+var idx: int
+		+func init(val: int, idx: int): ValIdx
+			do me.val :: val
+			do me.idx :: idx
+			ret me
+		end func
+		+*func cmp(t: kuin@Class): int
+			var tVal: int :: (t $ ValIdx).val
+			var tIdx: int :: (t $ ValIdx).idx
+			if(me.val < tVal)
+				ret - 1
+			elif(me.val > tVal)
+				ret 1
+			elif(me.idx < tIdx)
+				ret - 1
+			elif(me.idx > tIdx)
+				ret 1
+			else
+				ret 0
+			end if
+		end func
+	end class
+	var valIdxs: []ValIdx :: #[n]ValIdx
+	for i(0, n - 1)
+		do valIdxs[i] :: (#ValIdx).init(a[i], i)
+	end for
+	do valIdxs.sort()
+	do valIdxs.reverse()
+	
+	var ans: list<int> :: #list<int>
+	for i(n - 1, 0, -1)
+		var idx: int :: valIdxs[i].idx
+		if(c[idx])
+			do ans.add(idx + 1)
+			do uvs[idx].head()
+			for j(0, ^uvs[idx] - 1)
+				var v: int :: uvs[idx].get()
+				if(a[idx] < a[v])
+					do c[v] :: !c[v]
+				end if
+				do uvs[idx].next()
+			end for
+		end if
+	end for
+	do cui@print("\{^ans}\n")
+	do ans.head()
+	for i(0, ^ans - 1)
+		do cui@print("\{ans.get()}\n")
+		do ans.next()
+	end for
+end func

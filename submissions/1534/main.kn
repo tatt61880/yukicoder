@@ -1,0 +1,10 @@
+func main()
+	var s: []char :: cui@input()
+	do s :: s.sub(0, s.findStr("pain", -1) + 1)
+	
+	var ans: int :: (^s - ^(s.replace("pon", ""))) / 3 - 1
+	if(ans = 0)
+		do ans :: -1
+	end if
+	do cui@print("\{ans}\n")
+end func

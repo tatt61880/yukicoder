@@ -1,0 +1,17 @@
+func main()
+	var s: int :: cui@inputInt()
+	var t: int :: cui@inputInt()
+	var c: char :: cui@inputChar()
+	
+	var ans: bool :: false
+	switch(c)
+	case '<'
+		do ans :: s < t
+	case '>'
+		do ans :: s > t
+	case '='
+		do ans :: s = t
+	end switch
+	
+	do cui@print((ans ?("YES", "NO")) ~ "\n")
+end func

@@ -1,0 +1,22 @@
+func main()
+	var n: int :: cui@inputInt()
+	var m: int :: cui@inputInt()
+	var a: []int :: #[n]int
+	for i(0, n - 1)
+		do a[i] :: cui@inputInt()
+	end for
+	var b: []int :: #[m]int
+	for i(0, m - 1)
+		do b[i] :: cui@inputInt()
+	end for
+	
+	var ans: int :: -1
+	for i(0, n * m - 1)
+		if(a[i % n] = b[i % m])
+			do ans :: i + 1
+			break i
+		end if
+	end for
+	
+	do cui@print("\{ans}\n")
+end func

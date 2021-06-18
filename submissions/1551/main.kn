@@ -1,0 +1,5 @@
+func main()
+	var n: float :: cui@inputFloat()
+	var ans: float :: n ^ 2.0 * 0.0481125224324688137111
+	do cui@print("\{ans}\n")
+end func

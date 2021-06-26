@@ -1,0 +1,26 @@
+func main()
+	var n: int :: cui@inputInt()
+	var k: int :: cui@inputInt()
+	var a: []int :: #[n]int
+	for i(0, n - 1)
+		do a[i] :: cui@inputInt()
+	end for
+	do a.sort()
+	do a.reverse()
+	
+	var ans: int :: 0
+	for id(0, 2 ^ (n - 1) - 1)
+		var bit: int :: id
+		var val: int :: k
+		for i(0, n - 1)
+			if(bit % 2 = 1)
+				do val :% a[i]
+			end if
+			do bit :/ 2
+		end for
+		do val :% a[n - 1]
+		do ans :: [ans, val].max()
+	end for
+	
+	do cui@print("\{ans}\n")
+end func

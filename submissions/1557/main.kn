@@ -1,0 +1,48 @@
+func main()
+	var n: int :: cui@inputInt()
+	var m: int :: cui@inputInt()
+	
+	var lr: []Lr :: #[m]Lr
+	for i(0, m - 1)
+		var l: int :: cui@inputInt()
+		var r: int :: cui@inputInt()
+		do lr[i] :: (#Lr).init(l, r)
+	end for
+	do lr.sort()
+	
+	var ans: int :: n
+	var prev: int :: -1
+	for i(0, m - 1)
+		var l: int :: lr[i].l
+		var r: int :: lr[i].r
+		if(l <= prev & prev <= r)
+		else
+			do prev :: r
+			do ans :- 1
+		end if
+	end for
+	do cui@print("\{ans}\n")
+	
+	class Lr()
+		+var l: int
+		+var r: int
+		+func init(l: int, r: int): Lr
+			do me.l :: l
+			do me.r :: r
+			ret me
+		end func
+		+*func cmp(t: kuin@Class): int
+			if(me.r < (t $ Lr).r)
+				ret - 1
+			elif(me.r > (t $ Lr).r)
+				ret 1
+			elif(me.l < (t $ Lr).l)
+				ret - 1
+			elif(me.l > (t $ Lr).l)
+				ret 1
+			else
+				ret 0
+			end if
+		end func
+	end class
+end func

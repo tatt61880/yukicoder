@@ -1,0 +1,12 @@
+func main()
+	var n: int :: cui@inputInt()
+	var k: int :: cui@inputInt() - 1
+	var a: []bit64 :: #[n + 1]bit64
+	for i(0, n - 1)
+		do a[i] :: cui@inputInt() $ bit64
+		do a[n] :: a[n].xor(a[i])
+	end for
+	
+	var ans: int :: a[k % (n + 1)] $ int
+	do cui@print("\{ans}\n")
+end func

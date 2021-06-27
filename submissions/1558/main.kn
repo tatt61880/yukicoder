@@ -1,0 +1,142 @@
+func main()
+	var n: int :: cui@inputInt()
+	var m: int :: cui@inputInt()
+	var q: int :: cui@inputInt()
+	var seg: @SegmentTree :: (#@SegmentTree).init(m)
+	for(1, q)
+		var type: int :: cui@inputInt()
+		switch(type)
+		case 1
+			var d: int :: cui@inputInt() - 1
+			var p: []int :: #[n]int
+			for i(0, n - 1)
+				do p[i] :: cui@inputInt()
+			end for
+			do seg.update(d, (#@Data).init(p))
+		case 2
+			var s: int :: cui@inputInt()
+			var data: @Data :: seg.query(0, s)
+			for rank(1, n)
+				for i(0, n - 1)
+					if(data.data[i] = rank)
+						do cui@print("\{i + 1}" ~ (rank = n ?("\n", " ")))
+						break i
+					end if
+				end for
+			end for
+		case 3
+			var l: int :: cui@inputInt() - 1
+			var r: int :: cui@inputInt()
+			var data: @Data :: seg.query(l, r)
+			var sum: int :: 0
+			for i(0, n - 1)
+				do sum :+ (data.data[i] - 1 - i).abs()
+			end for
+			do cui@print("\{sum}\n")
+		end switch
+	end for
+end func
+
+class SegmentTree()
+	var size: int
+	var node: []@Data
+	var lasy: []@Data
+	+func init(n: int): SegmentTree
+		do me.size :: 1
+		while(me.size < n)
+			do me.size :* 2
+		end while
+		do me.node :: #[2 * me.size]@Data
+		do me.lasy :: ##me.node
+		ret me
+	end func
+	func eval(k: int)
+		if(me.lasy[k] =& null)
+			ret
+		end if
+		if(k < me.size - 1)
+			do me.lasy[k * 2 + 1] :: me.lasy[k]
+			do me.lasy[k * 2 + 2] :: me.lasy[k]
+		end if
+		do me.node[k] :: me.lasy[k]
+		do me.lasy[k] :: null
+	end func
+	+func update(idx: int, val: @Data)
+		do me.updateRange(idx, idx + 1, val)
+	end func
+	+func updateRange(a: int, b: int, val: @Data)
+		do me.updateRangeSub(a, b, val, 0, 0, me.size)
+	end func
+	+func updateRangeSub(a: int, b: int, val: @Data, k: int, l: int, r: int)
+		do me.eval(k)
+		if(a <= l & r <= b)
+			do me.lasy[k] :: val
+			do me.eval(k)
+		elif(a < r & l < b)
+			do me.updateRangeSub(a, b, val, k * 2 + 1, l, (l + r) / 2)
+			do me.updateRangeSub(a, b, val, k * 2 + 2, (l + r) / 2, r)
+			do me.node[k] :: me.op(me.node[k * 2 + 1], me.node[k * 2 + 2])
+		end if
+	end func
+	+func query(a: int, b: int): @Data
+		ret me.querySub(a, b, 0, 0, me.size)
+	end func
+	func querySub(a: int, b: int, k: int, l: int, r: int): @Data
+		do me.eval(k)
+		if(b <= l | r <= a)
+			ret null
+		end if
+		if(a <= l & r <= b)
+			ret me.node[k]
+		end if
+		var vl: @Data :: me.querySub(a, b, 2 * k + 1, l, (l + r) / 2)
+		var vr: @Data :: me.querySub(a, b, 2 * k + 2, (l + r) / 2, r)
+		ret me.op(vl, vr)
+	end func
+	+*func toStr(): []char
+		var padding: int :: 1
+		while(padding <= me.size)
+			do padding :* 2
+		end while
+		do padding :- 1
+		var res: []char :: ""
+		var s: int :: 0
+		var e: int :: 0
+		var n: int :: 1
+		const digit: int :: 7
+		var strNull: []char :: " ".repeat(digit - 6) ~ "invalid"
+		while(padding > 0)
+			do padding :/ 2
+			for i(s, e)
+				do res :~ " ".repeat((digit + 1) * padding)
+				do res :~ "\{me.node[i] =& null ?("null", me.node[i].toStr())}|"
+			end for
+			do res :~ "\n"
+			do n :* 2
+			do s :: e + 1
+			do e :: s + n - 1
+		end while
+		ret res
+	end func
+	
+	func op(d1: @Data, d2: @Data): @Data
+		if(d1 =& null)
+			ret ##d2
+		elif(d2 =& null)
+			ret ##d1
+		end if
+		var res: @Data :: ##d1
+		for i(0, ^d1.data - 1)
+			do res.data[i] :: d2.data[d1.data[i] - 1]
+		end for
+		ret res
+	end func
+end class
+
+class Data()
+	+var data: []int
+	+func init(arr: []int): Data
+		do me.data :: arr
+		ret me
+	end func
+end class

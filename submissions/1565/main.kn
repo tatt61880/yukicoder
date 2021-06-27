@@ -1,0 +1,109 @@
+func main()
+	var n: int :: cui@inputInt()
+	var m: int :: cui@inputInt()
+	var graph: []list<Edge> :: #[n]list<Edge>
+	for i(0, n - 1)
+		do graph[i] :: #list<Edge>
+	end for
+	for i(0, m - 1)
+		var a: int :: cui@inputInt() - 1
+		var b: int :: cui@inputInt() - 1
+		var c: int :: 1
+		do graph[a].add((#Edge).init(b, c))
+		do graph[b].add((#Edge).init(a, c))
+	end for
+	
+	var ans: int :: dists(graph, 0)[n - 1]
+	if(ans = lib@intMax)
+		do ans :: -1
+	end if
+	do cui@print("\{ans}\n")
+	
+	func dists(graph: []list<Edge>, start: int): []int
+		var n: int :: ^graph
+		var res: []int :: [lib@intMax].repeat(^graph)
+		do res[start] :: 0
+		var pq: PriorityQueue :: #PriorityQueue
+		do pq.add(-(0 + start))
+		while loop(pq.len <> 0)
+			var data: int :: -pq.top()
+			do pq.pop()
+			var u: int :: data % n
+			if(res[u] < data / n)
+				skip loop
+			end if
+			
+			do graph[u].head()
+			for i(0, ^graph[u] - 1)
+				var e: Edge :: graph[u].get()
+				var v: int :: e.v
+				var dist: int :: e.dist
+				if(res[u] + dist < res[v])
+					do res[v] :: res[u] + dist
+					do pq.add(-(res[v] * n + v))
+				end if
+				do graph[u].next()
+			end for
+		end while
+		ret res
+		
+		class PriorityQueue()
+			var data: []int
+			+var len: int
+			*func ctor()
+				do me.data :: #[1024]int
+				do me.len :: 0
+			end func
+			+func add(elem: int)
+				var n: int :: me.len
+				if(^me.data = me.len)
+					do me.data :~ #[me.len]int
+				end if
+				do me.data[me.len] :: elem
+				do me.len :+ 1
+				
+				while(n <> 0)
+					var i: int :: (n - 1) / 2
+					if(me.data[n] > me.data[i])
+						var tmp: int :: me.data[n]
+						do me.data[n] :: me.data[i]
+						do me.data[i] :: tmp
+					end if
+					do n :: i
+				end while
+			end func
+			+func pop()
+				var n: int :: me.len - 1
+				do me.data[0] :: me.data[n]
+				do me.len :- 1
+				var i: int :: 0
+				var j: int :: 1
+				while(j < n)
+					if(j <> n - 1 & me.data[j] < me.data[j + 1])
+						do j :+ 1
+					end if
+					if(me.data[i] < me.data[j])
+						var tmp: int :: me.data[j]
+						do me.data[j] :: me.data[i]
+						do me.data[i] :: tmp
+					end if
+					do i :: j
+					do j :: 2 * i + 1
+				end while
+			end func
+			+func top(): int
+				ret me.data[0]
+			end func
+		end class
+	end func
+	
+	class Edge()
+		+var v: int
+		+var dist: int
+		+func init(v: int, dist: int): Edge
+			do me.v :: v
+			do me.dist :: dist
+			ret me
+		end func
+	end class
+end func

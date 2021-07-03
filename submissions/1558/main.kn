@@ -16,13 +16,12 @@ func main()
 		case 2
 			var s: int :: cui@inputInt()
 			var data: @Data :: seg.query(0, s)
-			for rank(1, n)
-				for i(0, n - 1)
-					if(data.data[i] = rank)
-						do cui@print("\{i + 1}" ~ (rank = n ?("\n", " ")))
-						break i
-					end if
-				end for
+			var ans: []int :: #[n]int
+			for i(0, n - 1)
+				do ans[data.data[i] - 1] :: i
+			end for
+			for i(0, n - 1)
+				do cui@print("\{ans[i] + 1}" ~ (i = n - 1 ?("\n", " ")))
 			end for
 		case 3
 			var l: int :: cui@inputInt() - 1

@@ -2,10 +2,7 @@ func main()
 	var n: int :: cui@inputInt()
 	var k: int :: cui@inputInt()
 	var x: int :: cui@inputInt()
-	var d: []int :: #[n + 1]int
-	for i(1, n)
-		do d[i] :: i
-	end for
+	var d: []int :: lib@range(0, n, 1)
 	var a: []int :: #[k + 1]int
 	var b: []int :: #[k + 1]int
 	for i(1, k)

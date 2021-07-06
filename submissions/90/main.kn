@@ -9,10 +9,7 @@ func main()
 		do a[x][y] :: cui@inputInt()
 	end for
 	
-	var idxs: []int :: #[n]int
-	for i(0, n - 1)
-		do idxs[i] :: i
-	end for
+	var idxs: []int :: lib@range(0, n - 1, 1)
 	
 	var ans: int :: 0
 	while(nextPermutation(idxs), skip)

@@ -1,0 +1,8 @@
+func main()
+	var s: []char :: cui@input()
+	var t: []char :: "kyoprotenkei90"
+	do s.sort()
+	do t.sort()
+	var ans: bool :: s = t
+	do cui@print((ans ?("Yes", "No")) ~ "\n")
+end func

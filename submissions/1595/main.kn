@@ -1,0 +1,25 @@
+func main()
+	var p: int :: cui@inputInt() % 10
+	var q: int :: cui@inputInt() % 10
+	var r: int :: cui@inputInt() % 10
+	var k: int :: cui@inputInt()
+	var a: []int :: #[1005]int
+	do a[1] :: p
+	do a[2] :: q
+	do a[3] :: r
+	for i(4, 1004)
+		do a[i] :: (a[i - 1] + a[i - 2] + a[i - 3]) % 10
+	end for
+	var len: int
+	for i(5, 1004)
+		if(a[i] = a[4] & a[i - 1] = a[3] & a[i - 2] = a[2])
+			do len :: i - 4
+			break i
+		end if
+	end for
+	do k :- 4
+	do k :% len
+	
+	var ans: int :: a[k + 4]
+	do cui@print("\{ans}\n")
+end func

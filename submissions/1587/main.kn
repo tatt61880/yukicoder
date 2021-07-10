@@ -1,0 +1,19 @@
+func main()
+	var n: int :: cui@inputInt()
+	if(n % 2 = 0)
+		for y(1, n)
+			var a: []int :: [2].repeat(n - y)
+			if(y <= n / 2)
+				do a :~ [0].repeat(y)
+			else
+				do a :~ [1] ~ [0].repeat(y - 1)
+			end if
+			for x(1, n)
+				do cui@print("\{a[x - 1]}")
+			end for
+			do cui@print("\n")
+		end for
+		ret
+	end if
+	do cui@print("No\n")
+end func

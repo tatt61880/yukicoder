@@ -1,0 +1,5 @@
+func main()
+	var s: []char :: cui@input()
+	var ans: bool :: ^s = 2
+	do cui@print((ans ?("Yes", "No")) ~ "\n")
+end func

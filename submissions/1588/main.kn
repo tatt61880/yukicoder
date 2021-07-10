@@ -1,0 +1,56 @@
+func main()
+	var n: int :: cui@inputInt()
+	var m: int :: cui@inputInt() - 2
+	var stage: [][]char :: #[n, n]char
+	for i(0, n - 1)
+		do stage[i] :: ['?'].repeat(n)
+	end for
+	do stage[0][0] :: 'B'
+	do stage[n - 1][n - 1] :: 'B'
+	var x: int :: 0
+	var y: int :: 0
+	var dir: int :: 3
+	var dx: []int :: [1, 0, -1, 0]
+	var dy: []int :: [0, 1, 0, -1]
+	var cnt: int :: 0
+	while loop(true)
+		do cnt :+ 1
+		if(cnt = 1000000)
+			do cui@print("No\n")
+			ret
+		end if
+		var nx: int :: x + dx[dir]
+		var ny: int :: y + dy[dir]
+		if(nx < 0 | n <= nx | ny < 0 | n <= ny)
+			do dir :: (dir + 1) % 4
+			skip loop
+		end if
+		switch(stage[ny][nx])
+		case '?'
+			do cui@print("\{nx + 1} \{ny + 1}\n")
+			do cui@flush()
+			var c: char :: cui@input()[0]
+			if(c = '-')
+				ret
+			end if
+			do stage[ny][nx] :: c
+			if(c = 'B')
+				do m :- 1
+				if(nx + ny = 2 * n - 3)
+					do cui@print("Yes\n")
+					ret
+				end if
+			end if
+			if(m = 0)
+				do cui@print("No\n")
+				ret
+			end if
+		case 'W'
+			do dir :: (dir + 1) % 4
+		case 'B'
+			do x :: nx
+			do y :: ny
+			do dir :: (dir + 3) % 4
+		end switch
+	end while
+end func

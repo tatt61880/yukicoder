@@ -1,0 +1,11 @@
+func main()
+	var n: int :: cui@inputInt()
+	var ans: int :: 0
+	for x(1, n - 1)
+		var y: int :: (((n ^ 2 - x ^ 2) $ float + 0.1) ^ 0.5) $ int
+		if(x ^ 2 + y ^ 2 = n ^ 2)
+			do ans :+ 1
+		end if
+	end for
+	do cui@print("\{ans}\n")
+end func

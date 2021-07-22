@@ -1,0 +1,22 @@
+func main()
+	var s: []char :: cui@input()
+	var t: []char :: ##s
+	var n: int :: ^s
+	do t.reverse()
+	var ans: int
+	if(s <> t)
+		do ans :: n
+	else
+		do s.sort()
+		do t.sort()
+		do t.reverse()
+		if(s = t)
+			do ans :: -(n % 2)
+		elif(n = 3)
+			do ans :: -1
+		else
+			do ans :: n - 2
+		end if
+	end if
+	do cui@print("\{ans}\n")
+end func

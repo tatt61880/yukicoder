@@ -1,0 +1,30 @@
+func main()
+	const mod: int :: 1000000007
+	var a: int :: cui@inputInt()
+	var b: []char :: cui@input()
+	
+	var n: int :: ^b - 1
+	var ans: int :: 0
+	for i(1, n)
+		if(i <> n)
+			do ans :+ mod - math@modPow(a, i, mod)
+			do ans :% mod
+		else
+			do ans :+ (n - 1) * math@modPow(a, i, mod)
+			do ans :% mod
+		end if
+	end for
+	
+	do ans :+ mod - n * (math@modPow(a, n, mod) - 1) % mod
+	do ans :% mod
+	
+	var t: int :: 0
+	for i(0, n)
+		do t :* a
+		do t :+ b[i] $ int - '0' $ int
+		do t :% mod
+	end for
+	do ans :+ t * n % mod
+	do ans :% mod
+	do cui@print("\{ans}\n")
+end func

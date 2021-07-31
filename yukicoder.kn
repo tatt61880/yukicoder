@@ -62,7 +62,7 @@ func main()
 			do title :: @unsanitized(title)
 			do language :: @unsanitized(language)
 			
-			if(problemId = 9004)
+			if(problemId = 9004 | problemId = 9007)
 				skip i
 			end if
 			do dictProblemSubmit.add(problemId, subumitId)

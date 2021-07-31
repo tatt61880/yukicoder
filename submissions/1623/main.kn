@@ -1,0 +1,32 @@
+func main()
+	var n: int :: cui@inputInt()
+	var rn: []int :: #[3001]int
+	var gn: []int :: #[3001]int
+	var bn: []int :: #[3001]int
+	for(1, n)
+		do rn[cui@inputInt()] :+ 1
+	end for
+	for(1, n)
+		do gn[cui@inputInt()] :+ 1
+	end for
+	for(1, n)
+		do bn[cui@inputInt()] :+ 1
+	end for
+	
+	var cumR: []int :: #[3001]int
+	for r(1, 3000)
+		do cumR[r] :: cumR[r - 1] + rn[r]
+	end for
+	
+	var ans: int :: 0
+	for g(1, 3000)
+		if(gn[g] <> 0)
+			for b(1, 3000)
+				if(bn[b] <> 0)
+					do ans :+ gn[g] * bn[b] * (cumR[lib@min(g + b - 1, 3000)] - cumR[lib@max(g, b) - 1])
+				end if
+			end for
+		end if
+	end for
+	do cui@print("\{ans}\n")
+end func

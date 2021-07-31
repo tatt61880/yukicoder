@@ -41,7 +41,7 @@ func main()
 				do map.add(sum, true)
 			end if
 		end for
-		do ans :: [ans, ^map].max()
+		do ans :: lib@max(ans, ^map)
 	end for
 	do cui@print("\{ans}\n")
 end func

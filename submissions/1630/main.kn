@@ -1,0 +1,82 @@
+func main()
+	var n: int :: cui@inputInt()
+	var k: []char :: cui@input()
+	var a: []int :: #[10]int
+	for i(1, 9)
+		do a[i] :: cui@inputInt()
+	end for
+	
+	if(n < ^k)
+		do cui@print("-1\n")
+		ret
+	elif(n > ^k)
+		for i(1, 9)
+			do cui@print("\{i}".repeat(a[i]))
+		end for
+		do cui@print("\n")
+		ret
+	end if
+	
+	var ans: []char :: #[n]char
+	var greaterFlag: bool :: false
+	for i(0, n - 1)
+		for j(1, 9)
+			if(a[j] <> 0)
+				if(greaterFlag)
+					do a[j] :- 1
+					do ans[i] :: '0'.offset(j)
+					skip i
+				elif('0'.offset(j) = k[i])
+					do a[j] :- 1
+					do ans[i] :: '0'.offset(j)
+					skip i
+				elif('0'.offset(j) > k[i])
+					do greaterFlag :: true
+					do a[j] :- 1
+					do ans[i] :: '0'.offset(j)
+					skip i
+				end if
+			end if
+		end for
+		for j(9, 1, -1)
+			for jj(0, a[j] - 1)
+				do ans[i + jj] :: '0'.offset(j)
+			end for
+			do i :+ a[j]
+		end for
+	end for
+	if(ans <= k)
+		do @permutationNext(ans)
+		if(ans <= k)
+			do ans :: "-1"
+		end if
+	end if
+	do cui@print("\{ans}\n")
+end func
+
+func permutationNext(array: []char): bool
+	var left: int :: ^array - 2
+	while(left >= 0 & array[left] >= array[left + 1])
+		do left :- 1
+	end while
+	if(left < 0)
+		ret false
+	end if
+	var right: int :: ^array - 1
+	while(array[left] >= array[right])
+		do right :- 1
+	end while
+	var tmp: char :: array[left]
+	do array[left] :: array[right]
+	do array[right] :: tmp
+	do left :+ 1
+	do right :: ^array - 1
+	while(left < right)
+		do tmp :: array[left]
+		do array[left] :: array[right]
+		do array[right] :: tmp
+		do left :+ 1
+		do right :- 1
+	end while
+	ret true
+end func

@@ -1,0 +1,114 @@
+func main()
+	const mod: int :: 1000000007
+	var n: int :: cui@inputInt()
+	var a: []int :: #[10]int
+	for i(1, 9)
+		do a[i] :: cui@inputInt()
+	end for
+	
+	var ans: @ModInt :: (#@ModInt).init(0, mod)
+	for(1, n)
+		do ans.mul(10)
+		do ans.add(1)
+	end for
+	
+	var comb: @Comb :: (#@Comb).init(n, mod)
+	var ans2: @ModInt :: (#@ModInt).init(0, mod)
+	for i(1, 9)
+		if(a[i] = 0)
+			skip i
+		end if
+		var tmp: @ModInt :: (#@ModInt).init(1, mod)
+		var total: int :: n - 1
+		for j(1, 9)
+			if(i = j)
+				do tmp.mul(comb.comb(total, a[j] - 1))
+				do total :- a[j] - 1
+			else
+				do tmp.mul(comb.comb(total, a[j]))
+				do total :- a[j]
+			end if
+		end for
+		do tmp.mul(i)
+		do ans2.add(tmp.val)
+	end for
+	
+	do ans.mul(ans2.val)
+	do cui@print("\{ans}\n")
+end func
+
+class Comb()
+	var mod: int
+	var fact: []int
+	var inv: []int
+	
+	+func init(n: int, mod: int): Comb
+		do me.mod :: mod
+		do me.fact :: #[n + 1]int
+		do me.inv :: #[n + 1]int
+		do me.fact[0] :: 1
+		for i(1, n)
+			do me.fact[i] :: me.fact[i - 1] * i % mod
+		end for
+		do me.inv[n] :: math@modPow(me.fact[n], mod - 2, mod)
+		for i(n, 1, -1)
+			do me.inv[i - 1] :: me.inv[i] * i % mod
+		end for
+		ret me
+	end func
+	
+	+func comb(n: int, r: int): int
+		ret me.fact[n] * me.inv[n - r] % me.mod * me.inv[r] % me.mod
+	end func
+end class
+
+; val, mod, a, b: 0 to 2 ^ 31.
+class ModInt()
+	+var val: int
+	var mod: int
+	+*func toStr(): []char
+		ret "\{me.val}"
+	end func
+	+func init(val: int, mod: int): ModInt
+		do me.val :: val % mod
+		do me.mod :: mod
+		ret me
+	end func
+	+func add(a: int): ModInt
+		do me.val :+ a
+		if(me.val >= me.mod)
+			do me.val :- me.mod
+		end if
+		ret me
+	end func
+	+func sub(a: int): ModInt
+		if(me.val < a)
+			do me.val :+ me.mod
+		end if
+		do me.val :- a
+		ret me
+	end func
+	+func mul(a: int): ModInt
+		do me.val :: me.val * a % me.mod
+		ret me
+	end func
+	+func div(a: int): ModInt
+		do me.val :: me.val * me.modPow(a, me.mod - 2) % me.mod
+		ret me
+	end func
+	+func pow(a: int): ModInt
+		do me.val :: me.modPow(me.val, a)
+		ret me
+	end func
+	func modPow(a: int, b: int): int
+		if(b = 0)
+			ret 1
+		end if
+		var res: int :: me.modPow(a, b / 2)
+		do res :: res * res % me.mod
+		if(b % 2 = 1)
+			do res :: res * a % me.mod
+		end if
+		ret res
+	end func
+end class

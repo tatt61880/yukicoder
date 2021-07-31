@@ -17,7 +17,7 @@ if (file_exists($markdown_filepath)) {
 }
 
 $title_filepath = "./submissions/$problem_id/title.txt";
-if (!file_exists($title_filepath)) exit ("404 問題タイトル not found!");
+if (!file_exists($title_filepath)) ShowErrorMessage("404 問題タイトル not found!");
 $problem_title =  htmlspecialchars(file_get_contents($title_filepath));
 
 $page_title = "【yukicoder ${problem_title}】";
@@ -26,12 +26,12 @@ if ($editorial_flag) {
 }
 
 $url_filepath = "./submissions/$problem_id/submission.url";
-if (!file_exists($url_filepath)) exit ("404 提出コードURL not found!");
+if (!file_exists($url_filepath)) ShowErrorMessage("404 提出コードURL not found!"); 
 $submissions_url =  htmlspecialchars(file_get_contents($url_filepath));
 $submissions_url = preg_replace('/[\d\D]*=/', '', $submissions_url);
 
 $kuin_filepath = "./submissions/$problem_id/main.kn";
-if (!file_exists($kuin_filepath)) exit ("404 main.kn not found!");
+if (!file_exists($kuin_filepath)) ShowErrorMessage("404 main.kn not found!");
 $kuin_src =  htmlspecialchars(file_get_contents($kuin_filepath));
 
 #------------------------------------------------------------------------------
@@ -108,24 +108,24 @@ EOD;
 </html>
 EOD;
 
-
 function ShowErrorMessage($message)
 {
   print <<< EOD
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<meta charset="UTF-8">
-
-<title>Error</title>
-<link rel="stylesheet" href="http://tatt.ch/style.css">
+  <meta charset="UTF-8">
+  <title>Error</title>
+  <link rel="stylesheet" href="http://tatt.ch/style.css">
 </head>
 <body>
-<div id="container">
-$message
-</div>
+  <div id="container">
+  $message
+  </div>
 </body>
 </html>
 EOD;
+
+exit("");
 }
 ?>

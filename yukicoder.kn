@@ -38,21 +38,36 @@ func main()
 		do id :+ 1
 		var url: []char :: "\{@yukicoderBase}users/\{@userId}/submissions?page=\{id}&status=AC&date_asc=enabled"
 		var filepath: []char :: "\{@dirHtml}\{id}.html"
+		var fetchFlag: bool :: true
 		if(file@exist(filepath))
 			var filepathNext: []char :: "\{@dirHtml}\{id + 1}.html"
 			if(file@exist(filepathNext))
 				; データが更新されていないと思われるページは取得しません。
-				skip loop
+				do fetchFlag :: false
 			end if
 		end if
-		var data: []char :: @fetchData(url)
-		if(data =& null)
-			break loop
+		var data: []char
+		if(fetchFlag)
+			do data :: @fetchData(url)
+			if(data =& null)
+				break loop
+			end if
+		else
+			var reader: file@Reader :: file@makeReader(filepath)
+			do reader.delimiter("")
+			do data :: reader.readStr()
 		end if
+		
 		var result: [][][]char :: @regexUrl.findAll(&, data)
 		if(result =& null)
 			break loop
 		end if
+		if(fetchFlag)
+			var writer: file@Writer :: file@makeWriter(filepath, false)
+			do writer.writeStr(data)
+			do writer.fin()
+		end if
+		
 		for i(0, ^result - 1)
 			var subumitId: int :: result[i][1].toInt(&)
 			var problemId: int :: result[i][2].toInt(&)
@@ -69,9 +84,6 @@ func main()
 			do @dictSubmitTitle.add(subumitId, title)
 			do @dictSubmitLang.add(subumitId, language)
 		end for
-		var writer: file@Writer :: file@makeWriter(filepath, false)
-		do writer.writeStr(data)
-		do writer.fin()
 	end while
 	
 	if(!@makeDir(@dirSubmissions))

@@ -5,9 +5,12 @@ const dirHtml: []char :: "./html/"
 const dirSubmissions: []char :: "./submissions/"
 var dictSubmitTitle: dict<int, []char>
 var dictSubmitLang: dict<int, []char>
+var dictSubmitTime: dict<int, []char>
+var dictSubmitByte: dict<int, []char>
 var dictLangExtension: dict<[]char, []char>
 var regexUrl: regex@Regex
 var regexUrl2: regex@Regex
+var maxId: int
 
 func main()
 	if(!@makeDir(@dirHtml))
@@ -25,7 +28,7 @@ func main()
     <td><a href="/problems/no/129">No.129 お年玉(2)</a></td>
     <td>Kuin(beta)</td>
 	}
-	do @regexUrl :: regex@makeRegex("\"/submissions/(\\d+)\"[\\d\\D]*?/problems/no/(\\d+)\">([^<]*)[\\d\\D]*?<td>(.*?)</td>")
+	do @regexUrl :: regex@makeRegex("\"/submissions/(\\d+)\"[\\d\\D]*?/problems/no/(\\d+)\">(.*?)</a></td>\\s*<td>(.*?)</td>\\s*<td>(?:.*?)</td>\\s*<td>(.*?)</td>\\s*<td>(.*?)</td>")
 	assert @regexUrl <>& null
 	do @regexUrl2 :: regex@makeRegex("/submissions/(\\d+)/")
 	assert @regexUrl2 <>& null
@@ -34,6 +37,8 @@ func main()
 	var dictProblemSubmit: dict<int, int> :: #dict<int, int>
 	do @dictSubmitTitle :: #dict<int, []char>
 	do @dictSubmitLang :: #dict<int, []char>
+	do @dictSubmitTime :: #dict<int, []char>
+	do @dictSubmitByte :: #dict<int, []char>
 	while loop(true)
 		do id :+ 1
 		var url: []char :: "\{@yukicoderBase}users/\{@userId}/submissions?page=\{id}&status=AC&date_asc=enabled"
@@ -71,8 +76,11 @@ func main()
 		for i(0, ^result - 1)
 			var subumitId: int :: result[i][1].toInt(&)
 			var problemId: int :: result[i][2].toInt(&)
+			do @maxId :: lib@max(@maxId, problemId)
 			var title: []char :: result[i][3]
 			var language: []char :: result[i][4]
+			var time: []char :: result[i][5].trim()
+			var bytes: []char :: result[i][6].trim().replace("<br />", " ")
 			
 			do title :: @unsanitized(title)
 			do language :: @unsanitized(language)
@@ -83,6 +91,8 @@ func main()
 			do dictProblemSubmit.add(problemId, subumitId)
 			do @dictSubmitTitle.add(subumitId, title)
 			do @dictSubmitLang.add(subumitId, language)
+			do @dictSubmitTime.add(problemId, time)
+			do @dictSubmitByte.add(problemId, bytes)
 		end for
 	end while
 	
@@ -100,6 +110,31 @@ func main()
 	end if
 	
 	do dictProblemSubmit.forEach(callback, null)
+	
+	block
+		var writer: file@Writer :: file@makeWriter("submissions/times.txt", false)
+		for subumitId(1, @maxId)
+			var time: []char :: @dictSubmitTime.get(subumitId, &)
+			if(time =& null)
+				do writer.writeStr("\n")
+			else
+				do writer.writeStr("\{time}\n")
+			end if
+		end for
+		do writer.fin()
+	end block
+	block
+		var writer: file@Writer :: file@makeWriter("submissions/bytes.txt", false)
+		for subumitId(1, @maxId)
+			var byte: []char :: @dictSubmitByte.get(subumitId, &)
+			if(byte =& null)
+				do writer.writeStr("\n")
+			else
+				do writer.writeStr("\{byte}\n")
+			end if
+		end for
+		do writer.fin()
+	end block
 	
 	func callback(problemId: int, subumitId: int, _: kuin@Class): bool
 		var title: []char :: @dictSubmitTitle.get(subumitId, &)

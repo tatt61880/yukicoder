@@ -25,7 +25,7 @@ func main()
 	
 	{高度合成数である2162160の正の約数は320個}
 	func score(n: int, x: int): int
-		ret(f(n) - f(x - n)).abs()
+		ret (f(n) - f(x - n)).abs()
 	end func
 	var ca: int :: x / 2
 	var min: int :: score(ca, x)

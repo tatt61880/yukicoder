@@ -18,15 +18,15 @@ class Point()
 		ret me
 	end func
 	+func cross(a: Point, b: Point): int
-		ret(a.x - me.x) * (b.y - me.y) - (a.y - me.y) * (b.x - me.x)
+		ret (a.x - me.x) * (b.y - me.y) - (a.y - me.y) * (b.x - me.x)
 	end func
 	+*func cmp(t: kuin@Class): int
 		if(me.x < (t $ Point).x)
-			ret - 1
+			ret -1
 		elif(me.x > (t $ Point).x)
 			ret 1
 		elif(me.y < (t $ Point).y)
-			ret - 1
+			ret -1
 		elif(me.y > (t $ Point).y)
 			ret 1
 		end if
@@ -36,11 +36,10 @@ end class
 
 ; 凸包を求める。
 func convexHull(p: []@Point): []@Point
-	var n: int :: ^p
 	var k: int :: 0
-	var res: []@Point :: #[n + 1]@Point
+	var res: []@Point :: #[^p + 1]@Point
 	do p.sort()
-	for i(0, n - 1)
+	for i(0, ^p - 1)
 		while(k >= 2 & res[k - 2].cross(res[k - 1], p[i]) <= 0)
 			do k :- 1
 		end while
@@ -48,7 +47,7 @@ func convexHull(p: []@Point): []@Point
 		do k :+ 1
 	end for
 	var t: int :: k + 1
-	for i(n - 2, 0, -1)
+	for i(^p - 2, 0, -1)
 		while(k >= t & res[k - 2].cross(res[k - 1], p[i]) <= 0)
 			do k :- 1
 		end while

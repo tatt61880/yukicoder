@@ -24,12 +24,9 @@ func main()
 		end for
 	end for
 	
-	do cui@print(ans ?("Yes\n", "No\n"))
+	do cui@print((ans ?("Yes", "No")) ~ "\n")
 	
 	func isKadomatsu(a: []int): bool
-		if(a[0] = a[1] | a[1] = a[2] | a[2] = a[0])
-			ret false
-		end if
-		ret(a[1] = a.min() | a[1] = a.max())
+		ret a[0] <> a[2] & (a[0] < a[1] & a[1] > a[2] | a[0] > a[1] & a[1] < a[2])
 	end func
 end func

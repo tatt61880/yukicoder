@@ -26,9 +26,9 @@ func main()
 		func g(c: char, n: int): []char
 			switch(c)
 			case 'a' to 'z'
-				ret['a'.offset((c $ int - 'a' $ int + n) % 26)]
+				ret ['a'.offset((c $ int - 'a' $ int + n) % 26)]
 			case 'A' to 'Z'
-				ret['A'.offset((c $ int - 'A' $ int + n) % 26)]
+				ret ['A'.offset((c $ int - 'A' $ int + n) % 26)]
 			end switch
 		end func
 	end func

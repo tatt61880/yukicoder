@@ -3,7 +3,7 @@ func main()
 	var l: int :: cui@inputInt()
 	
 	var max: int :: l / n
-	var isPrime: []bool :: sieve(max)
+	var isPrime: []bool :: @sieve(max)
 	var ans: int :: 0
 	for p(2, max)
 		if(isPrime[p])
@@ -11,23 +11,21 @@ func main()
 		end if
 	end for
 	do cui@print("\{ans}\n")
-	
-	func sieve(n: int): []bool
-		if(n < 2)
-			ret[false].repeat(n + 1)
+end func
+
+func sieve(n: int): []bool
+	if(n < 2)
+		ret [false].repeat(n + 1)
+	end if
+	var isPrime: []bool :: [false, false] ~ [true].repeat(n - 1)
+	for i(2, n)
+		if(isPrime[i])
+			var j: int :: i * i
+			while(j <= n)
+				do isPrime[j] :: false
+				do j :+ i
+			end while
 		end if
-		var isPrime: []bool :: [true].repeat(n + 1)
-		do isPrime[0] :: false
-		do isPrime[1] :: false
-		for i(2, n)
-			if(isPrime[i])
-				var j: int :: i * i
-				while(j <= n)
-					do isPrime[j] :: false
-					do j :+ i
-				end while
-			end if
-		end for
-		ret isPrime
-	end func
+	end for
+	ret isPrime
 end func

@@ -404,7 +404,7 @@
 
 293 Byte
 305 Byte
-617 Byte
+569 Byte
 
 
 241 Byte
@@ -455,7 +455,7 @@
 554 Byte
 
 654 Byte
-749 Byte
+687 Byte
 
 
 
@@ -3076,7 +3076,7 @@
 180 Byte
 232 Byte
 96 Byte
-604 Byte
+530 Byte
 124 Byte
 493 Byte
 

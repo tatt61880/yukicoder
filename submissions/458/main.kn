@@ -1,38 +1,36 @@
 func main()
 	var n: int :: cui@inputInt()
-	var isPrime: []bool :: sieve(n)
+	var isPrime: []bool :: @sieve(n)
 	var dp: []int :: #[n + 1]int
 	for p(2, n)
 		if(isPrime[p])
 			for i(n, 2, -1)
 				if(dp[i] <> 0)
 					if(i + p <= n)
-						do dp[i + p] :: [dp[i + p], dp[i] + 1].max()
+						do dp[i + p] :: lib@max(dp[i + p], dp[i] + 1)
 					end if
 				end if
 			end for
-			do dp[p] :: [dp[p], 1].max()
+			do dp[p] :: lib@max(dp[p], 1)
 		end if
 	end for
 	var m: int :: dp[n] = 0 ?(-1, dp[n])
 	do cui@print("\{m}\n")
-	
-	func sieve(n: int): []bool
-		if(n < 2)
-			ret[false].repeat(n + 1)
+end func
+
+func sieve(n: int): []bool
+	if(n < 2)
+		ret [false].repeat(n + 1)
+	end if
+	var res: []bool :: [false, false] ~ [true].repeat(n - 1)
+	for i(2, n)
+		if(res[i])
+			var j: int :: i * i
+			while(j <= n)
+				do res[j] :: false
+				do j :+ i
+			end while
 		end if
-		var isPrime: []bool :: [true].repeat(n + 1)
-		do isPrime[0] :: false
-		do isPrime[1] :: false
-		for i(2, n)
-			if(isPrime[i])
-				var j: int :: i * i
-				while(j <= n)
-					do isPrime[j] :: false
-					do j :+ i
-				end while
-			end if
-		end for
-		ret isPrime
-	end func
+	end for
+	ret res
 end func

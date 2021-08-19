@@ -46,11 +46,6 @@ class C()
 		ret me
 	end func
 	+*func cmp(t: kuin@Class): int
-		if(me.a < (t $ C).a)
-			ret - 1
-		elif(me.a > (t $ C).a)
-			ret 1
-		end if
-		ret 0
+		ret (me.a - (t $ C).a).sign()
 	end func
 end class

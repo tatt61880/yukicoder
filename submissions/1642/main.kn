@@ -1,0 +1,5 @@
+func main()
+	var n: int :: cui@inputInt()
+	var ans: []char :: n.toStrFmt("03d")
+	do cui@print("\{ans}\n")
+end func

@@ -1,0 +1,38 @@
+func main()
+	var k: int :: cui@inputInt()
+	var array: []char :: "12345678"
+	var ans: int :: 0
+	while(@permutationNext(array), skip)
+		do ans :+ array.toInt(&) % k = 0 ?(1, 0)
+	end while
+	
+	do cui@print("\{ans}\n")
+end func
+
+func permutationNext(array: []char): bool
+	var left: int :: ^array - 2
+	while(left >= 0 & array[left] >= array[left + 1])
+		do left :- 1
+	end while
+	if(left < 0)
+		do array.reverse()
+		ret false
+	end if
+	var right: int :: ^array - 1
+	while(array[left] >= array[right])
+		do right :- 1
+	end while
+	var tmp: char :: array[left]
+	do array[left] :: array[right]
+	do array[right] :: tmp
+	do left :+ 1
+	do right :: ^array - 1
+	while(left < right)
+		do tmp :: array[left]
+		do array[left] :: array[right]
+		do array[right] :: tmp
+		do left :+ 1
+		do right :- 1
+	end while
+	ret true
+end func

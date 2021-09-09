@@ -1,0 +1,15 @@
+func main()
+	var a: int :: cui@inputInt()
+	var b: int :: cui@inputInt()
+	var c: int :: cui@inputInt()
+	var d: int :: cui@inputInt()
+	var m: int :: cui@inputInt()
+	
+	var ans: int :: 0
+	for x(a, b)
+		for y(c, d)
+			do ans :: lib@max(ans, (x + y)%m)
+		end for
+	end for
+	do cui@print("\{ans}\n")
+end func

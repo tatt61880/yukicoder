@@ -1,0 +1,21 @@
+func main()
+	var n: int :: cui@inputInt()
+	var max: int :: 60
+	var x: []bool :: #[max + 1]bool
+	for(1, n)
+		var a: bit64 :: cui@inputInt() $ bit64
+		for i(0, max)
+			if(a.and((2 ^ i) $ bit64) <> 0b64)
+				do x[i] :: true
+			end if
+		end for
+	end for
+	
+	for i(0, max)
+		if(!x[i])
+			var ans: int :: 2 ^ i
+			do cui@print("\{ans}\n")
+			ret
+		end if
+	end for
+end func

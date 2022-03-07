@@ -1,0 +1,13 @@
+func main()
+	var n: int :: cui@inputInt()
+	var m: int :: cui@inputInt()
+	var d: dict<int, bool> :: #dict<int, bool>
+	for i(0, n - 1)
+		var a: int :: cui@inputInt()
+		do d.add(a, true)
+	end for
+	
+	var max: int :: ^d
+	var min: int :: m = n & ^d = 1 ?(1, 0)
+	do cui@print("\{max} \{min}\n")
+end func

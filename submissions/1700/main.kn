@@ -1,0 +1,15 @@
+func main()
+	var t: int :: cui@inputInt()
+	for(1, t)
+		var n: int :: cui@inputInt()
+		var min: int :: (n $ float ^ 0.5) $ int - 1
+		var ans: int
+		for i(min, min + 2)
+			if(i * i > n)
+				break i
+			end if
+			do ans :: i
+		end for
+		do cui@print("\{ans}\n")
+	end for
+end func

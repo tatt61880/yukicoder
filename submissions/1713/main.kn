@@ -1,0 +1,14 @@
+func main()
+	var trick: bit64 :: cui@inputInt() $ bit64
+	var treat: bit64 :: cui@inputInt() $ bit64
+	var ans: int :: @f(trick.or(treat) $ int)
+	do cui@print("\{ans}\n")
+end func
+
+func f(n: int): int
+	var res: int :: 1
+	for i(1, n)
+		do res :* i
+	end for
+	ret res
+end func

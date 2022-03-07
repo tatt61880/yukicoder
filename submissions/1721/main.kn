@@ -1,0 +1,7 @@
+func main()
+	var s: []char :: cui@input()
+	var f1: bool :: s.find('4', 0) <> -1
+	var f2: bool :: s.find('6', 0) <> -1
+	var ans: bool :: f1 & f2
+	do cui@print((ans ?("Beautiful", "...")) ~ "\n")
+end func

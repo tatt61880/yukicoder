@@ -1,0 +1,11 @@
+func main()
+	var a: char :: cui@inputChar()
+	var b: char :: cui@inputChar()
+	var dic: dict<char, int> :: #dict<char, int>
+	do dic.add('E', 0)
+	do dic.add('S', 1)
+	do dic.add('W', 2)
+	do dic.add('N', 3)
+	var ans: int :: (4 + dic.get(b, &) - dic.get(a, &)) % 4
+	do cui@print("\{ans}\n")
+end func

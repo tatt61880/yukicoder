@@ -1,0 +1,13 @@
+func main()
+	var c: char :: cui@inputChar()
+	var dic: dict<char, []char> :: #dict<char, []char>
+	do dic.add('A', "A#")
+	do dic.add('B', "C")
+	do dic.add('C', "C#")
+	do dic.add('D', "D#")
+	do dic.add('E', "F")
+	do dic.add('F', "F#")
+	do dic.add('G', "G#")
+	var ans: []char :: dic.get(c, &)
+	do cui@print("\{ans}\n")
+end func

@@ -1,0 +1,7 @@
+func main()
+	do cui@delimiter("/\n")
+	var a: int :: cui@inputStr().toInt(&)
+	var b: int :: cui@inputStr().toInt(&)
+	var ans: float :: a $ float / b $ float
+	do cui@print("\{ans}\n")
+end func

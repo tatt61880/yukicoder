@@ -1,0 +1,8 @@
+func main()
+	var a: int :: cui@inputInt()
+	var n: int :: cui@inputInt()
+	const mod: int :: 1000000007
+	var ans: int :: math@modPow(a, n, mod)
+	do cui@print("\{mod}\n")
+	do cui@print("\{ans}\n")
+end func

@@ -1,0 +1,16 @@
+func main()
+	var s: [][]char :: #[3][]char
+	for i(0, 2)
+		do s[i] :: cui@input()
+	end for
+	var ans: bool :: true
+	for i(0, 2)
+		for j(0, 2)
+			if(i <> 2 & s[i][j] = s[i + 1][j] | j <> 2 & s[i][j] = s[i][j + 1])
+				do ans :: false
+				break i
+			end if
+		end for
+	end for
+	do cui@print((ans ?("Yes", "No")) ~ "\n")
+end func

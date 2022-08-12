@@ -1,0 +1,16 @@
+func main()
+	var n: int :: cui@inputInt()
+	var ans: int :: 0
+	var day: int :: 0
+	while loop(true)
+		do day :+ 1
+		if(day % 7 = 0)
+			do n :+ 6
+		end if
+		do n :- 1
+		if(n = 0)
+			do cui@print("\{day}\n")
+			break loop
+		end if
+	end while
+end func

@@ -1,0 +1,10 @@
+func main()
+	var x: int :: cui@inputInt()
+	var y: int :: cui@inputInt()
+	for i(0, 2)
+		var v: int :: x % 4 + i * 4
+		if(v <> x & v <> y)
+			do cui@print("\{v}\n")
+		end if
+	end for
+end func

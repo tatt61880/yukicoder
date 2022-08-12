@@ -1,0 +1,15 @@
+func main()
+	var x: int :: cui@inputInt()
+	var dx: []int :: [2, 2, -1, -1, 2, -1, -1]
+	var pos: int :: 0
+	var dist: int :: 0
+	for i(1, 100)
+		var d: int :: dx[(i - 1) % ^dx]
+		do pos :+ d
+		do dist :+ d.abs()
+		if(pos = x)
+			do cui@print("\{dist}\n")
+			ret
+		end if
+	end for
+end func

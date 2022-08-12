@@ -1,0 +1,20 @@
+func main()
+	var a: int :: cui@inputInt()
+	var b: int :: cui@inputInt()
+	var c: int :: cui@inputInt()
+	var ans: int :: 0
+	if(a = b & b = c)
+		do ans :: a
+	elif(a <> b & b <> c & c <> a)
+		do ans :: 6 - a - b - c
+	else
+		if(a = b)
+			do ans :: c
+		elif(b = c)
+			do ans :: a
+		else
+			do ans :: b
+		end if
+	end if
+	do cui@print("\{ans}\n")
+end func

@@ -1,5 +1,5 @@
 func main()
-	var N: []char :: cui@input()
-	var ans: int :: ^N = 1 | N[0] <> '1' | ^N.split("3").join("") <> 1 ?(-1, ^N - 1)
-	do cui@print("\{ans}")
+	var n: []char :: cui@input()
+	var ans: int :: ^n = 1 | n[0] <> '1' | n.replace("3", "") <> "1" ?(-1, ^n - 1)
+	do cui@print("\{ans}\n")
 end func

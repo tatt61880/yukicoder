@@ -1,0 +1,14 @@
+func main()
+	var n: int :: cui@inputInt()
+	var m: int :: cui@inputInt()
+	
+	var dic: dict<int, bool> :: #dict<int, bool>
+	for(1, m)
+		var a: int :: cui@inputInt()
+		var b: int :: cui@inputInt()
+		do dic.add(b, true)
+	end for
+	
+	var ans: int :: n - ^dic
+	do cui@print("\{ans}\n")
+end func

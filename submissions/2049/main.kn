@@ -1,0 +1,6 @@
+func main()
+	var n: int :: cui@inputInt()
+	var s: []char :: cui@input()
+	
+	do cui@print("\{s.sub(1, n - 2)}\n")
+end func

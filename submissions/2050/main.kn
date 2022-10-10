@@ -1,0 +1,13 @@
+func main()
+	var a: int :: cui@inputInt()
+	var b: int :: cui@inputInt()
+	do a :* 1000
+	do b :* 3600
+	if(a = b)
+		do cui@print("same\n")
+	elif(a > b)
+		do cui@print("KoD\n")
+	else
+		do cui@print("blackyuki\n")
+	end if
+end func

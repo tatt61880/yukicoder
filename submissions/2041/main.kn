@@ -1,0 +1,19 @@
+func main()
+	var s: []char :: cui@input()
+	var f: bool :: false
+	for i(0, ^s - 1)
+		var c: char :: s[i]
+		if(c = '(')
+			do cui@print("@")
+			do f :: true
+		end if
+		if(f)
+			if(c = ')')
+				do f :: false
+			end if
+			skip i
+		end if
+		do cui@print("\{c}")
+	end for
+	do cui@print("\n")
+end func

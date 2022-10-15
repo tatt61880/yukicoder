@@ -131,12 +131,13 @@ function ShowErrorMessageAndExit($message)
 </head>
 <body>
 <div id="container">
-<h1>$message</h1>
-$additionalInfo
+  <h1>$message</h1>
+  $additionalInfo
 </div>
 </body>
 </html>
+
 EOD;
 
-exit("");
+  exit("");
 }

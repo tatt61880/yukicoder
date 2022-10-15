@@ -1,7 +1,7 @@
 <?php
 require_once __DIR__.'/vendor/autoload.php';
 
-$REQUEST_URI = $_SERVER["REQUEST_URI"];
+$REQUEST_URI = $_SERVER['REQUEST_URI'];
 
 $problem_id = preg_replace('/.*\/(\d+)[^\/]*/', '\1', $REQUEST_URI);
 $problem_url = "https://yukicoder.me/problems/no/$problem_id";
@@ -17,21 +17,21 @@ if (file_exists($markdown_filepath)) {
 }
 
 $title_filepath = "./submissions/$problem_id/title.txt";
-if (!file_exists($title_filepath)) ShowErrorMessageAndExit("404 問題タイトル not found!");
+if (!file_exists($title_filepath)) ShowErrorMessageAndExit('404 問題タイトル not found!');
 $problem_title =  htmlspecialchars(file_get_contents($title_filepath));
 
 $page_title = "【yukicoder ${problem_title}】";
 if ($editorial_flag) {
-	$page_title = "解説" . $page_title;
+	$page_title = '解説' . $page_title;
 }
 
 $url_filepath = "./submissions/$problem_id/submission.url";
-if (!file_exists($url_filepath)) ShowErrorMessageAndExit("404 提出コードURL not found!"); 
+if (!file_exists($url_filepath)) ShowErrorMessageAndExit('404 提出コードURL not found!'); 
 $submissions_url =  htmlspecialchars(file_get_contents($url_filepath));
 $submissions_url = preg_replace('/[\d\D]*=/', '', $submissions_url);
 
 $kuin_filepath = "./submissions/$problem_id/main.kn";
-if (!file_exists($kuin_filepath)) ShowErrorMessageAndExit("404 main.kn not found!");
+if (!file_exists($kuin_filepath)) ShowErrorMessageAndExit('404 main.kn not found!');
 $kuin_src =  htmlspecialchars(file_get_contents($kuin_filepath));
 
 #------------------------------------------------------------------------------

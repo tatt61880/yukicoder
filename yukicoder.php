@@ -73,6 +73,7 @@ if ($editorial_flag) {
   print <<< EOD
 <h2>解説</h2>
 <!-- ====================================================================== -->
+
 EOD;
 
   $parser = new \cebe\markdown\GithubMarkdown();
@@ -102,7 +103,7 @@ return <<< EOD
 <table style="border:none;">
   <tr style="border:none;">
     <td style="border:none;">
-    <img src="./images/tatt61880.png" alt="(Tattアイコン)" />
+    <img src="./images/tatt61880.png" alt="(Tattアイコン)">
     </td>
     <td style="border:none;">
     たっと(Tatt)<br>

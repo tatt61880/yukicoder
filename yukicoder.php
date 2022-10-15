@@ -77,6 +77,7 @@ if ($editorial_flag) {
 EOD;
 
   $parser = new \cebe\markdown\GithubMarkdown();
+  $parser->enableNewlines = true;
   echo $parser->parse($markdown);
 }
 

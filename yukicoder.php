@@ -2,8 +2,8 @@
 require_once __DIR__.'/vendor/autoload.php';
 
 $REQUEST_URI = $_SERVER["REQUEST_URI"];
-$problem_id = preg_replace('/.*\/(\d+)[^\/]*/', '\1', $REQUEST_URI);
 
+$problem_id = preg_replace('/.*\/(\d+)[^\/]*/', '\1', $REQUEST_URI);
 $problem_url = "https://yukicoder.me/problems/no/$problem_id";
 
 $editorial_flag = false;
@@ -67,6 +67,7 @@ window.onload = function() {
 問題URL: <a href="$problem_url">$problem_url</a>
 
 <hr>
+
 EOD;
 
 if ($editorial_flag) {
@@ -139,4 +140,3 @@ EOD;
 
 exit("");
 }
-?>

@@ -1,0 +1,32 @@
+func main()
+	var n: int :: cui@inputInt()
+	var s: []char :: cui@input()
+	
+	var ans: int :: 0
+	
+	; 変化なしのカウント
+	if(s.findStr("BB", -1) <> -1)
+		do ans :+ 1
+	end if
+	
+	; 1文字変化のカウント
+	for i(0, n - 1)
+		if(s[i] = 'A')
+			var f: bool :: false
+			if(i <> 0 & s[i - 1] = 'B')
+				do ans :+ 1
+			elif(i <> n - 1 & s[i + 1] = 'B')
+				do ans :+ 1
+			end if
+		end if
+	end for
+	
+	; 2文字変化のカウント
+	for i(0, n - 2)
+		if(s[i] = 'A' & s[i + 1] = 'A')
+			do ans :+ 1
+		end if
+	end for
+	
+	do cui@print("\{ans}\n")
+end func

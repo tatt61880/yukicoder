@@ -1,0 +1,13 @@
+func main()
+	var s: []char :: cui@input()
+	
+	var d: dict<[]char, []char> :: #dict<[]char, []char>
+	do d.add("Zelkova and Cherry", "1st")
+	do d.add("BANNED CONTEST", "2nd")
+	do d.add("Stray Bullet", "3rd")
+	do d.add("Early Summer Rain", "4th")
+	do d.add("Do you know Cherry Contest?", "Alpha")
+	var ans: []char :: d.get(s, &)
+	
+	do cui@print("\{ans}\n")
+end func

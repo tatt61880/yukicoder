@@ -9,6 +9,7 @@ RewriteRule ^(.*)$ yukicoder/yukicoder.php [L]
 AddType "text/plain; charset=UTF-8" .kn
 AddType "text/javascript; charset=UTF-8" .js
 AddType "text/plain; charset=UTF-8" .txt
+AddType "text/plain; charset=UTF-8" .md
 
 ErrorDocument 403 /403.html
 ErrorDocument 404 /404.php

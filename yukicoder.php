@@ -3,7 +3,7 @@ require_once __DIR__.'/vendor/autoload.php';
 
 $REQUEST_URI = $_SERVER['REQUEST_URI'];
 
-$problem_id = preg_replace('/.*\/(\d+)[^\/]*/', '\1', $REQUEST_URI);
+$problem_id = preg_replace('/.*\/(\d+)$/', '\1', $REQUEST_URI);
 $problem_url = "https://yukicoder.me/problems/no/$problem_id";
 
 $editorial_flag = false;
@@ -78,7 +78,7 @@ if ($editorial_flag) {
 EOD;
 
   $parser = new \cebe\markdown\GithubMarkdown();
-  $parser->enableNewlines = true;
+  //$parser->enableNewlines = true;
   echo $parser->parse($markdown);
 }
 

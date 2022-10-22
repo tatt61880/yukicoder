@@ -31,7 +31,8 @@
 
     let editorial = await getEditorial(base, no);
     if (editorial !== null) {
-      editorial = editorial.replaceAll('\\', '\\\\');
+      editorial = editorial.replaceAll('\\(', '\\\\(');
+      editorial = editorial.replaceAll('\\)', '\\\\)');
       const md = window.markdownit();
       const result = md.render(editorial);
       const elem = document.getElementById('editorial');
@@ -107,7 +108,7 @@
   }
 
   async function fetchText(url) {
-    const response = await fetch(url);
+    const response = await fetch(url, {cache: "no-store"});
     if (response.ok) return response.text();
     return null;
   }

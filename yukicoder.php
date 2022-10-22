@@ -47,7 +47,7 @@ $kuin_src =  htmlspecialchars(file_get_contents($kuin_filepath));
   <script src="https://tatt61880.github.io/kuin-web/src-noconflict/ext-language_tools.js?2020-07-17"></script>
   <script>
 window.onload = function() {
-  let editor = ace.edit('code');
+  const editor = ace.edit('code');
   editor.setTheme('ace/theme/kuin');
   editor.session.setMode('ace/mode/kuin');
   editor.setReadOnly(true);

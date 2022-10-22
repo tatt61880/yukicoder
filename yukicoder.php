@@ -41,10 +41,10 @@ $kuin_src =  htmlspecialchars(file_get_contents($kuin_filepath));
 <head>
   <meta charset="UTF-8">
   <title>$page_title</title>
-  <link rel="stylesheet" href="./style.css?20200725">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML" defer="defer"></script>
-  <script src="https://tatt61880.github.io/kuin-web/src-noconflict/ace.js?2020-07-17"></script>
-  <script src="https://tatt61880.github.io/kuin-web/src-noconflict/ext-language_tools.js?2020-07-17"></script>
+  <link rel="stylesheet" href="./css/style.css?2022.10.22">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-chtml.min.js" integrity="sha512-T8xxpazDtODy3WOP/c6hvQI2O9UPdARlDWE0CvH1Cfqc0TXZF6GZcEKL7tIR8VbfS/7s/J6C+VOqrD6hIo++vQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://tatt61880.github.io/kuin-web/src-noconflict/ace.js?2022.10.22"></script>
+  <script src="https://tatt61880.github.io/kuin-web/src-noconflict/ext-language_tools.js?2022.10.22"></script>
   <script>
 window.onload = function() {
   const editor = ace.edit('code');
@@ -139,5 +139,6 @@ function ShowErrorMessageAndExit($message)
 
 EOD;
 
+  http_response_code(404);
   exit("");
 }

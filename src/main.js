@@ -29,6 +29,15 @@
       elem.innerText = submission_url;
     }
 
+    let editorial = await getEditorial(base, no);
+    if (editorial !== null) {
+      editorial = editorial.replaceAll('\\', '\\\\');
+      const md = window.markdownit();
+      const result = md.render(editorial);
+      const elem = document.getElementById('editorial');
+      elem.innerHTML = result;
+    }
+
     const src = await getSrc(base, no);
     if (src !== null) {
       editor.setValue(src);
@@ -86,6 +95,10 @@
       return res.split('=')[1];
     }
     return null;
+  }
+
+  async function getEditorial(base, no) {
+    return await fetchText(`${base}md/${no}.md`);
   }
 
   async function getSrc(base, no) {

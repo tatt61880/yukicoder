@@ -2,55 +2,113 @@
   'use strict';
 
   window.onload = async function() {
-    const editor = initEditor();
-
     const res = analyzeUrl();
     const base = res.base;
     const no = res.no;
 
-    const title = await getTitle(base, no);
-    if (title !== null) {
-      const titleStr = `${title} - yukicoder`;
-      document.title = titleStr;
-      document.getElementById('title').innerText = titleStr;
+    const contents = document.getElementById('contents');
+    if (contents === null) {
+      console.error('Error! #contents === null');
+      return;
     }
 
-    const problem_url = getProblemUrl(no);
-    if (problem_url !== null) {
-      const elem = document.getElementById('problem-url');
-      elem.href = problem_url;
-      elem.innerText = problem_url;
-    }
+    if (no !== null) {
+      // ページタイトル
+      {
+        let title = await getTitle(base, no);
+        if (title !== null) {
+          title = `${title} - yukicoder`;
+        } else {
+          title = '404 問題タイトル not found!';
+        }
+        document.title = title;
 
-    const submission_url = await getSubmissionUrl(base, no);
-    if (submission_url !== null) {
-      const elem = document.getElementById('submission-url');
-      elem.href = submission_url;
-      elem.innerText = submission_url;
-    }
+        const h1 = document.createElement('h1');
+        h1.innerText = title;
+        contents.appendChild(h1);
+        contents.appendChild(document.createElement('hr'));
+      }
 
-    let editorial = await getEditorial(base, no);
-    if (editorial !== null) {
-      editorial = editorial.replaceAll('\\(', '\\\\(');
-      editorial = editorial.replaceAll('\\)', '\\\\)');
-      const md = window.markdownit();
-      const result = md.render(editorial);
-      const elem = document.getElementById('editorial');
-      elem.innerHTML = result;
-      MathJax.typeset();
-    }
+      // 問題URL
+      {
+        const problem_url = getProblemUrl(no);
+        if (problem_url !== null) {
+          const span = document.createElement('span');
+          span.innerText = '問題URL: ';
+          contents.appendChild(span);
 
-    const src = await getSrc(base, no);
-    if (src !== null) {
-      editor.setValue(src);
-      editor.navigateTo(0, 0);
+          const a = document.createElement('a');
+          a.href = problem_url;
+          a.innerText = problem_url;
+          span.appendChild(a);
+
+          contents.appendChild(document.createElement('hr'));
+        }
+      }
+
+      // 解説
+      {
+        let editorial = await getEditorial(base, no);
+        if (editorial !== null) {
+          const h2 = document.createElement('h2');
+          h2.innerText = '解説';
+          contents.appendChild(h2);
+
+          editorial = editorial.replaceAll('\\(', '\\\\(');
+          editorial = editorial.replaceAll('\\)', '\\\\)');
+          const md = window.markdownit();
+          const result = md.render(editorial);
+          const div = document.createElement('div');
+          div.innerHTML = result;
+          contents.appendChild(div);
+
+          MathJax.typeset(); // 数式の記述を処理
+
+          contents.appendChild(document.createElement('hr'));
+        }
+      }
+
+      // 提出したソースコード
+      {
+        const src = await getSrc(base, no);
+        if (src !== null) {
+          const h2 = document.createElement('h2');
+          h2.innerText = '提出したソースコード (言語: Kuin)';
+          contents.appendChild(h2);
+
+          const id = 'code';
+          const pre = document.createElement('pre');
+          pre.setAttribute('id', id);
+          pre.style.margin = '0 -10px';
+          contents.appendChild(pre);
+
+          const editor = initEditor(id);
+          editor.setValue(src);
+          editor.navigateTo(0, 0);
+        }
+      }
+
+      // 提出URL
+      {
+        const submission_url = await getSubmissionUrl(base, no);
+        if (submission_url !== null) {
+          const span = document.createElement('span');
+          span.innerText = '提出URL: ';
+          contents.appendChild(span);
+
+          const a = document.createElement('a');
+          a.href = submission_url;
+          a.innerText = submission_url;
+          span.appendChild(a);
+        }
+      }
     }
   }
 
   function analyzeUrl() {
     const res = {
       base: '',
-      no: 1,
+      no: null,
     };
     res.base = location.href.split('?')[0];
     const queryStrs = location.href.split('?')[1];
@@ -68,8 +126,8 @@
     return res;
   }
 
-  function initEditor() {
-    const editor = ace.edit('code');
+  function initEditor(id) {
+    const editor = ace.edit(id);
     editor.setTheme('ace/theme/kuin');
     editor.session.setMode('ace/mode/kuin');
     editor.setReadOnly(true);

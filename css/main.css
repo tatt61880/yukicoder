@@ -72,5 +72,12 @@ body {
 
 #container {
   padding: 0 10px 5px;
-  background-color: #ffffff;
+  background-color: white;
+}
+
+pre:has(.language-kuin) {
+  margin: 15px;
+  padding: 5px 10px;
+  background-color: #fff5f5;
+  border: 2px solid #ff8888;
 }

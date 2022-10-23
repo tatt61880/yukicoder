@@ -62,8 +62,7 @@
           div.innerHTML = result;
           contents.appendChild(div);
 
-          // 数式の記述を処理
-          MathJax.typeset();
+          window.renderMathInElement(div);
 
           contents.appendChild(document.createElement('hr'));
         }
@@ -128,7 +127,7 @@
   }
 
   function elemToKuinEditor(elem) {
-    const editor = ace.edit(elem);
+    const editor = window.ace.edit(elem);
     editor.setTheme('ace/theme/kuin');
     editor.session.setMode('ace/mode/kuin');
     editor.setReadOnly(true);

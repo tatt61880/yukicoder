@@ -83,7 +83,7 @@
           pre.style.margin = '0 -10px';
           contents.appendChild(pre);
 
-          const editor = initEditor(id);
+          const editor = elemToKuinEditor(pre);
           editor.setValue(src);
           editor.navigateTo(0, 0);
         }
@@ -127,8 +127,8 @@
     return res;
   }
 
-  function initEditor(id) {
-    const editor = ace.edit(id);
+  function elemToKuinEditor(elem) {
+    const editor = ace.edit(elem);
     editor.setTheme('ace/theme/kuin');
     editor.session.setMode('ace/mode/kuin');
     editor.setReadOnly(true);

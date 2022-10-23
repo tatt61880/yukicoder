@@ -1,5 +1,3 @@
-iframe,
-pre,
 ul,
 ol,
 blockquote,
@@ -27,22 +25,22 @@ hr {
 
 h1 {
   margin: 0 -10px;
-  background-color: #ffbbff;
   padding-left: 8px;
+  background-color: #ffbbff;
   font-weight: bold;
 }
 
 h2 {
   margin: 0 -10px;
-  background-color: #ffffbb;
   padding-left: 12px;
+  background-color: #ffffbb;
   font-weight: normal;
 }
 
 h3 {
   margin: 0 -10px;
-  background-color: #bbffff;
   padding-left: 16px;
+  background-color: #bbffff;
   font-weight: normal;
 }
 
@@ -51,7 +49,9 @@ table {
   border-spacing: 0;
 }
 
-th { background: #b0d4e5; }
+th {
+  background-color: #b0d4e5;
+}
 
 th,
 td {
@@ -60,9 +60,9 @@ td {
 }
 
 body {
-  margin: auto;
   max-width: 1024px;
   min-width: 800px;
+  margin: auto;
   background-color: #b0d4e5;
 }
 

@@ -41,7 +41,7 @@ $kuin_src =  htmlspecialchars(file_get_contents($kuin_filepath));
 <head>
   <meta charset="UTF-8">
   <title>$page_title</title>
-  <link rel="stylesheet" href="./css/style.css?2022.10.22">
+  <link rel="stylesheet" href="./css/main.css?2022.10.23">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-chtml.min.js" integrity="sha512-T8xxpazDtODy3WOP/c6hvQI2O9UPdARlDWE0CvH1Cfqc0TXZF6GZcEKL7tIR8VbfS/7s/J6C+VOqrD6hIo++vQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script src="https://tatt61880.github.io/kuin-web/src-noconflict/ace.js?2022.10.22"></script>
   <script src="https://tatt61880.github.io/kuin-web/src-noconflict/ext-language_tools.js?2022.10.22"></script>
@@ -78,7 +78,6 @@ if ($editorial_flag) {
 EOD;
 
   $parser = new \cebe\markdown\GithubMarkdown();
-  //$parser->enableNewlines = true;
   echo $parser->parse($markdown);
 }
 

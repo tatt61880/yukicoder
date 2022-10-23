@@ -1,6 +1,7 @@
 /data/
 /html/
 /vendor/
+/node_modules/
 
 composer.lock
 *.exe

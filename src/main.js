@@ -62,7 +62,8 @@
           div.innerHTML = result;
           contents.appendChild(div);
 
-          MathJax.typeset(); // 数式の記述を処理
+          // 数式の記述を処理
+          MathJax.typeset();
 
           contents.appendChild(document.createElement('hr'));
         }
@@ -103,7 +104,7 @@
         }
       }
     }
-  }
+  };
 
   function analyzeUrl() {
     const res = {
@@ -166,7 +167,7 @@
   }
 
   async function fetchText(url) {
-    const response = await fetch(url, {cache: "no-store"});
+    const response = await fetch(url, {cache: 'no-store'});
     if (response.ok) return response.text();
     return null;
   }

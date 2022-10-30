@@ -5,9 +5,13 @@ body {
   background-color: #ccffff;
 }
 
-#container {
-  padding: 0 10px 5px;
+#contents {
+  padding: 0;
   background-color: white;
+}
+
+#code {
+  margin: 0;
 }
 
 ul,
@@ -32,27 +36,20 @@ ol {
 }
 
 hr {
-  margin: 0 -10px;
+  margin: 0;
 }
 
 h1 {
-  margin: 0 -10px;
+  margin: 0;
   padding-left: 8px;
   background-color: #ffbbff;
   font-weight: bold;
 }
 
 h2 {
-  margin: 0 -10px;
+  margin: 0;
   padding-left: 12px;
   background-color: #ffffbb;
-  font-weight: normal;
-}
-
-h3 {
-  margin: 0 -10px;
-  padding-left: 16px;
-  background-color: #bbffff;
   font-weight: normal;
 }
 

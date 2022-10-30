@@ -6,7 +6,7 @@
     const base = res.base;
     const no = res.no;
 
-    const contents = document.getElementById('contents');
+    const contents = document.getElementById('data');
     if (contents === null) {
       console.error('Error! #contents === null');
       return;
@@ -79,7 +79,6 @@
           const id = 'code';
           const pre = document.createElement('pre');
           pre.setAttribute('id', id);
-          pre.style.margin = '0 -10px';
           contents.appendChild(pre);
 
           const editor = elemToKuinEditor(pre);

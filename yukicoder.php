@@ -86,8 +86,8 @@ EOD;
 <hr>
 <h2>提出したソースコード (言語: Kuin)</h2>
 <div>
-  <p class="narrow">提出URL: <a href="$submissions_url">$submissions_url</a></p>
   <pre id="code">$kuin_src</pre>
+  <p class="narrow">提出URL: <a href="$submissions_url">$submissions_url</a></p>
 </div>
 <hr>
 $additionalInfo

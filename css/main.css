@@ -1,3 +1,15 @@
+body {
+  max-width: 1024px;
+  min-width: 800px;
+  margin: auto;
+  background-color: #ccffff;
+}
+
+#container {
+  padding: 0 10px 5px;
+  background-color: white;
+}
+
 ul,
 ol,
 blockquote,
@@ -57,18 +69,6 @@ th,
 td {
   padding: 0 0.5em;
   border: 1px solid black;
-}
-
-body {
-  max-width: 1024px;
-  min-width: 800px;
-  margin: auto;
-  background-color: #b0d4e5;
-}
-
-#container {
-  padding: 0 10px 5px;
-  background-color: white;
 }
 
 pre:has(.language-kuin) {

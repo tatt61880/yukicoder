@@ -27,7 +27,12 @@ blockquote {
 }
 
 p {
-  margin: 15px;
+  margin: 10px 15px;
+}
+
+p.narrow {
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
 ul,

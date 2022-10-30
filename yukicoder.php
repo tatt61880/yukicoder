@@ -41,7 +41,7 @@ $kuin_src =  htmlspecialchars(file_get_contents($kuin_filepath));
 <head>
   <meta charset="UTF-8">
   <title>$page_title</title>
-  <link rel="stylesheet" href="./css/main.css?2022.10.23">
+  <link rel="stylesheet" href="./css/main.css?2022.10.30">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-chtml.min.js" integrity="sha512-T8xxpazDtODy3WOP/c6hvQI2O9UPdARlDWE0CvH1Cfqc0TXZF6GZcEKL7tIR8VbfS/7s/J6C+VOqrD6hIo++vQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script src="https://tatt61880.github.io/kuin-web/src-noconflict/ace.js?2022.10.22"></script>
   <script src="https://tatt61880.github.io/kuin-web/src-noconflict/ext-language_tools.js?2022.10.22"></script>
@@ -61,12 +61,11 @@ window.onload = function() {
   </script>
 </head>
 <body>
-  <div id="container">
+  <div id="contents">
   <h1>$problem_title - yukicoder</h1>
   <hr>
-問題URL: <a href="$problem_url">$problem_url</a>
-
-<hr>
+  <p class="narrow">問題URL: <a href="$problem_url">$problem_url</a></p>
+  <hr>
 
 EOD;
 
@@ -87,8 +86,8 @@ EOD;
 <hr>
 <h2>提出したソースコード (言語: Kuin)</h2>
 <div>
-  提出URL: <a href="$submissions_url">$submissions_url</a>
-  <pre id="code" style="margin: 0 -10px;">$kuin_src</pre>
+  <p class="narrow">提出URL: <a href="$submissions_url">$submissions_url</a></p>
+  <pre id="code">$kuin_src</pre>
 </div>
 <hr>
 $additionalInfo

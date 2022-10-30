@@ -33,14 +33,15 @@
       {
         const problem_url = getProblemUrl(no);
         if (problem_url !== null) {
-          const span = document.createElement('span');
-          span.innerText = '問題URL: ';
-          contents.appendChild(span);
+          const p = document.createElement('p');
+          p.classList.add('narrow');
+          p.innerText = '問題URL: ';
+          contents.appendChild(p);
 
           const a = document.createElement('a');
           a.href = problem_url;
           a.innerText = problem_url;
-          span.appendChild(a);
+          p.appendChild(a);
 
           contents.appendChild(document.createElement('hr'));
         }
@@ -91,14 +92,15 @@
       {
         const submission_url = await getSubmissionUrl(base, no);
         if (submission_url !== null) {
-          const span = document.createElement('span');
-          span.innerText = '提出URL: ';
-          contents.appendChild(span);
+          const p = document.createElement('p');
+          p.classList.add('narrow');
+          p.innerText = '提出URL: ';
+          contents.appendChild(p);
 
           const a = document.createElement('a');
           a.href = submission_url;
           a.innerText = submission_url;
-          span.appendChild(a);
+          p.appendChild(a);
         }
       }
     }

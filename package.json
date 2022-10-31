@@ -1,6 +1,7 @@
 {
+  "private": true,
   "name": "yukicoder",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "tatt61880 - yukicoder",
   "license": "MIT",
   "repository": {
@@ -23,10 +24,14 @@
     "eslint": "^8.21.0",
     "htmlhint": "^1.1.4",
     "stylelint": "^14.9.1",
+    "stylelint-config-recess-order": "^3.0.0",
     "stylelint-config-standard": "^26.0.0"
   },
   "stylelint": {
-    "extends": "stylelint-config-standard",
+    "extends": [
+      "stylelint-config-standard",
+      "stylelint-config-recess-order"
+    ],
     "rules": {
       "color-hex-length": "long"
     }

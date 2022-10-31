@@ -1,6 +1,6 @@
 body {
-  max-width: 1024px;
   min-width: 800px;
+  max-width: 1024px;
   margin: auto;
   background-color: #ccffff;
 }
@@ -45,22 +45,22 @@ hr {
 }
 
 h1 {
-  margin: 0;
   padding-left: 8px;
-  background-color: #ffbbff;
+  margin: 0;
   font-weight: bold;
+  background-color: #ffbbff;
 }
 
 h2 {
-  margin: 0;
   padding-left: 12px;
-  background-color: #ffffbb;
+  margin: 0;
   font-weight: normal;
+  background-color: #ffffbb;
 }
 
 table {
-  border-collapse: collapse;
   border-spacing: 0;
+  border-collapse: collapse;
 }
 
 th {
@@ -74,8 +74,8 @@ td {
 }
 
 pre:has(.language-kuin) {
-  margin: 15px;
   padding: 5px 10px;
+  margin: 15px;
   background-color: #fff5f5;
   border: 2px solid #ff8888;
 }

@@ -7,7 +7,7 @@ node_modules:
 	npm install
 
 vendor:
-	composer update
+	composer install
 
 yukicoder.exe:
 	kuincl.exe -i yukicoder.kn -o yukicoder.exe

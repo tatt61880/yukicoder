@@ -1,0 +1,6 @@
+func main()
+	var n: float :: cui@inputFloat()
+	var ans: float :: n
+	do cui@print("decimal\n")
+	do cui@print("\{ans}\n")
+end func

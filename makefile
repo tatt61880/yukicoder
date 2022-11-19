@@ -9,5 +9,5 @@ node_modules:
 vendor:
 	composer install
 
-yukicoder.exe:
+yukicoder.exe: yukicoder.kn
 	kuincl.exe -i yukicoder.kn -o yukicoder.exe

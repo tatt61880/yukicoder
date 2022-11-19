@@ -1,0 +1,6 @@
+func main()
+	var n: int :: cui@inputInt()
+	var p: int :: cui@inputInt()
+	var ans: int :: n * (100 - p) / 100
+	do cui@print("\{ans}\n")
+end func

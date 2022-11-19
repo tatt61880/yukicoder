@@ -113,8 +113,8 @@ func main()
 	
 	block
 		var writer: file@Writer :: file@makeWriter("submissions/times.txt", false)
-		for subumitId(1, @maxId)
-			var time: []char :: @dictSubmitTime.get(subumitId, &)
+		for problemId(1, @maxId)
+			var time: []char :: @dictSubmitTime.get(problemId, &)
 			if(time =& null)
 				do writer.writeStr("\n")
 			else
@@ -125,12 +125,22 @@ func main()
 	end block
 	block
 		var writer: file@Writer :: file@makeWriter("submissions/bytes.txt", false)
-		for subumitId(1, @maxId)
-			var byte: []char :: @dictSubmitByte.get(subumitId, &)
+		for problemId(1, @maxId)
+			var byte: []char :: @dictSubmitByte.get(problemId, &)
 			if(byte =& null)
 				do writer.writeStr("\n")
 			else
 				do writer.writeStr("\{byte}\n")
+			end if
+		end for
+		do writer.fin()
+	end block
+	block
+		var writer: file@Writer :: file@makeWriter("submissions/filelist.txt", false)
+		for problemId(1, @maxId)
+			var lang: []char :: @dictSubmitLang.get(dictProblemSubmit.get(problemId, &), &)
+			if(lang <>& null & lang = "Kuin")
+				do writer.writeStr("\{problemId}\n")
 			end if
 		end for
 		do writer.fin()

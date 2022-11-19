@@ -136,15 +136,25 @@ func main()
 		do writer.fin()
 	end block
 	block
-		var writer: file@Writer :: file@makeWriter("submissions/filelist.txt", false)
+		var writer: file@Writer :: file@makeWriter("submissions/newestSubmissions.json", false)
+		var firstFlag: bool :: true
+		do writer.writeStr("[\n")
 		for problemId(1, @maxId)
 			var submitId: int :: dictProblemSubmit.get(problemId, &)
-			var lang: []char :: @dictSubmitLang.get(submitId, &)
-			var title: []char :: @dictSubmitTitle.get(submitId, &)
-			if(lang <>& null)
-				do writer.writeStr("\{problemId},\{submitId},main.\{@dictLangExtension.get(lang, &)},\{title}\n")
+			var language: []char :: @dictSubmitLang.get(submitId, &)
+			if(language <>& null)
+				var extension: []char :: @dictLangExtension.get(language, &)
+				var title: []char :: @dictSubmitTitle.get(submitId, &)
+				do title :: title.replace("\"", "\\\"")
+				if (firstFlag)
+					do firstFlag :: false
+				else
+					do writer.writeStr(",\n")
+				end if
+				do writer.writeStr("  [\{problemId},\{submitId},\"\{language}\",\"main\",\"\{extension}\",\"\{title}\"]")
 			end if
 		end for
+		do writer.writeStr("\n]\n")
 		do writer.fin()
 	end block
 	

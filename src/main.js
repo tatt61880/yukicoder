@@ -33,17 +33,20 @@
         td.innerText = '提出ID';
         tr.appendChild(td);
       }
+      {
+        const td = document.createElement('th');
+        td.innerText = '言語';
+        tr.appendChild(td);
+      }
       const tbody = document.createElement('tbody');
       table.appendChild(tbody);
 
       const submissionsList = await getSubmissionsList(base);
       for (const submission of submissionsList) {
-        const m = submission.match(/(\d+),(\d+),(.*\.kn?),(.*)/);
-        if (m === null) continue;
-        const problemId = m[1];
-        const submitId = m[2];
-        const filename = m[3];
-        const title = m[4];
+        const problemId = submission[0];
+        const submitId = submission[1];
+        const language = submission[2];
+        const title = submission[5];
         const tr = tbody.insertRow();
         {
           const td = tr.insertCell();
@@ -55,6 +58,10 @@
           a.href = `https://yukicoder.me/submissions/${submitId}/`;
           a.innerText = submitId;
           td.appendChild(a);
+        }
+        {
+          const td = tr.insertCell();
+          td.innerText = language;
         }
       }
     } else {
@@ -187,7 +194,7 @@
   }
 
   async function getSubmissionsList(base) {
-    return (await fetchText(`${base}submissions/filelist.txt`)).split('\n');
+    return await fetchJson(`${base}submissions/newestSubmissions.json`);
   }
 
   async function getTitle(base, no) {
@@ -218,6 +225,12 @@
   async function fetchText(url) {
     const response = await fetch(url, {cache: 'no-store'});
     if (response.ok) return response.text();
+    return null;
+  }
+
+  async function fetchJson(url) {
+    const response = await fetch(url, {cache: 'no-store'});
+    if (response.ok) return response.json();
     return null;
   }
 })();

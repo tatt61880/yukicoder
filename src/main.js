@@ -2,9 +2,9 @@
   'use strict';
 
   window.onload = async function() {
-    const res = analyzeUrl();
-    const base = res.base;
-    const no = res.no;
+    const urlQueryParams = analyzeUrl();
+    const base = urlQueryParams.base;
+    const no = urlQueryParams.no;
 
     const contents = document.getElementById('data');
     if (contents === null) {
@@ -12,7 +12,52 @@
       return;
     }
 
-    if (no !== null) {
+    if (no === null) {
+      const h1 = document.createElement('h1');
+      h1.innerText = '各問の最新ACコード一覧';
+      contents.appendChild(h1);
+      contents.appendChild(document.createElement('hr'));
+
+      const table = document.createElement('table');
+      const thead = document.createElement('thead');
+      contents.appendChild(table);
+      table.appendChild(thead);
+      const tr = thead.insertRow();
+      {
+        const td = document.createElement('th');
+        td.innerText = '問題タイトル';
+        tr.appendChild(td);
+      }
+      {
+        const td = document.createElement('th');
+        td.innerText = '提出ID';
+        tr.appendChild(td);
+      }
+      const tbody = document.createElement('tbody');
+      table.appendChild(tbody);
+
+      const submissionsList = await getSubmissionsList(base);
+      for (const submission of submissionsList) {
+        const m = submission.match(/(\d+),(\d+),(.*\.kn?),(.*)/);
+        if (m === null) continue;
+        const problemId = m[1];
+        const submitId = m[2];
+        const filename = m[3];
+        const title = m[4];
+        const tr = tbody.insertRow();
+        {
+          const td = tr.insertCell();
+          td.innerText = title;
+        }
+        {
+          const td = tr.insertCell();
+          const a = document.createElement('a');
+          a.href = `https://yukicoder.me/submissions/${submitId}/`;
+          a.innerText = submitId;
+          td.appendChild(a);
+        }
+      }
+    } else {
       // ページタイトル
       {
         let title = await getTitle(base, no);
@@ -139,6 +184,10 @@
     });
     editor.resize();
     return editor;
+  }
+
+  async function getSubmissionsList(base) {
+    return (await fetchText(`${base}submissions/filelist.txt`)).split('\n');
   }
 
   async function getTitle(base, no) {

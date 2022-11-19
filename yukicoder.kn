@@ -139,8 +139,8 @@ func main()
 		var writer: file@Writer :: file@makeWriter("submissions/filelist.txt", false)
 		for problemId(1, @maxId)
 			var lang: []char :: @dictSubmitLang.get(dictProblemSubmit.get(problemId, &), &)
-			if(lang <>& null & lang = "Kuin")
-				do writer.writeStr("\{problemId}\n")
+			if(lang <>& null)
+				do writer.writeStr("\{problemId}/main.\{@dictLangExtension.get(lang, &)}\n")
 			end if
 		end for
 		do writer.fin()

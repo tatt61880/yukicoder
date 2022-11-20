@@ -25,17 +25,17 @@
       const tr = thead.insertRow();
       {
         const td = document.createElement('th');
-        td.innerText = '問題タイトル';
-        tr.appendChild(td);
-      }
-      {
-        const td = document.createElement('th');
         td.innerText = '提出ID';
         tr.appendChild(td);
       }
       {
         const td = document.createElement('th');
         td.innerText = '言語';
+        tr.appendChild(td);
+      }
+      {
+        const td = document.createElement('th');
+        td.innerText = '問題タイトル';
         tr.appendChild(td);
       }
       const tbody = document.createElement('tbody');
@@ -50,10 +50,6 @@
         const tr = tbody.insertRow();
         {
           const td = tr.insertCell();
-          td.innerText = title;
-        }
-        {
-          const td = tr.insertCell();
           const a = document.createElement('a');
           a.href = `https://yukicoder.me/submissions/${submitId}/`;
           a.innerText = submitId;
@@ -62,6 +58,10 @@
         {
           const td = tr.insertCell();
           td.innerText = language;
+        }
+        {
+          const td = tr.insertCell();
+          td.innerText = title;
         }
       }
     } else {

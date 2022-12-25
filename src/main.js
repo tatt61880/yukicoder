@@ -1,7 +1,7 @@
-(function() {
+(function () {
   'use strict';
 
-  window.onload = async function() {
+  window.onload = async function () {
     const urlQueryParams = analyzeUrl();
     const base = urlQueryParams.base;
     const no = urlQueryParams.no;
@@ -43,7 +43,7 @@
 
       const submissionsList = await getSubmissionsList(base);
       for (const submission of submissionsList) {
-        const problemId = submission[0];
+        // const problemId = submission[0];
         const submitId = submission[1];
         const language = submission[2];
         const title = submission[5];
@@ -165,7 +165,7 @@
     };
     res.base = location.href.split('?')[0];
     const queryStrs = location.href.split('?')[1];
-    if (queryStrs == null) return res;
+    if (queryStrs === undefined) return res;
     for (const queryStr of queryStrs.split('&')) {
       const paramArray = queryStr.split('=');
       const paramName = paramArray[0];
@@ -223,13 +223,13 @@
   }
 
   async function fetchText(url) {
-    const response = await fetch(url, {cache: 'no-store'});
+    const response = await fetch(url, { cache: 'no-store' });
     if (response.ok) return response.text();
     return null;
   }
 
   async function fetchJson(url) {
-    const response = await fetch(url, {cache: 'no-store'});
+    const response = await fetch(url, { cache: 'no-store' });
     if (response.ok) return response.json();
     return null;
   }

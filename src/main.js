@@ -83,16 +83,16 @@
 
       // 問題URL
       {
-        const problem_url = getProblemUrl(no);
-        if (problem_url !== null) {
+        const problemUrl = getProblemUrl(no);
+        if (problemUrl !== null) {
           const p = document.createElement('p');
           p.classList.add('narrow');
           p.innerText = '問題URL: ';
           contents.appendChild(p);
 
           const a = document.createElement('a');
-          a.href = problem_url;
-          a.innerText = problem_url;
+          a.href = problemUrl;
+          a.innerText = problemUrl;
           p.appendChild(a);
 
           contents.appendChild(document.createElement('hr'));
@@ -142,16 +142,16 @@
 
       // 提出URL
       {
-        const submission_url = await getSubmissionUrl(base, no);
-        if (submission_url !== null) {
+        const submissionUrl = await getSubmissionUrl(base, no);
+        if (submissionUrl !== null) {
           const p = document.createElement('p');
           p.classList.add('narrow');
           p.innerText = '提出URL: ';
           contents.appendChild(p);
 
           const a = document.createElement('a');
-          a.href = submission_url;
-          a.innerText = submission_url;
+          a.href = submissionUrl;
+          a.innerText = submissionUrl;
           p.appendChild(a);
         }
       }
@@ -171,9 +171,9 @@
       const paramName = paramArray[0];
       const paramVal = paramArray[1];
       switch (paramName) {
-      case 'no':
-        res.no = paramVal;
-        break;
+        case 'no':
+          res.no = paramVal;
+          break;
       }
     }
     return res;

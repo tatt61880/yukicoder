@@ -20,7 +20,7 @@ $title_filepath = "./submissions/$problem_id/title.txt";
 if (!file_exists($title_filepath)) ShowErrorMessageAndExit('404 問題タイトル not found!');
 $problem_title =  htmlspecialchars(file_get_contents($title_filepath));
 
-$page_title = "【yukicoder ${problem_title}】";
+$page_title = "【yukicoder {$problem_title}】";
 if ($editorial_flag) {
 	$page_title = '解説' . $page_title;
 }

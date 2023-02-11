@@ -1,0 +1,20 @@
+func main()
+	var n: int :: cui@inputInt()
+	var map: dict<[]char, int> :: #dict<[]char, int>
+	var a: []int :: #[8]int
+	for i(0, n - 1)
+		var s: []char :: cui@inputStr()
+		var c: int :: cui@inputInt()
+		var existed: bool
+		var prev: int :: map.get(s, &existed)
+		if(existed)
+			do a[prev] :- 1
+		end if
+		do a[c] :+ 1
+		do map.add(s, c)
+	end for
+	for i(0, 7)
+		var ans: int :: a[i]
+		do cui@print("\{ans}\n")
+	end for
+end func

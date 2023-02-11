@@ -1,0 +1,26 @@
+func main()
+	var a: int :: cui@inputInt()
+	var b: int :: cui@inputInt()
+	var c: int :: cui@inputInt()
+	
+	var flag: bool :: false
+	
+	if(c <= b)
+		if(c % a = 0)
+			do cui@print("\{c / a}\n")
+			do flag :: true
+		end if
+	end if
+	
+	block
+		do c :+ b
+		if(c % a = 0)
+			do cui@print("\{c / a}\n")
+			do flag :: true
+		end if
+	end block
+	
+	if(!flag)
+		do cui@print("-1\n")
+	end if
+end func

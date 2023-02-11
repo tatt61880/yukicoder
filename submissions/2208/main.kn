@@ -1,0 +1,11 @@
+func main()
+	var t: int :: cui@inputInt()
+	for(1, t)
+		var l: int :: cui@inputInt()
+		var r: int :: cui@inputInt()
+		var a: int :: cui@inputInt()
+		var b: int :: cui@inputInt()
+		var ans: int :: lib@max(a * l + b, a * r + b)
+		do cui@print("\{ans}\n")
+	end for
+end func

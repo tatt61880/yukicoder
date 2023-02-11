@@ -1,0 +1,26 @@
+func main()
+	var a: []char :: cui@input()
+	do a.reverse()
+	
+	var v: int :: 0
+	var nums: []int :: #[8]int
+	for i(0, ^a - 1)
+		do v :+ (a[i] $ int - 'A' $ int + 10) * (16 ^ (i % 3))
+		if(i % 3 = 2 | i = ^a - 1)
+			while(v <> 0)
+				do nums[v % 8] :+ 1
+				do v :/ 8
+			end while
+			do v :: 0
+		end if
+	end for
+	
+	var max: int :: nums.max()
+	var ans: []int :: #[0]int
+	for i(0, 7)
+		if(nums[i] = max)
+			do ans :~ [i]
+		end if
+	end for
+	do cui@print("\{ans.join(" ")}\n")
+end func

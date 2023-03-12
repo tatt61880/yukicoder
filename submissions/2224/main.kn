@@ -1,0 +1,9 @@
+func main()
+	var s: []char :: cui@input()
+	if(s[0] = 'x')
+		var n: int :: s.sub(1, -1).toInt(&)
+		do cui@print("\{2 ^ 32 - n}\n")
+	else
+		do cui@print("\{s}\n")
+	end if
+end func

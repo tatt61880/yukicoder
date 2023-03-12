@@ -1,0 +1,4 @@
+func main()
+	var n: int :: cui@inputInt()
+	do cui@print("\{n}\n")
+end func

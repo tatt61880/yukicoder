@@ -1,0 +1,9 @@
+func main()
+	var n: int :: cui@inputInt()
+	var s: []char :: cui@input()
+	var ans: []char :: #[n]char
+	for i(0, n - 1)
+		do ans[i] :: 'a'.offset('z' $ int - s[i] $ int)
+	end for
+	do cui@print("\{ans}\n")
+end func

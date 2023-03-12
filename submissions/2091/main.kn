@@ -1,0 +1,23 @@
+func main()
+	var n: int :: cui@inputInt()
+	var s: int :: cui@inputInt()
+	var k: int :: cui@inputInt()
+	
+	var diffMin: int :: 100
+	var ans: int :: 100
+	
+	for i(0, n - 1)
+		var a: int :: cui@inputInt()
+		var diff: int :: (s - a).abs()
+		if(diff < diffMin)
+			do diffMin :: diff
+			do ans :: i + 1
+		end if
+	end for
+	
+	if(diffMin <= k)
+		do cui@print("\{ans}\n")
+	else
+		do cui@print("Unlucky!\n")
+	end if
+end func

@@ -1,0 +1,23 @@
+func main()
+	var a: int :: cui@inputInt()
+	var b: int :: cui@inputInt()
+	if(a > b)
+		var tmp: int :: b
+		do b :: a
+		do a :: tmp
+	end if
+	
+	var ans: int :: 100
+	
+	; B個のエビフライのうちi個を正しく乗せる。
+	; A個のアジは、b - (a - i) 個正しく乗っていることになる。
+	for i(0, a)
+		var ok: int :: i + (b - (a - i))
+		var ng: int :: a + b - ok
+		var diff: int :: (ok - ng).abs()
+		if(diff < ans)
+			do ans :: diff
+		end if
+	end for
+	do cui@print("\{ans}\n")
+end func

@@ -1,0 +1,29 @@
+func main()
+	var n: int :: cui@inputInt()
+	var m: int :: cui@inputInt()
+	var x: []int :: #[n]int
+	var y: []int :: #[m + 1]int
+	for i(0, n - 1)
+		do x[i] :: cui@inputInt()
+	end for
+	for i(0, m - 1)
+		do y[i] :: cui@inputInt()
+	end for
+	do y[m] :: lib@intMax
+	do y.sort()
+	
+	for i(0, n - 1)
+		var xi: int :: x[i]
+		for j(0, m)
+			if(xi < y[j])
+				if(j = m)
+					do cui@print("Infinity\n")
+				else
+					var ans: int :: y[j] - xi
+					do cui@print("\{ans}\n")
+				end if
+				skip i
+			end if
+		end for
+	end for
+end func

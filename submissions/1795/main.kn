@@ -1,0 +1,18 @@
+func main()
+	var n: int :: cui@inputInt()
+	var m: int :: cui@inputInt()
+	
+	var dic: dict<[]char, int> :: #dict<[]char, int>
+	for(1, m + n)
+		var s: []char :: cui@inputStr()
+		var a: int :: cui@inputInt()
+		do dic.add(s, a)
+	end for
+	
+	do dic.forEach(f, null)
+	
+	func f(key: []char, val: int, _: kuin@Class): bool
+		do cui@print("\{key} \{val}\n")
+		ret true
+	end func
+end func

@@ -1,0 +1,9 @@
+func main()
+	var n: int :: cui@inputInt()
+	
+	for i(1, n)
+		for j(1, n)
+			do cui@print("\{(i + j) % n + 1}\{j = n ?('\n', ' ')}")
+		end for
+	end for
+end func

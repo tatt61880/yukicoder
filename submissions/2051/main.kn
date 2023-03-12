@@ -1,0 +1,23 @@
+func main()
+	var a: int :: cui@inputInt()
+	var b: int :: cui@inputInt()
+	
+	var ans: int :: 0
+	if(a % b = 0)
+		do a :/ b
+		
+		var i: int :: 1
+		while(i * i <= a)
+			if(a % i = 0)
+				if(i * i = a)
+					do ans :+ 1
+				else
+					do ans :+ 2
+				end if
+			end if
+			do i :+ 1
+		end while
+	end if
+	
+	do cui@print("\{ans}\n")
+end func

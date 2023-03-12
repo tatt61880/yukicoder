@@ -1,0 +1,12 @@
+func main()
+	var n: int :: cui@inputInt()
+	
+	var ans: int :: 0
+	if(n % 2 = 0)
+		do ans :: n / 2
+	else
+		do ans :: 1
+	end if
+	
+	do cui@print("\{ans}\n")
+end func

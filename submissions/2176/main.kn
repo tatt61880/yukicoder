@@ -1,0 +1,33 @@
+func main()
+	var l: int :: cui@inputInt()
+	var r: int :: cui@inputInt()
+	var m: int :: cui@inputInt()
+	if(l > m)
+		do l :: m
+	end if
+	if(r > m)
+		do r :: m
+	end if
+	
+	var f: []int :: #[m + 1]int
+	
+	do f[0] :: 1
+	for i(1, m)
+		do f[i] :: i * f[i - 1] % m
+	end for
+	
+	var ff: []int :: #[m + 1]int
+	do ff[0] :: 1
+	for i(1, m)
+		do ff[i] :: f[i] * ff[i - 1] % m
+	end for
+	
+	var ans: int :: 0
+	
+	for i(l, r)
+		do ans :+ ff[i]
+		do ans :% m
+	end for
+	
+	do cui@print("\{ans}\n")
+end func

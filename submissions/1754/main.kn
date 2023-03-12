@@ -1,0 +1,13 @@
+func main()
+	const mod: int :: 998244353
+	
+	var t: int :: cui@inputInt()
+	for(1, t)
+		var c: int :: cui@inputInt()
+		var ans: int :: 2
+		for(1, c - 1)
+			do ans :: math@modMul(ans, 3, mod)
+		end for
+		do cui@print("\{ans}\n")
+	end for
+end func

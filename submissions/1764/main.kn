@@ -1,0 +1,24 @@
+func main()
+	var qs: []queue<char> :: #[4]queue<char>
+	for i(0, 3)
+		do qs[i] :: #queue<char>
+	end for
+	do qs[0].add('A')
+	do qs[0].add('E')
+	do qs[1].add('B')
+	do qs[2].add('C')
+	do qs[3].add('D')
+	
+	var k: int :: cui@inputInt()
+	for i(0, k - 1)
+		var c: char :: qs[i % 4].get()
+		do qs[(i + 1) % 4].add(c)
+	end for
+	for i(0, 3)
+		while(^qs[i] <> 0)
+			var c: char :: qs[i].get()
+			do cui@print("\{c}")
+		end while
+		do cui@print("\n")
+	end for
+end func

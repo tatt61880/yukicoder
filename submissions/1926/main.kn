@@ -1,0 +1,17 @@
+func main()
+	var t: int :: cui@inputInt()
+	for(1, t)
+		var n: int :: cui@inputInt()
+		var m: int :: cui@inputInt()
+		var k: int :: cui@inputInt()
+		
+		var ans: int :: 0
+		
+		var a0: int :: k % m
+		if(m - n > a0)
+			do ans :: a0
+		end if
+		do cui@print("\{ans}\n")
+	end for
+	
+end func

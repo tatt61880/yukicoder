@@ -1,0 +1,38 @@
+func main()
+	var n: int :: cui@inputInt()
+	var s: []char :: cui@input()
+	
+	var lis: list<char> :: #list<char>
+	
+	var cnt: int :: 0
+	for i(0, ^s - 1)
+		var c: char :: s[i]
+		do lis.add(c)
+		switch(c)
+		case 'A', 'G', 'C', 'T'
+			do cnt :+ 1
+		end switch
+	end for
+	
+	do lis.head()
+	do lis.moveOffset(cnt - 1)
+	
+	var ans: int :: 0
+	while(cnt <> 0)
+		do ans :+ 1
+		var c: char :: lis.get()
+		switch(c)
+		case 'A', 'G', 'C', 'T'
+			do cnt :- 1
+			if(cnt = 0)
+				do lis.del()
+			else
+				do lis.prev()
+				do lis.delNext()
+			end if
+		default
+			do lis.del()
+		end switch
+	end while
+	do cui@print("\{ans}\n")
+end func

@@ -1,0 +1,28 @@
+func main()
+	var m: int :: cui@inputInt()
+	var d: int :: cui@inputInt()
+	var k: int :: cui@inputInt()
+	var maxDay: int :: [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31][m - 1]
+	
+	var s: []char :: ""
+	for(1, 7)
+		if(d > maxDay)
+			do d :: 1
+			do m :+ 1
+			if(m = 13)
+				do m :: 1
+			end if
+		end if
+		do s :~ m.toStrFmt("02d") ~ d.toStrFmt("02d")
+		
+		do d :+ 1
+	end for
+	
+	var map: dict<char, bool> :: #dict<char, bool>
+	for i(0, ^s - 1)
+		do map.add(s[i], true)
+	end for
+	
+	var ans: bool :: ^map >= k
+	do cui@print((ans ?("Yes", "No")) ~ "\n")
+end func

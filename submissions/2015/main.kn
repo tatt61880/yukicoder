@@ -1,0 +1,20 @@
+func main()
+	var t: int :: cui@inputInt()
+	for(1, t)
+		var n: int :: cui@inputInt()
+		var m: int :: cui@inputInt()
+		var a: []int :: #[n]int
+		for i(0, n - 1)
+			do a[i] :: cui@inputInt()
+		end for
+		
+		var ans: bool :: true
+		for i(0, n - 2)
+			if(a[i] + a[i + 1] < m)
+				do ans :: false
+				break i
+			end if
+		end for
+		do cui@print((ans ?("Yes", "No")) ~ "\n")
+	end for
+end func

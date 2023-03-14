@@ -1,0 +1,8 @@
+func main()
+	var t: int :: cui@inputInt()
+	for(1, t)
+		var n: int :: cui@inputInt()
+		var ans: int :: 10 ^ 11 - n - 1
+		do cui@print("\{ans}\n")
+	end for
+end func

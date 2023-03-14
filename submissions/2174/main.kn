@@ -1,0 +1,14 @@
+func main()
+	var n: int :: cui@inputInt()
+	
+	var ans: int :: 0
+	
+	var pow: int :: 1
+	for i(1, n)
+		do ans :+ i ^ pow
+		do pow :% 3
+		do pow :+ 1
+	end for
+	
+	do cui@print("\{ans}\n")
+end func

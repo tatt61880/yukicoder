@@ -1,0 +1,41 @@
+func main()
+	var h: int :: cui@inputInt()
+	var w: int :: cui@inputInt()
+	var k: int :: cui@inputInt()
+	var ans: int :: 0
+	for i(0, k ^ (h * w) - 1)
+		var a: [][]int :: #[h, w]int
+		for y(0, h - 1)
+			for x(0, w - 1)
+				do a[y][x] :: (i / k ^ (y * w + x)) % k
+			end for
+		end for
+		
+		; K色すべてを使っているかの調査
+		for j(0, k - 1)
+			for y(0, h - 1)
+				for x(0, w - 1)
+					if(a[y][x] = j)
+						skip j
+					end if
+				end for
+			end for
+			skip i
+		end for
+		
+		for dy(0, h - 1)
+			for dx(0, w - 1)
+				for y(0, h - 1)
+					for x(0, w - 1)
+						if(a[(y + dy) % h][(x + dx) % w] <> a[y][x])
+							skip dx
+						end if
+					end for
+				end for
+				do ans :+ 1
+			end for
+		end for
+	end for
+	do ans :/ h * w
+	do cui@print("\{ans}\n")
+end func

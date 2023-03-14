@@ -1,0 +1,14 @@
+func main()
+	var n: int :: cui@inputInt()
+	var a: int :: cui@inputInt()
+	var b: int :: cui@inputInt()
+	var c: int :: cui@inputInt()
+	
+	var ans: bool :: false
+	if(a < b & a < c)
+		do ans :: true
+	elif(a > b & a > c)
+		do ans :: true
+	end if
+	do cui@print((ans ?("Yes", "No")) ~ "\n")
+end func

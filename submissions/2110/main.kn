@@ -1,0 +1,41 @@
+func main()
+	var t: int :: cui@inputInt()
+	for(1, t)
+		var a: int :: cui@inputInt()
+		var b: int :: cui@inputInt()
+		var c: int :: cui@inputInt()
+		var f: bool :: (a + b + c) % 2 = 0
+		
+		var ans: int :: 0
+		
+		if(a <= c)
+			do ans :+ 2 * a
+			do c :- a
+			do a :: 0
+			
+			do ans :+ c / 2
+			
+			if(b % 2 = 0)
+				do ans :+ b
+			else
+				do ans :+ b - 1
+			end if
+		else
+			do ans :+ 2 * c
+			do a :- c
+			do c :: 0
+			
+			if(b % 2 = 0)
+				do ans :+ b
+			else
+				if(a <> 0)
+					do ans :+ b
+				else
+					do ans :+ b - 1
+				end if
+			end if
+		end if
+		
+		do cui@print("\{ans}\n")
+	end for
+end func

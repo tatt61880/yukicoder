@@ -1,0 +1,72 @@
+func main()
+	var n: int :: cui@inputInt()
+	var q: int :: cui@inputInt()
+	
+	var a: []int :: #[n]int
+	for i(0, n - 1)
+		do a[i] :: cui@inputInt()
+	end for
+	
+	; Pの累積和
+	var cumP: []int :: #[a.max() + 1]int
+	do cumP[0] :: 0
+	for i(1, a.max())
+		do cumP[i] :: cumP[i - 1] + i
+	end for
+	
+	; idxの累積和
+	var cumIdx: []int :: #[n + 1]int
+	do cumIdx[0] :: 0
+	for i(1, n)
+		do cumIdx[i] :: cumIdx[i - 1] + a[i - 1]
+	end for
+	
+	; valの累積和
+	var cumVal: []int :: #[n + 1]int
+	do cumVal[0] :: 0
+	for i(1, n)
+		do cumVal[i] :: cumVal[i - 1] + cumP[a[i - 1]]
+	end for
+	
+	for loop(1, q)
+		var s: int :: cui@inputInt()
+		if(s > cumVal[n])
+			do cui@print("-1\n")
+			skip loop
+		end if
+		
+		var idx: int
+		block
+			; valの累積和がsを超えなければok
+			var ok: int :: 0
+			var ng: int :: n + 1
+			while((ok - ng).abs() > 1)
+				var mid: int :: (ok + ng) / 2
+				if(cumVal[mid] <= s)
+					do ok :: mid
+				else
+					do ng :: mid
+				end if
+			end while
+			do idx :: ok
+		end block
+		
+		do s :- cumVal[idx]
+		var ans: int :: cumIdx[idx]
+		if(idx <> n)
+			; 累積和がs以上の場合にok
+			var ok: int :: a[idx]
+			var ng: int :: -1
+			while((ok - ng).abs() > 1)
+				var mid: int :: (ok + ng) / 2
+				if(cumP[mid] >= s)
+					do ok :: mid
+				else
+					do ng :: mid
+				end if
+			end while
+			do ans :+ ok
+		end if
+		do cui@print("\{ans}\n")
+	end for
+end func

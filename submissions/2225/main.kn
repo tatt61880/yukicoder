@@ -1,0 +1,35 @@
+func main()
+	var h: int :: cui@inputInt()
+	var w: int :: cui@inputInt()
+	var k: int :: cui@inputInt()
+	
+	const mod: int :: 998244353
+	
+	var ans: int :: 0
+	
+	for i(1, k)
+		var x: int :: cui@inputInt()
+		var y: int :: cui@inputInt()
+		var v: int :: cui@inputInt() % mod
+		
+		var num: int :: 0
+		if(x > y)
+			do num :+ y * (y + 1) / 2
+			do num :+ y * (x - y)
+			do num :+ (x - 1) * x / 2
+		else
+			do num :+ x * (x + 1) / 2
+			do num :+ (x - 1) * x / 2
+		end if
+		
+		var p: int :: x - 1 - w + y
+		if(p > 0)
+			do num :- p * (p + 1) / 2
+		end if
+		
+		do ans :+ v * num
+		do ans :% mod
+	end for
+	
+	do cui@print("\{ans}\n")
+end func

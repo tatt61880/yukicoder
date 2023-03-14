@@ -1,0 +1,11 @@
+func main()
+	var n: int :: cui@inputInt()
+	var p: float :: cui@inputFloat()
+	if(n >= 200)
+		do cui@print("1\n")
+		ret
+	end if
+	
+	var ans: float :: 1.0 - (1.0 - p) ^ (n $ float)
+	do cui@print("\{ans}\n")
+end func

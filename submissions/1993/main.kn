@@ -1,0 +1,12 @@
+func main()
+	var n: int :: cui@inputInt()
+	
+	var x: float :: 1000.0
+	for(1, n - 1)
+		var a: int :: cui@inputInt()
+		do x :* (1000 - a) $ float / 1000.0
+	end for
+	
+	var ans: float :: 1000.0 - x
+	do cui@print("\{ans}\n")
+end func

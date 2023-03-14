@@ -1,0 +1,23 @@
+func main()
+	var n: int :: cui@inputInt()
+	var red: dict<int, int> :: #dict<int, int>
+	var blue: dict<int, int> :: #dict<int, int>
+	
+	var ans: int :: 0
+	
+	for(1, n)
+		var a: int :: cui@inputInt()
+		var b: int :: cui@inputInt()
+		var t: int :: cui@inputInt()
+		var pos: int :: b - t
+		if(a = 0)
+			do red.add(pos, red.get(pos, &) + 1)
+			do ans :+ blue.get(pos, &)
+		else
+			do blue.add(pos, blue.get(pos, &) + 1)
+			do ans :+ red.get(pos, &)
+		end if
+	end for
+	
+	do cui@print("\{ans}\n")
+end func

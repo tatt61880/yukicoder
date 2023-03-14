@@ -1,0 +1,19 @@
+func main()
+	var n: int :: cui@inputInt()
+	var m: int :: cui@inputInt()
+	var a: []int :: #[m]int
+	for(1, n)
+		var s: []char :: cui@input()
+		for i(0, m - 1)
+			if(s[i] = 'x')
+				do a[i] :+ 1
+			end if
+		end for
+	end for
+	
+	do a.sort()
+	do a.reverse()
+	
+	var ans: int :: a[0] + 1
+	do cui@print("\{ans}\n")
+end func

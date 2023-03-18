@@ -1,0 +1,43 @@
+var mapStone: dict<int, bool>
+var mapNext: dict<int, bool>
+var e: int
+
+func main()
+	var n: int :: cui@inputInt()
+	var s: int :: cui@inputInt()
+	var e: int :: cui@inputInt()
+	
+	do @mapStone :: #dict<int, bool>
+	do @mapStone.add(e, true)
+	for(1, n)
+		var stone: int :: cui@inputInt()
+		do @mapStone.add(stone, true)
+	end for
+	do @mapNext :: #dict<int, bool>
+	do @mapNext.add(s, true)
+	
+	var ans: int :: 0
+	while(^@mapNext <> 0)
+		do ans :+ 1
+		var mapCurrent: dict<int, bool> :: ##@mapNext
+		do @mapNext :: #dict<int, bool>
+		do mapCurrent.forEach(callback, null)
+		if(@mapNext.get(e, &))
+			do cui@print("\{ans - 1}\n")
+			ret
+		end if
+	end while
+	
+	do cui@print("-1\n")
+	
+	func callback(key: int, value: bool, data: kuin@Class): bool
+		for i(0, 30)
+			var v: int :: (key $ bit32).xor((2 ^ i) $ bit32) $ int
+			;do cui@print("\{key} \{v}\n")
+			if(@mapStone.get(v, &))
+				do @mapNext.add(v, true)
+			end if
+		end for
+		ret true
+	end func
+end func

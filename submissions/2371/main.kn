@@ -1,0 +1,14 @@
+func main()
+	var h: int :: cui@inputInt()
+	var m: int :: cui@inputInt()
+	
+	var time: int :: h * 100 + m
+	
+	if(time < 730)
+		do cui@print("Yes\n")
+	elif(time < 830)
+		do cui@print("Late\n")
+	else
+		do cui@print("No\n")
+	end if
+end func

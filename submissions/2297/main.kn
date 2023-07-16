@@ -1,0 +1,11 @@
+func main()
+	var n: int :: cui@inputInt()
+	var ans: int :: 0
+	
+	switch x(n % 3)
+	case 1, 2
+		do ans :: 3 - x
+	end switch
+	
+	do cui@print("\{ans}\n")
+end func

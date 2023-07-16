@@ -1,0 +1,55 @@
+func main()
+	var n: int :: cui@inputInt()
+	var k: int :: cui@inputInt()
+	var q: int :: cui@inputInt()
+	
+	var solved: [][]char :: #[6 * q, 0]char
+	var idx: int :: 0
+	
+	var t: [][]char :: #[6, 0]char
+	var d: []int :: #[6]int
+	
+	for(1, q)
+		var qt: int :: cui@inputInt()
+		switch(qt)
+		case 1
+			var s: []char :: cui@inputStr()
+			do solved[idx] :: s
+			do idx :+ 1
+		case 2
+			for i(0, 5)
+				do t[i] :: cui@inputStr()
+				do d[i] :: cui@inputInt()
+			end for
+			
+			var num: int :: 0
+			var time: int :: 0
+			for i(0, 5)
+				var dd: int :: d[i]
+				if(d[i] > k)
+					var flag: bool :: false
+					for j([0, idx - n].max(), idx - 1)
+						if(solved[j] = t[i])
+							do flag :: true
+							break j
+						end if
+					end for
+					if(flag)
+						do dd :: k
+					end if
+				end if
+				do time :+ dd
+				if(time <= 60)
+					do num :+ 1
+				else
+					break i
+				end if
+			end for
+			do cui@print("\{num}\n")
+			for i(0, num - 1)
+				do solved[idx] :: t[i]
+				do idx :+ 1
+			end for
+		end switch
+	end for
+end func

@@ -1,0 +1,23 @@
+func main()
+	var a: []char :: cui@input()
+	var b: []char :: cui@input()
+	
+	do a.reverse()
+	do b.reverse()
+	var ans: int :: 0
+	var d: int :: 1
+	for i(0, [^a, ^b].max() - 1)
+		var x: int :: 0
+		if(i < ^a)
+			do x :+ a[i] $ int - '0' $ int
+		end if
+		if(i < ^b)
+			do x :+ b[i] $ int - '0' $ int
+		end if
+		if(x = 1)
+			do ans :+ d
+		end if
+		do d :* 2
+	end for
+	do cui@print("\{ans}\n")
+end func

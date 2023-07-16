@@ -1,0 +1,18 @@
+func main()
+	var l: int :: cui@inputInt()
+	var r: int :: cui@inputInt()
+	var c: int :: cui@inputInt()
+	
+	do r :: lib@min(r, l + 1000)
+	
+	var ans: int :: 1000
+	for i(l, r)
+		var cost: int :: i * c
+		if(cost % 1000 = 0)
+			do ans :: 0
+		else
+			do ans :: lib@min(ans, 1000 - cost % 1000)
+		end if
+	end for
+	do cui@print("\{ans}\n")
+end func

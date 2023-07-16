@@ -1,0 +1,31 @@
+func main()
+	var n: int :: cui@inputInt()
+	var s: []char :: cui@input()
+	
+	var ans: bool :: true
+	var prev: char :: '-'
+	for i(0, n - 1)
+		switch(s[i])
+		case 'w'
+			if(i = n - 1)
+				do ans :: false
+			else
+				if(s[i + 1] <> 'a' & s[i + 1] <> 'o' & s[i + 1] <> '?')
+					do ans :: false
+				else
+					do s[i + 1] :: 'a'
+				end if
+			end if
+		case 'a', 'o'
+			if(prev <> '?' & prev <> 'w')
+				do ans :: false
+			end if
+		case 'n'
+		case '?'
+		default
+			do ans :: false
+		end switch
+		do prev :: s[i]
+	end for
+	do cui@print((ans ?("Yes", "No")) ~ "\n")
+end func

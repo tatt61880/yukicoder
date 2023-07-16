@@ -1,0 +1,13 @@
+func main()
+	var x: int :: cui@inputInt()
+	switch(x)
+	case 3, 4, 5
+		do cui@print("spring\n")
+	case 6, 7, 8
+		do cui@print("summer\n")
+	case 9, 10, 11
+		do cui@print("fall\n")
+	case 12, 1, 2
+		do cui@print("winter\n")
+	end switch
+end func

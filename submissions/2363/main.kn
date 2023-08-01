@@ -1,0 +1,33 @@
+func main()
+	var n: int :: cui@inputInt()
+	if(n = 1)
+		do cui@print("2\n")
+		ret
+	end if
+	
+	for k(2, 60)
+		if(bonacci(k, n))
+			do cui@print("\{k}\n")
+			ret
+		end if
+	end for
+	do cui@print("-1\n")
+	
+	func bonacci(k: int, n: int): bool
+		var a: []int :: #[100]int
+		do a[0] :: 1
+		do a[1] :: 1
+		var i: int :: 2
+		
+		while(true)
+			do a[i] :: 0
+			for j(1, [k, i].min())
+				do a[i] :+ a[i - j]
+			end for
+			if(a[i] >= n)
+				ret a[i] = n
+			end if
+			do i :+ 1
+		end while
+	end func
+end func

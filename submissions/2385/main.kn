@@ -1,0 +1,31 @@
+func main()
+	var q: int :: cui@inputInt()
+	for(1, q)
+		var s: []char :: cui@input()
+		var base: int :: 10
+		var start: int :: 0
+		if(^s > 2)
+			switch(s[1])
+			case 'b'
+				do start :: 2
+				do base :: 2
+			case 'o'
+				do start :: 2
+				do base :: 8
+			case 'x'
+				do start :: 2
+				do base :: 16
+			end switch
+		end if
+		var ans: int :: 0
+		for i(start, ^s - 1)
+			do ans :* base
+			if(base <> 16 | s[i] <= '9')
+				do ans :+ s[i] $ int - '0' $ int
+			else
+				do ans :+ s[i] $ int - 'a' $ int + 10
+			end if
+		end for
+		do cui@print("\{ans}\n")
+	end for
+end func

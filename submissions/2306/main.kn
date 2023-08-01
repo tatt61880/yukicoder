@@ -1,0 +1,36 @@
+func main()
+	var n: int :: cui@inputInt()
+	var m: int :: cui@inputInt()
+	var a: []int :: #[m]int
+	for i(0, m - 1)
+		do a[i] :: cui@inputInt()
+	end for
+	
+	var dic: dict<int, int> :: #dict<int, int>
+	for i(0, m - 1)
+		do dic.add(i, a[i])
+	end for
+	
+	var q: int :: cui@inputInt()
+	var ans: int :: 0
+	for i(0, m - 1)
+		do ans :+ a[i] ^ 2
+	end for
+	
+	for(1, q)
+		var c: int :: cui@inputInt() - 1
+		var k: int :: cui@inputInt()
+		var d: int :: cui@inputInt() - 1
+		var nc: int :: dic.get(c, &)
+		var nd: int :: dic.get(d, &)
+		do ans :- nc ^ 2
+		do ans :- nd ^ 2
+		do nc :- k
+		do nd :+ k
+		do ans :+ nc ^ 2
+		do ans :+ nd ^ 2
+		do dic.add(c, nc)
+		do dic.add(d, nd)
+		do cui@print("\{ans}\n")
+	end for
+end func

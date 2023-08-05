@@ -1,0 +1,9 @@
+func main()
+	var s: []char :: cui@input()
+	var t: []char :: cui@input()
+	var n: int :: cui@inputInt()
+	
+	var ans: []char :: ([s] ~ [t].repeat(n)).join("_")
+	
+	do cui@print("\{ans}\n")
+end func

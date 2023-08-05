@@ -1,0 +1,10 @@
+func main()
+	var a: int :: cui@inputInt()
+	var b: int :: cui@inputInt()
+	var c: int :: cui@inputInt()
+	var d: int :: cui@inputInt()
+	
+	var n: int :: a * c - b * d
+	var m: int :: a * d + b * c
+	do cui@print("\{n} \{m}\n")
+end func

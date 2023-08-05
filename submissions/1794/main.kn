@@ -1,0 +1,22 @@
+func main()
+	var n: int :: cui@inputInt()
+	var m: int :: cui@inputInt()
+	var quotient: int :: n / m
+	var remainder: int :: n % m
+	
+	do cui@print("\{quotient}")
+	
+	while(remainder > 1)
+		do n :: m
+		do m :: remainder
+		do quotient :: n / m
+		do remainder :: n % m
+		do cui@print(" \{quotient}")
+	end while
+	
+	if(remainder <> 0)
+		do cui@print(" \{m}")
+	end if
+	
+	do cui@print("\n")
+end func

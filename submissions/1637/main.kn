@@ -1,0 +1,44 @@
+var cnts: []int
+
+func main()
+	var n: int :: cui@inputInt()
+	var q: int :: cui@inputInt()
+	
+	var g: []list<int> :: #[n]list<int>
+	for i(0, n - 1)
+		do g[i] :: #list<int>
+	end for
+	
+	for(1, n - 1)
+		var a: int :: cui@inputInt() - 1
+		var b: int :: cui@inputInt() - 1
+		do g[a].add(b)
+		do g[b].add(a)
+	end for
+	
+	; 部分木のサイズ
+	do @cnts :: #[n]int
+	do bfs(g, 0)
+	
+	var ans: int :: 0
+	for(1, q)
+		var p: int :: cui@inputInt() - 1
+		var x: int :: cui@inputInt()
+		do ans :+ @cnts[p] * x
+		do cui@print("\{ans}\n")
+	end for
+	
+	func bfs(g: []list<int>, current: int)
+		var gCur: list<int> :: g[current]
+		do gCur.head()
+		do @cnts[current] :: 1
+		for i(0, ^gCur - 1)
+			var sub: int :: gCur.get()
+			do gCur.next()
+			if(@cnts[sub] = 0)
+				do bfs(g, sub)
+				do @cnts[current] :+ @cnts[sub]
+			end if
+		end for
+	end func
+end func

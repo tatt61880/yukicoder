@@ -1,0 +1,7 @@
+func main()
+	var a: []char :: cui@input()
+	var b: []char :: cui@input()
+	
+	var ans: bool :: a[^a - 1] = '0' | b[^b - 1] = '0'
+	do cui@print((ans ?("Even", "Odd")) ~ "\n")
+end func

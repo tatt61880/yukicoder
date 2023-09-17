@@ -1,0 +1,5 @@
+func main()
+	var n: []char :: cui@input()
+	var ans: bool :: "9".repeat(^n) = n
+	do cui@print((ans ?("Yes", "No")) ~ "\n")
+end func

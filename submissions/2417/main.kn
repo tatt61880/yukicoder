@@ -1,0 +1,20 @@
+func main()
+	var n: int :: cui@inputInt()
+	var k: int :: cui@inputInt()
+	
+	var ans: int :: 0
+	var a: int :: 1
+	while(a * a <= n - k)
+		if((n - k) % a = 0)
+			if(n % a = k)
+				do ans :+ 1
+			end if
+			var b: int :: (n - k) / a
+			if(b <> a & n % b = k)
+				do ans :+ 1
+			end if
+		end if
+		do a :+ 1
+	end while
+	do cui@print("\{ans}\n")
+end func

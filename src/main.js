@@ -1,7 +1,11 @@
 (function () {
   'use strict';
 
-  window.onload = async function () {
+  document.addEventListener('DOMContentLoaded', onloadApp);
+  return;
+  // ==========================================================================
+
+  async function onloadApp() {
     const urlQueryParams = analyzeUrl();
     const base = urlQueryParams.base;
     const no = urlQueryParams.no;
@@ -17,6 +21,9 @@
       h1.innerText = '各問の最新ACコード一覧';
       contents.appendChild(h1);
       contents.appendChild(document.createElement('hr'));
+
+      const p = document.createElement('p');
+      contents.appendChild(p);
 
       const table = document.createElement('table');
       const thead = document.createElement('thead');
@@ -64,6 +71,7 @@
           td.innerText = title;
         }
       }
+      p.innerText = `${submissionsList.length}件`;
     } else {
       // ページタイトル
       {
@@ -156,7 +164,7 @@
         }
       }
     }
-  };
+  }
 
   function analyzeUrl() {
     const res = {

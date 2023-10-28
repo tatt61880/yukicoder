@@ -50,14 +50,16 @@ h1 {
   padding-left: 8px;
   margin: 0;
   font-weight: bold;
-  background-color: #ffbbff;
+  color: #000055;
+  background-color: #c0cbff;
 }
 
 h2 {
   padding-left: 12px;
   margin: 0;
-  font-weight: normal;
-  background-color: #ffffbb;
+  font-weight: bold;
+  color: #000055;
+  background-color: #c0cbff;
 }
 
 h3 {
@@ -70,7 +72,9 @@ table {
 }
 
 th {
-  background-color: #b0d4e5;
+  font-weight: bold;
+  color: #000055;
+  background-color: #c0cbff;
 }
 
 th,

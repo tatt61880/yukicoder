@@ -17,151 +17,161 @@
     }
 
     if (no === null) {
+      await appendAcList(contents, base);
+    } else {
+      await appendEditorial(contents, base, no);
+    }
+  }
+
+  // ACコード一覧
+  async function appendAcList(contents, base) {
+    const h1 = document.createElement('h1');
+    h1.innerText = '各問の最新ACコード一覧';
+    contents.appendChild(h1);
+    contents.appendChild(document.createElement('hr'));
+
+    const p = document.createElement('p');
+    contents.appendChild(p);
+
+    const table = document.createElement('table');
+    const thead = document.createElement('thead');
+    contents.appendChild(table);
+    table.appendChild(thead);
+    const tr = thead.insertRow();
+    {
+      const td = document.createElement('th');
+      td.innerText = '提出ID';
+      tr.appendChild(td);
+    }
+    {
+      const td = document.createElement('th');
+      td.innerText = '言語';
+      tr.appendChild(td);
+    }
+    {
+      const td = document.createElement('th');
+      td.innerText = '問題タイトル';
+      tr.appendChild(td);
+    }
+    const tbody = document.createElement('tbody');
+    table.appendChild(tbody);
+
+    const submissionsList = await getSubmissionsList(base);
+    for (const submission of submissionsList) {
+      // const problemId = submission[0];
+      const submitId = submission[1];
+      const language = submission[2];
+      const title = submission[5];
+      const tr = tbody.insertRow();
+      {
+        const td = tr.insertCell();
+        const a = document.createElement('a');
+        a.href = `https://yukicoder.me/submissions/${submitId}/`;
+        a.innerText = submitId;
+        td.appendChild(a);
+      }
+      {
+        const td = tr.insertCell();
+        td.innerText = language;
+      }
+      {
+        const td = tr.insertCell();
+        td.innerText = title;
+      }
+    }
+    p.innerText = `${submissionsList.length}件`;
+  }
+
+  // 解説
+  async function appendEditorial(contents, base, no) {
+    // ページタイトル
+    {
+      let title = await getTitle(base, no);
+      if (title !== null) {
+        title = `${title} - yukicoder`;
+      } else {
+        title = '404 問題タイトル not found!';
+      }
+      document.title = title;
+
       const h1 = document.createElement('h1');
-      h1.innerText = '各問の最新ACコード一覧';
+      h1.innerText = title;
       contents.appendChild(h1);
       contents.appendChild(document.createElement('hr'));
+    }
 
-      const p = document.createElement('p');
-      contents.appendChild(p);
+    // 問題URL
+    {
+      const problemUrl = getProblemUrl(no);
+      if (problemUrl !== null) {
+        const p = document.createElement('p');
+        p.classList.add('narrow');
+        p.innerText = '問題URL: ';
+        contents.appendChild(p);
 
-      const table = document.createElement('table');
-      const thead = document.createElement('thead');
-      contents.appendChild(table);
-      table.appendChild(thead);
-      const tr = thead.insertRow();
-      {
-        const td = document.createElement('th');
-        td.innerText = '提出ID';
-        tr.appendChild(td);
-      }
-      {
-        const td = document.createElement('th');
-        td.innerText = '言語';
-        tr.appendChild(td);
-      }
-      {
-        const td = document.createElement('th');
-        td.innerText = '問題タイトル';
-        tr.appendChild(td);
-      }
-      const tbody = document.createElement('tbody');
-      table.appendChild(tbody);
+        const a = document.createElement('a');
+        a.href = problemUrl;
+        a.innerText = problemUrl;
+        p.appendChild(a);
 
-      const submissionsList = await getSubmissionsList(base);
-      for (const submission of submissionsList) {
-        // const problemId = submission[0];
-        const submitId = submission[1];
-        const language = submission[2];
-        const title = submission[5];
-        const tr = tbody.insertRow();
-        {
-          const td = tr.insertCell();
-          const a = document.createElement('a');
-          a.href = `https://yukicoder.me/submissions/${submitId}/`;
-          a.innerText = submitId;
-          td.appendChild(a);
-        }
-        {
-          const td = tr.insertCell();
-          td.innerText = language;
-        }
-        {
-          const td = tr.insertCell();
-          td.innerText = title;
-        }
-      }
-      p.innerText = `${submissionsList.length}件`;
-    } else {
-      // ページタイトル
-      {
-        let title = await getTitle(base, no);
-        if (title !== null) {
-          title = `${title} - yukicoder`;
-        } else {
-          title = '404 問題タイトル not found!';
-        }
-        document.title = title;
-
-        const h1 = document.createElement('h1');
-        h1.innerText = title;
-        contents.appendChild(h1);
         contents.appendChild(document.createElement('hr'));
       }
+    }
 
-      // 問題URL
-      {
-        const problemUrl = getProblemUrl(no);
-        if (problemUrl !== null) {
-          const p = document.createElement('p');
-          p.classList.add('narrow');
-          p.innerText = '問題URL: ';
-          contents.appendChild(p);
+    // 解説
+    {
+      let editorial = await getEditorial(base, no);
+      if (editorial !== null) {
+        const h2 = document.createElement('h2');
+        h2.innerText = '解説';
+        contents.appendChild(h2);
 
-          const a = document.createElement('a');
-          a.href = problemUrl;
-          a.innerText = problemUrl;
-          p.appendChild(a);
+        editorial = editorial.replaceAll('\\(', '\\\\(');
+        editorial = editorial.replaceAll('\\)', '\\\\)');
+        const md = window.markdownit();
+        const result = md.render(editorial);
+        const div = document.createElement('div');
+        div.innerHTML = result;
+        contents.appendChild(div);
 
-          contents.appendChild(document.createElement('hr'));
-        }
+        window.renderMathInElement(div);
+
+        contents.appendChild(document.createElement('hr'));
       }
+    }
 
-      // 解説
-      {
-        let editorial = await getEditorial(base, no);
-        if (editorial !== null) {
-          const h2 = document.createElement('h2');
-          h2.innerText = '解説';
-          contents.appendChild(h2);
+    // 提出したソースコード
+    {
+      const src = await getSrc(base, no);
+      if (src !== null) {
+        const h2 = document.createElement('h2');
+        h2.innerText = '提出したソースコード (言語: Kuin)';
+        contents.appendChild(h2);
 
-          editorial = editorial.replaceAll('\\(', '\\\\(');
-          editorial = editorial.replaceAll('\\)', '\\\\)');
-          const md = window.markdownit();
-          const result = md.render(editorial);
-          const div = document.createElement('div');
-          div.innerHTML = result;
-          contents.appendChild(div);
+        const id = 'code';
+        const pre = document.createElement('pre');
+        pre.setAttribute('id', id);
+        contents.appendChild(pre);
 
-          window.renderMathInElement(div);
-
-          contents.appendChild(document.createElement('hr'));
-        }
+        const editor = elemToKuinEditor(pre);
+        editor.setValue(src);
+        editor.navigateTo(0, 0);
       }
+    }
 
-      // 提出したソースコード
-      {
-        const src = await getSrc(base, no);
-        if (src !== null) {
-          const h2 = document.createElement('h2');
-          h2.innerText = '提出したソースコード (言語: Kuin)';
-          contents.appendChild(h2);
+    // 提出URL
+    {
+      const submissionUrl = await getSubmissionUrl(base, no);
+      if (submissionUrl !== null) {
+        const p = document.createElement('p');
+        p.classList.add('narrow');
+        p.innerText = '提出URL: ';
+        contents.appendChild(p);
 
-          const id = 'code';
-          const pre = document.createElement('pre');
-          pre.setAttribute('id', id);
-          contents.appendChild(pre);
-
-          const editor = elemToKuinEditor(pre);
-          editor.setValue(src);
-          editor.navigateTo(0, 0);
-        }
-      }
-
-      // 提出URL
-      {
-        const submissionUrl = await getSubmissionUrl(base, no);
-        if (submissionUrl !== null) {
-          const p = document.createElement('p');
-          p.classList.add('narrow');
-          p.innerText = '提出URL: ';
-          contents.appendChild(p);
-
-          const a = document.createElement('a');
-          a.href = submissionUrl;
-          a.innerText = submissionUrl;
-          p.appendChild(a);
-        }
+        const a = document.createElement('a');
+        a.href = submissionUrl;
+        a.innerText = submissionUrl;
+        p.appendChild(a);
       }
     }
   }

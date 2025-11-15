@@ -1,0 +1,19 @@
+func main()
+	var s: int :: cui@inputInt()
+	var squares: []int :: #[0]int
+	
+	var a: []int :: #[0]int
+	while(s > 0)
+		var sqrt: int :: lib@sqrt(s $ float) $ int
+		if(sqrt ^ 2 > s)
+			do sqrt :- 1
+		end if
+		do a :~ [sqrt ^ 2]
+		do s :- sqrt ^ 2
+	end while
+	
+	do cui@print("\{^a}\n")
+	for i(0, ^a - 1)
+		do cui@print("\{a[i]}\{i = ^a - 1 ?("\n", " ")}")
+	end for
+end func

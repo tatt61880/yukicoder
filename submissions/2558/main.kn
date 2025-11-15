@@ -1,0 +1,16 @@
+func main()
+	var A: int :: cui@inputInt()
+	var B: int :: cui@inputInt()
+	var a: int :: cui@inputInt()
+	var b: int :: cui@inputInt()
+	
+	var x: int :: 0
+	while(true)
+		if(x % A = a & x % B = b)
+			var ans: int :: x
+			do cui@print("\{ans}\n")
+			ret
+		end if
+		do x :+ 1
+	end while
+end func

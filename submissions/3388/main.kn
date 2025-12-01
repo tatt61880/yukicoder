@@ -1,0 +1,16 @@
+func main()
+	var a: int :: cui@inputInt()
+	var b: int :: cui@inputInt()
+	var ans: int :: 0
+	for i(a, b)
+		if(math@prime(i))
+			do ans :+ f(i)
+		end if
+	end for
+	
+	do cui@print("\{ans}\n")
+	
+	func f(x: int): int
+		ret x ^ 3 - x ^ 2 + x + 1
+	end func
+end func

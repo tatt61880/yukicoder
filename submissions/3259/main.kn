@@ -1,0 +1,12 @@
+func main()
+	var l: int :: cui@inputInt()
+	var r: int :: cui@inputInt()
+	var ans: int :: 0
+	for i(l, r - 1)
+		if(i = 295 | i = 416)
+			do ans :+ 1
+		end if
+	end for
+	
+	do cui@print("\{ans}\n")
+end func

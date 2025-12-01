@@ -1,0 +1,7 @@
+func main()
+	var n: int :: cui@inputInt()
+	; x * 500 > n - 100
+	; x > (n - 100) / 500
+	var ans: int :: (n - 100 + 500) / 500
+	do cui@print("\{ans}\n")
+end func

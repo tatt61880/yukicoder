@@ -1,0 +1,15 @@
+func main()
+	var n: int :: cui@inputInt()
+	var s: []char :: cui@input()
+	var ans: []char :: "UEC"
+	var f: bool :: false
+	for i(0, ^s - 1)
+		if(f)
+			do ans :~ [s[i]]
+		end if
+		if(s[i] = 'c')
+			do f :: true
+		end if
+	end for
+	do cui@print("\{ans}\n")
+end func

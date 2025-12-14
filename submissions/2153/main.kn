@@ -5,9 +5,8 @@ func main()
 	for i(0, n - 1)
 		var s: []char :: cui@inputStr()
 		var c: int :: cui@inputInt()
-		var existed: bool
-		var prev: int :: map.get(s, &existed)
-		if(existed)
+		if(map.exist(s))
+			var prev: int :: map.get(s, &)
 			do a[prev] :- 1
 		end if
 		do a[c] :+ 1

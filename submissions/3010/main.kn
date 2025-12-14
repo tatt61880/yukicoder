@@ -1,0 +1,17 @@
+func main()
+	var n: int :: cui@inputInt()
+	var m: int :: cui@inputInt()
+	
+	var ans: int :: 0
+	for(1, n)
+		var s: []char :: cui@inputStr()
+		var r: int :: cui@inputInt()
+		if(r >= 1200)
+			if(s.sub(0, 4) <> "oooo")
+				do ans :+ 1
+			end if
+		end if
+	end for
+	
+	do cui@print("\{ans}\n")
+end func

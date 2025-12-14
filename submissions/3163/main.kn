@@ -1,0 +1,13 @@
+func main()
+	var t: int :: cui@inputInt()
+	for(1, t)
+		var a: []int :: #[5]int
+		for i(0, 4)
+			do a[i] :: cui@inputInt()
+		end for
+		do a.sort()
+		var ans: int :: a[4] - a[0]
+		do cui@print("\{ans}\n")
+	end for
+	
+end func

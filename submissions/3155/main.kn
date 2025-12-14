@@ -1,0 +1,14 @@
+func main()
+	var n: int :: cui@inputInt()
+	var dic: dict<[]char, int> :: #dict<[]char, int>
+	var ans: bool :: false
+	for loop(1, n)
+		var ab: []char :: cui@input()
+		if(dic.get(ab, &) = 1)
+			do ans :: true
+			break loop
+		end if
+		do dic.add(ab, 1)
+	end for
+	do cui@print((ans ?("Yes", "No")) ~ "\n")
+end func

@@ -1,0 +1,27 @@
+func main()
+	var n: int :: cui@inputInt()
+	var s: int :: cui@inputInt()
+	var t: int :: cui@inputInt()
+	var k: int :: cui@inputInt()
+	var a: []int :: #[n]int
+	for i(0, n - 1)
+		do a[i] :: cui@inputInt()
+	end for
+	
+	var as: int :: a[s - 1]
+	var at: int :: a[t - 1]
+	
+	
+	var ans: int :: 0
+	if(as + at <= k)
+		do ans :: 1
+	else
+		var aMin: int :: a.min()
+		if(as + aMin <= k & at + aMin <= k)
+			do ans :: 2
+		else
+			do ans :: -1
+		end if
+	end if
+	do cui@print("\{ans}\n")
+end func

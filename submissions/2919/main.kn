@@ -1,0 +1,8 @@
+func main()
+	var n: int :: cui@inputInt()
+	var m: int :: cui@inputInt()
+	var k: int :: cui@inputInt()
+	
+	var ans: bool :: m + k <= n
+	do cui@print((ans ?("Yes", "No")) ~ "\n")
+end func

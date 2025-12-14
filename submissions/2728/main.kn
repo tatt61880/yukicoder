@@ -1,0 +1,12 @@
+func main()
+	var n: int :: cui@inputInt()
+	var k: int :: cui@inputInt()
+	for(1, n)
+		var a: []char :: cui@input()
+		var ans: []char :: ""
+		for i(0, n - 1)
+			do ans :~ [a[i]].repeat(k)
+		end for
+		do cui@print("\{ans}\n".repeat(k))
+	end for
+end func

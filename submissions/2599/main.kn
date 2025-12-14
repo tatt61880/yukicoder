@@ -1,0 +1,13 @@
+func main()
+	var s: []char :: cui@input()
+	var t: []char :: cui@input()
+	var st: []char :: [s[0], t[0]]
+	switch(st)
+	case "wb", "bw"
+		do cui@print("shrinebell\n")
+	case "bs", "sb"
+		do cui@print("watermelon\n")
+	case "sw", "ws"
+		do cui@print("beachball\n")
+	end switch
+end func

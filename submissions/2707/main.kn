@@ -1,0 +1,12 @@
+func main()
+	var n: int :: cui@inputInt()
+	var s: []char :: cui@input()
+	var nums: []int :: #[26]int
+	for i(0, n - 1)
+		do nums[s[i] $ int - 'A' $ int] :+ 1
+	end for
+	for i(0, 25)
+		do cui@print("\{nums[i]}")
+	end for
+	do cui@print("\n")
+end func

@@ -1,0 +1,5 @@
+; 類題: https://yukicoder.me/problems/no/809
+func main()
+	var c: int :: cui@inputInt()
+	do cui@print("1 \{c}\n")
+end func

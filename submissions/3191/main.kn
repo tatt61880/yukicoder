@@ -1,0 +1,12 @@
+func main()
+	var n: int :: cui@inputInt()
+	var a: []int :: #[n]int
+	for i(0, n - 1)
+		do a[i] :: cui@inputInt()
+	end for
+	var x: int :: cui@inputInt()
+	
+	var ans: int :: 0
+	do cui@print("Yes\n")
+	do cui@print(("\{x} ".repeat(3) ~ "\{x}\n").repeat(4))
+end func

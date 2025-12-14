@@ -1,0 +1,15 @@
+func main()
+	var n: int :: cui@inputInt()
+	var w: int :: cui@inputInt()
+	
+	var ans: int :: -1
+	for(1, n)
+		var v: int :: cui@inputInt()
+		var wi: int :: cui@inputInt()
+		if(wi <= w & v > ans)
+			do ans :: v
+		end if
+	end for
+	
+	do cui@print("\{ans}\n")
+end func

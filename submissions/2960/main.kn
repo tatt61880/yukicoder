@@ -1,0 +1,18 @@
+func main()
+	var num: int :: 0
+	for(1, 8)
+		var s: []char :: cui@inputStr()
+		switch(s)
+		case "AC", "NoOut"
+			do num :+ 1
+		end switch
+	end for
+	
+	var ans: []char :: "Win"
+	if(num = 5)
+		do ans :: "Draw"
+	elif(num < 5)
+		do ans :: "Lose"
+	end if
+	do cui@print("\{ans}\n")
+end func

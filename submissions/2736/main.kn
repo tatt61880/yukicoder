@@ -1,0 +1,7 @@
+func main()
+	var a: int :: cui@inputInt()
+	var b: int :: cui@inputInt()
+	
+	var ans: bool :: a <= b * 2 & b <= a * 2
+	do cui@print((ans ?("Yes", "No")) ~ "\n")
+end func

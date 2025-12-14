@@ -1,0 +1,7 @@
+func main()
+	var a: int :: cui@inputInt()
+	var b: int :: cui@inputInt()
+	var x: int :: 10 - a
+	var y: int :: b - x
+	do cui@print("\{x} \{y}\n")
+end func

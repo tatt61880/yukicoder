@@ -1,0 +1,27 @@
+func main()
+	var x: []char :: cui@input()
+	var y: []char :: cui@input()
+	
+	var ans: []char :: ""
+	switch(^x - ^y)
+	case 0, 1
+		var i: int :: 0
+		var j: int :: 0
+		while loop(true)
+			if(i > ^x - 1)
+				break loop
+			end if
+			do ans :~ [x[i]]
+			do i :+ 1
+			
+			if(j > ^y - 1)
+				break loop
+			end if
+			do ans :~ [y[j]]
+			do j :+ 1
+		end while
+	default
+		do ans :: "?"
+	end switch
+	do cui@print("\{ans}\n")
+end func

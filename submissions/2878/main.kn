@@ -1,0 +1,4 @@
+func main()
+	var i: int :: cui@inputInt()
+	do cui@print("\{"IGNITION"[i - 1]}\n")
+end func

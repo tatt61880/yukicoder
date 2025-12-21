@@ -145,6 +145,7 @@ func main()
 			if(language <>& null)
 				var extension: []char :: @dictLangExtension.get(language, &)
 				var title: []char :: @dictSubmitTitle.get(submitId, &)
+				do title :: title.replace("\\", "\\\\")
 				do title :: title.replace("\"", "\\\"")
 				if (firstFlag)
 					do firstFlag :: false

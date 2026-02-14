@@ -1,0 +1,16 @@
+func main()
+	var n: int :: cui@inputInt()
+	var ans: []char :: #[0]char
+	do f(&ans, &n, 720, 'C')
+	do f(&ans, &n, 360, 'M')
+	do f(&ans, &n, 180, 'S')
+	do f(&ans, &n, 30, 'R')
+	do f(&ans, &n, 6, 'o')
+	do f(&ans, &n, 1, '.')
+	do cui@print("\{ans}\n")
+	
+	func f(ans: &[]char, n: &int, num: int, c: char)
+		do ans :~ [c].repeat(n / num)
+		do n :- n / num * num
+	end func
+end func

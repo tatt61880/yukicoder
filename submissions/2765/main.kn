@@ -1,0 +1,17 @@
+func main()
+	var a: []int :: #[3]int
+	for i(0, 2)
+		do a[i] :: cui@inputInt()
+	end for
+	
+	var b: []int :: #[3]int
+	for i(0, 2)
+		do b[i] :: cui@inputInt()
+	end for
+	
+	var c: []int :: #[3]int
+	do c[0] :: a[1] * b[2] - a[2] * b[1]
+	do c[1] :: a[2] * b[0] - a[0] * b[2]
+	do c[2] :: a[0] * b[1] - a[1] * b[0]
+	do cui@print("\{c[0]} \{c[1]} \{c[2]}\n")
+end func

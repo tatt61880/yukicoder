@@ -1,0 +1,20 @@
+func main()
+	var n: int :: cui@inputInt()
+	var s: []char :: cui@inputStr()
+	
+	if(n % 2 = 0)
+		var a: []char :: #[n / 2]char
+		var b: []char :: #[n / 2]char
+		for i(0, n - 1)
+			if(i % 2 = 0)
+				do a[i / 2] :: s[i]
+			else
+				do b[i / 2] :: s[i]
+			end if
+		end for
+		do cui@print("Yes\n")
+		do cui@print("\{a} \{b}\n")
+	else
+		do cui@print("No\n")
+	end if
+end func

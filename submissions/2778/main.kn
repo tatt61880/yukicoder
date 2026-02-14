@@ -1,0 +1,13 @@
+func main()
+	var n: int :: cui@inputInt()
+	var s: []char :: cui@inputStr()
+	var ans: bool :: false
+	for i(0, n - 1)
+		for j(i + 1, n - 1)
+			if(s[i] = s[j])
+				do ans :: true
+			end if
+		end for
+	end for
+	do cui@print((ans ?("Yes", "No")) ~ "\n")
+end func

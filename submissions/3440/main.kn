@@ -1,0 +1,3 @@
+func main()
+	do cui@print("\{"Short".sub(0, cui@inputInt())}\n")
+end func

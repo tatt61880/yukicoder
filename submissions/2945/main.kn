@@ -1,0 +1,10 @@
+func main()
+	var n: int :: cui@inputInt()
+	if(n < 1984)
+		do cui@print("None\n")
+	elif(n < 2008)
+		do cui@print("Namiki High School\n")
+	else
+		do cui@print("Namiki Secondary School\n")
+	end if
+end func

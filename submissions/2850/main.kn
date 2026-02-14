@@ -1,0 +1,16 @@
+func main()
+	var a: int :: cui@inputInt()
+	var b: int :: cui@inputInt()
+	var c: int :: cui@inputInt()
+	var d: int :: cui@inputInt()
+	
+	var ans: int :: 0
+	if(a = 0)
+		do ans :: d / b
+	elif(b = 0)
+		do ans :: c / a
+	else
+		do ans :: lib@min(d / b, c / a)
+	end if
+	do cui@print("\{ans}\n")
+end func

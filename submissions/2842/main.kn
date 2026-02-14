@@ -1,0 +1,6 @@
+func main()
+	var m: int :: cui@inputInt()
+	var d: int :: cui@inputInt()
+	var ans: int :: m < 8 | m = 8 & d < 22 ?(23, 24)
+	do cui@print("\{ans}\n")
+end func

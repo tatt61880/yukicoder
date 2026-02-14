@@ -1,0 +1,3 @@
+func main()
+	do cui@print((cui@inputInt() <= 100 ?("Milk", "Difficult")) ~ "\n")
+end func

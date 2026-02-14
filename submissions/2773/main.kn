@@ -1,0 +1,13 @@
+func main()
+	var n: int :: cui@inputInt()
+	var s: []char :: cui@inputStr()
+	
+	var ans: []int :: #[0]int
+	for i(1, n - 1)
+		if(s[i] = 'o' & s[i - 1] = 'x')
+			do ans :~ [i + 1]
+		end if
+	end for
+	do cui@print("\{^ans}\n")
+	do cui@print("\{ans.join(" ")}\n")
+end func

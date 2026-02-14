@@ -1,0 +1,14 @@
+func main()
+	var t: int :: cui@inputInt()
+	for(1, t)
+		var d: int :: cui@inputInt()
+		var a: int :: cui@inputInt()
+		
+		var ans: []int :: #[d]int
+		for i(0, d - 1)
+			var x: int :: cui@inputInt()
+			do ans[i] :: (x + a / 2) / a
+		end for
+		do cui@print("\{ans.join(" ")}\n")
+	end for
+end func

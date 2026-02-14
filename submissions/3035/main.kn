@@ -1,0 +1,15 @@
+func main()
+	var s: []char :: cui@inputStr()
+	var idx: int :: 0
+	for i(0, ^s - 1)
+		if('0' <= s[i] & s[i] <= '9')
+			do idx :: i
+			break i
+		end if
+	end for
+	
+	var t: []char :: s.sub(idx, ^s - idx)
+	do s :: s.sub(0, idx)
+	do s.reverse()
+	do cui@print("\{s}\{t}\n")
+end func

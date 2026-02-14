@@ -1,0 +1,16 @@
+func main()
+	var a: int :: cui@inputInt()
+	var b: int :: cui@inputInt()
+	var c: int :: cui@inputInt()
+	var d: int :: cui@inputInt()
+	
+	var diff: int :: 31 + b - a
+	
+	var ans: int :: 3
+	if(c <= diff)
+		do ans :: 1
+	elif(d <= diff)
+		do ans :: 2
+	end if
+	do cui@print("\{ans}\n")
+end func

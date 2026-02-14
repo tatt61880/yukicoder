@@ -1,0 +1,21 @@
+func main()
+	var n: int :: cui@inputInt()
+	var s: [][]char :: #[n][]char
+	
+	for i(0, n - 1)
+		do s[i] :: cui@input()
+	end for
+	
+	var dic: dict<[]char, bool> :: #dict<[]char, bool>
+	
+	for i(0, n - 1)
+		for j(0, n - 1)
+			if(i <> j)
+				do dic.add(s[i] ~ s[j], true)
+			end if
+		end for
+	end for
+	
+	var ans: int :: ^dic
+	do cui@print("\{ans}\n")
+end func

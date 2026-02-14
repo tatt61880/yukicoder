@@ -1,0 +1,10 @@
+func main()
+	var n: int :: cui@inputInt()
+	var k: int :: cui@inputInt()
+	if(n % k = 0)
+		var a: []int :: [1].repeat(n / k) ~ [2].repeat(n - n / k)
+		do cui@print("\{a.join(" ")}\n")
+	else
+		do cui@print("-1\n")
+	end if
+end func

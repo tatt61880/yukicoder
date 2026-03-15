@@ -1,0 +1,11 @@
+func main()
+	var nStr: []char :: cui@inputStr()
+	var nInt: int :: nStr.toInt(&)
+	var q: int :: cui@inputInt()
+	for(1, q)
+		var xStr: []char :: cui@input()
+		var xInt: int :: xStr.toInt(&)
+		var ans: bool :: xInt % nInt = 0 | xStr.findStr(nStr, 0) >= 0
+		do cui@print((ans ?("Yes", "No")) ~ "\n")
+	end for
+end func

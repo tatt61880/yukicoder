@@ -1,0 +1,11 @@
+func main()
+	var pm: int :: cui@inputInt()
+	var qm: int :: cui@inputInt()
+	var y0: int :: cui@inputInt()
+	var p0: int :: cui@inputInt()
+	var q0: int :: cui@inputInt()
+	var y: int :: cui@inputInt()
+	var p: int :: (p0 - 1 + y + (pm - 1) * y0) % pm + 1
+	var q: int :: (q0 - 1 + y + (qm - 1) * y0) % qm + 1
+	do cui@print("\{p} \{q}\n")
+end func

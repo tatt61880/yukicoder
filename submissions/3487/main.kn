@@ -1,0 +1,10 @@
+func main()
+	var s: char :: cui@inputChar()
+	var e: char :: cui@inputChar()
+	var n: int :: cui@inputInt()
+	if(n < 2 & s <> e)
+		do cui@print("-1\n")
+	else
+		do cui@print("\{s}\{[e].repeat(n - 1)}\n")
+	end if
+end func

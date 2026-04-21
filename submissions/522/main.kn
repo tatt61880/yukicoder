@@ -1,0 +1,12 @@
+func main()
+	var n: int :: cui@inputInt()
+	for a(1, n / 3 + 1)
+		for b(a, n / 2 + 1)
+			var c: int :: n - a - b
+			if(b > c)
+				break b
+			end if
+			do cui@print("\{a} \{b} \{c}\n")
+		end for
+	end for
+end func

@@ -1,0 +1,11 @@
+func main()
+	var n: int :: cui@inputInt()
+	var a: int :: n % 10
+	do n :/ 10
+	var b: int :: n % 10
+	do n :/ 10
+	var c: int :: n % 10
+	
+	var ans: bool :: a + c = b
+	do cui@print((ans ?("Yes", "No")) ~ "\n")
+end func

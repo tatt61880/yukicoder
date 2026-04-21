@@ -38,6 +38,7 @@
     contents.appendChild(table);
     table.appendChild(thead);
     const tr = thead.insertRow();
+
     {
       const td = document.createElement('th');
       td.innerText = '提出ID';
@@ -48,21 +49,26 @@
       td.innerText = '言語';
       tr.appendChild(td);
     }
+
     {
       const td = document.createElement('th');
       td.innerText = '問題タイトル';
       tr.appendChild(td);
     }
+
     const tbody = document.createElement('tbody');
     table.appendChild(tbody);
 
     const submissionsList = await getSubmissionsList(base);
+    p.innerText = `${submissionsList.length}件`;
+
     for (const submission of submissionsList) {
       // const problemId = submission[0];
       const submitId = submission[1];
       const language = submission[2];
       const title = submission[5];
       const tr = tbody.insertRow();
+
       {
         const td = tr.insertCell();
         const a = document.createElement('a');
@@ -70,16 +76,17 @@
         a.innerText = submitId;
         td.appendChild(a);
       }
+
       {
         const td = tr.insertCell();
         td.innerText = language;
       }
+
       {
         const td = tr.insertCell();
         td.innerText = title;
       }
     }
-    p.innerText = `${submissionsList.length}件`;
   }
 
   // 解説
@@ -103,19 +110,19 @@
     // 問題URL
     {
       const problemUrl = getProblemUrl(no);
-      if (problemUrl !== null) {
-        const p = document.createElement('p');
-        p.classList.add('narrow');
-        p.innerText = '問題URL: ';
-        contents.appendChild(p);
+      const p = document.createElement('p');
+      p.classList.add('narrow');
+      p.innerText = '問題URL: ';
+      contents.appendChild(p);
 
+      if (problemUrl !== null) {
         const a = document.createElement('a');
         a.href = problemUrl;
         a.innerText = problemUrl;
         p.appendChild(a);
-
-        contents.appendChild(document.createElement('hr'));
       }
+
+      contents.appendChild(document.createElement('hr'));
     }
 
     // 解説

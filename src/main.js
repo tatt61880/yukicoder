@@ -61,6 +61,7 @@
 
     const submissionsList = await getSubmissionsList(base);
     p.innerText = `${submissionsList.length}件`;
+    p.setAttribute('id', 'total-num');
 
     for (const submission of submissionsList) {
       // const problemId = submission[0];

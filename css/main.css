@@ -89,3 +89,7 @@ pre:has(.language-kuin) {
   background-color: #fff5f5;
   border: 2px solid #ff8888;
 }
+
+#total-num {
+  font-size: 2rem;
+}

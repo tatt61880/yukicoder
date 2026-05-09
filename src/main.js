@@ -26,7 +26,7 @@
   // ACコード一覧
   async function appendAcList(contents, base) {
     const h1 = document.createElement('h1');
-    h1.innerText = '各問の最新ACコード一覧';
+    h1.innerText = 'tatt61880によるyukicoderの最新ACコード一覧';
     contents.appendChild(h1);
     contents.appendChild(document.createElement('hr'));
 

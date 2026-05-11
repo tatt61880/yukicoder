@@ -214,12 +214,12 @@
     return editor;
   }
 
-  async function getSubmissionsList(base) {
-    return await fetchJson(new URL('submissions/newestSubmissions.json', base));
+  async function getSubmissionsList(baseUrl) {
+    return await fetchJson(`${baseUrl}submissions/newestSubmissions.json`);
   }
 
-  async function getTitle(base, no) {
-    return await fetchText(`${base}submissions/${no}/title.txt`);
+  async function getTitle(baseUrl, no) {
+    return await fetchText(`${baseUrl}submissions/${no}/title.txt`);
   }
 
   function getProblemUrl(no) {
@@ -227,20 +227,20 @@
     return `https://yukicoder.me/problems/no/${no}`;
   }
 
-  async function getSubmissionUrl(base, no) {
-    const res = await fetchText(`${base}submissions/${no}/submission.url`);
+  async function getSubmissionUrl(baseUrl, no) {
+    const res = await fetchText(`${baseUrl}submissions/${no}/submission.url`);
     if (res !== null) {
       return res.split('=')[1];
     }
     return null;
   }
 
-  async function getEditorial(base, no) {
-    return await fetchText(`${base}md/${no}.md`);
+  async function getEditorial(baseUrl, no) {
+    return await fetchText(`${baseUrl}md/${no}.md`);
   }
 
-  async function getSrc(base, no) {
-    return await fetchText(`${base}submissions/${no}/main.kn`);
+  async function getSrc(baseUrl, no) {
+    return await fetchText(`${baseUrl}submissions/${no}/main.kn`);
   }
 
   async function fetchText(url) {

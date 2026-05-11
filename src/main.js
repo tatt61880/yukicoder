@@ -7,7 +7,7 @@
 
   async function onloadApp() {
     const urlQueryParams = analyzeUrl();
-    const base = urlQueryParams.base;
+    const baseUrl = urlQueryParams.baseUrl;
     const no = urlQueryParams.no;
 
     const contents = document.getElementById('data');
@@ -17,14 +17,14 @@
     }
 
     if (no === null) {
-      await appendAcList(contents, base);
+      await appendAcList(contents, baseUrl);
     } else {
-      await appendEditorial(contents, base, no);
+      await appendEditorial(contents, baseUrl, no);
     }
   }
 
   // ACコード一覧
-  async function appendAcList(contents, base) {
+  async function appendAcList(contents, baseUrl) {
     const h1 = document.createElement('h1');
     h1.innerText = 'tatt61880によるyukicoderの最新ACコード一覧';
     contents.appendChild(h1);
@@ -59,7 +59,13 @@
     const tbody = document.createElement('tbody');
     table.appendChild(tbody);
 
-    const submissionsList = await getSubmissionsList(base);
+    const submissionsList = await getSubmissionsList(baseUrl);
+
+    if (submissionsList === null) {
+      p.innerText = '提出一覧の取得に失敗しました。';
+      return;
+    }
+
     p.innerText = `${submissionsList.length}件`;
     p.setAttribute('id', 'total-num');
 
@@ -91,15 +97,16 @@
   }
 
   // 解説
-  async function appendEditorial(contents, base, no) {
+  async function appendEditorial(contents, baseUrl, no) {
     // ページタイトル
     {
-      let title = await getTitle(base, no);
+      let title = await getTitle(baseUrl, no);
       if (title !== null) {
         title = `${title} - yukicoder`;
       } else {
         title = '404 問題タイトル not found!';
       }
+
       document.title = title;
 
       const h1 = document.createElement('h1');
@@ -128,7 +135,7 @@
 
     // 解説
     {
-      let editorial = await getEditorial(base, no);
+      let editorial = await getEditorial(baseUrl, no);
       if (editorial !== null) {
         const h2 = document.createElement('h2');
         h2.innerText = '解説';
@@ -150,7 +157,7 @@
 
     // 提出したソースコード
     {
-      const src = await getSrc(base, no);
+      const src = await getSrc(baseUrl, no);
       if (src !== null) {
         const h2 = document.createElement('h2');
         h2.innerText = '提出したソースコード (言語: Kuin)';
@@ -169,7 +176,7 @@
 
     // 提出URL
     {
-      const submissionUrl = await getSubmissionUrl(base, no);
+      const submissionUrl = await getSubmissionUrl(baseUrl, no);
       if (submissionUrl !== null) {
         const p = document.createElement('p');
         p.classList.add('narrow');
@@ -185,24 +192,12 @@
   }
 
   function analyzeUrl() {
-    const res = {
-      base: '',
-      no: null,
+    const url = new URL(location.href);
+
+    return {
+      baseUrl: `${url.origin}${url.pathname}`,
+      no: url.searchParams.get('no'),
     };
-    res.base = location.href.split('?')[0];
-    const queryStrs = location.href.split('?')[1];
-    if (queryStrs === undefined) return res;
-    for (const queryStr of queryStrs.split('&')) {
-      const paramArray = queryStr.split('=');
-      const paramName = paramArray[0];
-      const paramVal = paramArray[1];
-      switch (paramName) {
-        case 'no':
-          res.no = paramVal;
-          break;
-      }
-    }
-    return res;
   }
 
   function elemToKuinEditor(elem) {
@@ -220,7 +215,7 @@
   }
 
   async function getSubmissionsList(base) {
-    return await fetchJson(`${base}submissions/newestSubmissions.json`);
+    return await fetchJson(new URL('submissions/newestSubmissions.json', base));
   }
 
   async function getTitle(base, no) {
@@ -249,12 +244,14 @@
   }
 
   async function fetchText(url) {
+    // ソースコードは更新頻度が高いため、常に再取得する。
     const response = await fetch(url, { cache: 'no-store' });
     if (response.ok) return response.text();
     return null;
   }
 
   async function fetchJson(url) {
+    // ソースコードは更新頻度が高いため、常に再取得する。
     const response = await fetch(url, { cache: 'no-store' });
     if (response.ok) return response.json();
     return null;

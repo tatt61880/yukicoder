@@ -1,7 +1,6 @@
 @charset "UTF-8";
 
 body {
-  min-width: 800px;
   max-width: 1024px;
   margin: auto;
   background-color: #ccffff;
@@ -9,6 +8,7 @@ body {
 
 #contents {
   padding: 0;
+  overflow-x: auto;
   background-color: white;
 }
 
@@ -92,4 +92,10 @@ pre:has(.language-kuin) {
 
 #total-num {
   font-size: 2rem;
+}
+
+.profile-table,
+.profile-table tr,
+.profile-table td {
+  border: none;
 }

@@ -195,7 +195,7 @@
     const url = new URL(location.href);
 
     return {
-      baseUrl: `${url.origin}${url.pathname}`,
+      baseUrl: new URL('./', url),
       no: url.searchParams.get('no'),
     };
   }

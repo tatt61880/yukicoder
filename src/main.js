@@ -243,25 +243,29 @@
     return await fetchText(`${baseUrl}submissions/${no}/main.kn`);
   }
 
-  async function fetchText(url) {
-    // 通信失敗やレスポンス本文の読み取り失敗時は null を返し、呼び出し側でエラー表示する。
+  async function fetchResponse(url) {
     try {
-      // 常に再取得する。
       const response = await fetch(url, { cache: 'no-store' });
-      if (!response.ok) return null;
-      return await response.text();
+      if (response.ok) return response;
     } catch (error) {
       console.error(error);
-      return null;
     }
+
+    return null;
+  }
+
+  async function fetchText(url) {
+    const response = await fetchResponse(url);
+    if (response === null) return null;
+
+    return await response.text();
   }
 
   async function fetchJson(url) {
-    // 通信失敗やJSONの破損時は null を返し、呼び出し側でエラー表示する。
+    const response = await fetchResponse(url);
+    if (response === null) return null;
+
     try {
-      // 常に再取得する。
-      const response = await fetch(url, { cache: 'no-store' });
-      if (!response.ok) return null;
       return await response.json();
     } catch (error) {
       console.error(error);

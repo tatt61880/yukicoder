@@ -3,7 +3,8 @@ func main()
 	var b: int :: cui@inputInt()
 	var c: int :: cui@inputInt()
 	var d: int :: cui@inputInt()
-	var k: int :: cui@inputInt()
-	var ans: int :: (a * b + c - d) % k
-	do cui@print("\{ans}\n")
+	var s: int :: cui@inputInt()
+	
+	var ans: bool :: a * c + b * d <= s
+	do cui@print((ans ?("Yes", "No")) ~ "\n")
 end func

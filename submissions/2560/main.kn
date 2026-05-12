@@ -1,0 +1,18 @@
+func main()
+	var t: int :: cui@inputInt()
+	for(1, t)
+		var n: int :: cui@inputInt()
+		var x: int :: cui@inputInt()
+		var a: []int :: #[n]int
+		for i(0, n - 1)
+			do a[i] :: i + 1
+		end for
+		var sum: int :: n * (n + 1) / 2
+		if(sum <= x)
+			do a[n - 1] :+ x - sum
+			do cui@print("\{a.join(" ")}\n")
+		else
+			do cui@print("-1\n")
+		end if
+	end for
+end func

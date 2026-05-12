@@ -83,6 +83,7 @@ func main()
 			var bytes: []char :: result[i][6].trim().replace("<br />", " ")
 			
 			do title :: @unsanitized(title)
+			do title :: @escapeSurrogatePairs(title)
 			do language :: @unsanitized(language)
 			
 			if(problemId = 9004 | problemId = 9007)
@@ -320,6 +321,14 @@ func addExtension(language: []char, extension: &[]char)
 	do @dictLangExtension.add(language, extension)
 end func
 
+func appendCodePoint(res: &[]char, v: int)
+	if(v <= 0xFFFF & (v < 0xD800 | 0xDFFF < v))
+		do res :~ [v $ char]
+	else
+		do res :~ "&#\{v};"
+	end if
+end func
+
 func unsanitized(str: []char): []char
 	var res: []char :: ""
 	var i: int :: 0
@@ -333,10 +342,36 @@ func unsanitized(str: []char): []char
 					do v :+ str[i] $ int - '0' $ int
 					do i :+ 1
 				end while
-				do res :~ [v $ char]
+				do @appendCodePoint(&res, v)
 			else
 				do res :~ ['&']
 			end if
+		else
+			do res :~ [str[i]]
+		end if
+		do i :+ 1
+	end while
+	ret res
+end func
+
+func escapeSurrogatePairs(str: []char): []char
+	var res: []char :: ""
+	var i: int :: 0
+	while loop(i < ^str)
+		var c: int :: str[i] $ int
+
+		if(0xD800 <= c & c <= 0xDBFF & i + 1 < ^str)
+			var d: int :: str[i + 1] $ int
+			if(0xDC00 <= d & d <= 0xDFFF)
+				var v: int :: 0x10000 + (c - 0xD800) * 0x400 + (d - 0xDC00)
+				do res :~ "&#\{v};"
+				do i :+ 2
+				skip loop
+			end if
+		end if
+
+		if(0xD800 <= c & c <= 0xDFFF)
+			do res :~ "&#\{c};"
 		else
 			do res :~ [str[i]]
 		end if

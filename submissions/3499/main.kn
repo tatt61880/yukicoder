@@ -1,0 +1,10 @@
+func main()
+	var n: int :: cui@inputInt()
+	var m: int :: cui@inputInt()
+	for(1, m)
+		var a: int :: cui@inputInt()
+		var b: int :: cui@inputInt()
+		do cui@print("\{a < b ?(0, 1)}\n")
+		do cui@flush()
+	end for
+end func

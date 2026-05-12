@@ -26,7 +26,7 @@ func main()
 	
 	var maxCplus1: int :: c.max() + 1
 	var used: []bool :: #[maxCplus1 * n + n]bool
-	var minTime: []int :: [lib@intMax].repeat(n * (maxCplus1 + 1))
+	var minTime: []int :: [lib@intMax].repeat(maxCplus1 * n + n)
 	do minTime[0] :: 0
 	
 	var q: @Set :: #@Set
@@ -39,12 +39,12 @@ func main()
 			skip loop
 		end if
 		do used[u] :: true
-		var posU: int :: u / (maxCplus1 + 1)
-		var pUt: int :: [u % (maxCplus1 + 1) + t[posU], maxCplus1].min()
+		var posU: int :: u % n
+		var pUt: int :: u / n + t[posU]
 		for i(0, ^neighbor[posU] - 1)
 			var posV: int :: neighbor[posU][i]
-			var pV: int :: pUt
-			var v: int :: posV * (maxCplus1 + 1) + pV
+			var pV: int :: [pUt, maxCplus1].min()
+			var v: int :: pV * n + posV
 			var time: int :: minTime[u] + cc[posU][posV] / pUt + t[posU]
 			if(time < minTime[v])
 				do minTime[v] :: time
@@ -54,7 +54,10 @@ func main()
 		end for
 	end while
 	
-	var ans: int :: minTime.sub((n - 1) * maxCplus1, -1).min()
+	var ans: int :: lib@intMax
+	for i(0, maxCplus1)
+		do ans :: [ans, minTime[i * n + n - 1]].min()
+	end for
 	do cui@print("\{ans}\n")
 end func
 

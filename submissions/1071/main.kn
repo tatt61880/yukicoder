@@ -10,13 +10,20 @@ func main()
 	do a.sort()
 	do a.reverse()
 	
-	var mp: num@BigInt :: num@makeBigIntFromInt(y * a[0])
-	var ans: num@BigInt :: mp
+	var numY: int :: a[0]
+	var numX: int :: 0
+	var mp: int :: y * numY + x * numX
+	var maxNumX: int :: (mp + x - 1) / x
+	var ans: int :: mp
 	for i(0, n - 1)
-		var numDiff: num@BigInt :: num@makeBigIntFromInt(a[i] - a[i + 1])
-		do mp :: mp.sub(numDiff.mulInt(y))
-		do mp :: mp.add(numDiff.mulInt((i + 1) * x))
-		do ans :: [ans, mp].min()
+		var numDiff: int :: a[i] - a[i + 1]
+		do numY :- numDiff
+		do numX :+ numDiff * (i + 1)
+		if(numX >= maxNumX)
+			break i
+		end if
+		do mp :: y * numY + x * numX
+		do ans :: lib@min(ans, mp)
 	end for
 	do cui@print("\{ans}\n")
 end func

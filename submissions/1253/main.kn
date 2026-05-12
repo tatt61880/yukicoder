@@ -8,25 +8,50 @@ func main()
 		var C: int :: cui@inputInt()
 		var p: int :: cui@inputInt()
 		var P: int :: cui@inputInt()
-		var mod: int :: 1000000007
+		const mod: int :: 1000000007
 		
-		var ans: int :: 0
-		do ans :+ math@modPow(G * C % mod * P % mod, n, mod)
-		do ans :% mod
-		do ans :+ math@modPow(g * C % mod * P % mod, n, mod) * 2
-		do ans :% mod
-		do ans :+ math@modPow(G * c % mod * P % mod, n, mod) * 2
-		do ans :% mod
-		do ans :+ math@modPow(G * C % mod * p % mod, n, mod) * 2
-		do ans :% mod
-		do ans :+ mod - math@modPow((G - g) * C % mod * P % mod, n, mod)
-		do ans :% mod
-		do ans :+ mod - math@modPow(G * (C - c) % mod * P % mod, n, mod)
-		do ans :% mod
-		do ans :+ mod - math@modPow(G * C % mod * (P - p) % mod, n, mod)
-		do ans :% mod
-		do ans :* math@modPow(math@modPow(G * C % mod * P % mod, n, mod), mod - 2, mod)
-		do ans :% mod
+		var ans: modInt :: (#modInt).init(0, mod)
+		do ans.add((#modInt).init(G, mod).mul(C).mul(P).pow(n).val)
+		do ans.add((#modInt).init(g, mod).mul(C).mul(P).pow(n).val * 2)
+		do ans.add((#modInt).init(G, mod).mul(c).mul(P).pow(n).val * 2)
+		do ans.add((#modInt).init(G, mod).mul(C).mul(p).pow(n).val * 2)
+		do ans.sub((#modInt).init(G - g, mod).mul(C).mul(P).pow(n).val)
+		do ans.sub((#modInt).init(G, mod).mul(C - c).mul(P).pow(n).val)
+		do ans.sub((#modInt).init(G, mod).mul(C).mul(P - p).pow(n).val)
+		do ans.div((#modInt).init(G, mod).mul(C).mul(P).pow(n).val)
 		do cui@print("\{ans}\n")
 	end for
+	
+	class modInt()
+		+var val: int
+		var mod: int
+		+func init(val: int, mod: int): modInt
+			do me.val :: val
+			do me.mod :: mod
+			ret me
+		end func
+		+func add(a: int): modInt
+			do me.val :: (me.val + a) % me.mod
+			ret me
+		end func
+		+func sub(a: int): modInt
+			do me.val :: (me.val + me.mod - a) % me.mod
+			ret me
+		end func
+		+func mul(a: int): modInt
+			do me.val :: (me.val * a) % me.mod
+			ret me
+		end func
+		+func div(a: int): modInt
+			do me.val :: me.val * math@modPow(a, me.mod - 2, me.mod) % me.mod
+			ret me
+		end func
+		+func pow(a: int): modInt
+			do me.val :: math@modPow(me.val, a, me.mod)
+			ret me
+		end func
+		+*func toStr(): []char
+			ret "\{me.val}"
+		end func
+	end class
 end func

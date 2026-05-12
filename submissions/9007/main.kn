@@ -1,3 +1,0 @@
-func main()
-	do cui@print("Hello, world!\n")
-end func

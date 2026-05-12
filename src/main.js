@@ -243,11 +243,13 @@
 
   function getProblemUrl(no) {
     if (no === null) return null;
-    return `https://yukicoder.me/problems/no/${no}`;
+    return `https://yukicoder.me/problems/no/${encodeURIComponent(no)}`;
   }
 
   async function getSubmissionUrl(baseUrl, no) {
-    const res = await fetchText(`${baseUrl}submissions/${no}/submission.url`);
+    const res = await fetchText(
+      new URL(`submissions/${encodeURIComponent(no)}/submission.url`, baseUrl)
+    );
     if (res !== null) {
       return res.split('=')[1];
     }

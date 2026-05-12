@@ -163,12 +163,12 @@
 
     // 提出したソースコード
     {
+      const h2 = document.createElement('h2');
+      h2.innerText = '提出したソースコード (言語: Kuin)';
+      contents.appendChild(h2);
+
       const src = await getSrc(baseUrl, no);
       if (src !== null) {
-        const h2 = document.createElement('h2');
-        h2.innerText = '提出したソースコード (言語: Kuin)';
-        contents.appendChild(h2);
-
         const id = 'code';
         const pre = document.createElement('pre');
         pre.setAttribute('id', id);
@@ -177,23 +177,32 @@
         const editor = elemToKuinEditor(pre);
         editor.setValue(src);
         editor.navigateTo(0, 0);
+      } else {
+        const p = document.createElement('p');
+        p.innerText = 'ソースコードの読み込みに失敗しました。';
+        contents.appendChild(p);
       }
     }
 
     // 提出URL
     {
       const submissionUrl = await getSubmissionUrl(baseUrl, no);
-      if (submissionUrl !== null) {
-        const p = document.createElement('p');
-        p.classList.add('narrow');
-        p.innerText = '提出URL: ';
-        contents.appendChild(p);
+      const p = document.createElement('p');
+      p.classList.add('narrow');
+      p.innerText = '提出URL: ';
 
+      if (submissionUrl !== null) {
         const a = document.createElement('a');
         a.href = submissionUrl;
         a.innerText = submissionUrl;
+        a.target = '_blank';
+        a.rel = 'noopener';
         p.appendChild(a);
+      } else {
+        p.appendChild(document.createTextNode('読み込みに失敗しました。'));
       }
+
+      contents.appendChild(p);
     }
   }
 

@@ -70,12 +70,13 @@
     p.setAttribute('id', 'total-num');
 
     for (const submission of submissionsList) {
-      // const problemId = submission[0];
+      const problemId = submission[0];
       const submitId = submission[1];
       const language = submission[2];
       const title = submission[5];
       const tr = tbody.insertRow();
 
+      // 提出ID
       {
         const td = tr.insertCell();
         const a = document.createElement('a');
@@ -84,14 +85,19 @@
         td.appendChild(a);
       }
 
+      // 言語
       {
         const td = tr.insertCell();
         td.textContent = language;
       }
 
+      // 問題タイトル
       {
         const td = tr.insertCell();
-        td.textContent = decodeHtmlEntities(title);
+        const a = document.createElement('a');
+        a.href = `?no=${encodeURIComponent(problemId)}`;
+        a.textContent = decodeHtmlEntities(title);
+        td.appendChild(a);
       }
     }
   }

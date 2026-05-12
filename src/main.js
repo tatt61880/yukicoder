@@ -104,7 +104,7 @@
       if (title !== null) {
         title = `${title} - yukicoder`;
       } else {
-        title = '404 問題タイトル not found!';
+        title = `No.${no} - yukicoder`;
       }
 
       document.title = title;
@@ -136,23 +136,29 @@
     // 解説
     {
       let editorial = await getEditorial(baseUrl, no);
-      if (editorial !== null) {
-        const h2 = document.createElement('h2');
-        h2.innerText = '解説';
-        contents.appendChild(h2);
+      const h2 = document.createElement('h2');
+      h2.innerText = '解説';
+      contents.appendChild(h2);
 
+      if (editorial !== null) {
         editorial = editorial.replaceAll('\\(', '\\\\(');
         editorial = editorial.replaceAll('\\)', '\\\\)');
+
         const md = window.markdownit();
         const result = md.render(editorial);
+
         const div = document.createElement('div');
         div.innerHTML = result;
         contents.appendChild(div);
 
         window.renderMathInElement(div);
-
-        contents.appendChild(document.createElement('hr'));
+      } else {
+        const p = document.createElement('p');
+        p.innerText = '解説の読み込みに失敗しました。';
+        contents.appendChild(p);
       }
+
+      contents.appendChild(document.createElement('hr'));
     }
 
     // 提出したソースコード
@@ -215,11 +221,15 @@
   }
 
   async function getSubmissionsList(baseUrl) {
-    return await fetchJson(`${baseUrl}submissions/newestSubmissions.json`);
+    return await fetchJson(
+      new URL('submissions/newestSubmissions.json', baseUrl)
+    );
   }
 
   async function getTitle(baseUrl, no) {
-    return await fetchText(`${baseUrl}submissions/${no}/title.txt`);
+    return await fetchText(
+      new URL(`submissions/${encodeURIComponent(no)}/title.txt`, baseUrl)
+    );
   }
 
   function getProblemUrl(no) {
@@ -236,13 +246,14 @@
   }
 
   async function getEditorial(baseUrl, no) {
-    return await fetchText(`${baseUrl}md/${no}.md`);
+    return await fetchText(new URL(`md/${encodeURIComponent(no)}.md`, baseUrl));
   }
 
   async function getSrc(baseUrl, no) {
-    return await fetchText(`${baseUrl}submissions/${no}/main.kn`);
+    return await fetchText(
+      new URL(`submissions/${encodeURIComponent(no)}/main.kn`, baseUrl)
+    );
   }
-
   async function fetchResponse(url) {
     try {
       const response = await fetch(url, { cache: 'no-store' });

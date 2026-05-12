@@ -99,3 +99,8 @@ pre:has(.language-kuin) {
 .profile-table td {
   border: none;
 }
+
+.profile-icon {
+  width: 100px;
+  height: auto;
+}

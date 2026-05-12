@@ -142,11 +142,11 @@
     // 解説
     {
       let editorial = await getEditorial(baseUrl, no);
-      const h2 = document.createElement('h2');
-      h2.textContent = '解説';
-      contents.appendChild(h2);
-
       if (editorial !== null) {
+        const h2 = document.createElement('h2');
+        h2.innerText = '解説';
+        contents.appendChild(h2);
+
         editorial = editorial.replaceAll('\\(', '\\\\(');
         editorial = editorial.replaceAll('\\)', '\\\\)');
 
@@ -158,13 +158,9 @@
         contents.appendChild(div);
 
         window.renderMathInElement(div);
-      } else {
-        const p = document.createElement('p');
-        p.textContent = '解説の読み込みに失敗しました。';
-        contents.appendChild(p);
-      }
 
-      contents.appendChild(document.createElement('hr'));
+        contents.appendChild(document.createElement('hr'));
+      }
     }
 
     // 提出したソースコード

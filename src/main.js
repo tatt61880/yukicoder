@@ -26,7 +26,7 @@
   // ACコード一覧
   async function appendAcList(contents, baseUrl) {
     const h1 = document.createElement('h1');
-    h1.innerText = 'tatt61880によるyukicoderの最新ACコード一覧';
+    h1.textContent = 'tatt61880によるyukicoderの最新ACコード一覧';
     contents.appendChild(h1);
     contents.appendChild(document.createElement('hr'));
 
@@ -41,18 +41,18 @@
 
     {
       const td = document.createElement('th');
-      td.innerText = '提出ID';
+      td.textContent = '提出ID';
       tr.appendChild(td);
     }
     {
       const td = document.createElement('th');
-      td.innerText = '言語';
+      td.textContent = '言語';
       tr.appendChild(td);
     }
 
     {
       const td = document.createElement('th');
-      td.innerText = '問題タイトル';
+      td.textContent = '問題タイトル';
       tr.appendChild(td);
     }
 
@@ -62,11 +62,11 @@
     const submissionsList = await getSubmissionsList(baseUrl);
 
     if (submissionsList === null) {
-      p.innerText = '提出一覧の取得に失敗しました。';
+      p.textContent = '提出一覧の取得に失敗しました。';
       return;
     }
 
-    p.innerText = `${submissionsList.length}件`;
+    p.textContent = `${submissionsList.length}件`;
     p.setAttribute('id', 'total-num');
 
     for (const submission of submissionsList) {
@@ -80,18 +80,18 @@
         const td = tr.insertCell();
         const a = document.createElement('a');
         a.href = `https://yukicoder.me/submissions/${submitId}/`;
-        a.innerText = submitId;
+        a.textContent = submitId;
         td.appendChild(a);
       }
 
       {
         const td = tr.insertCell();
-        td.innerText = language;
+        td.textContent = language;
       }
 
       {
         const td = tr.insertCell();
-        td.innerText = title;
+        td.textContent = title;
       }
     }
   }
@@ -110,7 +110,7 @@
       document.title = title;
 
       const h1 = document.createElement('h1');
-      h1.innerText = title;
+      h1.textContent = title;
       contents.appendChild(h1);
       contents.appendChild(document.createElement('hr'));
     }
@@ -120,13 +120,13 @@
       const problemUrl = getProblemUrl(no);
       const p = document.createElement('p');
       p.classList.add('narrow');
-      p.innerText = '問題URL: ';
+      p.textContent = '問題URL: ';
       contents.appendChild(p);
 
       if (problemUrl !== null) {
         const a = document.createElement('a');
         a.href = problemUrl;
-        a.innerText = problemUrl;
+        a.textContent = problemUrl;
         p.appendChild(a);
       }
 
@@ -137,7 +137,7 @@
     {
       let editorial = await getEditorial(baseUrl, no);
       const h2 = document.createElement('h2');
-      h2.innerText = '解説';
+      h2.textContent = '解説';
       contents.appendChild(h2);
 
       if (editorial !== null) {
@@ -154,7 +154,7 @@
         window.renderMathInElement(div);
       } else {
         const p = document.createElement('p');
-        p.innerText = '解説の読み込みに失敗しました。';
+        p.textContent = '解説の読み込みに失敗しました。';
         contents.appendChild(p);
       }
 
@@ -164,7 +164,7 @@
     // 提出したソースコード
     {
       const h2 = document.createElement('h2');
-      h2.innerText = '提出したソースコード (言語: Kuin)';
+      h2.textContent = '提出したソースコード (言語: Kuin)';
       contents.appendChild(h2);
 
       const src = await getSrc(baseUrl, no);
@@ -179,7 +179,7 @@
         editor.navigateTo(0, 0);
       } else {
         const p = document.createElement('p');
-        p.innerText = 'ソースコードの読み込みに失敗しました。';
+        p.textContent = 'ソースコードの読み込みに失敗しました。';
         contents.appendChild(p);
       }
     }
@@ -189,17 +189,19 @@
       const submissionUrl = await getSubmissionUrl(baseUrl, no);
       const p = document.createElement('p');
       p.classList.add('narrow');
-      p.innerText = '提出URL: ';
+      p.textContent = '提出URL: ';
 
       if (submissionUrl !== null) {
         const a = document.createElement('a');
         a.href = submissionUrl;
-        a.innerText = submissionUrl;
+        a.textContent = submissionUrl;
         a.target = '_blank';
         a.rel = 'noopener';
         p.appendChild(a);
       } else {
-        p.appendChild(document.createTextNode('読み込みに失敗しました。'));
+        p.appendChild(
+          document.createTextNode('提出URLの読み込みに失敗しました。')
+        );
       }
 
       contents.appendChild(p);

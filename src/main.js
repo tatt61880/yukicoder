@@ -114,7 +114,7 @@
     {
       let title = await getTitle(baseUrl, no);
       if (title !== null) {
-        title = `${title} - yukicoder`;
+        title = `${decodeHtmlEntities(title)} - yukicoder`;
       } else {
         title = `No.${no} - yukicoder`;
       }

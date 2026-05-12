@@ -8,7 +8,7 @@ https://tatt61880.github.io/yukicoder/
 
 tatt61880 が yukicoder に提出して AC したコードをまとめています。
 
-yukicoder のユーザーページ: https://yukicoder.me/users/5112
+yukicoder のユーザーページ: [tatt61880 - yukicoder](https://yukicoder.me/users/5112)
 
 ## Contents
 

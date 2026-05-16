@@ -11,7 +11,6 @@
     const no = urlQueryParams.no;
 
     const contentsElem = document.getElementById('contents-data');
-
     if (contentsElem === null) {
       console.error('Error! #contents-data === null');
       return;
@@ -26,13 +25,24 @@
 
   // ACコード一覧
   async function appendAcList(contentsElem, baseUrl) {
+    const submissionsList = await getSubmissionsList(baseUrl);
+
+    if (submissionsList === null) {
+      const p = document.createElement('p');
+      p.textContent = '提出データの読み込みに失敗しました。';
+      contentsElem.appendChild(p);
+      return;
+    }
+
     const p = document.createElement('p');
     contentsElem.appendChild(p);
 
     const table = document.createElement('table');
-    const thead = document.createElement('thead');
     contentsElem.appendChild(table);
+
+    const thead = document.createElement('thead');
     table.appendChild(thead);
+
     const tr = thead.insertRow();
 
     {
@@ -55,13 +65,6 @@
 
     const tbody = document.createElement('tbody');
     table.appendChild(tbody);
-
-    const submissionsList = await getSubmissionsList(baseUrl);
-
-    if (submissionsList === null) {
-      p.textContent = '提出一覧の取得に失敗しました。';
-      return;
-    }
 
     p.textContent = `${submissionsList.length}件`;
     p.setAttribute('id', 'total-num');
@@ -199,11 +202,11 @@
   }
 
   function analyzeUrl() {
-    const url = new URL(location.href);
+    const params = new URLSearchParams(location.search);
 
     return {
-      baseUrl: new URL('./', url),
-      no: url.searchParams.get('no'),
+      baseUrl: new URL('./', location.href),
+      no: params.get('no'),
     };
   }
 
@@ -256,6 +259,23 @@
     }
   }
 
+  function getProblemUrl(no) {
+    if (no === null) return null;
+    return `https://yukicoder.me/problems/no/${encodeURIComponent(no)}`;
+  }
+
+  async function getSubmissionUrl(baseUrl, no) {
+    const res = await fetchText(
+      new URL(`submissions/${encodeURIComponent(no)}/submission.url`, baseUrl)
+    );
+
+    if (res !== null) {
+      return res.split('=')[1].replace('\n', '');
+    }
+
+    return null;
+  }
+
   async function getSubmissionsList(baseUrl) {
     return await fetchJson(
       new URL('submissions/newestSubmissions.json', baseUrl)
@@ -268,21 +288,6 @@
     );
   }
 
-  function getProblemUrl(no) {
-    if (no === null) return null;
-    return `https://yukicoder.me/problems/no/${encodeURIComponent(no)}`;
-  }
-
-  async function getSubmissionUrl(baseUrl, no) {
-    const res = await fetchText(
-      new URL(`submissions/${encodeURIComponent(no)}/submission.url`, baseUrl)
-    );
-    if (res !== null) {
-      return res.split('=')[1];
-    }
-    return null;
-  }
-
   async function getEditorial(baseUrl, no) {
     return await fetchText(new URL(`md/${encodeURIComponent(no)}.md`, baseUrl));
   }
@@ -292,6 +297,7 @@
       new URL(`submissions/${encodeURIComponent(no)}/main.kn`, baseUrl)
     );
   }
+
   async function fetchResponse(url) {
     try {
       const response = await fetch(url, { cache: 'no-store' });

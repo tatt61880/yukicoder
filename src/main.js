@@ -179,9 +179,8 @@
 
       const src = await getSrc(baseUrl, no);
       if (src !== null) {
-        const id = 'code';
         const pre = document.createElement('pre');
-        pre.setAttribute('id', id);
+        pre.classList.add('code');
         contentsElem.appendChild(pre);
 
         const editor = tryElemToKuinEditor(pre);

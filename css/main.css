@@ -1,19 +1,16 @@
 @charset "UTF-8";
 
 body {
-  max-width: 1024px;
-  margin: auto;
+  margin: 0;
   background-color: #ccffff;
 }
 
 #contents {
+  max-width: 1200px;
   padding: 0;
+  margin: auto;
   overflow-x: auto;
   background-color: white;
-}
-
-#code {
-  margin: 0;
 }
 
 ul,
@@ -92,14 +89,14 @@ td {
   border: 1px solid #999999;
 }
 
-pre:has(.language-kuin) {
-  padding: 5px 10px;
-  margin: 15px;
-  background-color: #fff5f5;
-  border: 2px solid #ff8888;
+.code {
+  margin: 0;
 }
 
 #total-num {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
   font-size: 2rem;
 }
 
@@ -112,4 +109,17 @@ pre:has(.language-kuin) {
 .profile-icon {
   width: 100px;
   height: auto;
+}
+
+.link-load-error {
+  font-size: 0.95em;
+  font-style: italic;
+  color: #666666;
+}
+
+pre:has(.language-kuin) {
+  padding: 5px 10px;
+  margin: 10px 15px;
+  background-color: #fff5f5;
+  border: 2px solid #ff8888;
 }

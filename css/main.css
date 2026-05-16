@@ -46,29 +46,33 @@ hr {
   margin: 0;
 }
 
-h1 {
-  padding-left: 8px;
+h1,
+h2,
+h3,
+h4 {
   margin: 0;
   font-weight: bold;
   color: #000055;
   background-color: #c0cbff;
+}
+
+h1 {
+  padding-left: 15px;
 }
 
 h2 {
-  padding-left: 12px;
-  margin: 0;
+  padding-left: 15px;
   margin-top: 10px;
-  font-weight: bold;
-  color: #000055;
-  background-color: #c0cbff;
 }
 
 h3 {
-  padding-left: 30px;
-  margin: 0;
-  font-weight: bold;
-  color: #000055;
-  background-color: #c0cbff;
+  padding-left: 20px;
+  margin-top: 5px;
+}
+
+h4 {
+  padding-left: 25px;
+  margin-top: 5px;
 }
 
 table {
@@ -85,7 +89,7 @@ th {
 th,
 td {
   padding: 0 0.5em;
-  border: 1px solid black;
+  border: 1px solid #999999;
 }
 
 pre:has(.language-kuin) {

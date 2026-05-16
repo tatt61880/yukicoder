@@ -75,11 +75,11 @@
 
       // 提出ID
       {
+        const url = `https://yukicoder.me/submissions/${submitId}/`;
+        const text = submitId;
+
         const td = tr.insertCell();
-        const a = document.createElement('a');
-        a.href = `https://yukicoder.me/submissions/${submitId}/`;
-        a.textContent = submitId;
-        td.appendChild(a);
+        td.appendChild(createExternalLink(url, text));
       }
 
       // 言語
@@ -90,11 +90,11 @@
 
       // 問題タイトル
       {
+        const url = `?no=${encodeURIComponent(problemId)}`;
+        const text = decodeHtmlEntities(title);
+
         const td = tr.insertCell();
-        const a = document.createElement('a');
-        a.href = `?no=${encodeURIComponent(problemId)}`;
-        a.textContent = decodeHtmlEntities(title);
-        td.appendChild(a);
+        td.appendChild(createInternalLink(url, text));
       }
     }
   }
@@ -126,17 +126,13 @@
     // 問題URL
     {
       const problemUrl = getProblemUrl(no);
+
       const p = document.createElement('p');
       p.classList.add('narrow');
       p.textContent = '問題URL: ';
-      contentsElem.appendChild(p);
+      p.appendChild(createExternalLink(problemUrl));
 
-      if (problemUrl !== null) {
-        const a = document.createElement('a');
-        a.href = problemUrl;
-        a.textContent = problemUrl;
-        p.appendChild(a);
-      }
+      contentsElem.appendChild(p);
     }
 
     // 解説
@@ -166,22 +162,11 @@
     // 提出URL
     {
       const submissionUrl = await getSubmissionUrl(baseUrl, no);
+
       const p = document.createElement('p');
       p.classList.add('narrow');
       p.textContent = '提出URL: ';
-
-      if (submissionUrl !== null) {
-        const a = document.createElement('a');
-        a.href = submissionUrl;
-        a.textContent = submissionUrl;
-        a.target = '_blank';
-        a.rel = 'noopener';
-        p.appendChild(a);
-      } else {
-        p.appendChild(
-          document.createTextNode('提出URLの読み込みに失敗しました。')
-        );
-      }
+      p.appendChild(createExternalLink(submissionUrl));
 
       contentsElem.appendChild(p);
     }
@@ -199,9 +184,13 @@
         pre.setAttribute('id', id);
         contentsElem.appendChild(pre);
 
-        const editor = elemToKuinEditor(pre);
-        editor.setValue(src);
-        editor.navigateTo(0, 0);
+        const editor = tryElemToKuinEditor(pre);
+        if (editor !== null) {
+          editor.setValue(src);
+          editor.navigateTo(0, 0);
+        } else {
+          pre.textContent = src;
+        }
       } else {
         const p = document.createElement('p');
         p.textContent = 'ソースコードの読み込みに失敗しました。';
@@ -219,7 +208,11 @@
     };
   }
 
-  function elemToKuinEditor(elem) {
+  function tryElemToKuinEditor(elem) {
+    if (window.ace === undefined) {
+      return null;
+    }
+
     const editor = window.ace.edit(elem);
     editor.setTheme('ace/theme/kuin');
     editor.session.setMode('ace/mode/kuin');
@@ -231,6 +224,37 @@
     });
     editor.resize();
     return editor;
+  }
+
+  function createInternalLink(url, text = url) {
+    const a = document.createElement('a');
+
+    a.href = url;
+    a.textContent = text;
+
+    return a;
+  }
+
+  function createExternalLink(url, text = url) {
+    if (url === null) return createLinkLoadErrorText();
+
+    const a = document.createElement('a');
+
+    a.href = url;
+    a.textContent = text;
+    a.target = '_blank';
+    a.rel = 'noopener noreferrer';
+
+    return a;
+
+    function createLinkLoadErrorText() {
+      const span = document.createElement('span');
+
+      span.textContent = 'URLの読み込みに失敗しました。';
+      span.className = 'link-load-error';
+
+      return span;
+    }
   }
 
   async function getSubmissionsList(baseUrl) {

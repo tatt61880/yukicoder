@@ -162,9 +162,9 @@
         contentsElem.appendChild(div);
 
         window.renderMathInElement(div);
-      }
 
-      contentsElem.appendChild(document.createElement('hr'));
+        contentsElem.appendChild(document.createElement('hr'));
+      }
     }
 
     // 提出URL

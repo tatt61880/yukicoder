@@ -1,0 +1,8 @@
+func main()
+	var t: int :: cui@inputInt()
+	for(1, t)
+		var n: int :: cui@inputInt()
+		var ans: int :: n = 1 ?(1, 0)
+		do cui@print("\{ans}\n")
+	end for
+end func

@@ -235,7 +235,7 @@ func main()
 		
 		var writerUrl: file@Writer :: file@makeWriter(filepathUrl, false)
 		do writerUrl.writeStr("[InternetShortcut]\n")
-		do writerUrl.writeStr("URL=" ~ url)
+		do writerUrl.writeStr("URL=\{url}\n")
 		do writerUrl.fin()
 		
 		var writerTitle: file@Writer :: file@makeWriter(filepathTitle, false)

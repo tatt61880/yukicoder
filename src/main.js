@@ -26,10 +26,6 @@
 
   // ACコード一覧
   async function appendAcList(contentsElem, baseUrl) {
-    const h1 = document.createElement('h1');
-    h1.textContent = 'tatt61880によるyukicoderの最新ACコード一覧';
-    contentsElem.appendChild(h1);
-
     const p = document.createElement('p');
     contentsElem.appendChild(p);
 
@@ -122,9 +118,9 @@
 
       document.title = title;
 
-      const h1 = document.createElement('h1');
-      h1.textContent = title;
-      contentsElem.appendChild(h1);
+      const h2 = document.createElement('h2');
+      h2.textContent = title;
+      contentsElem.appendChild(h2);
     }
 
     // 問題URL
@@ -147,9 +143,9 @@
     {
       let editorial = await getEditorial(baseUrl, no);
       if (editorial !== null) {
-        const h2 = document.createElement('h2');
-        h2.innerText = '解説';
-        contentsElem.appendChild(h2);
+        const h3 = document.createElement('h3');
+        h3.innerText = '解説';
+        contentsElem.appendChild(h3);
 
         editorial = editorial.replaceAll('\\(', '\\\\(');
         editorial = editorial.replaceAll('\\)', '\\\\)');
@@ -192,9 +188,9 @@
 
     // 提出したソースコード
     {
-      const h2 = document.createElement('h2');
-      h2.textContent = '提出したソースコード (言語: Kuin)';
-      contentsElem.appendChild(h2);
+      const h3 = document.createElement('h3');
+      h3.textContent = '提出したソースコード (言語: Kuin)';
+      contentsElem.appendChild(h3);
 
       const src = await getSrc(baseUrl, no);
       if (src !== null) {

@@ -13,7 +13,7 @@
     const contentsElem = document.getElementById('contents-data');
 
     if (contentsElem === null) {
-      console.error('Error! #contents === null');
+      console.error('Error! #contents-data === null');
       return;
     }
 

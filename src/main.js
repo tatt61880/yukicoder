@@ -10,32 +10,32 @@
     const baseUrl = urlQueryParams.baseUrl;
     const no = urlQueryParams.no;
 
-    const contents = document.getElementById('data');
-    if (contents === null) {
+    const contentsElem = document.getElementById('contents-data');
+
+    if (contentsElem === null) {
       console.error('Error! #contents === null');
       return;
     }
 
     if (no === null) {
-      await appendAcList(contents, baseUrl);
+      await appendAcList(contentsElem, baseUrl);
     } else {
-      await appendEditorial(contents, baseUrl, no);
+      await appendEditorial(contentsElem, baseUrl, no);
     }
   }
 
   // ACコード一覧
-  async function appendAcList(contents, baseUrl) {
+  async function appendAcList(contentsElem, baseUrl) {
     const h1 = document.createElement('h1');
     h1.textContent = 'tatt61880によるyukicoderの最新ACコード一覧';
-    contents.appendChild(h1);
-    contents.appendChild(document.createElement('hr'));
+    contentsElem.appendChild(h1);
 
     const p = document.createElement('p');
-    contents.appendChild(p);
+    contentsElem.appendChild(p);
 
     const table = document.createElement('table');
     const thead = document.createElement('thead');
-    contents.appendChild(table);
+    contentsElem.appendChild(table);
     table.appendChild(thead);
     const tr = thead.insertRow();
 
@@ -44,6 +44,7 @@
       td.textContent = '提出ID';
       tr.appendChild(td);
     }
+
     {
       const td = document.createElement('th');
       td.textContent = '言語';
@@ -109,7 +110,7 @@
   }
 
   // 解説
-  async function appendEditorial(contents, baseUrl, no) {
+  async function appendEditorial(contentsElem, baseUrl, no) {
     // ページタイトル
     {
       let title = await getTitle(baseUrl, no);
@@ -123,8 +124,7 @@
 
       const h1 = document.createElement('h1');
       h1.textContent = title;
-      contents.appendChild(h1);
-      contents.appendChild(document.createElement('hr'));
+      contentsElem.appendChild(h1);
     }
 
     // 問題URL
@@ -133,7 +133,7 @@
       const p = document.createElement('p');
       p.classList.add('narrow');
       p.textContent = '問題URL: ';
-      contents.appendChild(p);
+      contentsElem.appendChild(p);
 
       if (problemUrl !== null) {
         const a = document.createElement('a');
@@ -141,8 +141,6 @@
         a.textContent = problemUrl;
         p.appendChild(a);
       }
-
-      contents.appendChild(document.createElement('hr'));
     }
 
     // 解説
@@ -151,7 +149,7 @@
       if (editorial !== null) {
         const h2 = document.createElement('h2');
         h2.innerText = '解説';
-        contents.appendChild(h2);
+        contentsElem.appendChild(h2);
 
         editorial = editorial.replaceAll('\\(', '\\\\(');
         editorial = editorial.replaceAll('\\)', '\\\\)');
@@ -161,35 +159,12 @@
 
         const div = document.createElement('div');
         div.innerHTML = result;
-        contents.appendChild(div);
+        contentsElem.appendChild(div);
 
         window.renderMathInElement(div);
-
-        contents.appendChild(document.createElement('hr'));
       }
-    }
 
-    // 提出したソースコード
-    {
-      const h2 = document.createElement('h2');
-      h2.textContent = '提出したソースコード (言語: Kuin)';
-      contents.appendChild(h2);
-
-      const src = await getSrc(baseUrl, no);
-      if (src !== null) {
-        const id = 'code';
-        const pre = document.createElement('pre');
-        pre.setAttribute('id', id);
-        contents.appendChild(pre);
-
-        const editor = elemToKuinEditor(pre);
-        editor.setValue(src);
-        editor.navigateTo(0, 0);
-      } else {
-        const p = document.createElement('p');
-        p.textContent = 'ソースコードの読み込みに失敗しました。';
-        contents.appendChild(p);
-      }
+      contentsElem.appendChild(document.createElement('hr'));
     }
 
     // 提出URL
@@ -212,7 +187,30 @@
         );
       }
 
-      contents.appendChild(p);
+      contentsElem.appendChild(p);
+    }
+
+    // 提出したソースコード
+    {
+      const h2 = document.createElement('h2');
+      h2.textContent = '提出したソースコード (言語: Kuin)';
+      contentsElem.appendChild(h2);
+
+      const src = await getSrc(baseUrl, no);
+      if (src !== null) {
+        const id = 'code';
+        const pre = document.createElement('pre');
+        pre.setAttribute('id', id);
+        contentsElem.appendChild(pre);
+
+        const editor = elemToKuinEditor(pre);
+        editor.setValue(src);
+        editor.navigateTo(0, 0);
+      } else {
+        const p = document.createElement('p');
+        p.textContent = 'ソースコードの読み込みに失敗しました。';
+        contentsElem.appendChild(p);
+      }
     }
   }
 

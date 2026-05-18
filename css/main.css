@@ -89,6 +89,27 @@ td {
   border: 1px solid #999999;
 }
 
+a {
+  overflow-wrap: anywhere;
+}
+
+a.submit-link {
+  display: inline-block;
+  padding: 0 15px;
+  margin: 4px;
+  font-weight: bold;
+  text-decoration: none;
+  border: 1px solid #999999;
+  border-radius: 5px;
+  transition: background-color 0.15s ease;
+}
+
+a.submit-link:hover,
+a.submit-link:focus-visible {
+  background-color: #e8edff;
+  border-color: #666666;
+}
+
 .code {
   margin: 0;
 }

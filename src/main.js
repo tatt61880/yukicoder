@@ -36,11 +36,14 @@
 
     contentsElem.replaceChildren();
 
-    const p = document.createElement('p');
-    contentsElem.appendChild(p);
+    // 件数
+    {
+      const p = document.createElement('p');
+      contentsElem.appendChild(p);
 
-    p.textContent = `${submissionsList.length}件`;
-    p.setAttribute('id', 'total-num');
+      p.textContent = `${submissionsList.length}件`;
+      p.setAttribute('id', 'total-num');
+    }
 
     const table = document.createElement('table');
     contentsElem.appendChild(table);

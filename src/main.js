@@ -19,7 +19,7 @@
     if (no === null) {
       await appendAcList(contentsElem, baseUrl);
     } else {
-      await appendEditorial(contentsElem, baseUrl, no);
+      await appendSubmissionInfo(contentsElem, baseUrl, no);
     }
   }
 
@@ -30,12 +30,17 @@
     if (submissionsList === null) {
       const p = document.createElement('p');
       p.textContent = '提出データの読み込みに失敗しました。';
-      contentsElem.appendChild(p);
+      contentsElem.replaceChildren(p);
       return;
     }
 
+    contentsElem.replaceChildren();
+
     const p = document.createElement('p');
     contentsElem.appendChild(p);
+
+    p.textContent = `${submissionsList.length}件`;
+    p.setAttribute('id', 'total-num');
 
     const table = document.createElement('table');
     contentsElem.appendChild(table);
@@ -65,9 +70,6 @@
 
     const tbody = document.createElement('tbody');
     table.appendChild(tbody);
-
-    p.textContent = `${submissionsList.length}件`;
-    p.setAttribute('id', 'total-num');
 
     for (const submission of submissionsList) {
       const problemId = submission[0];
@@ -108,8 +110,8 @@
     return textarea.value;
   }
 
-  // 解説
-  async function appendEditorial(contentsElem, baseUrl, no) {
+  // 提出内容
+  async function appendSubmissionInfo(contentsElem, baseUrl, no) {
     // ページタイトル
     {
       let title = await getTitle(baseUrl, no);
@@ -123,7 +125,8 @@
 
       const h2 = document.createElement('h2');
       h2.textContent = title;
-      contentsElem.appendChild(h2);
+
+      contentsElem.replaceChildren(h2);
     }
 
     // 問題URL
@@ -264,13 +267,20 @@
     return `https://yukicoder.me/problems/no/${encodeURIComponent(no)}`;
   }
 
+  function parseUrlFile(text) {
+    const match = text.match(/^URL=(.+)$/m);
+    if (match === null) return null;
+
+    return match[1].trim();
+  }
+
   async function getSubmissionUrl(baseUrl, no) {
     const res = await fetchText(
       new URL(`submissions/${encodeURIComponent(no)}/submission.url`, baseUrl)
     );
 
     if (res !== null) {
-      return res.split('=')[1].replace('\n', '');
+      return parseUrlFile(res);
     }
 
     return null;

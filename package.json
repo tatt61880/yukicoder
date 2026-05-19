@@ -1,7 +1,7 @@
 {
   "private": true,
-  "name": "yukicoder",
-  "version": "1.0.1",
+  "name": "@tatt61880/yukicoder",
+  "version": "2.0.0",
   "description": "tatt61880 - yukicoder",
   "license": "MIT",
   "repository": {
@@ -12,7 +12,7 @@
   "bugs": {
     "url": "https://github.com/tatt61880/yukicoder/issues"
   },
-  "homepage": "https://github.com/tatt61880/yukicoder#readme",
+  "homepage": "https://tatt61880.github.io/yukicoder/",
   "scripts": {
     "lint": "npm run eslint && npm run htmlhint && npm run stylelint",
     "eslint": "eslint ./src/*.js --fix",

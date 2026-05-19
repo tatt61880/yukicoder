@@ -6,6 +6,7 @@ body {
 }
 
 #contents {
+  min-width: 600px;
   max-width: 1200px;
   padding: 0;
   margin: auto;

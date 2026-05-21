@@ -78,6 +78,7 @@ table {
 }
 
 #contents-data table {
+  width: calc(100% - 30px);
   margin: 5px 15px;
   table-layout: fixed;
 }
@@ -221,4 +222,25 @@ pre:has(.language-kuin) {
 
 .table-pager button:enabled:active {
   background-color: #d0d9ff;
+}
+
+.table-pager-size select {
+  min-width: 80px;
+  min-height: 40px;
+  font-size: 1.1rem;
+}
+
+#contents-data th:nth-child(1),
+#contents-data td:nth-child(1) {
+  width: 7em;
+}
+
+#contents-data th:nth-child(2),
+#contents-data td:nth-child(2) {
+  width: 8em;
+}
+
+#contents-data th:nth-child(3),
+#contents-data td:nth-child(3) {
+  width: auto;
 }

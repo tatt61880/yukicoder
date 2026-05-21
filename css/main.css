@@ -14,14 +14,6 @@ body {
   background-color: white;
 }
 
-ul,
-ol,
-blockquote,
-table,
-input {
-  margin: 5px 15px;
-}
-
 blockquote {
   border-left: 0.25em solid #dfe2e5;
 }
@@ -80,8 +72,14 @@ h4 {
 }
 
 table {
+  margin: 5px 15px;
   border-spacing: 0;
   border-collapse: collapse;
+}
+
+#contents-data table {
+  margin: 5px 15px;
+  table-layout: fixed;
 }
 
 th {
@@ -161,4 +159,66 @@ pre:has(.language-kuin) {
   margin: 10px 15px;
   background-color: #fff5f5;
   border: 2px solid #ff8888;
+}
+
+.table-pager {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  margin: 5px 20px;
+  font-size: 1rem;
+  touch-action: manipulation;
+}
+
+.table-pager-nav {
+  display: inline-flex;
+  flex-basis: 100%;
+  gap: 10px;
+  align-items: center;
+  margin-top: 5px;
+}
+
+.table-pager-status {
+  margin-left: 20px;
+}
+
+.table-pager-label {
+  white-space: nowrap;
+}
+
+.table-pager select,
+.table-pager button {
+  font: inherit;
+  cursor: pointer;
+}
+
+.table-pager button {
+  min-width: 80px;
+  min-height: 40px;
+  padding: 2px 8px;
+  font-size: 1.1rem;
+  color: #000055;
+  touch-action: manipulation;
+  -webkit-user-select: none;
+  user-select: none;
+  background-color: #f0f3ff;
+  border: 1px solid #8a96c8;
+  border-radius: 4px;
+}
+
+.table-pager button:disabled {
+  color: #999999;
+  cursor: default;
+  background-color: #eeeeee;
+  border-color: #cccccc;
+}
+
+.table-pager button:enabled:hover {
+  background-color: #e0e7ff;
+  border-color: #666666;
+}
+
+.table-pager button:enabled:active {
+  background-color: #d0d9ff;
 }

@@ -36,12 +36,22 @@
 
     contentsElem.replaceChildren();
 
+    const tablePager = window.TablePager.create(contentsElem, {
+      storageKey: 'problemPageSize',
+      itemName: '問',
+      pageSizeOptions: [
+        { value: '20', text: '20問' },
+        { value: '50', text: '50問' },
+        { value: 'all', text: '全件' },
+      ],
+    });
+
     // 件数
     {
       const p = document.createElement('p');
       contentsElem.appendChild(p);
 
-      p.textContent = `${submissionsList.length}件`;
+      p.textContent = `計${submissionsList.length}問`;
       p.setAttribute('id', 'total-num');
     }
 
@@ -74,35 +84,46 @@
     const tbody = document.createElement('tbody');
     table.appendChild(tbody);
 
-    for (const submission of submissionsList) {
-      const problemId = submission[0];
-      const submitId = submission[1];
-      const language = submission[2];
-      const title = submission[5];
-      const tr = tbody.insertRow();
+    tablePager.setOnChange(renderSubmissionTable);
+    renderSubmissionTable();
 
-      // 提出ID
-      {
-        const url = `https://yukicoder.me/submissions/${submitId}/`;
-        const text = submitId;
+    function renderSubmissionTable() {
+      tbody.replaceChildren();
 
-        const td = tr.insertCell();
-        td.appendChild(createExternalLink(url, text));
-      }
+      tablePager.update(submissionsList.length);
 
-      // 言語
-      {
-        const td = tr.insertCell();
-        td.textContent = language;
-      }
+      const beginIndex = tablePager.getBeginIndex();
+      const endIndex = tablePager.getEndIndex(submissionsList.length);
 
-      // 問題タイトル
-      {
-        const url = `?no=${encodeURIComponent(problemId)}`;
-        const text = decodeHtmlEntities(title);
+      for (const submission of submissionsList.slice(beginIndex, endIndex)) {
+        const problemId = submission[0];
+        const submitId = submission[1];
+        const language = submission[2];
+        const title = submission[5];
 
-        const td = tr.insertCell();
-        td.appendChild(createInternalLink(url, text));
+        const tr = tbody.insertRow();
+
+        // 提出ID
+        {
+          const url = `https://yukicoder.me/submissions/${submitId}/`;
+          const text = submitId;
+          const td = tr.insertCell();
+          td.appendChild(createExternalLink(url, text));
+        }
+
+        // 言語
+        {
+          const td = tr.insertCell();
+          td.textContent = language;
+        }
+
+        // 問題タイトル
+        {
+          const url = `?no=${encodeURIComponent(problemId)}`;
+          const text = decodeHtmlEntities(title);
+          const td = tr.insertCell();
+          td.appendChild(createInternalLink(url, text));
+        }
       }
     }
   }

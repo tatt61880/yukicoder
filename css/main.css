@@ -230,16 +230,21 @@ pre:has(.language-kuin) {
   font-size: 1.1rem;
 }
 
+/* 提出ID */
 #contents-data th:nth-child(1),
 #contents-data td:nth-child(1) {
-  width: 7em;
+  width: 100px;
+  text-align: center;
 }
 
+/* 言語 */
 #contents-data th:nth-child(2),
 #contents-data td:nth-child(2) {
-  width: 8em;
+  width: 70px;
+  text-align: center;
 }
 
+/* 問題タイトル */
 #contents-data th:nth-child(3),
 #contents-data td:nth-child(3) {
   width: auto;

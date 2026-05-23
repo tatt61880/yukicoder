@@ -40,6 +40,7 @@
       storageKey: 'problemPageSize',
       itemName: '問',
       pageSizeOptions: [
+        { value: '10', text: '10問' },
         { value: '20', text: '20問' },
         { value: '50', text: '50問' },
         { value: 'all', text: '全件' },

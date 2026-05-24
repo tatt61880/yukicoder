@@ -1,6 +1,8 @@
 (function () {
   'use strict';
 
+  const pageTitle = 'tatt61880によるyukicoderでのACコード';
+
   document.addEventListener('DOMContentLoaded', onloadApp);
   return;
   // ==========================================================================
@@ -141,9 +143,9 @@
     {
       let title = await getTitle(baseUrl, problemId);
       if (title !== null) {
-        title = `${decodeHtmlEntities(title)} - yukicoder`;
+        title = `${decodeHtmlEntities(title)} - ${pageTitle}`;
       } else {
-        title = `No.${problemId} - yukicoder`;
+        title = `No.${problemId} - ${pageTitle}`;
       }
 
       document.title = title;
@@ -239,6 +241,7 @@
         }
       } else {
         const p = document.createElement('p');
+        p.className = 'link-load-error';
         p.textContent = 'ソースコードの読み込みに失敗しました。';
         contentsElem.appendChild(p);
       }
@@ -332,6 +335,7 @@
     return a;
   }
 
+  // 問題URLを取得
   function getProblemUrl(problemId) {
     if (problemId === null) return null;
 

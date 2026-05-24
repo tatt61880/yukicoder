@@ -18,13 +18,15 @@ blockquote {
   border-left: 0.25em solid #dfe2e5;
 }
 
+p {
+  margin: 5px 10px;
+}
+
 p.external-url {
   display: flex;
   flex-wrap: nowrap;
   gap: 5px;
   align-items: center;
-  margin: 5px;
-  margin-left: 10px;
 }
 
 span.url-label {

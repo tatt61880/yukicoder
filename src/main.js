@@ -450,7 +450,15 @@
   async function fetchResponse(url) {
     try {
       const response = await fetch(url, { cache: 'no-store' });
-      if (response.ok) return response;
+
+      if (response.ok) {
+        return response;
+      }
+
+      console.error(
+        `Fetch failed: ${response.status} ${response.statusText}`,
+        String(url)
+      );
     } catch (error) {
       console.error(error);
     }

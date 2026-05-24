@@ -109,7 +109,7 @@
         {
           const url = `https://yukicoder.me/submissions/${submitId}/`;
           const td = tr.insertCell();
-          appendExternalUrlLink(td, null, url, String(submitId));
+          appendExternalLink(td, null, url, String(submitId));
         }
 
         // 言語
@@ -157,7 +157,7 @@
     // 問題URL
     {
       const problemUrl = getProblemUrl(problemId);
-      appendExternalUrlLink(contentsElem, '問題リンク: ', problemUrl);
+      appendExternalLink(contentsElem, '問題リンク: ', problemUrl);
     }
 
     // 解説
@@ -187,7 +187,7 @@
     // 提出URL
     {
       const submissionUrl = await getSubmissionUrl(baseUrl, problemId);
-      appendExternalUrlLink(contentsElem, '提出リンク: ', submissionUrl);
+      appendExternalLink(contentsElem, '提出リンク: ', submissionUrl);
     }
 
     // 提出したソースコード
@@ -217,7 +217,7 @@
     }
   }
 
-  function appendExternalUrlLink(
+  function appendExternalLink(
     parentElem,
     labelText,
     url,
@@ -302,28 +302,6 @@
     a.textContent = text;
 
     return a;
-  }
-
-  function createExternalLink(url, text = url) {
-    if (url === null) return createLinkLoadErrorText();
-
-    const a = document.createElement('a');
-
-    a.href = url;
-    a.textContent = text;
-    a.target = '_blank';
-    a.rel = 'noopener noreferrer';
-
-    return a;
-
-    function createLinkLoadErrorText() {
-      const span = document.createElement('span');
-
-      span.textContent = 'URLの読み込みに失敗しました。';
-      span.className = 'link-load-error';
-
-      return span;
-    }
   }
 
   function getProblemUrl(problemId) {

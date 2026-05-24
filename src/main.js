@@ -8,7 +8,7 @@
   async function onloadApp() {
     const urlQueryParams = analyzeUrl();
     const baseUrl = urlQueryParams.baseUrl;
-    const no = urlQueryParams.no;
+    const problemId = urlQueryParams.problemId;
 
     const contentsElem = document.getElementById('contents-data');
     if (contentsElem === null) {
@@ -16,10 +16,10 @@
       return;
     }
 
-    if (no === null) {
+    if (problemId === null) {
       await appendAcList(contentsElem, baseUrl);
     } else {
-      await appendSubmissionInfo(contentsElem, baseUrl, no);
+      await appendSubmissionInfo(contentsElem, baseUrl, problemId);
     }
   }
 
@@ -57,6 +57,7 @@
     }
 
     const table = document.createElement('table');
+    table.className = 'main-table';
     contentsElem.appendChild(table);
 
     const thead = document.createElement('thead');
@@ -107,9 +108,8 @@
         // 提出ID
         {
           const url = `https://yukicoder.me/submissions/${submitId}/`;
-          const text = submitId;
           const td = tr.insertCell();
-          td.appendChild(createExternalLink(url, text));
+          appendExternalUrlLink(td, null, url, String(submitId));
         }
 
         // 言語
@@ -136,14 +136,14 @@
   }
 
   // 提出内容
-  async function appendSubmissionInfo(contentsElem, baseUrl, no) {
+  async function appendSubmissionInfo(contentsElem, baseUrl, problemId) {
     // ページタイトル
     {
-      let title = await getTitle(baseUrl, no);
+      let title = await getTitle(baseUrl, problemId);
       if (title !== null) {
         title = `${decodeHtmlEntities(title)} - yukicoder`;
       } else {
-        title = `No.${no} - yukicoder`;
+        title = `No.${problemId} - yukicoder`;
       }
 
       document.title = title;
@@ -156,19 +156,13 @@
 
     // 問題URL
     {
-      const problemUrl = getProblemUrl(no);
-
-      const p = document.createElement('p');
-      p.classList.add('narrow');
-      p.textContent = '問題URL: ';
-      p.appendChild(createExternalLink(problemUrl));
-
-      contentsElem.appendChild(p);
+      const problemUrl = getProblemUrl(problemId);
+      appendExternalUrlLink(contentsElem, '問題リンク: ', problemUrl);
     }
 
     // 解説
     {
-      let editorial = await getEditorial(baseUrl, no);
+      let editorial = await getEditorial(baseUrl, problemId);
       if (editorial !== null) {
         const h3 = document.createElement('h3');
         h3.innerText = '解説';
@@ -192,14 +186,8 @@
 
     // 提出URL
     {
-      const submissionUrl = await getSubmissionUrl(baseUrl, no);
-
-      const p = document.createElement('p');
-      p.classList.add('narrow');
-      p.textContent = '提出URL: ';
-      p.appendChild(createExternalLink(submissionUrl));
-
-      contentsElem.appendChild(p);
+      const submissionUrl = await getSubmissionUrl(baseUrl, problemId);
+      appendExternalUrlLink(contentsElem, '提出リンク: ', submissionUrl);
     }
 
     // 提出したソースコード
@@ -208,7 +196,7 @@
       h3.textContent = '提出したソースコード (言語: Kuin)';
       contentsElem.appendChild(h3);
 
-      const src = await getSrc(baseUrl, no);
+      const src = await getSrc(baseUrl, problemId);
       if (src !== null) {
         const pre = document.createElement('pre');
         pre.classList.add('code');
@@ -229,12 +217,63 @@
     }
   }
 
+  function appendExternalUrlLink(
+    parentElem,
+    labelText,
+    url,
+    urlText = String(url)
+  ) {
+    let elem = parentElem;
+
+    if (labelText !== null) {
+      const p = document.createElement('p');
+      p.classList.add('external-url');
+      parentElem.append(p);
+
+      const span = document.createElement('span');
+      span.classList.add('url-label');
+      span.textContent = labelText;
+      p.append(span);
+      elem = p;
+    }
+
+    if (url === null) {
+      const span = document.createElement('span');
+      span.textContent = 'URLの読み込みに失敗しました。';
+      span.className = 'link-load-error';
+
+      elem.appendChild(span);
+    } else {
+      const a = document.createElement('a');
+      a.href = url;
+      a.target = '_blank';
+      a.rel = 'noopener noreferrer';
+
+      appendUrlTextWithBreaks(a, urlText);
+      elem.appendChild(a);
+    }
+  }
+
+  function appendUrlTextWithBreaks(parentElem, urlText) {
+    const parts = String(urlText).split('/');
+
+    parentElem.textContent = '';
+
+    parts.forEach((part, i) => {
+      if (i !== 0) {
+        parentElem.append('/');
+        parentElem.append(document.createElement('wbr'));
+      }
+      parentElem.append(part);
+    });
+  }
+
   function analyzeUrl() {
     const params = new URLSearchParams(location.search);
 
     return {
       baseUrl: new URL('./', location.href),
-      no: params.get('no'),
+      problemId: params.get('no'),
     };
   }
 
@@ -287,9 +326,9 @@
     }
   }
 
-  function getProblemUrl(no) {
-    if (no === null) return null;
-    return `https://yukicoder.me/problems/no/${encodeURIComponent(no)}`;
+  function getProblemUrl(problemId) {
+    if (problemId === null) return null;
+    return `https://yukicoder.me/problems/no/${encodeURIComponent(problemId)}`;
   }
 
   function parseUrlFile(text) {
@@ -299,9 +338,12 @@
     return match[1].trim();
   }
 
-  async function getSubmissionUrl(baseUrl, no) {
+  async function getSubmissionUrl(baseUrl, problemId) {
     const res = await fetchText(
-      new URL(`submissions/${encodeURIComponent(no)}/submission.url`, baseUrl)
+      new URL(
+        `submissions/${encodeURIComponent(problemId)}/submission.url`,
+        baseUrl
+      )
     );
 
     if (res !== null) {
@@ -317,19 +359,21 @@
     );
   }
 
-  async function getTitle(baseUrl, no) {
+  async function getTitle(baseUrl, problemId) {
     return await fetchText(
-      new URL(`submissions/${encodeURIComponent(no)}/title.txt`, baseUrl)
+      new URL(`submissions/${encodeURIComponent(problemId)}/title.txt`, baseUrl)
     );
   }
 
-  async function getEditorial(baseUrl, no) {
-    return await fetchText(new URL(`md/${encodeURIComponent(no)}.md`, baseUrl));
+  async function getEditorial(baseUrl, problemId) {
+    return await fetchText(
+      new URL(`md/${encodeURIComponent(problemId)}.md`, baseUrl)
+    );
   }
 
-  async function getSrc(baseUrl, no) {
+  async function getSrc(baseUrl, problemId) {
     return await fetchText(
-      new URL(`submissions/${encodeURIComponent(no)}/main.kn`, baseUrl)
+      new URL(`submissions/${encodeURIComponent(problemId)}/main.kn`, baseUrl)
     );
   }
 

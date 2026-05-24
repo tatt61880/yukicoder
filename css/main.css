@@ -18,13 +18,17 @@ blockquote {
   border-left: 0.25em solid #dfe2e5;
 }
 
-p {
-  margin: 10px;
+p.external-url {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 5px;
+  align-items: center;
+  margin: 5px;
+  margin-left: 10px;
 }
 
-p.narrow {
-  margin-top: 0;
-  margin-bottom: 0;
+span.url-label {
+  white-space: nowrap;
 }
 
 hr {
@@ -72,7 +76,7 @@ table {
   border-collapse: collapse;
 }
 
-#contents-data table {
+.main-table {
   width: calc(100% - 20px);
   margin: 10px;
   table-layout: fixed;

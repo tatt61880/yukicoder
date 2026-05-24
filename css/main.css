@@ -127,11 +127,11 @@ td {
 }
 
 .sort-icon-asc {
-  border-bottom: 7px solid #7f8fc8;
+  border-bottom: 7px solid #929ed0;
 }
 
 .sort-icon-desc {
-  border-top: 7px solid #7f8fc8;
+  border-top: 7px solid #929ed0;
 }
 
 .sort-icon-asc.sort-icon-active {

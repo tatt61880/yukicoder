@@ -126,30 +126,29 @@
 
     function createSortableTh(text, key) {
       const th = document.createElement('th');
-      th.scope = 'col';
 
       const button = document.createElement('button');
       button.type = 'button';
       button.className = 'sort-header-button';
       button.dataset.sortKey = key;
+      th.appendChild(button);
 
       const labelSpan = document.createElement('span');
-      labelSpan.className = 'sort-header-text';
+      labelSpan.className = 'sort-header-label';
       labelSpan.textContent = text;
       button.appendChild(labelSpan);
 
       const iconSpan = document.createElement('span');
-      iconSpan.className = 'sort-header-icon';
-      iconSpan.setAttribute('aria-hidden', 'true');
+      iconSpan.className = 'sort-icon';
       button.appendChild(iconSpan);
 
-      const ascIcon = document.createElement('span');
-      ascIcon.className = 'sort-header-icon-asc';
-      iconSpan.appendChild(ascIcon);
+      const upSpan = document.createElement('span');
+      upSpan.className = 'sort-icon-up';
+      iconSpan.appendChild(upSpan);
 
-      const descIcon = document.createElement('span');
-      descIcon.className = 'sort-header-icon-desc';
-      iconSpan.appendChild(descIcon);
+      const downSpan = document.createElement('span');
+      downSpan.className = 'sort-icon-down';
+      iconSpan.appendChild(downSpan);
 
       button.addEventListener('click', () => {
         if (sortKey === key) {
@@ -163,54 +162,30 @@
         renderSubmissionTable();
       });
 
-      th.appendChild(button);
+      updateSortHeaderButton(button);
+
       return th;
     }
 
     function updateSortHeaderButtons() {
-      const buttons = table.querySelectorAll('.sort-header-button');
-
-      for (const button of buttons) {
-        const key = button.dataset.sortKey;
-        const isSorted = sortKey === key;
-        const isAscending = isSorted && sortDirection === 1;
-        const isDescending = isSorted && sortDirection === -1;
-        const label = getSortHeaderBaseText(key);
-
-        button.classList.toggle('sort-header-button-sorted-asc', isAscending);
-        button.classList.toggle('sort-header-button-sorted-desc', isDescending);
-        button.setAttribute(
-          'aria-label',
-          getSortHeaderAriaLabel(label, isSorted, sortDirection)
-        );
-
-        const th = button.closest('th');
-        if (th !== null) {
-          if (!isSorted) {
-            th.removeAttribute('aria-sort');
-          } else if (isAscending) {
-            th.setAttribute('aria-sort', 'ascending');
-          } else {
-            th.setAttribute('aria-sort', 'descending');
-          }
-        }
+      for (const button of document.querySelectorAll('.sort-header-button')) {
+        updateSortHeaderButton(button);
       }
     }
 
-    function getSortHeaderBaseText(key) {
-      if (key === 'submitId') return '提出ID';
-      if (key === 'language') return '言語';
-      if (key === 'problemId') return '問題タイトル';
+    function updateSortHeaderButton(button) {
+      const key = button.dataset.sortKey;
+      const upSpan = button.querySelector('.sort-icon-up');
+      const downSpan = button.querySelector('.sort-icon-down');
 
-      return '';
-    }
-
-    function getSortHeaderAriaLabel(text, isSorted, direction) {
-      if (!isSorted) return `${text}: ソートなし`;
-
-      if (direction === 1) return `${text}: 昇順でソート中`;
-
-      return `${text}: 降順でソート中`;
+      upSpan.classList.toggle(
+        'sort-icon-active',
+        sortKey === key && sortDirection === 1
+      );
+      downSpan.classList.toggle(
+        'sort-icon-active',
+        sortKey === key && sortDirection === -1
+      );
     }
 
     function getSortedSubmissionsList(list) {

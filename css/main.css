@@ -96,52 +96,6 @@ td {
   border: 1px solid #999999;
 }
 
-.sort-header-button {
-  display: inline-flex;
-  gap: 0.25em;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  padding: 0;
-  font: inherit;
-  font-weight: bold;
-  color: inherit;
-  cursor: pointer;
-  background: transparent;
-  border: none;
-}
-
-.sort-icon {
-  display: inline-flex;
-  flex-direction: column;
-  gap: 1px;
-  align-items: center;
-}
-
-.sort-icon-asc,
-.sort-icon-desc {
-  width: 0;
-  height: 0;
-  border-right: 5px solid transparent;
-  border-left: 5px solid transparent;
-}
-
-.sort-icon-asc {
-  border-bottom: 7px solid #929ed0;
-}
-
-.sort-icon-desc {
-  border-top: 7px solid #929ed0;
-}
-
-.sort-icon-asc.sort-icon-active {
-  border-bottom-color: #000055;
-}
-
-.sort-icon-desc.sort-icon-active {
-  border-top-color: #000055;
-}
-
 a {
   overflow-wrap: anywhere;
 }

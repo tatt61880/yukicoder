@@ -9,8 +9,29 @@
 
     function updateSortHeaderButtons() {
       for (const [key, button] of headerButtons) {
-        button.classList.toggle('sort-icon-active', key === sortKey);
-        button.dataset.sortDirection = key === sortKey ? sortDirection : '';
+        const isActive = key === sortKey;
+
+        button.classList.toggle('sort-icon-active', isActive);
+
+        if (isActive) {
+          button.dataset.sortDirection = sortDirection;
+        } else {
+          button.dataset.sortDirection = '';
+        }
+
+        const th = button.closest('th');
+        if (th === null) {
+          continue;
+        }
+
+        let ariaSort = 'none';
+        if (isActive && sortDirection === 'asc') {
+          ariaSort = 'ascending';
+        } else if (isActive && sortDirection === 'desc') {
+          ariaSort = 'descending';
+        }
+
+        th.setAttribute('aria-sort', ariaSort);
       }
     }
 

@@ -156,13 +156,6 @@ a:focus-visible {
   color: #666666;
 }
 
-pre:has(.language-kuin) {
-  padding: 5px 10px;
-  margin: 10px 15px;
-  background-color: #fff5f5;
-  border: 2px solid #ff8888;
-}
-
 .table-pager {
   display: flex;
   flex-wrap: wrap;
@@ -298,6 +291,13 @@ pre:has(.language-kuin) {
 
 .code-copy-button:active {
   background-color: #e8e8e8;
+}
+
+pre:has(.language-kuin) {
+  padding: 5px 10px;
+  margin: 10px 15px;
+  background-color: #fff5f5;
+  border: 2px solid #ff8888;
 }
 
 /* 提出ID */

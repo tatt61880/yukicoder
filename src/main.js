@@ -334,7 +334,11 @@
 
   function getProblemUrl(problemId) {
     if (problemId === null) return null;
-    return `https://yukicoder.me/problems/no/${encodeURIComponent(problemId)}`;
+
+    return new URL(
+      `problems/no/${encodeURIComponent(problemId)}`,
+      'https://yukicoder.me/`'
+    );
   }
 
   function parseUrlFile(text) {

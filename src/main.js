@@ -69,7 +69,7 @@
     table.appendChild(thead);
 
     const tr = thead.insertRow();
-    tr.appendChild(createSortableTh('提出ID', 'submitId'));
+    tr.appendChild(createSortableTh('提出ID', 'submissionId'));
     tr.appendChild(createSortableTh('言語', 'language'));
     tr.appendChild(createSortableTh('問題タイトル', 'problemId'));
 
@@ -95,7 +95,7 @@
         endIndex
       )) {
         const problemId = submission[0];
-        const submitId = submission[1];
+        const submissionId = submission[1];
         const language = submission[2];
         const title = submission[5];
 
@@ -103,9 +103,9 @@
 
         // 提出ID
         {
-          const url = `https://yukicoder.me/submissions/${submitId}`;
+          const url = `https://yukicoder.me/submissions/${submissionId}`;
           const td = tr.insertCell();
-          appendExternalLink(td, null, url, String(submitId));
+          appendExternalLink(td, null, url, String(submissionId));
         }
 
         // 言語
@@ -195,7 +195,7 @@
     function compareSubmissions(a, b) {
       let result = 0;
 
-      if (sortKey === 'submitId') {
+      if (sortKey === 'submissionId') {
         result = compareNumber(a[1], b[1]);
       } else if (sortKey === 'language') {
         result = String(a[2]).localeCompare(String(b[2]), 'ja');
@@ -207,7 +207,7 @@
         result = compareNumber(a[0], b[0]);
       }
 
-      if (result === 0 && sortKey !== 'submitId') {
+      if (result === 0 && sortKey !== 'submissionId') {
         result = compareNumber(a[1], b[1]);
       }
 

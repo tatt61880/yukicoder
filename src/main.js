@@ -429,7 +429,7 @@
 
     return new URL(
       `problems/no/${encodeURIComponent(problemId)}`,
-      'https://yukicoder.me/`'
+      'https://yukicoder.me/'
     );
   }
 

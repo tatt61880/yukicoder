@@ -194,12 +194,12 @@
 
     // 提出したソースコード
     {
-      const h3 = document.createElement('h3');
-      h3.textContent = '提出したソースコード (言語: Kuin)';
-      contentsElem.appendChild(h3);
-
       const src = await getSrc(baseUrl, problemId);
       if (src !== null) {
+        const h3 = document.createElement('h3');
+        h3.textContent = '提出したソースコード (言語: Kuin)';
+        contentsElem.appendChild(h3);
+
         const codeContainer = document.createElement('div');
         codeContainer.classList.add('code-container');
         contentsElem.appendChild(codeContainer);
@@ -213,7 +213,7 @@
         copyButton.addEventListener('click', async () => {
           try {
             await navigator.clipboard.writeText(src);
-            copyButton.textContent = 'Copied';
+            copyButton.textContent = 'Copied!';
 
             setTimeout(() => {
               copyButton.textContent = 'Copy';

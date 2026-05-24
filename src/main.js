@@ -49,6 +49,35 @@
       ],
     });
 
+    function compareTitle(a, b) {
+      return decodeHtmlEntities(a[5]).localeCompare(
+        decodeHtmlEntities(b[5]),
+        'ja',
+        {
+          numeric: true,
+        }
+      );
+    }
+
+    function compareLanguage(a, b) {
+      const languageResult = a[2].localeCompare(b[2], 'ja', {
+        numeric: true,
+      });
+      if (languageResult !== 0) return languageResult;
+
+      return compareTitle(a, b);
+    }
+
+    const tableSort = window.TableSort.create({
+      defaultKey: 'title',
+      defaultDirection: 'asc',
+      compareMap: {
+        submitId: (a, b) => Number(a[1]) - Number(b[1]),
+        language: compareLanguage,
+        title: compareTitle,
+      },
+    });
+
     // 件数
     {
       const p = document.createElement('p');
@@ -58,9 +87,6 @@
       p.setAttribute('id', 'total-num');
     }
 
-    let sortKey = 'problemId';
-    let sortDirection = 1;
-
     const table = document.createElement('table');
     table.className = 'main-table';
     contentsElem.appendChild(table);
@@ -69,24 +95,44 @@
     table.appendChild(thead);
 
     const tr = thead.insertRow();
-    tr.appendChild(createSortableTh('提出ID', 'submissionId'));
-    tr.appendChild(createSortableTh('言語', 'language'));
-    tr.appendChild(createSortableTh('問題タイトル', 'problemId'));
+    {
+      const th = document.createElement('th');
+      tr.appendChild(th);
+      tableSort.setHeaderButton(
+        th,
+        'submitId',
+        '提出ID',
+        renderSubmissionTable
+      );
+    }
+    {
+      const th = document.createElement('th');
+      tr.appendChild(th);
+      tableSort.setHeaderButton(th, 'language', '言語', renderSubmissionTable);
+    }
+    {
+      const th = document.createElement('th');
+      tr.appendChild(th);
+      tableSort.setHeaderButton(
+        th,
+        'title',
+        '問題タイトル',
+        renderSubmissionTable
+      );
+    }
 
     const tbody = document.createElement('tbody');
     table.appendChild(tbody);
 
     tablePager.setOnChange(renderSubmissionTable);
-    updateSortHeaderButtons();
     renderSubmissionTable();
 
     function renderSubmissionTable() {
       tbody.replaceChildren();
 
-      const sortedSubmissionsList = getSortedSubmissionsList(submissionsList);
+      const sortedSubmissionsList = tableSort.sortItems(submissionsList);
 
       tablePager.update(sortedSubmissionsList.length);
-
       const beginIndex = tablePager.getBeginIndex();
       const endIndex = tablePager.getEndIndex(sortedSubmissionsList.length);
 
@@ -122,100 +168,6 @@
           td.appendChild(createInternalLink(url, text));
         }
       }
-    }
-
-    function createSortableTh(text, key) {
-      const th = document.createElement('th');
-
-      const button = document.createElement('button');
-      button.type = 'button';
-      button.className = 'sort-header-button';
-      button.dataset.sortKey = key;
-      th.appendChild(button);
-
-      const labelSpan = document.createElement('span');
-      labelSpan.className = 'sort-header-label';
-      labelSpan.textContent = text;
-      button.appendChild(labelSpan);
-
-      const iconSpan = document.createElement('span');
-      iconSpan.className = 'sort-icon';
-      button.appendChild(iconSpan);
-
-      const upSpan = document.createElement('span');
-      upSpan.className = 'sort-icon-asc';
-      iconSpan.appendChild(upSpan);
-
-      const downSpan = document.createElement('span');
-      downSpan.className = 'sort-icon-desc';
-      iconSpan.appendChild(downSpan);
-
-      button.addEventListener('click', () => {
-        if (sortKey === key) {
-          sortDirection *= -1;
-        } else {
-          sortKey = key;
-          sortDirection = 1;
-        }
-
-        updateSortHeaderButtons();
-        renderSubmissionTable();
-      });
-
-      updateSortHeaderButton(button);
-
-      return th;
-    }
-
-    function updateSortHeaderButtons() {
-      for (const button of document.querySelectorAll('.sort-header-button')) {
-        updateSortHeaderButton(button);
-      }
-    }
-
-    function updateSortHeaderButton(button) {
-      const key = button.dataset.sortKey;
-      const upSpan = button.querySelector('.sort-icon-asc');
-      const downSpan = button.querySelector('.sort-icon-desc');
-
-      upSpan.classList.toggle(
-        'sort-icon-active',
-        sortKey === key && sortDirection === 1
-      );
-      downSpan.classList.toggle(
-        'sort-icon-active',
-        sortKey === key && sortDirection === -1
-      );
-    }
-
-    function getSortedSubmissionsList(list) {
-      return Array.from(list).sort(compareSubmissions);
-    }
-
-    function compareSubmissions(a, b) {
-      let result = 0;
-
-      if (sortKey === 'submissionId') {
-        result = compareNumber(a[1], b[1]);
-      } else if (sortKey === 'language') {
-        result = String(a[2]).localeCompare(String(b[2]), 'ja');
-      } else if (sortKey === 'problemId') {
-        result = compareNumber(a[0], b[0]);
-      }
-
-      if (result === 0 && sortKey !== 'problemId') {
-        result = compareNumber(a[0], b[0]);
-      }
-
-      if (result === 0 && sortKey !== 'submissionId') {
-        result = compareNumber(a[1], b[1]);
-      }
-
-      return result * sortDirection;
-    }
-
-    function compareNumber(a, b) {
-      return Number(a) - Number(b);
     }
   }
 

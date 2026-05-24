@@ -1,0 +1,48 @@
+@charset "UTF-8";
+
+/* table sort */
+.sort-header-button {
+  display: inline-flex;
+  gap: 0.25em;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 0;
+  font: inherit;
+  font-weight: bold;
+  color: inherit;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+}
+
+.sort-icon {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 1px;
+  align-items: center;
+}
+
+.sort-icon-up,
+.sort-icon-down {
+  width: 0;
+  height: 0;
+  border-right: 5px solid transparent;
+  border-left: 5px solid transparent;
+}
+
+.sort-icon-up {
+  border-bottom: 7px solid #9aa6d6;
+}
+
+.sort-icon-down {
+  border-top: 7px solid #9aa6d6;
+}
+
+.sort-header-button[data-sort-direction='asc'] .sort-icon-up {
+  border-bottom-color: #000055;
+}
+
+.sort-header-button[data-sort-direction='desc'] .sort-icon-down {
+  border-top-color: #000055;
+}

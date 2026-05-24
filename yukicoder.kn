@@ -170,7 +170,7 @@ func main()
 		var filepath: []char :: "\{@dirSubmissions}\{problemId}/main.\{extension}"
 		var filepathUrl: []char :: "\{@dirSubmissions}\{problemId}/submission.url"
 		var filepathTitle: []char :: "\{@dirSubmissions}\{problemId}/title.txt"
-		var url: []char :: "\{@yukicoderBase}submissions/\{submitId}/"
+		var url: []char :: "\{@yukicoderBase}submissions/\{submitId}"
 		if(file@exist(filepathUrl))
 			var readerUrl: file@Reader :: file@makeReader(filepathUrl)
 			do readerUrl.readLine()

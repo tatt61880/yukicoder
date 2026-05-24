@@ -60,7 +60,11 @@
 
       button.addEventListener('click', () => {
         if (sortKey === key) {
-          sortDirection = sortDirection === 'asc' ? 'desc' : 'asc';
+          if (sortDirection === 'asc') {
+            sortDirection = 'desc';
+          } else {
+            sortDirection = 'asc';
+          }
         } else {
           sortKey = key;
           sortDirection = 'asc';
@@ -85,7 +89,10 @@
 
       sortedItems.sort((a, b) => {
         const result = compare(a, b);
-        return sortDirection === 'asc' ? result : -result;
+        if (sortDirection === 'asc') {
+          return result;
+        }
+        return -result;
       });
 
       return sortedItems;

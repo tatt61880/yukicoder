@@ -198,9 +198,37 @@
 
       const src = await getSrc(baseUrl, problemId);
       if (src !== null) {
+        const codeContainer = document.createElement('div');
+        codeContainer.classList.add('code-container');
+        contentsElem.appendChild(codeContainer);
+
+        const copyButton = document.createElement('button');
+        copyButton.type = 'button';
+        copyButton.classList.add('code-copy-button');
+        copyButton.textContent = 'Copy';
+        codeContainer.appendChild(copyButton);
+
+        copyButton.addEventListener('click', async () => {
+          try {
+            await navigator.clipboard.writeText(src);
+            copyButton.textContent = 'Copied';
+
+            setTimeout(() => {
+              copyButton.textContent = 'Copy';
+            }, 1000);
+          } catch (error) {
+            console.error(error);
+            copyButton.textContent = 'Failed';
+
+            setTimeout(() => {
+              copyButton.textContent = 'Copy';
+            }, 1000);
+          }
+        });
+
         const pre = document.createElement('pre');
         pre.classList.add('code');
-        contentsElem.appendChild(pre);
+        codeContainer.appendChild(pre);
 
         const editor = tryElemToKuinEditor(pre);
         if (editor !== null) {

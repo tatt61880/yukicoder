@@ -270,6 +270,34 @@ pre:has(.language-kuin) {
   font-size: 1.1rem;
 }
 
+.code-container {
+  position: relative;
+}
+
+.code-copy-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 10;
+  min-width: 80px;
+  min-height: 36px;
+  padding: 2px 10px;
+  font-size: 1rem;
+  color: #666666;
+  cursor: pointer;
+  background-color: #ffffff;
+  border: 1px solid #cccccc;
+  border-radius: 0 0 0 8px;
+}
+
+.code-copy-button:hover {
+  background-color: #f5f5f5;
+}
+
+.code-copy-button:active {
+  background-color: #e8e8e8;
+}
+
 /* 提出ID */
 #contents-data th:nth-child(1),
 #contents-data td:nth-child(1) {

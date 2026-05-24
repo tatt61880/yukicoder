@@ -49,9 +49,15 @@
       ],
     });
 
+    const SUBMISSION_INDEX = {
+      submitId: 1,
+      language: 2,
+      title: 5,
+    };
+
     function compareTitle(a, b) {
-      return decodeHtmlEntities(a[5]).localeCompare(
-        decodeHtmlEntities(b[5]),
+      return decodeHtmlEntities(a[SUBMISSION_INDEX.title]).localeCompare(
+        decodeHtmlEntities(b[SUBMISSION_INDEX.title]),
         'ja',
         {
           numeric: true,
@@ -60,9 +66,13 @@
     }
 
     function compareLanguage(a, b) {
-      const languageResult = a[2].localeCompare(b[2], 'ja', {
-        numeric: true,
-      });
+      const languageResult = a[SUBMISSION_INDEX.language].localeCompare(
+        b[SUBMISSION_INDEX.language],
+        'ja',
+        {
+          numeric: true,
+        }
+      );
       if (languageResult !== 0) return languageResult;
 
       return compareTitle(a, b);
@@ -72,7 +82,9 @@
       defaultKey: 'title',
       defaultDirection: 'asc',
       compareMap: {
-        submitId: (a, b) => Number(a[1]) - Number(b[1]),
+        submitId: (a, b) =>
+          Number(a[SUBMISSION_INDEX.submitId]) -
+          Number(b[SUBMISSION_INDEX.submitId]),
         language: compareLanguage,
         title: compareTitle,
       },

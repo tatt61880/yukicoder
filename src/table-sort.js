@@ -15,6 +15,8 @@
     }
 
     function setHeaderButton(th, key, text, onChange) {
+      th.classList.add('sort-header');
+
       const button = document.createElement('button');
       button.type = 'button';
       button.className = 'sort-header-button';

@@ -1,13 +1,19 @@
 @charset "UTF-8";
 
+.sort-header {
+  padding: 0;
+}
+
 /* table sort */
 .sort-header-button {
+  box-sizing: border-box;
   display: inline-flex;
   gap: 0.25em;
   align-items: center;
   justify-content: center;
   width: 100%;
-  padding: 0;
+  height: 100%;
+  padding: 0.25em 0.5em;
   font: inherit;
   font-weight: bold;
   color: inherit;

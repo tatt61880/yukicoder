@@ -107,7 +107,7 @@
 
         // 提出ID
         {
-          const url = `https://yukicoder.me/submissions/${submitId}/`;
+          const url = `https://yukicoder.me/submissions/${submitId}`;
           const td = tr.insertCell();
           appendExternalLink(td, null, url, String(submitId));
         }

@@ -30,7 +30,7 @@ func main()
 	}
 	do @regexUrl :: regex@makeRegex("\"/submissions/(\\d+)\"[\\d\\D]*?/problems/no/(\\d+)\">(.*?)</a></td>\\s*<td>(.*?)</td>\\s*<td>(?:.*?)</td>\\s*<td>(.*?)</td>\\s*<td>(.*?)</td>")
 	assert @regexUrl <>& null
-	do @regexUrl2 :: regex@makeRegex("/submissions/(\\d+)/")
+	do @regexUrl2 :: regex@makeRegex("/submissions/(\\d+)")
 	assert @regexUrl2 <>& null
 	
 	var id: int :: 0

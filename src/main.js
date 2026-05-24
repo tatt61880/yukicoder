@@ -107,6 +107,7 @@
     table.appendChild(thead);
 
     const tr = thead.insertRow();
+
     {
       const th = document.createElement('th');
       tr.appendChild(th);
@@ -117,11 +118,13 @@
         renderSubmissionTable
       );
     }
+
     {
       const th = document.createElement('th');
       tr.appendChild(th);
       tableSort.setHeaderButton(th, 'language', '言語', renderSubmissionTable);
     }
+
     {
       const th = document.createElement('th');
       tr.appendChild(th);

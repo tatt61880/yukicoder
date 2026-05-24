@@ -58,6 +58,9 @@
       p.setAttribute('id', 'total-num');
     }
 
+    let sortKey = 'problemId';
+    let sortDirection = 1;
+
     const table = document.createElement('table');
     table.className = 'main-table';
     contentsElem.appendChild(table);
@@ -66,40 +69,31 @@
     table.appendChild(thead);
 
     const tr = thead.insertRow();
-
-    {
-      const td = document.createElement('th');
-      td.textContent = '提出ID';
-      tr.appendChild(td);
-    }
-
-    {
-      const td = document.createElement('th');
-      td.textContent = '言語';
-      tr.appendChild(td);
-    }
-
-    {
-      const td = document.createElement('th');
-      td.textContent = '問題タイトル';
-      tr.appendChild(td);
-    }
+    tr.appendChild(createSortableTh('提出ID', 'submitId'));
+    tr.appendChild(createSortableTh('言語', 'language'));
+    tr.appendChild(createSortableTh('問題タイトル', 'problemId'));
 
     const tbody = document.createElement('tbody');
     table.appendChild(tbody);
 
     tablePager.setOnChange(renderSubmissionTable);
+    updateSortHeaderButtons();
     renderSubmissionTable();
 
     function renderSubmissionTable() {
       tbody.replaceChildren();
 
-      tablePager.update(submissionsList.length);
+      const sortedSubmissionsList = getSortedSubmissionsList(submissionsList);
+
+      tablePager.update(sortedSubmissionsList.length);
 
       const beginIndex = tablePager.getBeginIndex();
-      const endIndex = tablePager.getEndIndex(submissionsList.length);
+      const endIndex = tablePager.getEndIndex(sortedSubmissionsList.length);
 
-      for (const submission of submissionsList.slice(beginIndex, endIndex)) {
+      for (const submission of sortedSubmissionsList.slice(
+        beginIndex,
+        endIndex
+      )) {
         const problemId = submission[0];
         const submitId = submission[1];
         const language = submission[2];
@@ -128,6 +122,97 @@
           td.appendChild(createInternalLink(url, text));
         }
       }
+    }
+
+    function createSortableTh(text, key) {
+      const th = document.createElement('th');
+      th.scope = 'col';
+
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.className = 'sort-header-button';
+      button.dataset.sortKey = key;
+      button.textContent = getSortHeaderText(text, key);
+
+      button.addEventListener('click', () => {
+        if (sortKey === key) {
+          sortDirection *= -1;
+        } else {
+          sortKey = key;
+          sortDirection = 1;
+        }
+
+        updateSortHeaderButtons();
+        renderSubmissionTable();
+      });
+
+      th.appendChild(button);
+      return th;
+    }
+
+    function updateSortHeaderButtons() {
+      const buttons = table.querySelectorAll('.sort-header-button');
+
+      for (const button of buttons) {
+        const key = button.dataset.sortKey;
+        button.textContent = getSortHeaderText(getSortHeaderBaseText(key), key);
+
+        const th = button.closest('th');
+        if (th !== null) {
+          if (sortKey !== key) {
+            th.removeAttribute('aria-sort');
+          } else if (sortDirection === 1) {
+            th.setAttribute('aria-sort', 'ascending');
+          } else {
+            th.setAttribute('aria-sort', 'descending');
+          }
+        }
+      }
+    }
+
+    function getSortHeaderBaseText(key) {
+      if (key === 'submitId') return '提出ID';
+      if (key === 'language') return '言語';
+      if (key === 'problemId') return '問題タイトル';
+
+      return '';
+    }
+
+    function getSortHeaderText(text, key) {
+      if (sortKey !== key) return text;
+      if (sortDirection === 1) return `${text} ▲`;
+
+      return `${text} ▼`;
+    }
+
+    function getSortedSubmissionsList(list) {
+      return Array.from(list).sort(compareSubmissions);
+    }
+
+    function compareSubmissions(a, b) {
+      let result = 0;
+
+      if (sortKey === 'submitId') {
+        result = compareNumber(a[1], b[1]);
+      } else if (sortKey === 'language') {
+        result = String(a[2]).localeCompare(String(b[2]), 'ja');
+      } else if (sortKey === 'problemId') {
+        result = compareNumber(a[0], b[0]);
+      }
+
+      if (result === 0 && sortKey !== 'problemId') {
+        result = compareNumber(a[0], b[0]);
+      }
+
+      if (result === 0 && sortKey !== 'submitId') {
+        result = compareNumber(a[1], b[1]);
+      }
+
+      return result * sortDirection;
+    }
+
+    function compareNumber(a, b) {
+      return Number(a) - Number(b);
     }
   }
 

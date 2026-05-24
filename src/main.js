@@ -31,6 +31,7 @@
 
     if (submissionsList === null) {
       const p = document.createElement('p');
+      p.className = 'data-load-error';
       p.textContent = '提出データの読み込みに失敗しました。';
       contentsElem.replaceChildren(p);
       return;
@@ -296,7 +297,7 @@
         }
       } else {
         const p = document.createElement('p');
-        p.className = 'link-load-error';
+        p.className = 'data-load-error';
         p.textContent = 'ソースコードの読み込みに失敗しました。';
         contentsElem.appendChild(p);
       }
@@ -326,7 +327,7 @@
     if (url === null) {
       const span = document.createElement('span');
       span.textContent = 'URLの読み込みに失敗しました。';
-      span.className = 'link-load-error';
+      span.className = 'data-load-error';
 
       elem.appendChild(span);
     } else {

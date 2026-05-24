@@ -150,7 +150,7 @@ a:focus-visible {
   height: auto;
 }
 
-.link-load-error {
+.data-load-error {
   font-size: 0.95em;
   font-style: italic;
   color: #666666;

@@ -132,7 +132,24 @@
       button.type = 'button';
       button.className = 'sort-header-button';
       button.dataset.sortKey = key;
-      button.textContent = getSortHeaderText(text, key);
+
+      const labelSpan = document.createElement('span');
+      labelSpan.className = 'sort-header-text';
+      labelSpan.textContent = text;
+      button.appendChild(labelSpan);
+
+      const iconSpan = document.createElement('span');
+      iconSpan.className = 'sort-header-icon';
+      iconSpan.setAttribute('aria-hidden', 'true');
+      button.appendChild(iconSpan);
+
+      const ascIcon = document.createElement('span');
+      ascIcon.className = 'sort-header-icon-asc';
+      iconSpan.appendChild(ascIcon);
+
+      const descIcon = document.createElement('span');
+      descIcon.className = 'sort-header-icon-desc';
+      iconSpan.appendChild(descIcon);
 
       button.addEventListener('click', () => {
         if (sortKey === key) {
@@ -155,13 +172,23 @@
 
       for (const button of buttons) {
         const key = button.dataset.sortKey;
-        button.textContent = getSortHeaderText(getSortHeaderBaseText(key), key);
+        const isSorted = sortKey === key;
+        const isAscending = isSorted && sortDirection === 1;
+        const isDescending = isSorted && sortDirection === -1;
+        const label = getSortHeaderBaseText(key);
+
+        button.classList.toggle('sort-header-button-sorted-asc', isAscending);
+        button.classList.toggle('sort-header-button-sorted-desc', isDescending);
+        button.setAttribute(
+          'aria-label',
+          getSortHeaderAriaLabel(label, isSorted, sortDirection)
+        );
 
         const th = button.closest('th');
         if (th !== null) {
-          if (sortKey !== key) {
+          if (!isSorted) {
             th.removeAttribute('aria-sort');
-          } else if (sortDirection === 1) {
+          } else if (isAscending) {
             th.setAttribute('aria-sort', 'ascending');
           } else {
             th.setAttribute('aria-sort', 'descending');
@@ -178,11 +205,12 @@
       return '';
     }
 
-    function getSortHeaderText(text, key) {
-      if (sortKey !== key) return text;
-      if (sortDirection === 1) return `${text} ▲`;
+    function getSortHeaderAriaLabel(text, isSorted, direction) {
+      if (!isSorted) return `${text}: ソートなし`;
 
-      return `${text} ▼`;
+      if (direction === 1) return `${text}: 昇順でソート中`;
+
+      return `${text}: 降順でソート中`;
     }
 
     function getSortedSubmissionsList(list) {

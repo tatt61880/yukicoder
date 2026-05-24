@@ -1,0 +1,110 @@
+@charset "UTF-8";
+
+.table-pager {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  margin: 5px 10px;
+  font-size: 1rem;
+  touch-action: manipulation;
+}
+
+.table-pager-nav {
+  display: flex;
+  flex-basis: 100%;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  margin-top: 5px;
+}
+
+.table-pager-status {
+  margin-left: 20px;
+  white-space: nowrap;
+}
+
+.table-pager-label {
+  white-space: nowrap;
+}
+
+.table-pager select,
+.table-pager button {
+  font: inherit;
+  cursor: pointer;
+}
+
+.table-pager button {
+  min-width: 80px;
+  min-height: 40px;
+  padding: 5px 10px;
+  font-size: 1.1rem;
+  color: #000055;
+  touch-action: manipulation;
+  -webkit-user-select: none;
+  user-select: none;
+  background-color: #f0f3ff;
+  border: 1px solid #8a96c8;
+  border-radius: 4px;
+}
+
+.table-pager-pages {
+  display: flex;
+  flex-basis: 100%;
+  flex-wrap: wrap;
+  gap: 0;
+  margin-top: 6px;
+}
+
+.table-pager-pages button {
+  min-width: 50px;
+  border-radius: 0;
+}
+
+.table-pager-pages button + button {
+  margin-left: -1px;
+}
+
+.table-pager-pages button:first-child {
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+
+.table-pager button:disabled {
+  color: #999999;
+  cursor: default;
+  background-color: #eeeeee;
+  border-color: #cccccc;
+}
+
+.table-pager-pages button:last-child {
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+
+.table-pager-pages button:disabled {
+  color: #ffffff;
+  cursor: default;
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.table-pager-pages button:hover:not(:disabled) {
+  color: #0056b3;
+  background-color: #e9ecef;
+}
+
+.table-pager button:enabled:hover {
+  background-color: #e0e7ff;
+  border-color: #666666;
+}
+
+.table-pager button:enabled:active {
+  background-color: #d0d9ff;
+}
+
+.table-pager-size select {
+  min-width: 80px;
+  min-height: 40px;
+  font-size: 1.1rem;
+}

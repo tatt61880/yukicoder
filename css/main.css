@@ -118,27 +118,27 @@ td {
   align-items: center;
 }
 
-.sort-icon-up,
-.sort-icon-down {
+.sort-icon-asc,
+.sort-icon-desc {
   width: 0;
   height: 0;
   border-right: 5px solid transparent;
   border-left: 5px solid transparent;
 }
 
-.sort-icon-up {
+.sort-icon-asc {
   border-bottom: 7px solid #7f8fc8;
 }
 
-.sort-icon-down {
+.sort-icon-desc {
   border-top: 7px solid #7f8fc8;
 }
 
-.sort-icon-up.sort-icon-active {
+.sort-icon-asc.sort-icon-active {
   border-bottom-color: #000055;
 }
 
-.sort-icon-down.sort-icon-active {
+.sort-icon-desc.sort-icon-active {
   border-top-color: #000055;
 }
 

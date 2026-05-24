@@ -143,11 +143,11 @@
       button.appendChild(iconSpan);
 
       const upSpan = document.createElement('span');
-      upSpan.className = 'sort-icon-up';
+      upSpan.className = 'sort-icon-asc';
       iconSpan.appendChild(upSpan);
 
       const downSpan = document.createElement('span');
-      downSpan.className = 'sort-icon-down';
+      downSpan.className = 'sort-icon-desc';
       iconSpan.appendChild(downSpan);
 
       button.addEventListener('click', () => {
@@ -175,8 +175,8 @@
 
     function updateSortHeaderButton(button) {
       const key = button.dataset.sortKey;
-      const upSpan = button.querySelector('.sort-icon-up');
-      const downSpan = button.querySelector('.sort-icon-down');
+      const upSpan = button.querySelector('.sort-icon-asc');
+      const downSpan = button.querySelector('.sort-icon-desc');
 
       upSpan.classList.toggle(
         'sort-icon-active',

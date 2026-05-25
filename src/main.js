@@ -212,25 +212,26 @@
       contentsElem.replaceChildren(h2);
     }
 
-    // 問題URL
     {
-      const problemUrl = getProblemUrl(problemId);
-      appendExternalLink(contentsElem, '問題リンク: ', problemUrl);
-    }
+      // 問題URL
+      {
+        const problemUrl = getProblemUrl(problemId);
+        appendExternalLink(contentsElem, '問題リンク: ', problemUrl);
+      }
 
-    // 解説
-    {
-      let editorial = await getEditorial(baseUrl, problemId);
+      // 解説
+      const editorial = await getEditorial(baseUrl, problemId);
       if (editorial !== null) {
         const h3 = document.createElement('h3');
         h3.innerText = '解説';
         contentsElem.appendChild(h3);
 
-        editorial = editorial.replaceAll('\\(', '\\\\(');
-        editorial = editorial.replaceAll('\\)', '\\\\)');
+        const editorialEscaped = editorial
+          .replaceAll('\\(', '\\\\(')
+          .replaceAll('\\)', '\\\\)');
 
         const md = window.markdownit();
-        const result = md.render(editorial);
+        const result = md.render(editorialEscaped);
 
         const div = document.createElement('div');
         div.innerHTML = result;
@@ -240,16 +241,14 @@
 
         contentsElem.appendChild(document.createElement('hr'));
       }
-    }
 
-    // 提出URL
-    {
-      const submissionUrl = await getSubmissionUrl(baseUrl, problemId);
-      appendExternalLink(contentsElem, '提出リンク: ', submissionUrl);
-    }
+      // 提出URL
+      {
+        const submissionUrl = await getSubmissionUrl(baseUrl, problemId);
+        appendExternalLink(contentsElem, '提出リンク: ', submissionUrl);
+      }
 
-    // 提出したソースコード
-    {
+      // 提出したソースコード
       const src = await getSrc(baseUrl, problemId);
       if (src !== null) {
         const h3 = document.createElement('h3');

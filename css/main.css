@@ -169,9 +169,10 @@ a:focus-visible {
   min-height: 36px;
   padding: 2px 10px;
   font-size: 1rem;
+  font-weight: bold;
   color: #666666;
   cursor: pointer;
-  background-color: #ffffff;
+  background-color: #f5f5f5;
   border: 1px solid #cccccc;
   border-radius: 0 0 0 8px;
 }
@@ -182,6 +183,11 @@ a:focus-visible {
 
 .code-copy-button:active {
   background-color: #e8e8e8;
+}
+
+.code-copy-button.copied {
+  color: #f5f5f5;
+  background-color: #666666;
 }
 
 pre:has(.language-kuin) {

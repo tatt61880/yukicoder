@@ -275,9 +275,11 @@
           try {
             await navigator.clipboard.writeText(src);
             copyButton.textContent = 'Copied!';
+            copyButton.classList.add('copied');
 
             setTimeout(() => {
               copyButton.textContent = 'Copy';
+              copyButton.classList.remove('copied');
             }, 1000);
           } catch (error) {
             console.error(error);

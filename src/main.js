@@ -230,14 +230,20 @@
           .replaceAll('\\(', '\\\\(')
           .replaceAll('\\)', '\\\\)');
 
-        const md = window.markdownit();
-        const result = md.render(editorialEscaped);
-
         const div = document.createElement('div');
-        div.innerHTML = result;
+
+        if (typeof window.markdownit === 'function') {
+          const md = window.markdownit();
+          div.innerHTML = md.render(editorialEscaped);
+        } else {
+          div.textContent = editorialEscaped;
+        }
+
         contentsElem.appendChild(div);
 
-        window.renderMathInElement(div);
+        if (typeof window.renderMathInElement === 'function') {
+          window.renderMathInElement(div);
+        }
 
         contentsElem.appendChild(document.createElement('hr'));
       }

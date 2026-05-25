@@ -236,7 +236,7 @@
           const md = window.markdownit();
           div.innerHTML = md.render(editorialEscaped);
         } else {
-          div.textContent = editorialEscaped;
+          div.textContent = editorial;
         }
 
         contentsElem.appendChild(div);

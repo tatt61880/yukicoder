@@ -61,12 +61,12 @@
 
     const prevButton = document.createElement('button');
     prevButton.type = 'button';
-    prevButton.textContent = '前へ';
+    prevButton.textContent = '‹ 前へ';
     nav.appendChild(prevButton);
 
     const nextButton = document.createElement('button');
     nextButton.type = 'button';
-    nextButton.textContent = '次へ';
+    nextButton.textContent = '次へ ›';
     nav.appendChild(nextButton);
 
     const status = document.createElement('span');
@@ -129,7 +129,7 @@
         } else {
           status.textContent = `${
             beginIndex + 1
-          }〜${endIndex} / ${itemCount}${itemName}`;
+          }〜${endIndex} / 全${itemCount}${itemName}`;
         }
 
         pageButtons.textContent = '';

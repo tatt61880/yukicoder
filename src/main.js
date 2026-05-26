@@ -96,7 +96,7 @@
       const p = document.createElement('p');
       contentsElem.appendChild(p);
 
-      p.textContent = `計${submissionsList.length}問`;
+      p.textContent = `全${submissionsList.length}問`;
       p.setAttribute('id', 'total-num');
     }
 

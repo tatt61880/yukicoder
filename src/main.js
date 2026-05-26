@@ -1,6 +1,8 @@
 (function () {
   'use strict';
 
+  const pageTitle = 'tatt61880によるyukicoderでのACコード';
+
   document.addEventListener('DOMContentLoaded', onloadApp);
   return;
   // ==========================================================================
@@ -202,7 +204,7 @@
         title = `No.${problemId}`;
       }
 
-      document.title = title;
+      document.title = `${title} - ${pageTitle}`;
 
       const h2 = document.createElement('h2');
       h2.textContent = title;

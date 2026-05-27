@@ -178,7 +178,7 @@
 
         // 問題タイトル
         {
-          const url = `?no=${encodeURIComponent(problemId)}`;
+          const url = `?no=${problemId}`;
           const text = decodeHtmlEntities(title);
           const td = tr.insertCell();
           td.appendChild(createInternalLink(url, text));
@@ -248,14 +248,17 @@
         contentsElem.appendChild(document.createElement('hr'));
       }
 
+      const [submissionUrl, src] = await Promise.all([
+        getSubmissionUrl(baseUrl, problemId),
+        getSrc(baseUrl, problemId),
+      ]);
+
       // 提出URL
       {
-        const submissionUrl = await getSubmissionUrl(baseUrl, problemId);
         appendExternalLink(contentsElem, '提出リンク: ', submissionUrl);
       }
 
       // 提出したソースコード
-      const src = await getSrc(baseUrl, problemId);
       if (src !== null) {
         const h3 = document.createElement('h3');
         h3.textContent = '提出したソースコード (言語: Kuin)';
@@ -402,10 +405,7 @@
   function getProblemUrl(problemId) {
     if (problemId === null) return null;
 
-    return new URL(
-      `problems/no/${encodeURIComponent(problemId)}`,
-      'https://yukicoder.me/'
-    );
+    return new URL(`problems/no/${problemId}`, 'https://yukicoder.me/');
   }
 
   function parseUrlFile(text) {
@@ -416,12 +416,9 @@
   }
 
   async function getSubmissionUrl(baseUrl, problemId) {
-    const res = await fetchText(
-      new URL(
-        `submissions/${encodeURIComponent(problemId)}/submission.url`,
-        baseUrl
-      )
-    );
+    const path = `submissions/${problemId}/submission.url`;
+
+    const res = await fetchText(new URL(path, baseUrl));
 
     if (res !== null) {
       return parseUrlFile(res);
@@ -438,20 +435,18 @@
 
   async function getTitle(baseUrl, problemId) {
     return await fetchText(
-      new URL(`submissions/${encodeURIComponent(problemId)}/title.txt`, baseUrl)
+      new URL(`submissions/${problemId}/title.txt`, baseUrl)
     );
   }
 
   async function getEditorial(baseUrl, problemId) {
-    return await fetchText(
-      new URL(`md/${encodeURIComponent(problemId)}.md`, baseUrl)
-    );
+    return await fetchText(new URL(`md/${problemId}.md`, baseUrl));
   }
 
   async function getSrc(baseUrl, problemId) {
-    return await fetchText(
-      new URL(`submissions/${encodeURIComponent(problemId)}/main.kn`, baseUrl)
-    );
+    const path = `submissions/${problemId}/main.kn`;
+
+    return await fetchText(new URL(path, baseUrl));
   }
 
   async function fetchResponse(url) {

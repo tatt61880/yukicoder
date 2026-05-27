@@ -416,9 +416,9 @@
   }
 
   async function getSubmissionUrl(baseUrl, problemId) {
-    const path = `submissions/${problemId}/submission.url`;
-
-    const res = await fetchText(new URL(path, baseUrl));
+    const res = await fetchText(
+      new URL(`submissions/${problemId}/submission.url`, baseUrl)
+    );
 
     if (res !== null) {
       return parseUrlFile(res);
@@ -444,9 +444,9 @@
   }
 
   async function getSrc(baseUrl, problemId) {
-    const path = `submissions/${problemId}/main.kn`;
-
-    return await fetchText(new URL(path, baseUrl));
+    return await fetchText(
+      new URL(`submissions/${problemId}/main.kn`, baseUrl)
+    );
   }
 
   async function fetchResponse(url) {

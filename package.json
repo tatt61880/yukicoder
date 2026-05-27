@@ -15,16 +15,15 @@
   "homepage": "https://tatt61880.github.io/yukicoder/",
   "scripts": {
     "lint": "npm run eslint && npm run htmlhint && npm run stylelint",
-    "eslint": "eslint ./src/*.js --fix",
+    "eslint": "eslint ./src/*.js ./lib/*.js --fix",
     "htmlhint": "htmlhint ./*.html",
     "stylelint": "stylelint ./css/*.css --fix"
   },
   "devDependencies": {
-    "@babel/core": "^7.18.10",
-    "@babel/eslint-parser": "^7.18.9",
-    "eslint": "^8.21.0",
-    "eslint-config-prettier": "^8.6.0",
-    "eslint-plugin-prettier": "^4.2.1",
+    "@eslint/js": "^10.0.1",
+    "eslint": "^10.4.0",
+    "eslint-config-prettier": "^8.10.2",
+    "globals": "^17.6.0",
     "htmlhint": "^1.1.4",
     "prettier": "^2.8.2",
     "stylelint": "^15.10.1",

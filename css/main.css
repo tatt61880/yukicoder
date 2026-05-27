@@ -72,28 +72,29 @@ h4 {
   font-size: 1.1rem;
 }
 
-table {
-  margin: 10px;
-  border-spacing: 0;
-  border-collapse: collapse;
-}
-
 .main-table {
   width: calc(100% - 20px);
   margin: 10px;
   table-layout: fixed;
+  border-spacing: 0;
+  border-collapse: collapse;
 }
 
-th {
+.main-table th {
   font-weight: bold;
   color: #000055;
   background-color: #c0cbff;
 }
 
-th,
-td {
+.main-table th,
+.main-table td {
   padding: 0 0.5em;
-  border: 1px solid #999999;
+}
+
+.main-table,
+.main-table th,
+.main-table td {
+  border: 1px solid #c8cce0;
 }
 
 a {
@@ -139,15 +140,29 @@ a:focus-visible {
   color: #555555;
 }
 
-.profile-table,
-.profile-table tr,
-.profile-table td {
-  border: none;
+.profile {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin: 10px;
 }
 
 .profile-icon {
   width: 100px;
   height: auto;
+}
+
+.profile-name {
+  font-weight: bold;
+}
+
+.profile-label {
+  display: inline-block;
+  min-width: 5.2em;
+}
+
+.profile-links p {
+  margin: 2px 0;
 }
 
 .data-load-error {

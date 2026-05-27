@@ -15,7 +15,7 @@
   "homepage": "https://tatt61880.github.io/yukicoder/",
   "scripts": {
     "lint": "npm run eslint && npm run htmlhint && npm run stylelint",
-    "eslint": "eslint ./src/*.js ./lib/*.js --fix",
+    "eslint": "eslint eslint.config.js ./src/*.js ./lib/*.js --fix",
     "htmlhint": "htmlhint ./*.html",
     "stylelint": "stylelint ./css/*.css --fix"
   },

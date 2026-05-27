@@ -22,7 +22,6 @@
   "devDependencies": {
     "@eslint/js": "^10.0.1",
     "eslint": "^10.4.0",
-    "eslint-config-prettier": "^8.10.2",
     "globals": "^17.6.0",
     "htmlhint": "^1.1.4",
     "prettier": "^2.8.2",

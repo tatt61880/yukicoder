@@ -18,11 +18,21 @@
       return;
     }
 
+    appendLoadingMessage(contentsElem);
+
     if (problemId === null) {
       await appendAcList(contentsElem, baseUrl);
     } else {
       await appendSubmissionInfo(contentsElem, baseUrl, problemId);
     }
+  }
+
+  function appendLoadingMessage(contentsElem) {
+    const loadingMessage = document.createElement('p');
+    loadingMessage.id = 'loading-message';
+    loadingMessage.textContent = '提出データを読み込み中です。';
+
+    contentsElem.append(loadingMessage);
   }
 
   // ACコード一覧

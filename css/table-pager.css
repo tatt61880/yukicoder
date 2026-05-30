@@ -34,6 +34,13 @@
   cursor: pointer;
 }
 
+.table-pager select {
+  box-sizing: border-box;
+  min-height: 2em;
+  padding: 0.2em 1.8em 0.2em 0.4em;
+  font: inherit;
+}
+
 .table-pager button {
   min-width: 80px;
   min-height: 40px;

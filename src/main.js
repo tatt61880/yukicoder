@@ -122,29 +122,19 @@
     {
       const th = document.createElement('th');
       tr.appendChild(th);
-      tableSort.setHeaderButton(
-        th,
-        'submitId',
-        '提出ID',
-        renderSubmissionTable
-      );
+      tableSort.setHeaderButton(th, 'submitId', '提出ID', onSortChange);
     }
 
     {
       const th = document.createElement('th');
       tr.appendChild(th);
-      tableSort.setHeaderButton(th, 'language', '言語', renderSubmissionTable);
+      tableSort.setHeaderButton(th, 'language', '言語', onSortChange);
     }
 
     {
       const th = document.createElement('th');
       tr.appendChild(th);
-      tableSort.setHeaderButton(
-        th,
-        'title',
-        '問題タイトル',
-        renderSubmissionTable
-      );
+      tableSort.setHeaderButton(th, 'title', '問題タイトル', onSortChange);
     }
 
     const tbody = document.createElement('tbody');
@@ -194,6 +184,11 @@
           td.appendChild(createInternalLink(url, text));
         }
       }
+    }
+
+    function onSortChange() {
+      tablePager.moveToFirstPage();
+      renderSubmissionTable();
     }
   }
 

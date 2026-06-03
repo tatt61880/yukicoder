@@ -80,7 +80,7 @@ h4 {
   border: 1px solid #cc0000;
 }
 
-.main-table {
+table.main-table {
   width: calc(100% - 20px);
   margin: 10px;
   table-layout: fixed;
@@ -99,7 +99,7 @@ h4 {
   padding: 0 0.5em;
 }
 
-.main-table,
+table.main-table,
 .main-table th,
 .main-table td {
   border: 1px solid #9aa6cf;

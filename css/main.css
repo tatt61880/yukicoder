@@ -219,6 +219,10 @@ a:focus-visible {
   background-color: #666666;
 }
 
+.site-footer {
+  margin-top: 1em;
+}
+
 pre:has(.language-kuin) {
   padding: 5px 10px;
   margin: 10px 15px;

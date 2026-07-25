@@ -1,0 +1,15 @@
+func main()
+	var y: int :: cui@inputInt()
+	var n: int :: cui@inputInt()
+	
+	var ans: int :: y
+	for i(0, n - 1)
+		do ans :- cui@inputInt()
+	end for
+	
+	if(ans < 0)
+		do cui@print("red\n")
+	else
+		do cui@print("\{ans}\n")
+	end if
+end func

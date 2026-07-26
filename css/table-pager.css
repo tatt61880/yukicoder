@@ -41,7 +41,7 @@
   font-size: 1.1rem;
   color: #000055;
   touch-action: manipulation;
-  -webkit-user-select: none;
+  user-select: none;
   user-select: none;
   background-color: #f0f3ff;
   border: 1px solid #8a96c8;

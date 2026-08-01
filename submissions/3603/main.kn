@@ -1,0 +1,15 @@
+func main()
+	var q: int :: cui@inputInt()
+	for i(1, q)
+		var t: int :: cui@inputInt()
+		if(t = 1)
+			var a: int :: cui@inputInt()
+			var b: int :: cui@inputInt()
+			var ans: int :: a + b
+			do cui@print("\{ans}\n")
+		else
+			var ans: int :: i
+			do cui@print("\{ans}\n")
+		end if
+	end for
+end func

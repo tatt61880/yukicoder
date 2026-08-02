@@ -13,6 +13,8 @@ var regexUrl2: regex@Regex
 var maxId: int
 
 func main()
+	do file@setCurDir(wnd@exeDir())
+	
 	if(!@makeDir(@dirHtml))
 		do @pause()
 		do lib@exitCode(1)
@@ -148,7 +150,7 @@ func main()
 				var title: []char :: @dictSubmitTitle.get(submitId, &)
 				do title :: title.replace("\\", "\\\\")
 				do title :: title.replace("\"", "\\\"")
-				if (firstFlag)
+				if(firstFlag)
 					do firstFlag :: false
 				else
 					do writer.writeStr(",\n")
@@ -359,7 +361,7 @@ func escapeSurrogatePairs(str: []char): []char
 	var i: int :: 0
 	while loop(i < ^str)
 		var c: int :: str[i] $ int
-
+		
 		if(0xD800 <= c & c <= 0xDBFF & i + 1 < ^str)
 			var d: int :: str[i + 1] $ int
 			if(0xDC00 <= d & d <= 0xDFFF)
@@ -369,7 +371,7 @@ func escapeSurrogatePairs(str: []char): []char
 				skip loop
 			end if
 		end if
-
+		
 		if(0xD800 <= c & c <= 0xDFFF)
 			do res :~ "&#\{c};"
 		else

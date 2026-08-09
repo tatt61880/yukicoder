@@ -1,0 +1,12 @@
+func main()
+	var a: int :: cui@inputInt()
+	var b: int :: cui@inputInt()
+	var c: int :: cui@inputInt()
+	
+	if(a = 1 & b = 1 & c = 1)
+		do cui@print("A+B+C=Infinity\n")
+	else
+		var ans: int :: a + b + c
+		do cui@print("A+B+C=\{ans}\n")
+	end if
+end func

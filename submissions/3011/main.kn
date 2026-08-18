@@ -1,0 +1,17 @@
+func main()
+	const m: int :: 30
+	
+	var x: int :: 10 ^ 9
+	for(1, m)
+		do cui@print("\{x}\n")
+		do cui@flush()
+		var r: int :: cui@inputInt()
+		
+		if(r = 1)
+			do cui@print("\{x}\n")
+			ret
+		end if
+		
+		do x :/ 2
+	end for
+end func
